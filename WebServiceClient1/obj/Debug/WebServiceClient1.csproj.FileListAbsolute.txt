@@ -1,0 +1,34 @@
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.exe.config
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.exe
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.pdb
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\MainWindow.baml
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\MainWindow.g.cs
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\App.g.cs
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1_MarkupCompile.cache
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.g.resources
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.Properties.Resources.resources
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.csproj.GenerateResource.Cache
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.exe
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.exe.config
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.exe
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.exe
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WebServiceClient1.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\MainWindow.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\MainWindow.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\App.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1_MarkupCompile.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.g.resources
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.Properties.Resources.resources
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1.csproj.GenerateResource.Cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Login.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\WebServiceClient1_MarkupCompile.lref
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\CharacterSelection.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Register.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Login.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\CharacterSelection.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Register.baml

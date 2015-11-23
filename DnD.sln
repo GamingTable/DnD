@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDService", "WebService1\DnDService.csproj", "{07E23787-66D2-4677-8C54-B0A7AA8773BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDServicePlayer", "WebServiceClient1\DnDServicePlayer.csproj", "{910586F2-2011-44E7-8E39-5081CA191678}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07E23787-66D2-4677-8C54-B0A7AA8773BA} = {07E23787-66D2-4677-8C54-B0A7AA8773BA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07E23787-66D2-4677-8C54-B0A7AA8773BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E23787-66D2-4677-8C54-B0A7AA8773BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E23787-66D2-4677-8C54-B0A7AA8773BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E23787-66D2-4677-8C54-B0A7AA8773BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910586F2-2011-44E7-8E39-5081CA191678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910586F2-2011-44E7-8E39-5081CA191678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910586F2-2011-44E7-8E39-5081CA191678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910586F2-2011-44E7-8E39-5081CA191678}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

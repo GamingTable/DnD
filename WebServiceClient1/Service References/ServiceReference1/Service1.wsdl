@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DnDService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_AccountConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountConnection" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AccountConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AccountCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountCreate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AccountCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AccountDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountDelete" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AccountDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterCreate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterDelete" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacter_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacter" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacters" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharactersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="AccountConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountConnection" message="tns:IService1_AccountConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AccountConnectionResponse" message="tns:IService1_AccountConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountCreate" message="tns:IService1_AccountCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AccountCreateResponse" message="tns:IService1_AccountCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountDelete" message="tns:IService1_AccountDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AccountDeleteResponse" message="tns:IService1_AccountDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacterCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterCreate" message="tns:IService1_CharacterCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterCreateResponse" message="tns:IService1_CharacterCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacterDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterDelete" message="tns:IService1_CharacterDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterDeleteResponse" message="tns:IService1_CharacterDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacter" message="tns:IService1_GetCharacter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterResponse" message="tns:IService1_GetCharacter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacters" message="tns:IService1_GetCharacters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharactersResponse" message="tns:IService1_GetCharacters_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AccountConnection">
+      <soap:operation soapAction="http://tempuri.org/IService1/AccountConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountCreate">
+      <soap:operation soapAction="http://tempuri.org/IService1/AccountCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountDelete">
+      <soap:operation soapAction="http://tempuri.org/IService1/AccountDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacterCreate">
+      <soap:operation soapAction="http://tempuri.org/IService1/CharacterCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacterDelete">
+      <soap:operation soapAction="http://tempuri.org/IService1/CharacterDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacter">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacters">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:8986/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

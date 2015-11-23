@@ -1,0 +1,12 @@
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebService1\bin\WebService1.dll.config
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebService1\bin\WebService1.dll
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebService1\bin\WebService1.pdb
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebService1\obj\Debug\WebService1.dll
+C:\Users\Augustin\documents\visual studio 2013\Projects\WebService1\WebService1\obj\Debug\WebService1.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.dll.config
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\MySql.Data.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\WebService1.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\WebService1.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\WebService1.pdb

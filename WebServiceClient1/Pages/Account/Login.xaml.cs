@@ -1,0 +1,52 @@
+﻿using DnDServiceClient;
+using DnDServicePlayer.ServiceReference1;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace DnDServiceClient.Pages
+{
+    /// <summary>
+    /// Logique d'interaction pour Login.xaml
+    /// </summary>
+    public partial class Login : UserControl, ISwitchable
+    {
+        public Login()
+        {
+            InitializeComponent();
+        }
+
+        #region ISwitchable Members
+        public void UtilizeState(object state)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Switch Pages
+        private void register_button_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Register());
+        }
+
+        private void connection_button_Click(object sender, RoutedEventArgs e)
+        {
+            string log = text_username.Text;
+            string pwd = text_password.Password;
+            Service1Client client = new Service1Client();
+
+            uint user_id = client.AccountConnection(log, pwd);
+            if (user_id != 0)
+            {
+                hid_label.Content = "connecté";
+                Switcher.Switch(new CharacterSelection(), user_id);
+            }
+            else
+            {
+                hid_label.Content = "Echec de la connexion";
+            }
+            hid_label.Visibility = Visibility.Visible;
+        }
+        #endregion
+    }
+}
