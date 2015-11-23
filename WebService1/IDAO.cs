@@ -28,5 +28,11 @@ namespace DnDService
 
         //Return a characters list based on the account_id
         List<character> GetCharacters(uint account_id);
+
+        //Return a list with all race name and description
+        List<short_race> GetRaceShortList();
+
+        //Return a list with all class name and description
+        List<short_class> GetClassShortList();
     }
 }

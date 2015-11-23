@@ -63,24 +63,13 @@ namespace DnDService
         {
             return db.GetCharacters(account_id);
         }
-
-
-        /*public string GetData(int value)
+        public List<short_race> GetRaceShortList()
         {
-            return string.Format("You entered: {0}", value);
+            return db.GetRaceShortList();
         }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public List<short_class> GetClassShortList()
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }*/
+            return db.GetClassShortList();
+        }
     }
 }

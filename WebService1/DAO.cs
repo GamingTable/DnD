@@ -70,7 +70,6 @@ namespace DnDService
             }
         }
 
-        //Test username & password and return account_id;
         public uint AccountConnection(string user, string pass)
         {
             string query = "SELECT id_account FROM account WHERE username = '"+user+"' AND password = '"+pass+"';";
@@ -102,7 +101,6 @@ namespace DnDService
             return id;
         }
 
-        //Create a new account and return account_id;
         public uint AccountCreate(string user, string pass, string mail)
         {
             string query = "INSERT INTO account (username, password, email) VALUES('"+user+"', '"+pass+"', '"+mail+"');";
@@ -127,7 +125,6 @@ namespace DnDService
             return id;
         }
 
-        //Try to delete each character of an account and then delete account. Return true if succeed, false if not;
         public bool AccountDelete(int account_id)
         {
             string query = "DELETE FROM account WHERE id_account = '"+account_id+"';";
@@ -152,13 +149,11 @@ namespace DnDService
             }
         }
 
-        //Create a new character and return character_id;
         public int CharacterCreate(character player)
         {
             return 1;
         }
 
-        //Try to delete character. Return true if succeed, false if not;
         public bool CharacterDelete(uint character_id) 
         {
             string query = "DELETE FROM character WHERE id_character = " + character_id + ";";
@@ -183,7 +178,6 @@ namespace DnDService
             }
         }
 
-        //Return the selected character based on is character_id
         public character GetCharacter(uint character_id)
         {
             if (this.OpenConnection() == true)
@@ -269,6 +263,58 @@ namespace DnDService
             return playable_characters;
         }
 
-        //all character_id, character_name, character_race, character_class & character_level
+        List<short_entity> GetRaceShortList()
+        {
+            string query = "SELECT id_race, name, description FROM race;";
+
+            List<short_entity> list_race = new List<short_entity>();
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    short_entity e;
+                    e.uid = (uint)dataReader["id_race"];
+                    e.name = (string)dataReader["name"];
+                    e.description = (string)dataReader["description"];
+                    list_race.Add(e);
+                }
+                dataReader.Close();
+
+                this.CloseConnection();
+            }
+            return list_race;
+        }
+
+        List<short_entity> GetClassShortList()
+        {
+            string query = "SELECT id_class, name, description FROM class;";
+
+            List<short_entity> list_class = new List<short_entity>();
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    short_entity e;
+                    e.uid = (uint)dataReader["id_class"];
+                    e.name = (string)dataReader["name"];
+                    e.description = (string)dataReader["description"];
+                    list_class.Add(e);
+                }
+                dataReader.Close();
+
+                this.CloseConnection();
+            }
+            return list_class;
+        }
     }
 }

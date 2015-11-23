@@ -69,6 +69,7 @@ namespace DnDService
     [ServiceContract]
     public interface IService1
     {
+        /////////////// GESTION DES COMPTES ///////////////////
         [OperationContract]
         uint AccountConnection(string user, string pass);
 
@@ -77,6 +78,12 @@ namespace DnDService
 
         [OperationContract]
         bool AccountDelete(int account_id);
+
+        /*[OperationContract]
+        bool ForgottenPassword(string emailOrUsername);*/
+
+
+        ////////////// GESTION DES PERSONNAGES /////////////////
 
         [OperationContract]
         int CharacterCreate(character player);
@@ -89,5 +96,13 @@ namespace DnDService
 
         [OperationContract]
         List<character> GetCharacters(uint character_id);
+
+
+        ////////////// AUTRES ///////////////////
+        [OperationContract]
+        List<short_race> GetRaceShortList();
+
+        [OperationContract]
+        List<short_class> GetClassShortList();
     }
 }
