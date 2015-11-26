@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -59,15 +60,15 @@ namespace DnDService
             return db.GetCharacter(character_id);
         }
 
-        public List<character> GetCharacters(uint account_id)
+        public List<short_character> GetCharacters(uint account_id)
         {
             return db.GetCharacters(account_id);
         }
-        public List<short_race> GetRaceShortList()
+        public List<short_entity> GetRaceShortList()
         {
             return db.GetRaceShortList();
         }
-        public List<short_class> GetClassShortList()
+        public List<short_entity> GetClassShortList()
         {
             return db.GetClassShortList();
         }

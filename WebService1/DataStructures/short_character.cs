@@ -7,19 +7,19 @@ using System.Web;
 namespace DnDService
 {
     [DataContract]
-    public class short_character
+    public struct short_character
     {
         [DataMember]
-        private uint id_character;
+        public uint id_character;
         [DataMember]
-        private uint id_account;
+        public uint id_account;
         [DataMember]
-        private string name;
+        public string name;
         [DataMember]
-        private string class_name;
+        public string class_name;
         [DataMember]
-        private uint race_name;
+        public uint race_name;
         [DataMember]
-        private uint global_level;
+        public uint global_level;
     }
 }

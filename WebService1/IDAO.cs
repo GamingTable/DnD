@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -27,12 +28,15 @@ namespace DnDService
         character GetCharacter(uint character_id);
 
         //Return a characters list based on the account_id
-        List<character> GetCharacters(uint account_id);
+        List<short_character> GetCharacters(uint account_id);
 
         //Return a list with all race name and description
-        List<short_race> GetRaceShortList();
+        List<short_entity> GetRaceShortList();
 
         //Return a list with all class name and description
-        List<short_class> GetClassShortList();
+        List<short_entity> GetClassShortList();
+
+        //List<short_character> GetShortCharacters(uint account_id);
+
     }
 }

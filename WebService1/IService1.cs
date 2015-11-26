@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -95,14 +96,14 @@ namespace DnDService
         character GetCharacter(uint character_id);
 
         [OperationContract]
-        List<character> GetCharacters(uint character_id);
+        List<short_character> GetCharacters(uint character_id);
 
 
         ////////////// AUTRES ///////////////////
         [OperationContract]
-        List<short_race> GetRaceShortList();
+        List<short_entity> GetRaceShortList();
 
         [OperationContract]
-        List<short_class> GetClassShortList();
+        List<short_entity> GetClassShortList();
     }
 }

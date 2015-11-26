@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -256,14 +257,14 @@ namespace DnDService
             return ch;
         }
 
-        public List<character> GetCharacters(uint account_id)
+        public List<short_character> GetCharacters(uint account_id)
         {
-            List<character> playable_characters = new List<character>();
+            List<short_character> playable_characters = new List<short_character>();
 
             return playable_characters;
         }
 
-        List<short_entity> GetRaceShortList()
+        public List<short_entity> GetRaceShortList()
         {
             string query = "SELECT id_race, name, description FROM race;";
 
@@ -290,7 +291,7 @@ namespace DnDService
             return list_race;
         }
 
-        List<short_entity> GetClassShortList()
+        public List<short_entity> GetClassShortList()
         {
             string query = "SELECT id_class, name, description FROM class;";
 
