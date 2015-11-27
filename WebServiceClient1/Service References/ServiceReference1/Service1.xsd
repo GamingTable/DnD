@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DnDService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DnDService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="character">
     <xs:sequence>
       <xs:element minOccurs="0" name="armor_class" type="xs:int" />
@@ -23,10 +24,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="character" nillable="true" type="tns:character" />
-  <xs:complexType name="ArrayOfcharacter">
+  <xs:complexType name="ArrayOfshort_character">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="character" nillable="true" type="tns:character" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="short_character" type="tns:short_character" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfcharacter" nillable="true" type="tns:ArrayOfcharacter" />
+  <xs:element name="ArrayOfshort_character" nillable="true" type="tns:ArrayOfshort_character" />
+  <xs:complexType name="short_character">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="class_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="global_level" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="id_account" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="race_name" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="short_character" nillable="true" type="tns:short_character" />
 </xs:schema>

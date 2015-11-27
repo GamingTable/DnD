@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DnDService" />
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
   <xs:element name="AccountConnection">
     <xs:complexType>
       <xs:sequence>
@@ -98,7 +99,31 @@
   <xs:element name="GetCharactersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService" minOccurs="0" name="GetCharactersResult" nillable="true" type="q3:ArrayOfcharacter" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService" minOccurs="0" name="GetCharactersResult" nillable="true" type="q3:ArrayOfshort_character" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRaceShortList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRaceShortListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceShortListResult" nillable="true" type="q4:ArrayOfshort_entity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassShortList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassShortListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassShortListResult" nillable="true" type="q5:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

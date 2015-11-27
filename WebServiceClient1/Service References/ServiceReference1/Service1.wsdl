@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DnDService" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_AccountConnection_InputMessage">
@@ -49,6 +50,18 @@
   <wsdl:message name="IService1_GetCharacters_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCharactersResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetRaceShortList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRaceShortList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRaceShortList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRaceShortListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassShortList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassShortList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassShortList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassShortListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountConnection" message="tns:IService1_AccountConnection_InputMessage" />
@@ -77,6 +90,14 @@
     <wsdl:operation name="GetCharacters">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacters" message="tns:IService1_GetCharacters_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharactersResponse" message="tns:IService1_GetCharacters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRaceShortList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRaceShortList" message="tns:IService1_GetRaceShortList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRaceShortListResponse" message="tns:IService1_GetRaceShortList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassShortList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetClassShortList" message="tns:IService1_GetClassShortList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetClassShortListResponse" message="tns:IService1_GetClassShortList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -137,6 +158,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCharacters">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCharacters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRaceShortList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRaceShortList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassShortList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetClassShortList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

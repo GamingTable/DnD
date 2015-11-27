@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\
 DnDServicePlayer
 none
 false
 DEBUG;TRACE
-C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\App.xaml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\App.xaml
 121417286054
 
 23934401632
 14-1081116282
 PageSwitcher.xaml;Pages\Character\CharacterCreation.xaml;Pages\Character\CharacterSelection.xaml;Pages\Character\CharacterSheet.xaml;Pages\Account\Login.xaml;Pages\Account\Register.xaml;Pages\Character\Creation\Background.xaml;Pages\Character\Creation\Gifts.xaml;Pages\Character\Creation\RaceClasse.xaml;Pages\Character\Creation\Skills.xaml;Pages\Character\Creation\Spells.xaml;Pages\Character\Creation\Stats.xaml;
 
-False
+True
 

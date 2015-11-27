@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnDServicePlayer.ServiceReference1;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,17 +10,17 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// </summary>
     public partial class RaceClasse : UserControl, ISwitchable
     {
-        //private short_entity[] race_list;
-        //private short_entity[] class_list;
+        private short_entity[] race_list;
+        private short_entity[] class_list;
 
         public RaceClasse()
         {
             InitializeComponent();
 
-           /*DnDService client = new DnDService();
+           Service1Client client = new Service1Client();
 
             race_list = client.GetRaceShortList();
-            class_list = client.GetClassShortList();*/
+            class_list = client.GetClassShortList();
         }
 
         public void UtilizeState(object state)

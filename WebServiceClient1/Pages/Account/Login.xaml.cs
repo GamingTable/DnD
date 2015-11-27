@@ -37,7 +37,7 @@ namespace DnDServicePlayer.Pages
 
             ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
 
-            /*uint user_id = client.AccountConnection(log, pwd);
+            uint user_id = client.AccountConnection(log, pwd);
             if (user_id != 0)
             {
                 hid_label.Content = "connecté";
@@ -47,7 +47,7 @@ namespace DnDServicePlayer.Pages
             {
                 hid_label.Content = "Echec de la connexion";
             }
-            hid_label.Visibility = Visibility.Visible;*/
+            hid_label.Visibility = Visibility.Visible;
         }
         #endregion
     }

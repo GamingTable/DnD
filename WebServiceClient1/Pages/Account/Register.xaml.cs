@@ -112,7 +112,7 @@ namespace DnDServicePlayer.Pages
             string log = text_username.Text;
             string pwd = text_password.Password;
             string ema = text_email.Text;
-            /*Service1Client client = new Service1Client();
+            Service1Client client = new Service1Client();
             uint user_id = client.AccountCreate(log, pwd, ema);
             if ( user_id!= 0)
             {
@@ -122,7 +122,7 @@ namespace DnDServicePlayer.Pages
             else
             {
                 hid_label.Content = "Ce compte existe déjà";
-            }*/
+            }
             // SEND REGISTRATION
             // TEST IF ACCOUNT EXISTS
             // CREATE NEW ACCOUNT

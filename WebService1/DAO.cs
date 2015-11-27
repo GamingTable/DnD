@@ -29,11 +29,11 @@ namespace DnDService
         {
             // MODIFY VALUES ACCORDING TO YOUR CONFIGURATION
             // AFTER EVERY PULL REQUEST
-            server      = "localhost";
-            database    = "dnd";
-            uid         = "root";
-            password    = "1234";
-            port        = "3306";
+            server = "localhost";
+            database = "dnd";
+            uid = "root";
+            password = "1234";
+            port = "3306";
 
             string connectionString = "SERVER=" + server + ";" + "PORT=" + port + ";" + "DATABASE=" +
                                     database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -74,7 +74,7 @@ namespace DnDService
 
         public uint AccountConnection(string user, string pass)
         {
-            string query = "SELECT id_account FROM account WHERE username = '"+user+"' AND password = '"+pass+"';";
+            string query = "SELECT id_account FROM account WHERE username = '" + user + "' AND password = '" + pass + "';";
 
             uint id = 0;
 
@@ -105,7 +105,7 @@ namespace DnDService
 
         public uint AccountCreate(string user, string pass, string mail)
         {
-            string query = "INSERT INTO account (username, password, email) VALUES('"+user+"', '"+pass+"', '"+mail+"');";
+            string query = "INSERT INTO account (username, password, email) VALUES('" + user + "', '" + pass + "', '" + mail + "');";
 
             uint id = 0;
 
@@ -129,7 +129,7 @@ namespace DnDService
 
         public bool AccountDelete(int account_id)
         {
-            string query = "DELETE FROM account WHERE id_account = '"+account_id+"';";
+            string query = "DELETE FROM account WHERE id_account = '" + account_id + "';";
 
             //Open connection
             if (this.OpenConnection() == true)
@@ -156,7 +156,7 @@ namespace DnDService
             return 1;
         }
 
-        public bool CharacterDelete(uint character_id) 
+        public bool CharacterDelete(uint character_id)
         {
             string query = "DELETE FROM character WHERE id_character = " + character_id + ";";
 
@@ -187,11 +187,11 @@ namespace DnDService
                 uint race_id = 0;
                 uint class_id;
                 List<uint> template_id = new List<uint>();
-                string race="";
-                string classe="";
+                string race = "";
+                string classe = "";
 
                 string query0 = "SELECT id_template, id_class, id_race from character WHERE id_character = " + character_id + ";";
-                
+
                 MySqlCommand cmd = new MySqlCommand(query0, connection);
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -223,11 +223,11 @@ namespace DnDService
                         template_id.Add((uint)dataReader1["id_template"]);
                     }
 
-                    string request="";
+                    string request = "";
                     int count = 0;
                     foreach (uint element in template_id)
                     {
-                        if(count == 0)
+                        if (count == 0)
                             request += " id_template = " + element + " ";
                         else
                             request += "|| id_template = " + element + " ";
@@ -239,7 +239,7 @@ namespace DnDService
 
                     dataReader = cmd.ExecuteReader();
 
-                    if(dataReader.Read())
+                    if (dataReader.Read())
                     {
                         character c = new character(character_id, 1, 1, classe, race, name, (int)dataReader["strength"], (int)dataReader["constitution"], (int)dataReader["dexterity"], (int)dataReader["intelligence"], (int)dataReader["wisdom"], (int)dataReader["charisma"], (int)dataReader["initiative"], (int)dataReader["armor_class"], (int)dataReader["fortitude"], (int)dataReader["reflexe"], (int)dataReader["will"], (int)dataReader["speed"]);
                         return c;
@@ -254,10 +254,11 @@ namespace DnDService
             else
             {
             }
-            character ch = new character(1,1,1,"a","b","c",1,1,1,1,1,1,1,1,1,1,1,1);
+            character ch = new character(1, 1, 1, "a", "b", "c", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
             return ch;
         }
 
+        #region SHORT ENTITIES
         public List<short_character> GetCharacters(uint account_id)
         {
             List<short_character> playable_characters = new List<short_character>();
@@ -271,24 +272,31 @@ namespace DnDService
 
             List<short_entity> list_race = new List<short_entity>();
 
-            if (OpenConnection())
+            try
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
+                if (OpenConnection())
                 {
-                    short_entity e = new short_entity();
-                    e.uid = (uint)dataReader["id_race"];
-                    e.name = (string)dataReader["name"];
-                    e.description = (string)dataReader["description"];
-                    list_race.Add(e);
-                }
-                dataReader.Close();
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                this.CloseConnection();
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        if (!string.IsNullOrEmpty((string)dataReader["name"]))
+                        {
+                            short_entity e = new short_entity();
+                            e.uid = (uint)dataReader["id_race"];
+                            e.name = (string)dataReader["name"];
+                            e.description = (string)dataReader["description"];
+                            list_race.Add(e);
+                        }
+                    }
+                    dataReader.Close();
+
+                    this.CloseConnection();
+                }
             }
+            catch (Exception k) { }
             return list_race;
         }
 
@@ -297,26 +305,33 @@ namespace DnDService
             string query = "SELECT id_class, name, description FROM class;";
 
             List<short_entity> list_class = new List<short_entity>();
-
-            if (OpenConnection())
+            try
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
+                if (OpenConnection())
                 {
-                    short_entity e = new short_entity();
-                    e.uid = (uint)dataReader["id_class"];
-                    e.name = (string)dataReader["name"];
-                    e.description = (string)dataReader["description"];
-                    list_class.Add(e);
-                }
-                dataReader.Close();
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                this.CloseConnection();
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        if (!string.IsNullOrEmpty((string)dataReader["name"]))
+                        {
+                            short_entity e = new short_entity();
+                            e.uid = (uint)dataReader["id_class"];
+                            e.name = (string)dataReader["name"];
+                            e.description = (string)dataReader["description"];
+                            list_class.Add(e);
+                        }
+                    }
+                    dataReader.Close();
+
+                    this.CloseConnection();
+                }
             }
+            catch (Exception k) { }
             return list_class;
         }
+        #endregion
     }
 }
