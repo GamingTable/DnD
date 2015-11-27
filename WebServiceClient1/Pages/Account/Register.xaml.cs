@@ -1,4 +1,5 @@
-﻿using DnDServicePlayer.ServiceReference1;
+﻿using DnDServiceClient;
+using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DnDServiceClient.Pages
+namespace DnDServicePlayer.Pages
 {
     /// <summary>
     /// Logique d'interaction pour Register.xaml
@@ -111,7 +112,7 @@ namespace DnDServiceClient.Pages
             string log = text_username.Text;
             string pwd = text_password.Password;
             string ema = text_email.Text;
-            Service1Client client = new Service1Client();
+            /*Service1Client client = new Service1Client();
             uint user_id = client.AccountCreate(log, pwd, ema);
             if ( user_id!= 0)
             {
@@ -121,7 +122,7 @@ namespace DnDServiceClient.Pages
             else
             {
                 hid_label.Content = "Ce compte existe déjà";
-            }
+            }*/
             // SEND REGISTRATION
             // TEST IF ACCOUNT EXISTS
             // CREATE NEW ACCOUNT

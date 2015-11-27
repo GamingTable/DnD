@@ -1,4 +1,5 @@
-﻿using DnDServicePlayer.ServiceReference1;
+﻿using DnDServicePlayer.Pages.Character;
+using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WebServiceClient1.Pages;
+using DnDServicePlayer.Pages;
 
-namespace DnDServiceClient.Pages
+namespace DnDServicePlayer.Pages
 {
     /// <summary>
     /// Logique d'interaction pour CharacterSelection.xaml
@@ -36,11 +37,12 @@ namespace DnDServiceClient.Pages
         #endregion
 
         #region List Characters
-        private List<character> ListOwnedCharacters()
+        /*private List<short_character> ListOwnedCharacters()
         {
+            DnDServiceClient client = new DnDServicePlayer();
             Service1Client client = new Service1Client();
-            return new List<character>(client.GetCharacters(user_id));
-        }
+            return new List<short_character>(client.GetCharacters(user_id));
+        }*/
         #endregion
 
         #region Switch Pages

@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using DnDServiceClient;
+using System.Windows.Controls;
 
-namespace DnDServiceClient
+namespace DnDServicePlayer
 {
     /// <summary>
     /// 

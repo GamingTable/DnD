@@ -1,4 +1,4 @@
-﻿namespace DnDServiceClient
+﻿namespace DnDServicePlayer
 {
     /// <summary>
     /// 

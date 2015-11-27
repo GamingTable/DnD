@@ -22,3 +22,40 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\D
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.Properties.Resources.resources
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\bin\Debug\DnDServicePlayer.exe.config
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\PageSwitcher.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterCreation.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterSelection.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Account\Login.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Account\Register.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\App.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.cache
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.lref
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Background.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Gifts.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\RaceClasse.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Skills.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Spells.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Stats.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\bin\Debug\DnDServicePlayer.exe
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\bin\Debug\DnDServicePlayer.pdb
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\PageSwitcher.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterCreation.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterSelection.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\CharacterSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Account\Login.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Account\Register.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Background.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Gifts.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\RaceClasse.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Skills.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Spells.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\Pages\Character\Creation\Stats.baml
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.g.resources
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.Properties.Resources.resources
+C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache

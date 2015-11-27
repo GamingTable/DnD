@@ -1,7 +1,8 @@
-﻿using System;
+﻿using DnDServicePlayer;
+using DnDServicePlayer.Pages;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using DnDServiceClient.Pages;
 
 namespace DnDServiceClient
 {

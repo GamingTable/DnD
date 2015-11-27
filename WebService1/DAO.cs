@@ -5,6 +5,7 @@ using System.Web;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using WebService1.DataStructures;
+using DnDService.DataStructures;
 
 namespace DnDService
 {
@@ -278,7 +279,7 @@ namespace DnDService
 
                 while (dataReader.Read())
                 {
-                    short_entity e;
+                    short_entity e = new short_entity();
                     e.uid = (uint)dataReader["id_race"];
                     e.name = (string)dataReader["name"];
                     e.description = (string)dataReader["description"];
@@ -305,7 +306,7 @@ namespace DnDService
 
                 while (dataReader.Read())
                 {
-                    short_entity e;
+                    short_entity e = new short_entity();
                     e.uid = (uint)dataReader["id_class"];
                     e.name = (string)dataReader["name"];
                     e.description = (string)dataReader["description"];

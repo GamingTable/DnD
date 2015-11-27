@@ -1,10 +1,9 @@
 ﻿using DnDServiceClient;
-using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace DnDServiceClient.Pages
+namespace DnDServicePlayer.Pages
 {
     /// <summary>
     /// Logique d'interaction pour Login.xaml
@@ -33,9 +32,12 @@ namespace DnDServiceClient.Pages
         {
             string log = text_username.Text;
             string pwd = text_password.Password;
-            Service1Client client = new Service1Client();
 
-            uint user_id = client.AccountConnection(log, pwd);
+
+
+            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+
+            /*uint user_id = client.AccountConnection(log, pwd);
             if (user_id != 0)
             {
                 hid_label.Content = "connecté";
@@ -45,7 +47,7 @@ namespace DnDServiceClient.Pages
             {
                 hid_label.Content = "Echec de la connexion";
             }
-            hid_label.Visibility = Visibility.Visible;
+            hid_label.Visibility = Visibility.Visible;*/
         }
         #endregion
     }

@@ -75,6 +75,24 @@
     <Compile Include="Pages\Account\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Character\Creation\Background.xaml.cs">
+      <DependentUpon>Background.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Creation\Gifts.xaml.cs">
+      <DependentUpon>Gifts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Creation\RaceClasse.xaml.cs">
+      <DependentUpon>RaceClasse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Creation\Skills.xaml.cs">
+      <DependentUpon>Skills.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Creation\Spells.xaml.cs">
+      <DependentUpon>Spells.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Creation\Stats.xaml.cs">
+      <DependentUpon>Stats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +126,30 @@
     <Page Include="Pages\Account\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Creation\Background.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Creation\Gifts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Creation\RaceClasse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Creation\Skills.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Creation\Spells.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Creation\Stats.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

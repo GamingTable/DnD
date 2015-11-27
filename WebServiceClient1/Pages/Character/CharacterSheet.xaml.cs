@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WebServiceClient1.Pages
+namespace DnDServicePlayer.Pages
 {
     /// <summary>
     /// Logique d'interaction pour CharacterSheet.xaml
