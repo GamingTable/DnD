@@ -61,14 +61,16 @@ C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClien
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Background.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Gifts.g.cs
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\RaceClasse.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Skills.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Spells.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Stats.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Background.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Gifts.baml
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\RaceClasse.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Skills.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Spells.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Stats.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Classe.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Race.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Classe.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Creation\Race.baml

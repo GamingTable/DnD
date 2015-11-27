@@ -78,11 +78,14 @@
     <Compile Include="Pages\Character\Creation\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Character\Creation\Classe.xaml.cs">
+      <DependentUpon>Classe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Character\Creation\Gifts.xaml.cs">
       <DependentUpon>Gifts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Character\Creation\RaceClasse.xaml.cs">
-      <DependentUpon>RaceClasse.xaml</DependentUpon>
+    <Compile Include="Pages\Character\Creation\Race.xaml.cs">
+      <DependentUpon>Race.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Character\Creation\Skills.xaml.cs">
       <DependentUpon>Skills.xaml</DependentUpon>
@@ -131,11 +134,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Character\Creation\Classe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Character\Creation\Gifts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Character\Creation\RaceClasse.xaml">
+    <Page Include="Pages\Character\Creation\Race.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -26,7 +26,7 @@
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
-        <Creation:RaceClasse x:Name="creation_controllers" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6"/>
+        <Creation:Race x:Name="creation_controllers" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6"/>
         <Button x:Name="previous_button" Content="Précédent" Grid.Column="2" Grid.Row="3" Click="previous_button_Click" FontSize="16" IsEnabled="False"/>
         <Button x:Name="next_button" Content="Suivant" Grid.Column="4" Grid.Row="3" Click="next_button_Click" FontSize="16" IsDefault="True"/>
         <Button x:Name="cancel_button" Content="Annuler" Grid.Column="6" Grid.Row="3" Click="cancel_button_Click" FontSize="16" IsCancel="True"/>

@@ -35,7 +35,8 @@ namespace DnDServicePlayer.Pages.Character
 
             new_character = new character();
             current_step = 0;
-            creation_steps = new List<UserControl> {new RaceClasse(),
+            creation_steps = new List<UserControl> {new Race(),
+                                                    new Classe(),
                                                     new Stats(),
                                                     new Gifts(),
                                                     new Skills(),
