@@ -30,6 +30,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
             client = new Service1Client();
             class_list = client.GetClassShortList();
+
+            // Define them as ItemsSource for the list
+            classe_list_box.ItemsSource = class_list;
         }
 
         public void UtilizeState(object state)

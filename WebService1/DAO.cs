@@ -24,6 +24,7 @@ namespace DnDService
             Initialize();
         }
 
+        #region INITIALIZATION
         //Initialize connection
         private void Initialize()
         {
@@ -71,7 +72,9 @@ namespace DnDService
                 return false;
             }
         }
+        #endregion
 
+        #region ACCOUNT
         public uint AccountConnection(string user, string pass)
         {
             string query = "SELECT id_account FROM account WHERE username = '" + user + "' AND password = '" + pass + "';";
@@ -150,7 +153,9 @@ namespace DnDService
                 return false;
             }
         }
+        #endregion
 
+        #region CHARACTER
         public int CharacterCreate(character player)
         {
             return 1;
@@ -258,79 +263,55 @@ namespace DnDService
             return ch;
         }
 
-        #region SHORT ENTITIES
         public List<short_character> GetCharacters(uint account_id)
         {
             List<short_character> playable_characters = new List<short_character>();
 
             return playable_characters;
         }
+        #endregion
 
+        #region SHORT ENTITIES
         public List<short_entity> GetRaceShortList()
         {
             string query = "SELECT id_race, name, description FROM race;";
 
-            List<short_entity> list_race = new List<short_entity>();
-
-            try
-            {
-                if (OpenConnection())
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                    while (dataReader.Read())
-                    {
-                        if (!string.IsNullOrEmpty((string)dataReader["name"]))
-                        {
-                            short_entity e = new short_entity();
-                            e.uid = (uint)dataReader["id_race"];
-                            e.name = (string)dataReader["name"];
-                            e.description = (string)dataReader["description"];
-                            list_race.Add(e);
-                        }
-                    }
-                    dataReader.Close();
-
-                    this.CloseConnection();
-                }
-            }
-            catch (Exception k) { }
-            return list_race;
+            return GetShortEntities(query);
         }
 
         public List<short_entity> GetClassShortList()
         {
             string query = "SELECT id_class, name, description FROM class;";
+            return GetShortEntities(query);
+        }
 
-            List<short_entity> list_class = new List<short_entity>();
-            try
+        private List<short_entity> GetShortEntities(string query)
+        { 
+            List<short_entity> list_entities = new List<short_entity>();
+
+            if (OpenConnection())
             {
-                if (OpenConnection())
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                if (dataReader.HasRows)
                 {
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                    while (dataReader.Read())
+                    for (var i = 0; dataReader.Read(); ++i)
                     {
-                        if (!string.IsNullOrEmpty((string)dataReader["name"]))
+                        short_entity e = new short_entity()
                         {
-                            short_entity e = new short_entity();
-                            e.uid = (uint)dataReader["id_class"];
-                            e.name = (string)dataReader["name"];
-                            e.description = (string)dataReader["description"];
-                            list_class.Add(e);
-                        }
+                            uid = dataReader.GetUInt32(0),
+                            name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                            description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
+                        };
+                        list_entities.Add(e);
                     }
-                    dataReader.Close();
-
-                    this.CloseConnection();
                 }
+                dataReader.Close();
+
+                this.CloseConnection();
             }
-            catch (Exception k) { }
-            return list_class;
+            return list_entities;
         }
         #endregion
     }

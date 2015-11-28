@@ -7,6 +7,5 @@
         mc:Ignorable="d"
         Title="DnD" Width="800" Height="595" WindowStartupLocation="CenterScreen" WindowState="Minimized">
     <Grid>
-        
     </Grid>
 </Window>

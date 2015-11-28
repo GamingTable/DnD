@@ -10,9 +10,11 @@ namespace DnDServicePlayer.Pages
     /// </summary>
     public partial class Login : UserControl, ISwitchable
     {
+        private ServiceReference1.Service1Client client;
         public Login()
         {
             InitializeComponent();
+            client = new ServiceReference1.Service1Client();
         }
 
         #region ISwitchable Members
@@ -32,10 +34,6 @@ namespace DnDServicePlayer.Pages
         {
             string log = text_username.Text;
             string pwd = text_password.Password;
-
-
-
-            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
 
             uint user_id = client.AccountConnection(log, pwd);
             if (user_id != 0)
