@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="DnDServicePlayer.Pages.Character.Creation.Race"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800" Width="710" Height="404">
+    <Grid Width="710" Height="404">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="38"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="240"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="194"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="1" FontSize="16" FontWeight="Bold" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False">
+            <!-- Selected="race_list_box_Selected">-->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Height="38" Width="auto" Orientation="Horizontal">
+                        <Label x:Name="name_display" Height="30" Margin="8,0,0,0" Width="auto" Content="{Binding name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label x:Name="label" Grid.ColumnSpan="5" Content="Choisissez Votre Race" Margin="-4,-4,0,0" FontSize="32" FontWeight="Bold" Width="623" RenderTransformOrigin="0.5,0.5"/>
+
+    </Grid>
+</UserControl>
