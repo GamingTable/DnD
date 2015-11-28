@@ -16,9 +16,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             InitializeComponent();
 
-           Service1Client client = new Service1Client();
-
+            // Get the races list
+            Service1Client client = new Service1Client();
             race_list = client.GetRaceShortList();
+            // Define them as DataContext for the list
+            DataContext = race_list;
+            //Update the list items
+            refresh_list();
         }
 
         public void UtilizeState(object state)
@@ -30,6 +34,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
         private void race_list_box_Selected(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void refresh_list()
+        {
+            //race_list_box.Da race_list.
         }
         #endregion
     }

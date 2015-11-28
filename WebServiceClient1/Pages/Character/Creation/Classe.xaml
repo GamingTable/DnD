@@ -17,9 +17,20 @@
             <ColumnDefinition Width="340"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="classe_list_box" Grid.Column="1" Height="240" Grid.Row="1" Width="340"  Selected="race_list_box_Selected">
+        <ListBox x:Name="classe_list_box" Grid.Column="1" Height="240" Grid.Row="1" Width="340" SelectionChanged="classe_list_box_SelectionChanged" FontSize="16">
+            <!-- Selected="race_list_box_Selected">-->
             <Label>Aucun</Label>
         </ListBox>
+        <Label x:Name="label" Content="&#x9;&#x9;        Choisissez Votre Classe" Margin="0,-4,10,0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="32" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="690">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </UserControl>

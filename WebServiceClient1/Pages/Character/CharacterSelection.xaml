@@ -26,13 +26,9 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="select_button" Content="Sélectionner" Grid.Column="2" Grid.Row="3" FontSize="16" Click="select_button_Click"/>
         <Button x:Name="create_button" Content="Créer" Grid.Column="6" Grid.Row="3" FontSize="16" Click="create_button_Click"/>
-        <ListView x:Name="characters_list" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox x:Name="characters_list" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
+            <Label>Aucun</Label>
+        </ListBox>
         <Button x:Name="cancel_button" Content="Annuler" Grid.Column="4" Grid.Row="3" FontSize="16" IsCancel="True" Click="cancel_button_Click"/>
 
     </Grid>

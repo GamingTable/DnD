@@ -2,18 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace WebService1.DataStructures
 {
+    [DataContract]
     public struct complete_race
     {
-        uint uid;
-        string name;
-        string description;
+        [DataMember]
+        public uint uid;
+        [DataMember]
+        public string name;
+        [DataMember]
+        public string description;
 
-        List<short_entity> innates_languages;
-        Template template;
-        List<short_entity> effects;
+        [DataMember]
+        public List<short_entity> innates_languages;
+        [DataMember]
+        public Template template;
+        [DataMember]
+        public List<short_entity> effects;
     }
 }

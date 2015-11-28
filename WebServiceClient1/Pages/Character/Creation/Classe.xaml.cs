@@ -22,12 +22,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
     public partial class Classe : UserControl, ISwitchable
     {
         private short_entity[] class_list;
+        private Service1Client client;
 
         public Classe()
         {
             InitializeComponent();
 
-            Service1Client client = new Service1Client();
+            client = new Service1Client();
             class_list = client.GetClassShortList();
         }
 
@@ -37,11 +38,14 @@ namespace DnDServicePlayer.Pages.Character.Creation
         }
 
         #region Class
-        private void class_list_box_Selected(object sender, RoutedEventArgs e)
+        private void classe_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            int id_class = classe_list_box.SelectedIndex+1;
+            if(id_class>0)
+            {
+                //client
+            }
         }
         #endregion
     }
-}
 }
