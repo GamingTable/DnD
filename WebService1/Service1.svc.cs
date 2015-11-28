@@ -73,5 +73,10 @@ namespace DnDService
         {
             return db.GetClassShortList();
         }
+
+        public List<short_entity> GetCharacteristicShortList()
+        {
+            return db.GetCharacteristicShortList();
+        }
     }
 }

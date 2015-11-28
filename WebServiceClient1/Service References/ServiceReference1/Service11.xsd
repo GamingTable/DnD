@@ -127,15 +127,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="secret_message">
+  <xs:element name="GetCharacteristicShortList">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="secret_messageResponse">
+  <xs:element name="GetCharacteristicShortListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="secret_messageResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicShortListResult" nillable="true" type="q6:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

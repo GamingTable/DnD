@@ -37,7 +37,8 @@ namespace DnDService
         //Return a list with all class name and description
         List<short_entity> GetClassShortList();
 
-        //List<short_character> GetShortCharacters(uint account_id);
+        //Return a list with all the abilities in characteristics
+        List<short_entity> GetCharacteristicShortList();
 
     }
 }

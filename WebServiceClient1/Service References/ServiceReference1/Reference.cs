@@ -589,11 +589,11 @@ namespace DnDServicePlayer.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClassShortList", ReplyAction="http://tempuri.org/IService1/GetClassShortListResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetClassShortListAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/secret_message", ReplyAction="http://tempuri.org/IService1/secret_messageResponse")]
-        string secret_message();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicShortList", ReplyAction="http://tempuri.org/IService1/GetCharacteristicShortListResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetCharacteristicShortList();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/secret_message", ReplyAction="http://tempuri.org/IService1/secret_messageResponse")]
-        System.Threading.Tasks.Task<string> secret_messageAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicShortList", ReplyAction="http://tempuri.org/IService1/GetCharacteristicShortListResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacteristicShortListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -695,12 +695,12 @@ namespace DnDServicePlayer.ServiceReference1 {
             return base.Channel.GetClassShortListAsync();
         }
         
-        public string secret_message() {
-            return base.Channel.secret_message();
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetCharacteristicShortList() {
+            return base.Channel.GetCharacteristicShortList();
         }
         
-        public System.Threading.Tasks.Task<string> secret_messageAsync() {
-            return base.Channel.secret_messageAsync();
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacteristicShortListAsync() {
+            return base.Channel.GetCharacteristicShortListAsync();
         }
     }
 }

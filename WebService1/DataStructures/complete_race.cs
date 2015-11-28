@@ -20,7 +20,7 @@ namespace WebService1.DataStructures
         [DataMember]
         public List<short_entity> innates_languages;
         [DataMember]
-        public Template template;
+        public template template;
         [DataMember]
         public List<short_entity> effects;
     }

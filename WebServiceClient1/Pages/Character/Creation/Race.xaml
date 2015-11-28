@@ -21,18 +21,18 @@
             <RowDefinition />
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="2" FontSize="16" FontWeight="Bold" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False">
+        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False">
             <!-- Selected="race_list_box_Selected">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Height="auto" Width="300"  Orientation="Vertical">
                         <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
-                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="13.333" TextWrapping="WrapWithOverflow"/>
+                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="label" Grid.ColumnSpan="5" Content="Choisissez Votre Race" Margin="23,0,19,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Race" Margin="0,-4,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

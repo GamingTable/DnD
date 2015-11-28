@@ -24,12 +24,12 @@
                 <DataTemplate>
                     <StackPanel Height="auto" Width="300"  Orientation="Vertical">
                         <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
-                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="13.333" TextWrapping="WrapWithOverflow"/>
+                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="label" Content="Choisissez Votre Classe" Margin="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="32" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Right" Width="690" BorderThickness="0,0,4,0">
+        <Label x:Name="label" Content="Choisissez Votre Classe" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="32" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Right" BorderThickness="0,0,4,0" Margin="0,-4,0,0">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="1" ScaleX="1"/>

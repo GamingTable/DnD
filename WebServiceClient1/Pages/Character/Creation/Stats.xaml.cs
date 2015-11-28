@@ -1,4 +1,5 @@
 ﻿using DnDServicePlayer;
+using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,18 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// </summary>
     public partial class Stats : UserControl, ISwitchable
     {
+        private Service1Client client;
+        private short_entity[] charac_list;
+
         public Stats()
         {
             InitializeComponent();
+
+            client = new Service1Client();
+            charac_list = client.GetCharacteristicShortList();
+
+            // Define them as ItemsSource for the list
+            charac_list_box.ItemsSource = charac_list;
         }
 
         public void UtilizeState(object state)

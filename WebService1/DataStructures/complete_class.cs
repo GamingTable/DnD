@@ -20,7 +20,7 @@ namespace WebService1.DataStructures
         [DataMember]
         public string health_progression;
         [DataMember]
-        public Template template;
+        public template template;
         [DataMember]
         public List<short_entity> effects; 
     }

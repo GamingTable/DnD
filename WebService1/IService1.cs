@@ -106,5 +106,8 @@ namespace DnDService
 
         [OperationContract]
         List<short_entity> GetClassShortList();
+
+        [OperationContract]
+        List<short_entity> GetCharacteristicShortList();
     }
 }

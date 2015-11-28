@@ -285,6 +285,12 @@ namespace DnDService
             return GetShortEntities(query);
         }
 
+        public List<short_entity> GetCharacteristicShortList()
+        {
+            string query = "SELECT id_characteristic, name, description from characteristic WHERE characteristic_type=1;";
+            return GetShortEntities(query);
+        }
+
         private List<short_entity> GetShortEntities(string query)
         { 
             List<short_entity> list_entities = new List<short_entity>();

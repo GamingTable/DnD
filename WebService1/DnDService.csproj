@@ -66,12 +66,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="character.cs" />
+    <Compile Include="DataStructures\character.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="DataStructures\complete_class.cs" />
     <Compile Include="DataStructures\complete_race.cs" />
     <Compile Include="DataStructures\short_entity.cs" />
-    <Compile Include="DataStructures\Template.cs" />
+    <Compile Include="DataStructures\template.cs" />
     <Compile Include="IDAO.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
