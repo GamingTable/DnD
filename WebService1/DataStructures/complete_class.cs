@@ -6,10 +6,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace WebService1.DataStructures
+namespace DnDService
 {
     [DataContract]
-    public struct complete_class
+    public class complete_class
     {
         [DataMember]
         public uint uid;
@@ -25,6 +25,6 @@ namespace WebService1.DataStructures
         [DataMember]
         public template template;
         [DataMember]
-        public List<short_entity> effects; 
+        public List<short_entity> effects;
     }
 }

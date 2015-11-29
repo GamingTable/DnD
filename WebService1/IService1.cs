@@ -1,12 +1,6 @@
 ﻿using DnDService.DataStructures;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -65,9 +59,9 @@ namespace DnDService
 
 
         //////////////// GESTION DE L'INVENTAIRE /////////////////*/
-    
-    
-    
+
+
+
     [ServiceContract]
     public interface IService1
     {
@@ -110,7 +104,7 @@ namespace DnDService
         [OperationContract]
         List<short_entity> GetCharacteristicShortList();
 
-        [OperationContract]
+       [OperationContract]
         template GetTemplate(uint id_template);
 
         [OperationContract]
@@ -122,10 +116,10 @@ namespace DnDService
         [OperationContract]
         List<short_entity> GetCharacterLanguage(uint id_character);
 
-        [OperationContract]
-        complete_class GetClass(uint id_class);
+        /*[OperationContract]
+        complete_class GetClass(uint id_class);*/
 
-        [OperationContract]
-        complete_race GetRace(uint id_race);
+        /*[OperationContract]
+        complete_race GetRace(uint id_race);*/
     }
 }

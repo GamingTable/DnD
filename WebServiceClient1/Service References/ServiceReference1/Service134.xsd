@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WebService1.DataStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WebService1.DataStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="complete_class">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q1:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="health_progression" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="illustration" nillable="true" type="q2:Bitmap" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="template" nillable="true" type="q3:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_class" nillable="true" type="tns:complete_class" />
+  <xs:complexType name="complete_race">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q4:ArrayOfshort_entity" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="illustration" nillable="true" type="q5:Bitmap" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="innates_languages" nillable="true" type="q6:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="template" nillable="true" type="q7:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
+</xs:schema>

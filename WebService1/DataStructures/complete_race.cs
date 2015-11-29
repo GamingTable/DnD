@@ -6,10 +6,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace WebService1.DataStructures
+namespace DnDService
 {
     [DataContract]
-    public struct complete_race
+    public class complete_race
     {
         [DataMember]
         public uint uid;

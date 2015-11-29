@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MySql.Data;
 using MySql.Data.MySqlClient;
-using WebService1.DataStructures;
 using DnDService.DataStructures;
 using System.IO;
 using System.Drawing;
@@ -427,8 +423,8 @@ namespace DnDService
         }
         #endregion
 
-        #region RACES AND CLASSES
-        public complete_class GetClass(uint id_class)
+       /* #region RACES AND CLASSES
+       /* public complete_class GetClass(uint id_class)
         {
             complete_class new_class = new complete_class();
 
@@ -503,6 +499,6 @@ namespace DnDService
 
             return new_race;
         }
-        #endregion
+        #endregion*/
     }
 }

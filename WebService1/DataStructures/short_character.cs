@@ -7,7 +7,7 @@ using System.Web;
 namespace DnDService
 {
     [DataContract]
-    public struct short_character
+    public class short_character
     {
         [DataMember]
         public uint id_character;

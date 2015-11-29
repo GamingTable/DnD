@@ -334,7 +334,7 @@ namespace DnDServicePlayer.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="short_character", Namespace="http://schemas.datacontract.org/2004/07/DnDService")]
     [System.SerializableAttribute()]
-    public partial struct short_character : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class short_character : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -357,6 +357,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint race_nameField;
         
+        [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
                 return this.extensionDataField;
@@ -446,7 +447,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
-        void RaisePropertyChanged(string propertyName) {
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
@@ -834,6 +835,24 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTemplate", ReplyAction="http://tempuri.org/IService1/GetTemplateResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetTemplateAsync(uint id_template);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLanguageList", ReplyAction="http://tempuri.org/IService1/GetLanguageListResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetLanguageList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLanguageList", ReplyAction="http://tempuri.org/IService1/GetLanguageListResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetLanguageListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRaceLanguage", ReplyAction="http://tempuri.org/IService1/GetRaceLanguageResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetRaceLanguage(uint id_race);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRaceLanguage", ReplyAction="http://tempuri.org/IService1/GetRaceLanguageResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetRaceLanguageAsync(uint id_race);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterLanguage", ReplyAction="http://tempuri.org/IService1/GetCharacterLanguageResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterLanguage(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterLanguage", ReplyAction="http://tempuri.org/IService1/GetCharacterLanguageResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterLanguageAsync(uint id_character);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -949,6 +968,30 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetTemplateAsync(uint id_template) {
             return base.Channel.GetTemplateAsync(id_template);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetLanguageList() {
+            return base.Channel.GetLanguageList();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetLanguageListAsync() {
+            return base.Channel.GetLanguageListAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetRaceLanguage(uint id_race) {
+            return base.Channel.GetRaceLanguage(id_race);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetRaceLanguageAsync(uint id_race) {
+            return base.Channel.GetRaceLanguageAsync(id_race);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterLanguage(uint id_character) {
+            return base.Channel.GetCharacterLanguage(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterLanguageAsync(uint id_character) {
+            return base.Channel.GetCharacterLanguageAsync(id_character);
         }
     }
 }

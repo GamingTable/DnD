@@ -22,6 +22,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
+            
         }
 
         public void UtilizeState(object state)

@@ -1,12 +1,5 @@
 ﻿using DnDService.DataStructures;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using WebService1.DataStructures;
 
 namespace DnDService
 {
@@ -99,14 +92,14 @@ namespace DnDService
             return db.GetCharacterLanguage(id_character);
         }
 
-        public complete_class GetClass(uint id_class)
+        /*public complete_class GetClass(uint id_class)
         {
             return db.GetClass(id_class);
-        }
+        }*/
 
-        public complete_race GetRace(uint id_race)
+        /*public complete_race GetRace(uint id_race)
         {
             return db.GetRace(id_race);
-        }
+        }*/
     }
 }

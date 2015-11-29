@@ -182,16 +182,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.character.datasource">
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.character1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_character.datasource">
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_character1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_entity.datasource">
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_entity1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.template.datasource">
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.template1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\Service1.wsdl" />
@@ -205,6 +205,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\Service131.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service134.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Service135.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

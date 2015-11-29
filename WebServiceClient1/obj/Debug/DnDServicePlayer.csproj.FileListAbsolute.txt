@@ -1,4 +1,3 @@
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\App.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.baml
