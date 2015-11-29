@@ -139,4 +139,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_template" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetTemplateResult" nillable="true" type="q7:template" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

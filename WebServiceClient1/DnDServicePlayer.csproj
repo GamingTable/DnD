@@ -191,6 +191,9 @@
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_entity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.template.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>

@@ -78,5 +78,10 @@ namespace DnDService
         {
             return db.GetCharacteristicShortList();
         }
+        //Return the templates and characteristics
+        public template GetTemplate(uint id_template)
+        {
+            return db.GetTemplate(id_template);
+        }
     }
 }

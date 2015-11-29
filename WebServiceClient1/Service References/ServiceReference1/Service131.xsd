@@ -14,4 +14,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="short_entity" nillable="true" type="tns:short_entity" />
+  <xs:complexType name="template">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="characteristics" nillable="true" type="tns:ArrayOfcharacteristic" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="template" nillable="true" type="tns:template" />
+  <xs:complexType name="ArrayOfcharacteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="characteristic" nillable="true" type="tns:characteristic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcharacteristic" nillable="true" type="tns:ArrayOfcharacteristic" />
+  <xs:complexType name="characteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="abreviation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="modifier" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="value" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="characteristic" nillable="true" type="tns:characteristic" />
 </xs:schema>

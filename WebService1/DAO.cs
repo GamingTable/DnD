@@ -292,7 +292,7 @@ namespace DnDService
         }
 
         private List<short_entity> GetShortEntities(string query)
-        { 
+        {
             List<short_entity> list_entities = new List<short_entity>();
 
             if (OpenConnection())
@@ -302,7 +302,7 @@ namespace DnDService
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 if (dataReader.HasRows)
                 {
-                    for (var i = 0; dataReader.Read(); ++i)
+                    while (dataReader.Read())
                     {
                         short_entity e = new short_entity()
                         {
@@ -319,6 +319,84 @@ namespace DnDService
             }
             return list_entities;
         }
+        #endregion
+
+        #region TEMPLATES
+        public template GetTemplate(uint id_template)
+        {
+            template new_template = new template();
+
+            string query_characteristics = @"SELECT 
+                            characteristic.id_characteristic AS uid,
+                            characteristic.name AS name,
+                            characteristic.description AS description,
+                            characteristic.abreviation AS abreviation,
+                            characteristic.characteristic_type AS type,
+	                        SUM(template_has_characteristic.value) AS base,
+	                        SUM(template_has_modifier.modifier) AS modifier
+                                FROM DnD.characteristic
+                                LEFT JOIN DnD.template_has_characteristic
+                                ON characteristic.id_characteristic = template_has_characteristic.characteristic
+                                LEFT JOIN DnD.template_has_modifier
+                                ON characteristic.id_characteristic = template_has_modifier.characteristic
+                            WHERE template_has_characteristic.template = " + id_template + @"
+                            GROUP BY characteristic.id_characteristic; ";
+
+            string query_template = @"SELECT
+                            id_template,
+                            name,
+                            description
+                                FROM DnD.template
+                            WHERE id_template=" + id_template;
+
+            if (OpenConnection())
+            {
+                //Get the characteristics values and modifiers of this template (summing all existing ones)
+                MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection);
+                MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
+                if (dataReader_cha.HasRows)
+                {
+                    while (dataReader_cha.Read())
+                    {
+                        characteristic c = new characteristic()
+                        {
+                            uid = dataReader_cha.GetUInt32(0),
+                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
+                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
+                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3),
+                            type = dataReader_cha.GetUInt16(4),
+
+                            value = dataReader_cha.GetInt16(5),
+                            modifier = dataReader_cha.GetInt16(6)
+                        };
+                        new_template.characteristics.Add(c);
+                    }
+                }
+                dataReader_cha.Close();
+
+                // Get the proper values of this template (classic structure: uid,name,description)
+                MySqlCommand cmd_tpl = new MySqlCommand(query_template, connection);
+                MySqlDataReader dataReader_tpl = cmd_tpl.ExecuteReader();
+                if (dataReader_tpl.HasRows)
+                {
+                    while (dataReader_tpl.Read())
+                    {
+                        new_template.uid = id_template;
+                        new_template.name = dataReader_tpl.IsDBNull(1) ? null : dataReader_tpl.GetString(1);
+                        new_template.description = dataReader_tpl.IsDBNull(2) ? null : dataReader_tpl.GetString(2);
+                    }
+                }
+
+                this.CloseConnection();
+            }
+
+            // Returned the now completed template structure
+            return new_template;
+        }
+        #endregion
+
+        #region RACES AND CLASSES
+
         #endregion
     }
 }

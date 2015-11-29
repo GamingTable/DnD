@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="DataStructures\character.cs" />
     <Compile Include="DAO.cs" />
+    <Compile Include="DataStructures\characteristic.cs" />
     <Compile Include="DataStructures\complete_class.cs" />
     <Compile Include="DataStructures\complete_race.cs" />
     <Compile Include="DataStructures\short_entity.cs" />

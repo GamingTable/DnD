@@ -109,5 +109,8 @@ namespace DnDService
 
         [OperationContract]
         List<short_entity> GetCharacteristicShortList();
+
+        [OperationContract]
+        template GetTemplate(uint id_template);
     }
 }

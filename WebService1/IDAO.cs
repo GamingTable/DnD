@@ -40,5 +40,8 @@ namespace DnDService
         //Return a list with all the abilities in characteristics
         List<short_entity> GetCharacteristicShortList();
 
+        //Return the template corresponding to a certain id
+        template GetTemplate(uint id_template);
+
     }
 }
