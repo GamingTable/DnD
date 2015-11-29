@@ -6,6 +6,8 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using WebService1.DataStructures;
 using DnDService.DataStructures;
+using System.IO;
+using System.Drawing;
 
 namespace DnDService
 {
@@ -291,6 +293,36 @@ namespace DnDService
             return GetShortEntities(query);
         }
 
+        public List<short_entity> GetLanguageList()
+        {
+            string query = "SELECT id_language, name, description from language;";
+            return GetShortEntities(query);
+        }
+
+        public List<short_entity> GetRaceLanguage(uint id_race)
+        {
+            string query = @"select id_language, name, description 
+                                from dnd.language 
+                            where id_language in 
+                                (select dnd.language_has_race.language 
+                                    from dnd.language_has_race 
+                                where race = " + id_race
+                            + " );";
+            return GetShortEntities(query);
+        }
+
+        public List<short_entity> GetCharacterLanguage(uint id_character)
+        {
+            string query = @"select id_language, name, description 
+                                from dnd.language 
+                            where id_language in 
+                                (select dnd.language_has_character.language 
+                                    from dnd.language_has_character
+                                where character = " + id_character
+                            + " );";
+            return GetShortEntities(query);
+        }
+
         private List<short_entity> GetShortEntities(string query)
         {
             List<short_entity> list_entities = new List<short_entity>();
@@ -396,7 +428,81 @@ namespace DnDService
         #endregion
 
         #region RACES AND CLASSES
+        public complete_class GetClass(uint id_class)
+        {
+            complete_class new_class = new complete_class();
 
+            return new_class;
+
+        }
+
+        public complete_race GetRace(uint id_race)
+        {
+            complete_race new_race = new complete_race();
+
+            string query = "SELECT id_race, name, description, template, img from race;";
+
+            //Treating the blob
+            FileStream fs;
+            BinaryWriter bw;
+            int bufferSize = 100;
+            byte[] outbyte = new byte[bufferSize];
+            long retval = 0;
+            long startIndex = 0;
+
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        new_race.uid = dataReader.GetUInt16(0);
+                        new_race.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
+                        new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
+                        new_race.template = GetTemplate(dataReader.GetUInt32(3));
+
+                        // Create a file to hold the output
+                        string tmp_file_path = "tmp/illustrations/" + new_race.name + ".bmp";
+                        fs = new FileStream(tmp_file_path,
+                                            FileMode.OpenOrCreate, FileAccess.Write);
+                        bw = new BinaryWriter(fs);
+
+                        // Reset the starting byte for the new BLOB
+                        startIndex = 0;
+                        // Continue reading and writing while there are bytes beyond the size of the buffer
+                        while (retval == bufferSize)
+                        {
+                            bw.Write(outbyte);
+                            bw.Flush();
+
+                            // Reposition the start index to the end of the last buffer and fill the buffer
+                            startIndex += bufferSize;
+                            retval = dataReader.GetBytes(1, startIndex, outbyte, 0, bufferSize);
+                        }
+
+                        // Write the remaining buffer
+                        bw.Write(outbyte, 0, (int)retval);
+                        bw.Flush();
+
+                        // Close the output file
+                        bw.Close();
+                        fs.Close();
+
+                        // Add the bitmap illustration to the race object
+                        new_race.illustration = new Bitmap(tmp_file_path);
+                    }
+                }
+                dataReader.Close();
+
+                this.CloseConnection();
+            }
+
+            return new_race;
+        }
         #endregion
     }
 }

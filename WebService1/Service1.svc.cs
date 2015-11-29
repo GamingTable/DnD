@@ -83,5 +83,30 @@ namespace DnDService
         {
             return db.GetTemplate(id_template);
         }
+
+        public List<short_entity> GetLanguageList()
+        {
+            return db.GetLanguageList();
+        }
+
+        public List<short_entity> GetRaceLanguage(uint id_race)
+        {
+            return db.GetRaceLanguage(id_race);
+        }
+
+        public List<short_entity> GetCharacterLanguage(uint id_character)
+        {
+            return db.GetCharacterLanguage(id_character);
+        }
+
+        public complete_class GetClass(uint id_class)
+        {
+            return db.GetClass(id_class);
+        }
+
+        public complete_race GetRace(uint id_race)
+        {
+            return db.GetRace(id_race);
+        }
     }
 }

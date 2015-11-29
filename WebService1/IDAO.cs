@@ -43,5 +43,19 @@ namespace DnDService
         //Return the template corresponding to a certain id
         template GetTemplate(uint id_template);
 
+        //Return the list of all languages
+        List<short_entity> GetLanguageList();
+
+        //Return the list of all languages
+        List<short_entity> GetRaceLanguage(uint id_race);
+
+        //Return the list of all languages
+        List<short_entity> GetCharacterLanguage(uint id_character);
+
+        //Return the class corresponding to a certain id
+        complete_class GetClass(uint id_class);
+
+        //Return the race corresponding to a certain id
+        complete_race GetRace(uint id_race);
     }
 }
