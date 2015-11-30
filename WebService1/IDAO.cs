@@ -47,10 +47,10 @@ namespace DnDService
         //Return the list of all languages
         List<short_entity> GetCharacterLanguage(uint id_character);
 
-        /*//Return the class corresponding to a certain id
-        complete_class GetClass(uint id_class);*/
+        //Return the class corresponding to a certain id
+        complete_class GetClass(uint id_class);
 
-        /*//Return the race corresponding to a certain id
-        complete_race GetRace(uint id_race);*/
+        //Return the race corresponding to a certain id
+        complete_race GetRace(uint id_race);
     }
 }

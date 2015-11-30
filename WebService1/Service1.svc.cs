@@ -92,14 +92,14 @@ namespace DnDService
             return db.GetCharacterLanguage(id_character);
         }
 
-        /*public complete_class GetClass(uint id_class)
+        public complete_class GetClass(uint id_class)
         {
-            return db.GetClass(id_class);
-        }*/
+            return new complete_class();
+        }
 
-        /*public complete_race GetRace(uint id_race)
+        public complete_race GetRace(uint id_race)
         {
             return db.GetRace(id_race);
-        }*/
+        }
     }
 }

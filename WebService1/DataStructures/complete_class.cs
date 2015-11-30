@@ -1,12 +1,8 @@
-﻿using DnDService.DataStructures;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
 
-namespace DnDService
+namespace DnDService.DataStructures
 {
     [DataContract]
     public class complete_class
@@ -18,8 +14,8 @@ namespace DnDService
         [DataMember]
         public string description;
         [DataMember]
-        public Bitmap illustration;
-
+        public byte[] illustration;
+        
         [DataMember]
         public string health_progression;
         [DataMember]

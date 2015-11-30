@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace DnDService
+namespace DnDService.DataStructures
 {
     [DataContract]
     public class complete_race
@@ -18,7 +18,7 @@ namespace DnDService
         [DataMember]
         public string description;
         [DataMember]
-        public Bitmap illustration;
+        public byte[] illustration;
 
         [DataMember]
         public List<short_entity> innates_languages;

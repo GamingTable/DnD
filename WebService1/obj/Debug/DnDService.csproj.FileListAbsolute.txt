@@ -1,9 +1,3 @@
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.dll.config
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.dll
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\WebService1.pdb
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\MySql.Data.dll
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\WebService1.dll
-C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\WebService1.pdb
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\obj\Debug\DnDService.csprojResolveAssemblyReference.cache
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\obj\Debug\WebService1.dll
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\obj\Debug\WebService1.pdb
@@ -11,3 +5,9 @@ C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\bin
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\bin\WebService1.dll
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\bin\WebService1.pdb
 C:\Users\youness\Downloads\WebService1\WebService1 - after stash\WebService1\bin\MySql.Data.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\DnDService.dll.config
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\DnDService.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\DnDService.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\MySql.Data.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\DnDService.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\DnDService.pdb

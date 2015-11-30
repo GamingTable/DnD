@@ -193,4 +193,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_class" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassResult" nillable="true" type="q11:complete_class" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_race" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceResult" nillable="true" type="q12:complete_race" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

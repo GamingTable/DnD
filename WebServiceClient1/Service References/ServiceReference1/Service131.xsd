@@ -41,4 +41,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="characteristic" nillable="true" type="tns:characteristic" />
+  <xs:complexType name="complete_class">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="health_progression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_class" nillable="true" type="tns:complete_class" />
+  <xs:complexType name="complete_race">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="innates_languages" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
 </xs:schema>

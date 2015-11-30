@@ -116,10 +116,10 @@ namespace DnDService
         [OperationContract]
         List<short_entity> GetCharacterLanguage(uint id_character);
 
-        /*[OperationContract]
-        complete_class GetClass(uint id_class);*/
+        [OperationContract]
+        complete_class GetClass(uint id_class);
 
-        /*[OperationContract]
-        complete_race GetRace(uint id_race);*/
+        [OperationContract]
+        complete_race GetRace(uint id_race);
     }
 }

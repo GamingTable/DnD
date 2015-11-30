@@ -1,6 +1,9 @@
 ﻿using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Windows;
+using System.Drawing;
+using System.IO;
+using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 
 namespace DnDServicePlayer.Pages.Character.Creation
@@ -22,7 +25,10 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
-            
+
+            // Define the image source
+            //var k = client.GetRace(4);
+            //image.Source = ImageCoder.BytesToSource(client.GetRace(4).illustration);
         }
 
         public void UtilizeState(object state)

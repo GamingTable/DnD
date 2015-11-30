@@ -423,8 +423,8 @@ namespace DnDService
         }
         #endregion
 
-       /* #region RACES AND CLASSES
-       /* public complete_class GetClass(uint id_class)
+        #region RACES AND CLASSES
+        public complete_class GetClass(uint id_class)
         {
             complete_class new_class = new complete_class();
 
@@ -439,12 +439,12 @@ namespace DnDService
             string query = "SELECT id_race, name, description, template, img from race;";
 
             //Treating the blob
-            FileStream fs;
-            BinaryWriter bw;
-            int bufferSize = 100;
-            byte[] outbyte = new byte[bufferSize];
-            long retval = 0;
-            long startIndex = 0;
+            FileStream fs;                              // Writes the BLOB to a file
+            BinaryWriter bw;                            // Streams the BLOB to the FileStream object
+            int bufferSize = 100;                       // Size of the BLOB buffer
+            byte[] outbyte = new byte[bufferSize];      // The BLOB byte[] buffer to be filled by GetBytes
+            long retval;                                // The bytes returned from GetBytes
+            long startIndex = 0;                        // The starting position in the BLOB output
 
 
             if (OpenConnection())
@@ -462,13 +462,15 @@ namespace DnDService
                         new_race.template = GetTemplate(dataReader.GetUInt32(3));
 
                         // Create a file to hold the output
-                        string tmp_file_path = "tmp/illustrations/" + new_race.name + ".bmp";
+                        string tmp_file_path = "tmp/illustrations/" + new_race.name + ".jpg";
                         fs = new FileStream(tmp_file_path,
                                             FileMode.OpenOrCreate, FileAccess.Write);
                         bw = new BinaryWriter(fs);
 
                         // Reset the starting byte for the new BLOB
                         startIndex = 0;
+                        // Read the bytes into outbyte[] and retain the number of bytes returned
+                        retval = dataReader.GetBytes(4, startIndex, outbyte, 0, bufferSize);
                         // Continue reading and writing while there are bytes beyond the size of the buffer
                         while (retval == bufferSize)
                         {
@@ -477,7 +479,7 @@ namespace DnDService
 
                             // Reposition the start index to the end of the last buffer and fill the buffer
                             startIndex += bufferSize;
-                            retval = dataReader.GetBytes(1, startIndex, outbyte, 0, bufferSize);
+                            retval = dataReader.GetBytes(4, startIndex, outbyte, 0, bufferSize);
                         }
 
                         // Write the remaining buffer
@@ -489,16 +491,16 @@ namespace DnDService
                         fs.Close();
 
                         // Add the bitmap illustration to the race object
-                        new_race.illustration = new Bitmap(tmp_file_path);
+                        new_race.illustration = outbyte;
                     }
                 }
+                // Close reader and connection
                 dataReader.Close();
-
                 this.CloseConnection();
             }
 
             return new_race;
         }
-        #endregion*/
+        #endregion
     }
 }
