@@ -13,6 +13,7 @@ namespace DnDServicePlayer
     {
         //public static object WebOperationContext { get; private set; }
 
+        // A vérifier
         static public Image BytesToImage(byte[] image)
         {
             MemoryStream oMemoryStream = new MemoryStream(image);
@@ -22,6 +23,7 @@ namespace DnDServicePlayer
             return oImage;
         }
 
+        //A vérifier
         static public byte[] ImageToBytes(Image image)
         {
             MemoryStream oMemoryStream = new MemoryStream();
@@ -35,8 +37,10 @@ namespace DnDServicePlayer
         static public BitmapSource BytesToSource(byte[] image)
         {
             BitmapImage bmpImage = new System.Windows.Media.Imaging.BitmapImage();
-            MemoryStream mystream = new MemoryStream(image);
-            bmpImage.StreamSource = mystream;
+            bmpImage.BeginInit();
+            bmpImage.StreamSource = new MemoryStream(image);
+            bmpImage.EndInit();
+
             return bmpImage;
 
         }

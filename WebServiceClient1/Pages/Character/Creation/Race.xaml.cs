@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -14,6 +15,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
     public partial class Race : UserControl, ISwitchable
     {
         private short_entity[] race_list;
+        private uint current_uid_race;
+        private complete_race current_race;
 
         public Race()
         {
@@ -26,11 +29,17 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
 
+            // Try to display a random race
+            ///////////////////////////////
+            current_uid_race = 1;
+            // Get the race
+            current_race = client.GetRace(current_uid_race);
+
             // Define the image source
-            var client2 = new Service1Client();
-            var k = client2.GetRace(4);
-            Console.WriteLine(k.name+"/////prout///////////////////////////////////////");
-            //image.Source = ImageCoder.BytesToSource(client.GetRace(4).illustration);
+            image.Source = race_illustration;
+            //image.DataContext = race_illustration;
+            // Define the listview source
+            listView.ItemsSource = current_race.template.characteristics;
         }
 
         public void UtilizeState(object state)
@@ -39,6 +48,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
         }
 
         #region Race
+        public ImageSource race_illustration
+        {
+            get{ return ImageCoder.BytesToSource(current_race.illustration); }
+            set{ SetValue(System.Windows.Controls.Image.SourceProperty, value); }
+        }
         private void race_list_box_Selected(object sender, RoutedEventArgs e)
         {
             

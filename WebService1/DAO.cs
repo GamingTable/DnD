@@ -441,7 +441,7 @@ namespace DnDService
         {
             complete_race new_race = new complete_race();
 
-            string query = "SELECT id_race, name, description, template, img from race;";
+            string query = "SELECT id_race, name, description, template, img from race where id_race=" + id_race + ";";
 
             //Treating the blob
             FileStream fs;                              // Writes the BLOB to a file
@@ -466,52 +466,6 @@ namespace DnDService
                         new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
                         new_race.template = GetTemplate(dataReader.GetUInt32(3));
                         new_race.illustration = (byte[])dataReader["img"];
-
-                        /*// If path doesn't exists, create it
-                        string tmp_file_path1 = "tmp";
-                        string tmp_file_path2 = "illustrations";
-                        string tmp_file_path = tmp_file_path1 + "/" + tmp_file_path2;
-                        if (!Directory.Exists(tmp_file_path1))
-                        {
-                            Directory.CreateDirectory(tmp_file_path1);
-                        }
-                        else if(!Directory.Exists(tmp_file_path))
-                        {
-                            Directory.CreateDirectory(tmp_file_path);
-                        }*/
-
-                        // Create a file to hold the output
-                        //string tmp_file_uri = tmp_file_path + "/" + new_race.name + ".jpg";
-                        /*var k = Directory.;
-                        fs = new FileStream(new_race.name + ".jpg",
-                                            FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, bufferSize,  FileOptions.DeleteOnClose);
-                        bw = new BinaryWriter(fs);
-
-                        // Reset the starting byte for the new BLOB
-                        startIndex = 0;
-                        // Read the bytes into outbyte[] and retain the number of bytes returned
-                        retval = dataReader.GetBytes(4, startIndex, outbyte, 0, bufferSize);
-                        // Continue reading and writing while there are bytes beyond the size of the buffer
-                        while (retval == bufferSize)
-                        {
-                            bw.Write(outbyte);
-                            bw.Flush();
-
-                            // Reposition the start index to the end of the last buffer and fill the buffer
-                            startIndex += bufferSize;
-                            retval = dataReader.GetBytes(4, startIndex, outbyte, 0, bufferSize);
-                        }
-
-                        // Write the remaining buffer
-                        bw.Write(outbyte, 0, (int)retval);
-                        bw.Flush();
-
-                        // Close the output file
-                        bw.Close();
-                        fs.Close();*/
-
-                        // Add the bitmap illustration to the race object
-                        //new_race.illustration = outbyte;
                     }
                 }
                 // Close reader and connection

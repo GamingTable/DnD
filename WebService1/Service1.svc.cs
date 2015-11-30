@@ -94,7 +94,7 @@ namespace DnDService
 
         public complete_class GetClass(uint id_class)
         {
-            return new complete_class();
+            return db.GetClass(id_class);
         }
 
         public complete_race GetRace(uint id_race)
