@@ -53,6 +53,11 @@ namespace DnDService
                 Console.WriteLine(ex.Message);
                 return false;
             }
+            catch (InvalidOperationException ioe)
+            {
+                Console.WriteLine(ioe.Message);
+                return false;
+            }
 
         }
 
@@ -460,11 +465,26 @@ namespace DnDService
                         new_race.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
                         new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
                         new_race.template = GetTemplate(dataReader.GetUInt32(3));
+                        new_race.illustration = (byte[])dataReader["img"];
+
+                        /*// If path doesn't exists, create it
+                        string tmp_file_path1 = "tmp";
+                        string tmp_file_path2 = "illustrations";
+                        string tmp_file_path = tmp_file_path1 + "/" + tmp_file_path2;
+                        if (!Directory.Exists(tmp_file_path1))
+                        {
+                            Directory.CreateDirectory(tmp_file_path1);
+                        }
+                        else if(!Directory.Exists(tmp_file_path))
+                        {
+                            Directory.CreateDirectory(tmp_file_path);
+                        }*/
 
                         // Create a file to hold the output
-                        string tmp_file_path = "tmp/illustrations/" + new_race.name + ".jpg";
-                        fs = new FileStream(tmp_file_path,
-                                            FileMode.OpenOrCreate, FileAccess.Write);
+                        //string tmp_file_uri = tmp_file_path + "/" + new_race.name + ".jpg";
+                        /*var k = Directory.;
+                        fs = new FileStream(new_race.name + ".jpg",
+                                            FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, bufferSize,  FileOptions.DeleteOnClose);
                         bw = new BinaryWriter(fs);
 
                         // Reset the starting byte for the new BLOB
@@ -488,10 +508,10 @@ namespace DnDService
 
                         // Close the output file
                         bw.Close();
-                        fs.Close();
+                        fs.Close();*/
 
                         // Add the bitmap illustration to the race object
-                        new_race.illustration = outbyte;
+                        //new_race.illustration = outbyte;
                     }
                 }
                 // Close reader and connection

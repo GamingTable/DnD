@@ -27,7 +27,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
             race_list_box.ItemsSource = race_list;
 
             // Define the image source
-            //var k = client.GetRace(4);
+            var client2 = new Service1Client();
+            var k = client2.GetRace(4);
+            Console.WriteLine(k.name+"/////prout///////////////////////////////////////");
             //image.Source = ImageCoder.BytesToSource(client.GetRace(4).illustration);
         }
 
