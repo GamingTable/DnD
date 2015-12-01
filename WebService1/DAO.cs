@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using DnDService.DataStructures;
 using System.IO;
 using System.Drawing;
+using System.Data;
 
 namespace DnDService
 {
@@ -43,37 +44,48 @@ namespace DnDService
         //try to open connection to database. Return true if succeed, false if not.
         private bool OpenConnection()
         {
-            try
+            if (connection != null && (connection.State == ConnectionState.Closed || connection.State == ConnectionState.Broken))
             {
-                connection.Open();
+                try
+                {
+                    connection.Open();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    Console.WriteLine(ioe.Message);
+                    return false;
+                }
+            }
+            else if (connection == null)
+                return false;
+            else
                 return true;
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-            catch (InvalidOperationException ioe)
-            {
-                Console.WriteLine(ioe.Message);
-                return false;
-            }
 
         }
 
         //try to close connection to databse. Return true if succeed, false if not.
         private bool CloseConnection()
         {
-            try
+            if (connection != null && connection.State != ConnectionState.Closed)
             {
-                connection.Close();
-                return true;
+                try
+                {
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
             }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
+            return true;
         }
         #endregion
 
@@ -355,11 +367,70 @@ namespace DnDService
         #endregion
 
         #region TEMPLATES
+        public List<characteristic> GetCharacteristics(uint id_template, uint id_type=0)
+        {
+            List<characteristic> new_characteristic = new List<characteristic>();
+
+            string query_characteristics = @"SELECT 
+                characteristic.id_characteristic AS uid, 
+                characteristic.name AS name, 
+                characteristic.description AS description, 
+                characteristic.abreviation AS abreviation, 
+                characteristic.characteristic_type AS type, 
+                SUM(template_has_characteristic.value) AS base, 
+                SUM(template_has_modifier.modifier) AS modifier 
+                    FROM dnd.characteristic 
+                    LEFT JOIN dnd.template_has_characteristic 
+                        ON characteristic.id_characteristic = template_has_characteristic.characteristic 
+                    LEFT JOIN dnd.template_has_modifier 
+                        ON characteristic.id_characteristic = template_has_modifier.characteristic 
+                WHERE template_has_characteristic.template = " + id_template;
+            // query_characteristics = @"SELECT characteristic.id_characteristic AS uid, characteristic.name AS name, characteristic.description AS description, characteristic.abreviation AS abreviation, characteristic.characteristic_type AS type, SUM(template_has_characteristic.value) AS base, SUM(template_has_modifier.modifier) AS modifier FROM characteristic LEFT JOIN template_has_characteristic ON characteristic.id_characteristic = template_has_characteristic.characteristic LEFT JOIN template_has_modifier ON characteristic.id_characteristic = template_has_modifier.characteristic WHERE template_has_characteristic.template = " + id_template;
+
+            if (id_type > 0)
+                query_characteristics += " AND characteristic.characteristic_type =" + id_type;
+            query_characteristics += " GROUP BY characteristic.id_characteristic; ";
+
+            if (OpenConnection())
+            {
+                //Get the characteristics values and modifiers of this template (summing all existing ones)
+                MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection);
+                MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
+
+
+       
+                    while (dataReader_cha.Read() && !dataReader_cha.IsDBNull(0))
+                    {
+                    try {
+                        var c = new characteristic()
+                        {
+                            uid = dataReader_cha.GetUInt32(0),
+                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
+                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
+                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3),
+                            type = dataReader_cha.GetUInt16(4),
+
+                            value = dataReader_cha.GetInt16(5),
+                            modifier = dataReader_cha.GetInt16(6)
+                        };
+                        new_characteristic.Add(c);
+                    }
+                    catch(Exception k) { }
+                    }
+
+                dataReader_cha.Close();
+                CloseConnection();
+            }
+
+             return new_characteristic;
+               
+            }
+
         public template GetTemplate(uint id_template)
         {
             template new_template = new template();
 
-            string query_characteristics = @"SELECT 
+            /*string query_characteristics = @"SELECT 
                             characteristic.id_characteristic AS uid,
                             characteristic.name AS name,
                             characteristic.description AS description,
@@ -372,8 +443,7 @@ namespace DnDService
                                 ON characteristic.id_characteristic = template_has_characteristic.characteristic
                                 LEFT JOIN DnD.template_has_modifier
                                 ON characteristic.id_characteristic = template_has_modifier.characteristic
-                            WHERE template_has_characteristic.template = " + id_template + @"
-                            GROUP BY characteristic.id_characteristic; ";
+                            WHERE template_has_characteristic.template = " + id_template;*/
 
             string query_template = @"SELECT
                             id_template,
@@ -382,9 +452,11 @@ namespace DnDService
                                 FROM DnD.template
                             WHERE id_template=" + id_template;
 
+            var characteristics = GetCharacteristics(id_template);
+
             if (OpenConnection())
             {
-                //Get the characteristics values and modifiers of this template (summing all existing ones)
+                /*//Get the characteristics values and modifiers of this template (summing all existing ones)
                 MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection);
                 MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
                 if (dataReader_cha.HasRows)
@@ -405,11 +477,12 @@ namespace DnDService
                         new_template.characteristics.Add(c);
                     }
                 }
-                dataReader_cha.Close();
+                dataReader_cha.Close();*/
 
                 // Get the proper values of this template (classic structure: uid,name,description)
                 MySqlCommand cmd_tpl = new MySqlCommand(query_template, connection);
-                MySqlDataReader dataReader_tpl = cmd_tpl.ExecuteReader();
+                MySqlDataReader dataReader_tpl = cmd_tpl.ExecuteReader( System.Data.CommandBehavior.SingleResult);
+                //List<uint> id_tmp_charac = new List<uint>(); 
                 if (dataReader_tpl.HasRows)
                 {
                     while (dataReader_tpl.Read())
@@ -417,10 +490,15 @@ namespace DnDService
                         new_template.uid = id_template;
                         new_template.name = dataReader_tpl.IsDBNull(1) ? null : dataReader_tpl.GetString(1);
                         new_template.description = dataReader_tpl.IsDBNull(2) ? null : dataReader_tpl.GetString(2);
+                        //id_tmp_charac.Add(dataReader_tpl.GetUInt32());
+                        //new_template.characteristics = characteristics;
                     }
                 }
+                dataReader_tpl.Close();
 
-                this.CloseConnection();
+                new_template.characteristics = GetCharacteristics(id_template);
+
+                CloseConnection();
             }
 
             // Returned the now completed template structure
@@ -443,20 +521,15 @@ namespace DnDService
 
             string query = "SELECT id_race, name, description, template, img from race where id_race=" + id_race + ";";
 
-            //Treating the blob
-            FileStream fs;                              // Writes the BLOB to a file
-            BinaryWriter bw;                            // Streams the BLOB to the FileStream object
-            int bufferSize = 100;                       // Size of the BLOB buffer
-            byte[] outbyte = new byte[bufferSize];      // The BLOB byte[] buffer to be filled by GetBytes
-            long retval;                                // The bytes returned from GetBytes
-            long startIndex = 0;                        // The starting position in the BLOB output
-
+            var languages = GetRaceLanguage(id_race);
+            uint tmp_template;
 
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-
                 MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                uint id_template = 0;
+
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
@@ -464,14 +537,19 @@ namespace DnDService
                         new_race.uid = dataReader.GetUInt16(0);
                         new_race.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
                         new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
-                        new_race.template = GetTemplate(dataReader.GetUInt32(3));
+                        id_template = dataReader.GetUInt32(3);
                         new_race.illustration = (byte[])dataReader["img"];
                     }
                 }
                 // Close reader and connection
                 dataReader.Close();
+
+                new_race.template = GetTemplate(id_template);
+                new_race.innates_languages = GetRaceLanguage(id_race);
                 this.CloseConnection();
             }
+            // Functions calling 
+            //new_race.template = GetTemplate(tmp_template);
 
             return new_race;
         }

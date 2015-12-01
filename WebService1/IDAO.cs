@@ -52,5 +52,8 @@ namespace DnDService
 
         //Return the race corresponding to a certain id
         complete_race GetRace(uint id_race);
+
+        //Return the list of characteristics corresponding to a template
+        List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
     }
 }

@@ -12,19 +12,19 @@ namespace DnDService.DataStructures
     public class complete_race
     {
         [DataMember]
-        public uint uid;
+        public uint uid { get; set; }
         [DataMember]
-        public string name;
+        public string name { get; set; }
         [DataMember]
-        public string description;
+        public string description { get; set; }
         [DataMember]
-        public byte[] illustration;
+        public byte[] illustration { get; set; }
 
         [DataMember]
-        public List<short_entity> innates_languages;
+        public List<short_entity> innates_languages { get; set; }
         [DataMember]
-        public template template;
+        public template template { get; set; }
         [DataMember]
-        public List<short_entity> effects;
+        public List<short_entity> effects { get; set; }
     }
 }

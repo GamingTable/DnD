@@ -101,5 +101,10 @@ namespace DnDService
         {
             return db.GetRace(id_race);
         }
+
+        public List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0)
+        {
+            return db.GetCharacteristics(id_template, id_type);
+        }
     }
 }

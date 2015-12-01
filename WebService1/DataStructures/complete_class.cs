@@ -8,19 +8,19 @@ namespace DnDService.DataStructures
     public class complete_class
     {
         [DataMember]
-        public uint uid;
+        public uint uid { get; set; }
         [DataMember]
-        public string name;
+        public string name { get; set; }
         [DataMember]
-        public string description;
+        public string description { get; set; }
         [DataMember]
-        public byte[] illustration;
-        
+        public byte[] illustration { get; set; }
+
         [DataMember]
-        public string health_progression;
+        public string health_progression { get; set; }
         [DataMember]
-        public template template;
+        public template template { get; set; }
         [DataMember]
-        public List<short_entity> effects;
+        public List<short_entity> effects { get; set; }
     }
 }

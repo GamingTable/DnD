@@ -121,5 +121,8 @@ namespace DnDService
 
         [OperationContract]
         complete_race GetRace(uint id_race);
+
+        [OperationContract]
+        List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
     }
 }
