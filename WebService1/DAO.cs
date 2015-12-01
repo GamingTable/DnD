@@ -379,13 +379,12 @@ namespace DnDService
                 characteristic.characteristic_type AS type, 
                 SUM(template_has_characteristic.value) AS base, 
                 SUM(template_has_modifier.modifier) AS modifier 
-                    FROM dnd.characteristic 
-                    LEFT JOIN dnd.template_has_characteristic 
-                        ON characteristic.id_characteristic = template_has_characteristic.characteristic 
-                    LEFT JOIN dnd.template_has_modifier 
-                        ON characteristic.id_characteristic = template_has_modifier.characteristic 
+                FROM characteristic 
+                LEFT JOIN template_has_characteristic 
+                ON characteristic.id_characteristic = template_has_characteristic.characteristic 
+                LEFT JOIN template_has_modifier 
+                ON characteristic.id_characteristic = template_has_modifier.characteristic 
                 WHERE template_has_characteristic.template = " + id_template;
-            // query_characteristics = @"SELECT characteristic.id_characteristic AS uid, characteristic.name AS name, characteristic.description AS description, characteristic.abreviation AS abreviation, characteristic.characteristic_type AS type, SUM(template_has_characteristic.value) AS base, SUM(template_has_modifier.modifier) AS modifier FROM characteristic LEFT JOIN template_has_characteristic ON characteristic.id_characteristic = template_has_characteristic.characteristic LEFT JOIN template_has_modifier ON characteristic.id_characteristic = template_has_modifier.characteristic WHERE template_has_characteristic.template = " + id_template;
 
             if (id_type > 0)
                 query_characteristics += " AND characteristic.characteristic_type =" + id_type;
@@ -411,7 +410,7 @@ namespace DnDService
                             type = dataReader_cha.GetUInt16(4),
 
                             value = dataReader_cha.GetInt16(5),
-                            modifier = dataReader_cha.GetInt16(6)
+                            modifier = dataReader_cha.IsDBNull(6)? 0 : dataReader_cha.GetInt16(6)
                         };
                         new_characteristic.Add(c);
                     }
@@ -430,21 +429,6 @@ namespace DnDService
         {
             template new_template = new template();
 
-            /*string query_characteristics = @"SELECT 
-                            characteristic.id_characteristic AS uid,
-                            characteristic.name AS name,
-                            characteristic.description AS description,
-                            characteristic.abreviation AS abreviation,
-                            characteristic.characteristic_type AS type,
-	                        SUM(template_has_characteristic.value) AS base,
-	                        SUM(template_has_modifier.modifier) AS modifier
-                                FROM DnD.characteristic
-                                LEFT JOIN DnD.template_has_characteristic
-                                ON characteristic.id_characteristic = template_has_characteristic.characteristic
-                                LEFT JOIN DnD.template_has_modifier
-                                ON characteristic.id_characteristic = template_has_modifier.characteristic
-                            WHERE template_has_characteristic.template = " + id_template;*/
-
             string query_template = @"SELECT
                             id_template,
                             name,
@@ -456,29 +440,7 @@ namespace DnDService
 
             if (OpenConnection())
             {
-                /*//Get the characteristics values and modifiers of this template (summing all existing ones)
-                MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection);
-                MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
-                if (dataReader_cha.HasRows)
-                {
-                    while (dataReader_cha.Read())
-                    {
-                        characteristic c = new characteristic()
-                        {
-                            uid = dataReader_cha.GetUInt32(0),
-                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
-                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
-                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3),
-                            type = dataReader_cha.GetUInt16(4),
-
-                            value = dataReader_cha.GetInt16(5),
-                            modifier = dataReader_cha.GetInt16(6)
-                        };
-                        new_template.characteristics.Add(c);
-                    }
-                }
-                dataReader_cha.Close();*/
-
+                
                 // Get the proper values of this template (classic structure: uid,name,description)
                 MySqlCommand cmd_tpl = new MySqlCommand(query_template, connection);
                 MySqlDataReader dataReader_tpl = cmd_tpl.ExecuteReader( System.Data.CommandBehavior.SingleResult);
@@ -544,12 +506,11 @@ namespace DnDService
                 // Close reader and connection
                 dataReader.Close();
 
+                // Other queries after closing the reader
                 new_race.template = GetTemplate(id_template);
                 new_race.innates_languages = GetRaceLanguage(id_race);
                 this.CloseConnection();
             }
-            // Functions calling 
-            //new_race.template = GetTemplate(tmp_template);
 
             return new_race;
         }
