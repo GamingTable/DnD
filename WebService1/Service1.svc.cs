@@ -1,5 +1,6 @@
 ﻿using DnDService.DataStructures;
 using System.Collections.Generic;
+using System;
 
 namespace DnDService
 {
@@ -105,6 +106,11 @@ namespace DnDService
         public List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0)
         {
             return db.GetCharacteristics(id_template, id_type);
+        }
+
+        public multiclass GetMulticlass(uint id_character)
+        {
+            return db.GetMulticlass(id_character);
         }
     }
 }

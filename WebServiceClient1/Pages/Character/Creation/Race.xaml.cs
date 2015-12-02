@@ -31,7 +31,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             race_list_box.ItemsSource = race_list;
 
             // Define the image source
-            image.Source = race_illustration;
+            //image.Source = race_illustration;
             /*// Try to display a random race
             ///////////////////////////////
             current_uid_race = 1;
@@ -66,9 +66,15 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_race = client.GetRace(selection.uid);
-            
+
             // Refresh the image source
+            update_image();
+        }
+
+        private void update_image()
+        {
             image.Source = race_illustration;
+            image.Stretch = Stretch.Uniform;
         }
     }
 }

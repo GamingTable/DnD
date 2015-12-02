@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnDService.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,65 +13,61 @@ namespace DnDService
     public class character
     {
         [DataMember]
-        private uint id_character;
+        public uint uid { get; set; }
         [DataMember]
-        private uint id_account;
+        public string name { get; set; }
         [DataMember]
-        private uint level;
+        public byte[] avatar { get; set; }
+        [DataMember]
+        public uint account { get; set; }
 
         [DataMember]
-        private string class_name;
+        public complete_race race { get; set; }
         [DataMember]
-        private string race_name;
+        public multiclass classes { get; set; }
         [DataMember]
-        private string name;
+        public List<template> stats { get; set; }
 
         [DataMember]
-        private int strength;
+        public List<short_entity> languages { get; set; }
         [DataMember]
-        private int constitution;
+        public List<short_entity> gifts { get; set; }
         [DataMember]
-        private int dexterity;
+        public uint inventory { get; set; }
         [DataMember]
-        private int intelligence;
+        public List<short_entity> effects { get; set; }
         [DataMember]
-        private int wisdom;
-        [DataMember]
-        private int charisma;
+        public short_entity deity { get; set; }
 
         [DataMember]
-        private int initiative;
+        public char sex { get; set; }
         [DataMember]
-        private int armor_class;
+        public string background { get; set; }
         [DataMember]
-        private int fortitude;
+        public string personnality { get; set; }
         [DataMember]
-        private int reflexe;
+        public string hair { get; set; }
         [DataMember]
-        private int will;
+        public string eyes { get; set; }
         [DataMember]
-        private int speed;
+        public uint skin { get; set; }
+        [DataMember]
+        public uint height { get; set; }
+        [DataMember]
+        public uint weight { get; set; }
+        [DataMember]
+        public uint age { get; set; }
+        [DataMember]
+        public string height_category { get; set; }
 
-        public character(uint id_character, uint id_account, uint level, string class_name, string race_name, string name, int strength, int constitution, int dexterity, int intelligence, int wisdom, int charisma, int initiative, int armor_class, int fortitude, int reflexe, int will, int speed)
-        {
-            this.id_character = id_character;
-            this.id_account = id_account;
-            this.level = level;
-            this.class_name = class_name;
-            this.race_name = race_name;
-            this.name = name;
-            this.strength = strength + (int)(level / 2);
-            this.constitution = constitution + (int)(level / 2);
-            this.dexterity = dexterity + (int)(level / 2);
-            this.intelligence = intelligence + (int)(level / 2);
-            this.wisdom = wisdom + (int)(level / 2);
-            this.charisma = charisma + (int)(level / 2);
-            this.initiative = initiative + (int)(level / 2);
-            this.armor_class = armor_class + (int)(level / 2);
-            this.fortitude = fortitude + (int)(level / 2);
-            this.reflexe = reflexe + (int)(level / 2);
-            this.will = will + (int)(level / 2);
-            this.speed = speed;
-        }
+
+
+
+
+
+
+
+
+
     }
 }

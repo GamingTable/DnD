@@ -124,5 +124,8 @@ namespace DnDService
 
         [OperationContract]
         List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
+
+        [OperationContract]
+        multiclass GetMulticlass(uint id_character);
     }
 }
