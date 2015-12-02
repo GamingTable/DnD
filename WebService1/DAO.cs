@@ -473,8 +473,74 @@ namespace DnDService
         {
             complete_class new_class = new complete_class();
 
+            string query = "SELECT id_class, name, description, template, img, health_progression from class where id_class=" + id_class;
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                uint id_template = 0;
+
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        new_class.uid = dataReader.GetUInt16(0);
+                        new_class.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
+                        new_class.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
+                        id_template = dataReader.GetUInt32(3);
+                        new_class.illustration = (byte[])dataReader["img"];
+                        new_class.health_progression = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
+                    }
+                }
+                // Close reader and connection
+                dataReader.Close();
+
+                // Other queries after closing the reader
+                new_class.template = GetTemplate(id_template);
+                this.CloseConnection();
+            }
+
             return new_class;
 
+        }
+
+        public multiclass GetMulticlass(uint id_character)
+        {
+            var multiclass = new multiclass();
+            multiclass.id_character = id_character;
+
+            var query = @"Select 
+                        class, level
+                        from multiclasses
+                        where character = "+id_character;
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                var classes = new List<Tuple<uint, uint>>();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        classes.Add(new Tuple<uint, uint>(
+                            dataReader.GetUInt16("level"),
+                            dataReader.GetUInt16("class")
+                        ));
+                    }
+
+                    foreach (var c in classes)
+                    {
+                        multiclass.level_class.Add(new Tuple<uint, complete_class>(
+                            c.Item1,
+                            GetClass(c.Item2)
+                        ));
+                    }
+                }
+                this.CloseConnection();
+            }
+            return multiclass;
         }
 
         public complete_race GetRace(uint id_race)
@@ -484,7 +550,6 @@ namespace DnDService
             string query = "SELECT id_race, name, description, template, img from race where id_race=" + id_race + ";";
 
             var languages = GetRaceLanguage(id_race);
-            uint tmp_template;
 
             if (OpenConnection())
             {

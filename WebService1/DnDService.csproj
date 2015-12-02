@@ -71,6 +71,7 @@
     <Compile Include="DataStructures\characteristic.cs" />
     <Compile Include="DataStructures\complete_class.cs" />
     <Compile Include="DataStructures\complete_race.cs" />
+    <Compile Include="DataStructures\multiclass.cs" />
     <Compile Include="DataStructures\short_entity.cs" />
     <Compile Include="DataStructures\template.cs" />
     <Compile Include="IDAO.cs" />
