@@ -23,7 +23,7 @@
             <RowDefinition Height="90.048"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" Grid.RowSpan="3">
+        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" Grid.RowSpan="3" SelectionChanged="race_list_box_SelectionChanged">
             <!-- Selected="race_list_box_Selected">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>

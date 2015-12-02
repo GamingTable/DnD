@@ -16,30 +16,30 @@ namespace DnDServicePlayer.Pages.Character.Creation
     {
         private short_entity[] race_list;
         private uint current_uid_race;
-        private complete_race current_race;
+        Service1Client client;
+        complete_race current_race;
 
         public Race()
         {
             InitializeComponent();
 
             // Get the races list
-            Service1Client client = new Service1Client();
+            client = new Service1Client();
             race_list = client.GetRaceShortList();
 
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
 
-            // Try to display a random race
+            // Define the image source
+            image.Source = race_illustration;
+            /*// Try to display a random race
             ///////////////////////////////
             current_uid_race = 1;
             // Get the race
             current_race = client.GetRace(current_uid_race);
 
-            // Define the image source
-            image.Source = race_illustration;
-            //image.DataContext = race_illustration;
             // Define the listview source
-            listView.ItemsSource = current_race.template.characteristics;
+            listView.ItemsSource = current_race.template.characteristics;*/
         }
 
         public void UtilizeState(object state)
@@ -50,13 +50,25 @@ namespace DnDServicePlayer.Pages.Character.Creation
         #region Race
         public ImageSource race_illustration
         {
-            get{ return ImageCoder.BytesToSource(current_race.illustration); }
+            get
+            {
+                try
+                {
+                    return ImageCoder.BytesToSource(current_race.illustration);
+                }
+                catch (Exception e) { return null; }
+            }
             set{ SetValue(System.Windows.Controls.Image.SourceProperty, value); }
         }
-        private void race_list_box_Selected(object sender, RoutedEventArgs e)
-        {
-            
-        }
         #endregion
+
+        private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            short_entity selection = (sender as ListBox).SelectedItem as short_entity;
+            current_race = client.GetRace(selection.uid);
+            
+            // Refresh the image source
+            image.Source = race_illustration;
+        }
     }
 }
