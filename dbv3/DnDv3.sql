@@ -144,10 +144,10 @@ CREATE TABLE `character` (
   `hair` varchar(45) DEFAULT NULL,
   `eyes` varchar(45) DEFAULT NULL,
   `skin` varchar(45) DEFAULT NULL,
-  `height` varchar(45) DEFAULT NULL,
-  `weight` varchar(45) DEFAULT NULL,
+  `height` int(10) unsigned DEFAULT NULL,
+  `weight` int(10) unsigned DEFAULT '0',
   `deity` tinyint(6) unsigned NOT NULL DEFAULT '0',
-  `age` int(10) DEFAULT NULL,
+  `age` int(10) unsigned DEFAULT NULL,
   `height_category` varchar(2) DEFAULT 'M',
   `personnality` varchar(511) DEFAULT NULL,
   PRIMARY KEY (`id_character`,`account`,`race`,`deity`),
@@ -233,7 +233,7 @@ DROP TABLE IF EXISTS `class`;
 CREATE TABLE `class` (
   `id_class` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `health_progression` varchar(45) DEFAULT NULL,
+  `health_progression` varchar(255) DEFAULT NULL,
   `template` int(32) unsigned NOT NULL DEFAULT '0',
   `description` varchar(511) DEFAULT NULL,
   `img` blob,
@@ -574,6 +574,7 @@ DROP TABLE IF EXISTS `gift`;
 CREATE TABLE `gift` (
   `id_gift` tinyint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `description` varchar(511) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `class` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_gift`,`class`),
@@ -656,7 +657,6 @@ CREATE TABLE `god` (
   `id_god` tinyint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(511) DEFAULT NULL,
-  `karma` int(8) DEFAULT NULL,
   PRIMARY KEY (`id_god`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1308,4 +1308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-30  9:17:23
+-- Dump completed on 2015-12-03 18:47:56

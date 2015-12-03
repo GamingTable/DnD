@@ -34,7 +34,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //parent = ((this.Parent as Grid).Parent as CharacterCreation);
         }
 
-        #region Race
+        #region Display
         public ImageSource race_illustration
         {
             get
@@ -49,7 +49,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
         }
         public string race_description { get; set; }
         #endregion
-
+        #region Events
         private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
@@ -70,15 +70,34 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //parent.update_display();
 
         }
-
-        public property_observable get_properties()
+        #endregion
+        #region Communication
+        public property_observable step_properties
         {
-            throw new NotImplementedException();
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public character get_step_modif()
+        public character step_character
         {
-            throw new NotImplementedException();
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
+        #endregion
+
     }
 }
