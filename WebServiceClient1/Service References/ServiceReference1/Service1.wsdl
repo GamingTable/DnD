@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DnDService" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_AccountConnection_InputMessage">
@@ -104,6 +105,18 @@
   <wsdl:message name="IService1_GetRace_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRaceResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristics" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMulticlass_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMulticlass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetMulticlass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMulticlassResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountConnection" message="tns:IService1_AccountConnection_InputMessage" />
@@ -168,6 +181,14 @@
     <wsdl:operation name="GetRace">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRace" message="tns:IService1_GetRace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRaceResponse" message="tns:IService1_GetRace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristics" message="tns:IService1_GetCharacteristics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicsResponse" message="tns:IService1_GetCharacteristics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMulticlass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMulticlass" message="tns:IService1_GetMulticlass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMulticlassResponse" message="tns:IService1_GetMulticlass_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -309,6 +330,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetRace">
       <soap:operation soapAction="http://tempuri.org/IService1/GetRace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristics">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMulticlass">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetMulticlass" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

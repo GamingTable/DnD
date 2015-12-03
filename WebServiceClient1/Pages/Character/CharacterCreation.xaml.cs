@@ -4,6 +4,7 @@ using DnDServicePlayer.Pages.Character.Creation;
 using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,30 +25,37 @@ namespace DnDServicePlayer.Pages.Character
     /// </summary>
     public partial class CharacterCreation : UserControl, ISwitchable
     {
-        private List<UserControl> creation_steps;
+        private List<ICreationSwitcher> creation_steps;
         private int current_step;
-        private character new_character;
+        public character new_character { get; set; }
+        public List<short_entity> properties { get; set; }
+        private Service1Client client = new Service1Client();
 
         #region Define SubSwitchables
         public CharacterCreation()
         {
             InitializeComponent();
 
+            properties_tree.ItemsSource = properties;
+
+
             new_character = new character();
             current_step = 0;
-            creation_steps = new List<UserControl> {new Race(),
-                                                    new Classe(),
-                                                    new Stats(),
-                                                    new Gifts(),
-                                                    new Skills(),
-                                                    new Spells(),
-                                                    new Background()};
+            creation_steps = new List<ICreationSwitcher> {
+                                    new Race(),
+                                    new Classe(),
+                                    new Stats(),
+                                    new Gifts(),
+                                    new Skills(),
+                                    new Spells(),
+                                    new Background()};
 
         }
 
         public void UtilizeState(object state)
         {
             uint account_id = (uint)state;
+            new_character.account = account_id;
         }
         #endregion
 
@@ -98,10 +106,40 @@ namespace DnDServicePlayer.Pages.Character
         }
         #endregion
 
+        #region Making Character
+        public void update_display()
+        {
+            /*<property_observable> properties = new List<property_observable>();
+
+            //  Race
+            var race_properties = new property_observable();
+
+            var race_switcher = (Race)creation_steps[0];
+            var selected_race = race_switcher.current_race; 
+            if(selected_race.uid > 0)
+            {
+                // Define the name
+                race_properties.name = selected_race.name;
+
+                // Define the characteristics boni of the race
+                var charac_list = new List<Tuple<string, string>>();
+                foreach(var charac in selected_race.template.characteristics)
+                {
+                    charac_list.Add(new Tuple<string, string>(
+                        (charac.value>0)? "+" + charac.value.ToString(): charac.value.ToString(),
+                        charac.abreviation));
+                }
+                race_properties.members.Add(new property_member() {
+                    key = "Bonus de Caractéristiques",
+
+                    });
+            }*/
+        }
+        #endregion
+
         #region Passing Character
         private void add_new_character()
         {
-            Service1Client client = new Service1Client();
             client.CharacterCreate(new_character);
         }
         #endregion

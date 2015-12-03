@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DnDService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DnDService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DnDService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DnDService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="character">
     <xs:sequence>
-      <xs:element minOccurs="0" name="armor_class" type="xs:int" />
-      <xs:element minOccurs="0" name="charisma" type="xs:int" />
-      <xs:element minOccurs="0" name="class_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="constitution" type="xs:int" />
-      <xs:element minOccurs="0" name="dexterity" type="xs:int" />
-      <xs:element minOccurs="0" name="fortitude" type="xs:int" />
-      <xs:element minOccurs="0" name="id_account" type="xs:unsignedInt" />
-      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
-      <xs:element minOccurs="0" name="initiative" type="xs:int" />
-      <xs:element minOccurs="0" name="intelligence" type="xs:int" />
-      <xs:element minOccurs="0" name="level" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="account" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="age" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="avatar" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="background" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q1:multiclass" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="deity" nillable="true" type="q2:short_entity" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q3:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="eyes" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="gifts" nillable="true" type="q4:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="hair" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="height" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="height_category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="inventory" type="xs:unsignedInt" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="languages" nillable="true" type="q5:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="race_name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="reflexe" type="xs:int" />
-      <xs:element minOccurs="0" name="speed" type="xs:int" />
-      <xs:element minOccurs="0" name="strength" type="xs:int" />
-      <xs:element minOccurs="0" name="will" type="xs:int" />
-      <xs:element minOccurs="0" name="wisdom" type="xs:int" />
+      <xs:element minOccurs="0" name="personnality" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="race" nillable="true" type="q6:complete_race" />
+      <xs:element minOccurs="0" name="sex" type="ser:char" />
+      <xs:element minOccurs="0" name="skin" type="xs:unsignedInt" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="stats" nillable="true" type="q7:ArrayOftemplate" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="weight" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="character" nillable="true" type="tns:character" />

@@ -19,7 +19,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// <summary>
     /// Logique d'interaction pour Classe.xaml
     /// </summary>
-    public partial class Classe : UserControl, ISwitchable
+    public partial class Classe : UserControl, ICreationSwitcher
     {
         private short_entity[] class_list;
         private Service1Client client;
@@ -35,10 +35,16 @@ namespace DnDServicePlayer.Pages.Character.Creation
             classe_list_box.ItemsSource = class_list;
         }
 
-        public void UtilizeState(object state)
+        public property_observable get_properties()
         {
             throw new NotImplementedException();
         }
+
+        public character get_step_modif()
+        {
+            throw new NotImplementedException();
+        }
+
 
         #region Class
         private void classe_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)

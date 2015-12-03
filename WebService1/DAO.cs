@@ -202,7 +202,7 @@ namespace DnDService
 
         public character GetCharacter(uint character_id)
         {
-            if (this.OpenConnection() == true)
+            /*if (this.OpenConnection() == true)
             {
                 uint race_id = 0;
                 uint class_id;
@@ -261,7 +261,7 @@ namespace DnDService
 
                     if (dataReader.Read())
                     {
-                        character c = new character(character_id, 1, 1, classe, race, name, (int)dataReader["strength"], (int)dataReader["constitution"], (int)dataReader["dexterity"], (int)dataReader["intelligence"], (int)dataReader["wisdom"], (int)dataReader["charisma"], (int)dataReader["initiative"], (int)dataReader["armor_class"], (int)dataReader["fortitude"], (int)dataReader["reflexe"], (int)dataReader["will"], (int)dataReader["speed"]);
+                        character c = new character();
                         return c;
                     }
                 }
@@ -273,8 +273,8 @@ namespace DnDService
             }
             else
             {
-            }
-            character ch = new character(1, 1, 1, "a", "b", "c", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+            }*/
+            character ch = new character();
             return ch;
         }
 

@@ -221,4 +221,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCharacteristics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_template" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" name="id_type" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCharacteristicsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicsResult" nillable="true" type="q13:ArrayOfcharacteristic" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMulticlass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMulticlassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetMulticlassResult" nillable="true" type="q14:multiclass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

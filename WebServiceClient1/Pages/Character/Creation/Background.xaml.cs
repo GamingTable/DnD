@@ -13,17 +13,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DnDServicePlayer.ServiceReference1;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
     /// <summary>
     /// Logique d'interaction pour Background.xaml
     /// </summary>
-    public partial class Background : UserControl, ISwitchable
+    public partial class Background : UserControl, ICreationSwitcher
     {
         public Background()
         {
             InitializeComponent();
+        }
+
+        public property_observable get_properties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public character get_step_modif()
+        {
+            throw new NotImplementedException();
         }
 
         public void UtilizeState(object state)

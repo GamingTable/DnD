@@ -5,48 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="404" d:DesignWidth="710" Width="710" Height="404">
-    <Grid Width="710" Height="404">
+             d:DesignHeight="404" d:DesignWidth="710" Width="555" Height="404">
+    <Grid Width="555" Height="404">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="45"/>
-            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="38"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="39"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
             <RowDefinition />
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="90.048"/>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="race_list_box" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" Grid.RowSpan="2" SelectionChanged="race_list_box_SelectionChanged">
+        <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <!-- Selected="race_list_box_Selected">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Height="auto" Width="300"  Orientation="Vertical">
-                        <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
-                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow"/>
-                    </StackPanel>
+                    <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">
+                    </StackPanel>-->
+                    <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Race" Margin="0,-4,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
-        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="6"  Stretch="Fill" Source="{Binding race_illustration}" Grid.ColumnSpan="3" Height="404" VerticalAlignment="Top"/>
-        <ListView x:Name="listView" Grid.Column="1" HorizontalAlignment="Left" Height="90" Grid.Row="4" VerticalAlignment="Top" Width="340" ItemsSource="{Binding race}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Caractéristique"
-                                    DisplayMemberBinding="{Binding abreviation}"/>
-                    <GridViewColumn Header="Bonus"
-                                    DisplayMemberBinding="{Binding value}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TreeView x:Name="treeView" Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="67,10,0,-30" Grid.Row="5" VerticalAlignment="Top" Width="211"/>
-
+        <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Race" Canvas.ZIndex ="999" Margin="0,-8,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="0"/>
+        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="5"  Stretch="Fill" Source="{Binding race_illustration}" Margin="0,10,0,0"/>
+        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="4" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

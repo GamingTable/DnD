@@ -20,7 +20,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// <summary>
     /// Logique d'interaction pour Stats.xaml
     /// </summary>
-    public partial class Stats : UserControl, ISwitchable
+    public partial class Stats : UserControl, ICreationSwitcher
     {
         private Service1Client client;
         private short_entity[] charac_list;
@@ -36,7 +36,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
             charac_list_box.ItemsSource = charac_list;
         }
 
-        public void UtilizeState(object state)
+        
+        public property_observable get_properties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public character get_step_modif()
         {
             throw new NotImplementedException();
         }

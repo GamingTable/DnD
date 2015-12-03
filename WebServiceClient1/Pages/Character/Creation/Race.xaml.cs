@@ -12,12 +12,12 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// <summary>
     /// Logique d'interaction pour Race.xaml
     /// </summary>
-    public partial class Race : UserControl, ISwitchable
+    public partial class Race : UserControl, ICreationSwitcher
     {
         private short_entity[] race_list;
-        private uint current_uid_race;
-        Service1Client client;
-        complete_race current_race;
+        private Service1Client client;
+        public complete_race current_race { get; set; }
+        private CharacterCreation parent;
 
         public Race()
         {
@@ -30,21 +30,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
 
-            // Define the image source
-            //image.Source = race_illustration;
-            /*// Try to display a random race
-            ///////////////////////////////
-            current_uid_race = 1;
-            // Get the race
-            current_race = client.GetRace(current_uid_race);
-
-            // Define the listview source
-            listView.ItemsSource = current_race.template.characteristics;*/
-        }
-
-        public void UtilizeState(object state)
-        {
-            throw new NotImplementedException();
+            // Keep the parent to make the character
+            //parent = ((this.Parent as Grid).Parent as CharacterCreation);
         }
 
         #region Race
@@ -60,6 +47,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             }
             set{ SetValue(System.Windows.Controls.Image.SourceProperty, value); }
         }
+        public string race_description { get; set; }
         #endregion
 
         private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,14 +55,30 @@ namespace DnDServicePlayer.Pages.Character.Creation
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_race = client.GetRace(selection.uid);
 
+            race_description = selection.description;
+
             // Refresh the image source
-            update_image();
+            update_display();
         }
 
-        private void update_image()
+        private void update_display()
         {
             image.Source = race_illustration;
             image.Stretch = Stretch.Uniform;
+
+            description_display.Text = race_description;
+            //parent.update_display();
+
+        }
+
+        public property_observable get_properties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public character get_step_modif()
+        {
+            throw new NotImplementedException();
         }
     }
 }

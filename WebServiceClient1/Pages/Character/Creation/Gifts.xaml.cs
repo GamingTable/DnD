@@ -13,20 +13,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DnDServicePlayer.ServiceReference1;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
     /// <summary>
     /// Logique d'interaction pour Gifts.xaml
     /// </summary>
-    public partial class Gifts : UserControl, ISwitchable
+    public partial class Gifts : UserControl, ICreationSwitcher
     {
         public Gifts()
         {
             InitializeComponent();
         }
 
-        public void UtilizeState(object state)
+        public property_observable get_properties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public character get_step_modif()
         {
             throw new NotImplementedException();
         }
