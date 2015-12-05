@@ -14,8 +14,7 @@
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="45"/>
             <ColumnDefinition Width="125"/>
-            <ColumnDefinition Width="66"/>
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
@@ -26,18 +25,12 @@
             <RowDefinition Height="39"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
-
-        <Creation:Race x:Name="creation_controllers" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5"/>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6">
+            <Creation:Race x:Name="creation_controllers" Width="auto" Height="auto"/>
+        </ScrollViewer>
         <Button x:Name="previous_button" Content="Précédent" Grid.Column="2" Grid.Row="3" Click="previous_button_Click" FontSize="16" IsEnabled="False"/>
         <Button x:Name="next_button" Content="Suivant" Grid.Column="4" Grid.Row="3" Click="next_button_Click" FontSize="16" IsDefault="True"/>
-        <Button x:Name="cancel_button" Content="Annuler" Grid.Column="7" Grid.Row="3" Click="cancel_button_Click" FontSize="16" IsCancel="True"/>
-        <TreeView Name="properties_tree" Grid.Column="7" Grid.Row="1" Margin="-5,0,0,0">
-            <!--<TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type self:MenuItem}"ItemsSource="{Binding properties}">
-                    <TextBlock Text="{Binding name}" />
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>-->
-        </TreeView>
+        <Button x:Name="cancel_button" Content="Annuler" Grid.Column="6" Grid.Row="3" Click="cancel_button_Click" FontSize="16" IsCancel="True"/>
         <!--<TreeViewItem Header="Race" FontSize="15"/>
             <TreeViewItem Header="Classe" FontSize="15"/>
             <TreeViewItem Header="Race" FontSize="15"/>

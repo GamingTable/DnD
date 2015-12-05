@@ -87,7 +87,6 @@
       <DependentUpon>Gifts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Character\Creation\ICreationSwitcher.cs" />
-    <Compile Include="Pages\Character\Creation\property_entity.cs" />
     <Compile Include="Pages\Character\Creation\Race.xaml.cs">
       <DependentUpon>Race.xaml</DependentUpon>
     </Compile>

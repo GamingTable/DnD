@@ -16,7 +16,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     {
         private short_entity[] race_list;
         private Service1Client client;
-        public complete_race current_race { get; set; }
+        public static complete_race current_race { get; set; }
         //private CharacterCreation parent;
 
         public Race()
@@ -71,7 +71,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         }
         #endregion
-        #region Communication
+        /*#region Communication
         public property_observable step_properties
         {
             get
@@ -97,7 +97,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
                 throw new NotImplementedException();
             }
         }
-        #endregion
+        #endregion*/
 
     }
 }

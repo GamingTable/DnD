@@ -5,21 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="404" d:DesignWidth="710" Width="555" Height="404">
-    <Grid Width="555" Height="404">
+             d:DesignHeight="600" d:DesignWidth="700" Width="700" Height="600">
+    <Grid Width="700" Height="600">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="38"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="10"/>
-            <RowDefinition />
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="164"/>
+            <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -33,7 +34,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Race" Canvas.ZIndex ="999" Margin="0,-8,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="0"/>
-        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="5"  Stretch="Fill" Source="{Binding race_illustration}" Margin="0,10,0,0"/>
+        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="3"  Stretch="Fill" Source="{Binding race_illustration}" Grid.Row="2"/>
         <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="4" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

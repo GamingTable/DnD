@@ -27,8 +27,7 @@ namespace DnDServicePlayer.Pages.Character
     {
         private List<ICreationSwitcher> creation_steps;
         private int current_step;
-        public character new_character { get; set; }
-        public List<short_entity> properties { get; set; }
+        private uint account;
         private Service1Client client = new Service1Client();
 
         #region Define SubSwitchables
@@ -36,10 +35,6 @@ namespace DnDServicePlayer.Pages.Character
         {
             InitializeComponent();
 
-            properties_tree.ItemsSource = properties;
-
-
-            new_character = new character();
             current_step = 0;
             creation_steps = new List<ICreationSwitcher> {
                                     new Race(),
@@ -55,7 +50,7 @@ namespace DnDServicePlayer.Pages.Character
         public void UtilizeState(object state)
         {
             uint account_id = (uint)state;
-            new_character.account = account_id;
+            account = account_id;
         }
         #endregion
 
@@ -140,6 +135,43 @@ namespace DnDServicePlayer.Pages.Character
         #region Passing Character
         private void add_new_character()
         {
+            // Race
+            var selected_race   = Race.current_race;
+            // Class
+            var selected_class  = Classe.current_class;
+            var selected_multiclass = new multiclass();
+            selected_multiclass.level_class = new List<Tuple<uint, complete_class>>(new Tuple<uint, complete_class>(1, selected_class))
+
+            character new_character = new character
+            {
+                name            = ,
+                avatar          = ,
+                account         = this.account,
+
+                race            = selected_race,
+                classes         = selected_multiclass,
+                stats           = ,
+                gifts           = ,
+                skills          = ,
+
+                languages       = ,
+                aptitudes       = ,
+                inventory       = ,
+                effects         = ,
+                deity           = ,
+
+                sex             = ,
+                background      = ,
+                personnality    = ,
+                hair            = ,
+                eyes            = ,
+                skin            = ,
+                height          = ,
+                weight          = ,
+                age             = ,
+                height_category = ,        
+        };
+
             client.CharacterCreate(new_character);
         }
         #endregion
