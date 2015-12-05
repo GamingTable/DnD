@@ -1,12 +1,113 @@
-﻿<UserControl x:Class="DnDServicePlayer.Pages.CharacterSheet"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Selection="clr-namespace:DnDServicePlayer.Pages.Character.Selection" x:Class="DnDServicePlayer.Pages.CharacterSheet"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="800" Height="600">
+    <!--<UserControl.Resources>
+        <Style x:Key="menu_button" TargetType="Button">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Button>
+                            <Button.Content>
+                                test
+                            </Button.Content>
+                            <Button.Tag>
+                                <System:Int32></System:Int32>/>
+                            </Button.Tag>
+                            <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"></ContentPresenter>
+                        </Button>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>-->
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="35"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="3" VerticalAlignment="Top" Height="440" >
+            <Button x:Name="stat_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>0</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Statistiques" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="special_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>1</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Spéciaux" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="inventory_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>2</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Inventaire" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="spellbook_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>3</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Livres de Sorts" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="adventure_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>4</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Aventure" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="discussion_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>5</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Communication" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="option_button" Width="55" Height="55" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>6</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Options" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="cancel_button" Width="55" Height="55" Click="cancel_button_Click">
+                <Button.Content>
+                    <TextBlock Text="Quitter" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <Selection:StatSheet x:Name="sheet_controllers" Grid.Column="2" Grid.Row="3"/>
+        <Label x:Name="label" Content="Feuille de Personnage DnD" HorizontalContentAlignment="Center" Grid.Column="2" HorizontalAlignment="Left" Height="35" Grid.Row="1" VerticalAlignment="Top" Width="690" FontSize="21.333" FontWeight="Bold"/>
+
+
     </Grid>
 </UserControl>

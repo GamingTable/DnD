@@ -74,3 +74,17 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\D
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\AdventureSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\DiscussionSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\InventorySheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\OptionSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpecialSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpellbookSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\StatSheet.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\AdventureSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\DiscussionSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\InventorySheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\OptionSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpecialSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpellbookSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\StatSheet.baml

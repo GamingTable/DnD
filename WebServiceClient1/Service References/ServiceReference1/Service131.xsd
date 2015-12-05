@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="ArrayOfshort_entity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="short_entity" nillable="true" type="tns:short_entity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfshort_entity" nillable="true" type="tns:ArrayOfshort_entity" />
+  <xs:complexType name="short_entity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="short_entity" nillable="true" type="tns:short_entity" />
   <xs:complexType name="multiclass">
     <xs:sequence>
       <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
@@ -20,20 +34,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="complete_class" nillable="true" type="tns:complete_class" />
-  <xs:complexType name="ArrayOfshort_entity">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="short_entity" nillable="true" type="tns:short_entity" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfshort_entity" nillable="true" type="tns:ArrayOfshort_entity" />
-  <xs:complexType name="short_entity">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="short_entity" nillable="true" type="tns:short_entity" />
   <xs:complexType name="template">
     <xs:sequence>
       <xs:element minOccurs="0" name="characteristics" nillable="true" type="tns:ArrayOfcharacteristic" />
@@ -73,6 +73,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
+  <xs:complexType name="multientity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="values_entities" nillable="true" type="q2:ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="multientity" nillable="true" type="tns:multientity" />
   <xs:complexType name="ArrayOftemplate">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="template" nillable="true" type="tns:template" />

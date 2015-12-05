@@ -27,11 +27,15 @@ namespace DnDService
         public multiclass classes { get; set; }
         [DataMember]
         public List<template> stats { get; set; }
+        [DataMember]
+        public List<short_entity> gifts { get; set; }
+        [DataMember]
+        public multientity skills { get; set; }
 
         [DataMember]
         public List<short_entity> languages { get; set; }
         [DataMember]
-        public List<short_entity> gifts { get; set; }
+        public List<short_entity> aptitudes { get; set; }
         [DataMember]
         public uint inventory { get; set; }
         [DataMember]

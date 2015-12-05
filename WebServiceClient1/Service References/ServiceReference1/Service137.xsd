@@ -22,4 +22,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
+  <xs:complexType name="ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntshort_entityY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" />
+  <xs:complexType name="TupleOfunsignedIntshort_entityY6NY8n6N">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="unsignedInt" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="short_entity" Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="m_Item1" type="xs:unsignedInt" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" name="m_Item2" nillable="true" type="q2:short_entity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntshort_entityY6NY8n6N" />
 </xs:schema>

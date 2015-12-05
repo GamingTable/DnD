@@ -100,6 +100,28 @@
     <Compile Include="Pages\Character\Creation\Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Character\Selection\AdventureSheet.xaml.cs">
+      <DependentUpon>AdventureSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\DiscussionSheet.xaml.cs">
+      <DependentUpon>DiscussionSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\InventorySheet.xaml.cs">
+      <DependentUpon>InventorySheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\ISelectable.cs" />
+    <Compile Include="Pages\Character\Selection\OptionSheet.xaml.cs">
+      <DependentUpon>OptionSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\SpecialSheet.xaml.cs">
+      <DependentUpon>SpecialSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\SpellbookSheet.xaml.cs">
+      <DependentUpon>SpellbookSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Character\Selection\StatSheet.xaml.cs">
+      <DependentUpon>StatSheet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +183,34 @@
     <Page Include="Pages\Character\Creation\Stats.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Character\Selection\AdventureSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\DiscussionSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\InventorySheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\OptionSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\SpecialSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\SpellbookSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\StatSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

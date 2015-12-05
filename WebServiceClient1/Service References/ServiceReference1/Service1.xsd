@@ -6,24 +6,26 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="account" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="age" type="xs:unsignedInt" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="aptitudes" nillable="true" type="q1:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="avatar" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="background" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q1:multiclass" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="deity" nillable="true" type="q2:short_entity" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q3:ArrayOfshort_entity" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q2:multiclass" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="deity" nillable="true" type="q3:short_entity" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q4:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="eyes" nillable="true" type="xs:string" />
-      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="gifts" nillable="true" type="q4:ArrayOfshort_entity" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="gifts" nillable="true" type="q5:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="hair" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="height" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="height_category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="inventory" type="xs:unsignedInt" />
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="languages" nillable="true" type="q5:ArrayOfshort_entity" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="languages" nillable="true" type="q6:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="personnality" nillable="true" type="xs:string" />
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="race" nillable="true" type="q6:complete_race" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="race" nillable="true" type="q7:complete_race" />
       <xs:element minOccurs="0" name="sex" type="ser:char" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="skills" nillable="true" type="q8:multientity" />
       <xs:element minOccurs="0" name="skin" type="xs:unsignedInt" />
-      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="stats" nillable="true" type="q7:ArrayOftemplate" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="stats" nillable="true" type="q9:ArrayOftemplate" />
       <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="weight" type="xs:unsignedInt" />
     </xs:sequence>

@@ -17,7 +17,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
         private short_entity[] race_list;
         private Service1Client client;
         public complete_race current_race { get; set; }
-        private CharacterCreation parent;
+        //private CharacterCreation parent;
 
         public Race()
         {
