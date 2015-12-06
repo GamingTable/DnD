@@ -10,6 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="64"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -18,12 +20,12 @@
             <RowDefinition/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="Répartition des Points de Caractéristiques" Height="45" Width="620" Grid.Column="1" HorizontalContentAlignment="Center" FontSize="29.333" FontWeight="Bold" Margin="0,-4,0,0"/>
-        <StackPanel Grid.Column="1" Height="275" Grid.Row="2" Width="620">
-            <ListBox x:Name="charac_list_box" Grid.Column="1" Grid.Row="2" Width="620" Height="275">
+        <Label x:Name="label" Content="Répartition des Points de Caractéristiques" Grid.Column="1" HorizontalContentAlignment="Center" FontSize="29.333" FontWeight="Bold" Margin="0,-2,0,2" Grid.ColumnSpan="3"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" Grid.RowSpan="1">
+            <ListBox x:Name="charac_list_box">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel  Orientation="Horizontal" Height="auto" Width="600">
+                        <StackPanel  Orientation="Horizontal">
                             <Label x:Name="name_display" Width="100" Height="auto" Margin="2,0,0,0" VerticalContentAlignment="Center" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
                             <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="400" Text="{Binding description}" FontStyle="Italic" FontSize="13.333" TextWrapping="WrapWithOverflow"/>
                         </StackPanel>

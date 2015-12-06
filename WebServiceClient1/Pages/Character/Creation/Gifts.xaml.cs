@@ -26,15 +26,5 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             InitializeComponent();
         }
-
-        public property_observable get_properties()
-        {
-            throw new NotImplementedException();
-        }
-
-        public character get_step_modif()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

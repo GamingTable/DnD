@@ -17,7 +17,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
         private short_entity[] race_list;
         private Service1Client client;
         public static complete_race current_race { get; set; }
-        //private CharacterCreation parent;
 
         public Race()
         {
@@ -30,8 +29,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             race_list_box.ItemsSource = race_list;
 
-            // Keep the parent to make the character
-            //parent = ((this.Parent as Grid).Parent as CharacterCreation);
+            // Retrieve the current_race if selected
+            if(current_race != null)
+            {
+                update_display();
+            }
         }
 
         #region Display
@@ -47,15 +49,17 @@ namespace DnDServicePlayer.Pages.Character.Creation
             }
             set{ SetValue(System.Windows.Controls.Image.SourceProperty, value); }
         }
-        public string race_description { get; set; }
+        public string race_description
+        {
+            get { return current_race.description; }
+            set { }
+        }
         #endregion
         #region Events
         private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_race = client.GetRace(selection.uid);
-
-            race_description = selection.description;
 
             // Refresh the image source
             update_display();
@@ -67,37 +71,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             image.Stretch = Stretch.Uniform;
 
             description_display.Text = race_description;
-            //parent.update_display();
-
         }
         #endregion
-        /*#region Communication
-        public property_observable step_properties
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public character step_character
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion*/
-
     }
 }

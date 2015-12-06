@@ -44,7 +44,8 @@ namespace DnDServicePlayer.Pages.Character
                                     new Skills(),
                                     new Spells(),
                                     new Background()};
-
+            
+            creation_controllers.Content = creation_steps[0];
         }
 
         public void UtilizeState(object state)
@@ -140,10 +141,10 @@ namespace DnDServicePlayer.Pages.Character
             // Class
             var selected_class  = Classe.current_class;
             var selected_multiclass = new multiclass();
-            selected_multiclass.level_class = new List<Tuple<uint, complete_class>>(new Tuple<uint, complete_class>(1, selected_class))
+            //selected_multiclass.level_class = new List<Tuple<uint, complete_class>>(new Tuple<uint, complete_class>(1, selected_class))
 
-            character new_character = new character
-            {
+            character new_character = new character();
+            /*{
                 name            = ,
                 avatar          = ,
                 account         = this.account,
@@ -169,8 +170,8 @@ namespace DnDServicePlayer.Pages.Character
                 height          = ,
                 weight          = ,
                 age             = ,
-                height_category = ,        
-        };
+                height_category = ,       
+        };*/
 
             client.CharacterCreate(new_character);
         }

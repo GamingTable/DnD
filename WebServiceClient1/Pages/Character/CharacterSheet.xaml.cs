@@ -41,6 +41,8 @@ namespace DnDServicePlayer.Pages
                                     new AdventureSheet(),
                                     new DiscussionSheet(),
                                     new OptionSheet() };
+
+            sheet_controllers.Content = sheet_pages[0];
         }
 
         public void UtilizeState(object state)

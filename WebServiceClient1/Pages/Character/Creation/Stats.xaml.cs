@@ -35,16 +35,5 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             charac_list_box.ItemsSource = charac_list;
         }
-
-        
-        public property_observable get_properties()
-        {
-            throw new NotImplementedException();
-        }
-
-        public character get_step_modif()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

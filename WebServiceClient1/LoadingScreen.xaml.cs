@@ -1,5 +1,4 @@
-﻿using DnDServicePlayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DnDServicePlayer.ServiceReference1;
 
-namespace DnDServicePlayer.Pages.Character.Creation
+namespace DnDServicePlayer
 {
     /// <summary>
-    /// Logique d'interaction pour Skills.xaml
+    /// Logique d'interaction pour LoadingScreen.xaml
     /// </summary>
-    public partial class Skills : UserControl, ICreationSwitcher
+    public partial class LoadingScreen : UserControl
     {
-        public Skills()
+        public LoadingScreen()
         {
             InitializeComponent();
         }

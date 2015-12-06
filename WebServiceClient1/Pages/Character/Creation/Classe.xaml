@@ -5,40 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="710" Height="404">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="39"/>
-            <RowDefinition />
-            <RowDefinition Height="45"/>
-        </Grid.RowDefinitions>
+             d:DesignHeight="600" d:DesignWidth="700" Width="700" Height="600">
+    <Grid Width="700" Height="600">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="38"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="340"/>
-            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="classe_list_box" Grid.Column="1" Grid.Row="2" Width="340" SelectionChanged="classe_list_box_SelectionChanged">
-            <!-- Selected="race_list_box_Selected">-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="164"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="class_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" SelectionChanged="class_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <!-- Selected="class_list_box_Selected">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Height="auto" Width="300"  Orientation="Vertical">
-                        <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
-                        <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="auto" Text="{Binding description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow"/>
-                    </StackPanel>
+                    <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">
+                    </StackPanel>-->
+                    <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="label" Content="Choisissez Votre Classe" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="32" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Right" BorderThickness="0,0,4,0" Margin="0,-4,0,0">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1" ScaleX="1"/>
-                    <SkewTransform AngleY="0" AngleX="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-
+        <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Classe" Canvas.ZIndex ="999" Margin="0,-8,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="0"/>
+        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="3"  Stretch="Fill" Source="{Binding class_illustration}" Grid.Row="2"/>
+        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="4" Height="auto" Width="auto" Text="{Binding class_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

@@ -88,3 +88,5 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\P
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpecialSheet.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\SpellbookSheet.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\Selection\StatSheet.baml
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\LoadingScreen.g.cs
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\LoadingScreen.baml
