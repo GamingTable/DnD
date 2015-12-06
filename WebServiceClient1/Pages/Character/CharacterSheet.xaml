@@ -37,13 +37,13 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="3" VerticalAlignment="Top" Height="440" >
-            <Button x:Name="stat_button" Width="55" Height="55" Click="change_page">
+        <StackPanel Orientation="Vertical" Grid.Row="3">
+            <Button x:Name="stat_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
                     <System:Int32>0</System:Int32>
                 </Button.Tag>
@@ -51,7 +51,7 @@
                     <TextBlock Text="Statistiques" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="special_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="special_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
                     <System:Int32>1</System:Int32>
                 </Button.Tag>
@@ -59,7 +59,7 @@
                     <TextBlock Text="Spéciaux" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="inventory_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="inventory_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
                     <System:Int32>2</System:Int32>
                 </Button.Tag>
@@ -67,7 +67,7 @@
                     <TextBlock Text="Inventaire" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="spellbook_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="spellbook_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
                     <System:Int32>3</System:Int32>
                 </Button.Tag>
@@ -75,31 +75,39 @@
                     <TextBlock Text="Livres de Sorts" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="adventure_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="background_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
                     <System:Int32>4</System:Int32>
+                </Button.Tag>
+                <Button.Content>
+                    <TextBlock Text="Personnalité" TextWrapping="WrapWithOverflow"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="adventure_button" Width="50" Height="50" Click="change_page">
+                <Button.Tag>
+                    <System:Int32>5</System:Int32>
                 </Button.Tag>
                 <Button.Content>
                     <TextBlock Text="Aventure" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="discussion_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="discussion_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
-                    <System:Int32>5</System:Int32>
+                    <System:Int32>6</System:Int32>
                 </Button.Tag>
                 <Button.Content>
                     <TextBlock Text="Communication" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="option_button" Width="55" Height="55" Click="change_page">
+            <Button x:Name="option_button" Width="50" Height="50" Click="change_page">
                 <Button.Tag>
-                    <System:Int32>6</System:Int32>
+                    <System:Int32>7</System:Int32>
                 </Button.Tag>
                 <Button.Content>
                     <TextBlock Text="Options" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="cancel_button" Width="55" Height="55" Click="cancel_button_Click">
+            <Button x:Name="cancel_button" Width="50" Height="50" Click="cancel_button_Click">
                 <Button.Content>
                     <TextBlock Text="Quitter" TextWrapping="WrapWithOverflow"/>
                 </Button.Content>

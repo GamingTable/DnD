@@ -105,6 +105,9 @@
     <Compile Include="Pages\Character\Selection\AdventureSheet.xaml.cs">
       <DependentUpon>AdventureSheet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Character\Selection\BackgroundSheet.xaml.cs">
+      <DependentUpon>BackgroundSheet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Character\Selection\DiscussionSheet.xaml.cs">
       <DependentUpon>DiscussionSheet.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Character\Selection\AdventureSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Character\Selection\BackgroundSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

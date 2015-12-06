@@ -26,8 +26,20 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel  Orientation="Horizontal">
-                            <Label x:Name="name_display" Width="100" Height="auto" Margin="2,0,0,0" VerticalContentAlignment="Center" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
-                            <TextBlock x:Name="description_display" Height="auto" Margin="12,0,0,0" Width="400" Text="{Binding description}" FontStyle="Italic" FontSize="13.333" TextWrapping="WrapWithOverflow"/>
+                            <Label x:Name="name_display" VerticalContentAlignment="Center" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
+                            <!--<TextBlock x:Name="description_display" Text="{Binding description}" FontStyle="Italic" FontSize="13.333" TextWrapping="WrapWithOverflow"/>-->
+                            <TextBlock x:Name="base_value_display" />
+                            <Label Content="+" />
+                            <TextBlock x:Name="race_value_display" />
+                            <Label Content="=" />
+                            <TextBlock x:Name="total_value_display" />
+                            <TextBlock x:Name="base_mod_display" />
+                            <Label Content="+" />
+                            <TextBlock x:Name="class_mod_display" />
+                            <Label Content="=" />
+                            <TextBlock x:Name="total_mod_display" />
+                            <Button x:Name="increase_value_button" Click="increase_value_button_Click" Content="+" />
+                            <Button x:Name="decrease_value_button" Click="decrease_value_button_Click" Content="-" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

@@ -24,6 +24,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     {
         private Service1Client client;
         private short_entity[] charac_list;
+        public static template current_stats { get; set; }
 
         public Stats()
         {
@@ -35,5 +36,27 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             charac_list_box.ItemsSource = charac_list;
         }
+
+        #region Button Handler
+        private void increase_value_button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void decrease_value_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Default retrieving
+        private template default_template
+        {
+            get
+            {
+                // 19 is the id of the default template
+                // in the current DB
+                return client.GetTemplate(19);
+            }
+        }
+        #endregion
     }
 }

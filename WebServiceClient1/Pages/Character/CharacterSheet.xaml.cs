@@ -38,6 +38,7 @@ namespace DnDServicePlayer.Pages
                                     new SpecialSheet(),
                                     new InventorySheet(),
                                     new SpellbookSheet(),
+                                    new BackgroundSheet(),
                                     new AdventureSheet(),
                                     new DiscussionSheet(),
                                     new OptionSheet() };

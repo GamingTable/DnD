@@ -1203,7 +1203,7 @@ CREATE TABLE `template` (
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(511) DEFAULT NULL,
   PRIMARY KEY (`id_template`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1212,7 +1212,7 @@ CREATE TABLE `template` (
 
 LOCK TABLES `template` WRITE;
 /*!40000 ALTER TABLE `template` DISABLE KEYS */;
-INSERT INTO `template` VALUES (1,'humain_default',''),(2,'demi_elfe_default',NULL),(3,'demi_orque_default',''),(4,'elfe_default',NULL),(5,'gnome_default',NULL),(6,'halfelin_default',NULL),(7,'nain_default',NULL),(8,'barbare_default',NULL),(9,'barde_default',NULL),(10,'druide_default',NULL),(11,'ensorceleur_default',NULL),(12,'guerrier_default',NULL),(13,'magicien_default',NULL),(14,'moine_default',NULL),(15,'paladin_default',NULL),(16,'prêtre_default',NULL),(17,'rôdeur_default',NULL),(18,'roublard_default',NULL);
+INSERT INTO `template` VALUES (1,'humain_default',''),(2,'demi_elfe_default',NULL),(3,'demi_orque_default',''),(4,'elfe_default',NULL),(5,'gnome_default',NULL),(6,'halfelin_default',NULL),(7,'nain_default',NULL),(8,'barbare_default',NULL),(9,'barde_default',NULL),(10,'druide_default',NULL),(11,'ensorceleur_default',NULL),(12,'guerrier_default',NULL),(13,'magicien_default',NULL),(14,'moine_default',NULL),(15,'paladin_default',NULL),(16,'prêtre_default',NULL),(17,'rôdeur_default',NULL),(18,'roublard_default',NULL),(19,'character_default','Initial values');
 /*!40000 ALTER TABLE `template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1241,7 +1241,7 @@ CREATE TABLE `template_has_characteristic` (
 
 LOCK TABLES `template_has_characteristic` WRITE;
 /*!40000 ALTER TABLE `template_has_characteristic` DISABLE KEYS */;
-INSERT INTO `template_has_characteristic` VALUES (2,1,-2),(2,3,2),(3,1,-2),(3,2,2),(4,1,2),(4,4,-2),(4,6,-2),(5,2,2),(5,6,-2),(7,2,-2),(7,3,2);
+INSERT INTO `template_has_characteristic` VALUES (2,1,-2),(2,3,2),(3,1,-2),(3,2,2),(4,1,2),(4,4,-2),(4,6,-2),(5,2,2),(5,6,-2),(7,2,-2),(7,3,2),(19,1,8),(19,2,8),(19,3,8),(19,4,8),(19,5,8),(19,6,8),(19,22,27);
 /*!40000 ALTER TABLE `template_has_characteristic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1308,4 +1308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-03 18:47:56
+-- Dump completed on 2015-12-06 20:52:16
