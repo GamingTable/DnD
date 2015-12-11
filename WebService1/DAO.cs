@@ -173,7 +173,96 @@ namespace DnDService
         #region CHARACTER
         public int CharacterCreate(character player)
         {
-            return 1;
+            /// 0:  everything is ok
+            /// 1:  DAO couldn't connect
+            /// 2:  no account communicated
+            /// 3:  character has no name
+            /// 4:  undefined sex
+            uint character_id;
+
+            #region Character Table
+            string query_character = @"insert into 
+                            character(name,avatar,account,race,sex,background,hair,eyes,skin,deity,personnality) 
+                            values(@name,@avatar,@account,@race,@sex,@background,@hair,@eyes,@skin,@deity,@personnality);
+                            SELECT SCOPE_IDENTITY();";
+            using (MySqlCommand cmd = new MySqlCommand(query_character, connection))
+            {
+
+                //Test if an account is linked
+                if (player.account != 0)
+                    cmd.Parameters.AddWithValue("@account", player.account);
+                else
+                    return 2;
+                //Name
+                if (player.name != null)
+                    cmd.Parameters.AddWithValue("@name", player.name);
+                else
+                    return 3;
+                //Avatar
+                if (player.avatar.Length > 0)
+                    cmd.Parameters.AddWithValue("@avatar", MySqlDbType.Blob).Value = player.avatar;
+                //Background
+                if (player.background != null)
+                    cmd.Parameters.AddWithValue("@background", player.background);
+                //Personnality
+                if (player.personnality != null)
+                    cmd.Parameters.AddWithValue("@personnality", player.personnality);
+                //Hair
+                if (player.hair != null)
+                    cmd.Parameters.AddWithValue("@hair", player.hair);
+                //Eyes
+                if (player.eyes != null)
+                    cmd.Parameters.AddWithValue("@eyes", player.eyes);
+                //Skin
+                if (player.skin != null)
+                    cmd.Parameters.AddWithValue("@skin", player.skin);
+                //Sex
+                if (player.sex != 'M' && player.sex != 'F')
+                    cmd.Parameters.AddWithValue("@sex", player.sex);
+                else
+                    return 4;
+                //Deity
+                if (player.deity != null)
+                    cmd.Parameters.AddWithValue("@deity", player.deity.uid);
+                //Race
+                if (player.race != null)
+                    cmd.Parameters.AddWithValue("@race", player.race.uid);
+
+                //Executing the insertion into character
+                if (OpenConnection())
+                    character_id = Convert.ToUInt32(cmd.ExecuteScalar().ToString());
+            }
+            #endregion
+            #region Race Table
+            #endregion
+            #region Multiclass Table
+            #endregion
+            #region Skills table
+            #endregion
+            #region Inventory Table
+            #endregion
+            #region Stats Table
+            #endregion
+            #region Spells Table
+            #endregion
+            #region Gifts Table
+            #endregion
+            #region Aptitudes Table
+            #endregion
+            #region Languages Table
+            #endregion
+            #region Effects Table
+            #endregion
+            #region Traits
+            //Weight
+            //Height
+            //Age
+            #endregion
+
+            // Character creation went smoothly
+            return 0;
+
+            
         }
 
         public bool CharacterDelete(uint character_id)
@@ -198,6 +287,39 @@ namespace DnDService
             {
                 return false;
             }
+        }
+
+        public bool CharacterUpdate(character player)
+        {
+            #region Character Table
+            #endregion
+            #region Race Table
+            #endregion
+            #region Multiclass Table
+            #endregion
+            #region Skills table
+            #endregion
+            #region Inventory Table
+            #endregion
+            #region Stats Table
+            #endregion
+            #region Spells Table
+            #endregion
+            #region Gifts Table
+            #endregion
+            #region Aptitudes Table
+            #endregion
+            #region Languages Table
+            #endregion
+            #region Effects Table
+            #endregion
+            #region Traits
+            //Weight
+            //Height
+            //Age
+            #endregion
+
+            return true;
         }
 
         public character GetCharacter(uint character_id)
@@ -309,6 +431,12 @@ namespace DnDService
         public List<short_entity> GetLanguageList()
         {
             string query = "SELECT id_language, name, description from language;";
+            return GetShortEntities(query);
+        }
+
+        public List<short_entity> GetDeities()
+        {
+            string query = "SELECT id_god, name, description from god;";
             return GetShortEntities(query);
         }
 

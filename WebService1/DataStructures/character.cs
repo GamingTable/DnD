@@ -54,7 +54,7 @@ namespace DnDService
         [DataMember]
         public string eyes { get; set; }
         [DataMember]
-        public uint skin { get; set; }
+        public string skin { get; set; }
         [DataMember]
         public uint height { get; set; }
         [DataMember]
@@ -62,7 +62,11 @@ namespace DnDService
         [DataMember]
         public uint age { get; set; }
         [DataMember]
-        public string height_category { get; set; }
+        public uint height_category { get; set; }
+        [DataMember]
+        public uint weight_category { get; set; }
+        [DataMember]
+        public string age_category { get; set; }
 
 
 

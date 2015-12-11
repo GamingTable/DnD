@@ -33,17 +33,29 @@ namespace DnDServicePlayer.Pages.Character.Creation
             client = new Service1Client();
             charac_list = client.GetCharacteristicShortList();
 
+            //default_template.characteristics.Where
+
             // Define them as ItemsSource for the list
-            charac_list_box.ItemsSource = charac_list;
+            charac_list_box.ItemsSource = default_template.characteristics;
+            // Define the current_stats
+            current_stats = default_template;
+            current_stats.uid = 0;
+            current_stats.name = null;
+            current_stats.description = "AUTO GENERATED";
         }
 
         #region Button Handler
         private void increase_value_button_Click(object sender, RoutedEventArgs e)
         {
+            //default_template.characteristics[i].value
         }
         private void decrease_value_button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private int get_assigned_points(uint id_characteristic)
+        {
+            return 0;
         }
         #endregion
 
@@ -57,6 +69,30 @@ namespace DnDServicePlayer.Pages.Character.Creation
                 return client.GetTemplate(19);
             }
         }
+        private template race_template
+        {
+            get
+            {
+                return Race.current_race.template;
+            }
+        }
+        private template class_template
+        {
+            get
+            {
+                return Classe.current_class.template;
+            }
+        }
+        public static int get_modifier(int value)
+        {
+            return (int)(Math.Floor((decimal)value / 2) - 5);
+        }
+        /*private int str
+        {
+            get{
+                return current_stats.characteristics.
+            }
+        }*/
         #endregion
     }
 }
