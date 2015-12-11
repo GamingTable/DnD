@@ -178,6 +178,8 @@ namespace DnDService
             /// 2:  no account communicated
             /// 3:  character has no name
             /// 4:  undefined sex
+            /// 5:  no class
+            /// 6:  no race
             uint character_id;
 
             #region Character Table
@@ -227,23 +229,173 @@ namespace DnDService
                 //Race
                 if (player.race != null)
                     cmd.Parameters.AddWithValue("@race", player.race.uid);
+                else
+                    return 6;
 
                 //Executing the insertion into character
                 if (OpenConnection())
                     character_id = Convert.ToUInt32(cmd.ExecuteScalar().ToString());
+                else
+                    return 1;
             }
             #endregion
-            #region Race Table
+            #region Race Dependencies
+            // WEIGHT
+            string query_weight = @"insert into 
+                            weight_category_has_character(weight_category,character,weight) 
+                            values(@weight_cat,@charac,@weight);";
+            using (MySqlCommand cmd = new MySqlCommand(query_weight, connection))
+            {
+                //character
+                cmd.Parameters.AddWithValue("@charac", character_id);
+                //weight category
+                cmd.Parameters.AddWithValue("@weight_cat", player.weight_category);
+                //weight
+                cmd.Parameters.AddWithValue("@weight", player.weight);
+                //Executing the insertion into weight
+                if (OpenConnection())
+                    cmd.ExecuteNonQuery();
+                else
+                    return 1;
+            }
+            // HEIGHT
+            string query_height = @"insert into 
+                            height_category_has_character(height_category,character,height) 
+                            values(@height_cat,@charac,@height);";
+            using (MySqlCommand cmd = new MySqlCommand(query_height, connection))
+            {
+                //character
+                cmd.Parameters.AddWithValue("@charac", character_id);
+                //height category
+                cmd.Parameters.AddWithValue("@height_cat", player.height_category);
+                //height
+                cmd.Parameters.AddWithValue("@height", player.height);
+                //Executing the insertion into height
+                if (OpenConnection())
+                    cmd.ExecuteNonQuery();
+                else
+                    return 1;
+            }
+            // AGE
+            string query_age = @"insert into 
+                            age_category_has_character(age_category,character,age) 
+                            values(@age_cat,@charac,@age);";
+            using (MySqlCommand cmd = new MySqlCommand(query_age, connection))
+            {
+                //character
+                cmd.Parameters.AddWithValue("@charac", character_id);
+                //age category
+                cmd.Parameters.AddWithValue("@age_cat", player.age_category);
+                //age
+                cmd.Parameters.AddWithValue("@age", player.age);
+                //Executing the insertion into weight
+                if (OpenConnection())
+                    cmd.ExecuteNonQuery();
+                else
+                    return 1;
+            }
             #endregion
             #region Multiclass Table
-            #endregion
-            #region Skills table
-            #endregion
-            #region Inventory Table
-            #endregion
-            #region Stats Table
+            // MULTICLASS
+            if (player.classes.level_class.Count == 0)
+                return 5;
+            string query_multiclass = @"insert into 
+                            multiclasses(character,class,level) 
+                            values(@character,@class,@level);";
+            using (MySqlCommand cmd = new MySqlCommand(query_multiclass, connection))
+            {
+                //character
+                cmd.Parameters.AddWithValue("@character", character_id);
+                //class
+                cmd.Parameters.AddWithValue("@class", player.classes.level_class[0].Item1);
+                //class level
+                cmd.Parameters.AddWithValue("@level", 1);
+                //Executing the insertion into weight
+                if (OpenConnection())
+                    cmd.ExecuteNonQuery();
+                else
+                    return 1;
+            }
             #endregion
             #region Spells Table
+            uint spellbook_id;
+            if(player.classes.level_class[0].Item2.magical == true)
+            {
+                // Create a spellbook for this character
+                var query_spellbook = "insert into spellbook;SELECT SCOPE_IDENTITY();";
+                using (MySqlCommand cmd = new MySqlCommand(query_spellbook, connection))
+                {
+                    if (OpenConnection())
+                        spellbook_id = Convert.ToUInt32((cmd.ExecuteScalar().ToString()));
+                    else
+                        return 1;
+                }
+            }
+            #endregion
+            #region Skills table
+            // If skills are defined, loop to add everyone of them
+            if (player.skills.md_skill.Count != 0)
+            {
+                foreach (var skill in player.skills.md_skill)
+                {
+                    string query_skills = @"insert into 
+                            skill_has_character(skill,character,mastery_degree) 
+                            values(@skill,@character,@md);";
+                    using (MySqlCommand cmd = new MySqlCommand(query_skills, connection))
+                    {
+                        //character
+                        cmd.Parameters.AddWithValue("@character", character_id);
+                        //skill
+                        cmd.Parameters.AddWithValue("@skill", skill.Item1);
+                        //master degree
+                        cmd.Parameters.AddWithValue("@md", skill.Item2.uid);
+                        //Executing the insertion into weight
+                        if (OpenConnection())
+                            cmd.ExecuteNonQuery();
+                        else
+                            return 1;
+                    }
+                }
+            }
+            #endregion
+            #region Inventory Table
+            uint inventory_id;
+            // Create an inventory for this character
+            var query_inventory = "insert into inventory(character) values(" + character_id + ");SELECT SCOPE_IDENTITY();";
+            using (MySqlCommand cmd = new MySqlCommand(query_inventory,connection))
+            {
+                if (OpenConnection())
+                    inventory_id = Convert.ToUInt32((cmd.ExecuteScalar().ToString()));
+                else
+                    return 1;
+            }
+            
+            // If skills are defined, loop to add everyone of them
+            if (player.skills.md_skill.Count != 0)
+            {
+                foreach (var skill in player.skills.md_skill)
+                {
+                    string query_skills = @"insert into 
+                            skill_has_character(skill,character,mastery_degree) 
+                            values(@skill,@character,@md);";
+                    using (MySqlCommand cmd = new MySqlCommand(query_skills, connection))
+                    {
+                        //character
+                        cmd.Parameters.AddWithValue("@character", character_id);
+                        //skill
+                        cmd.Parameters.AddWithValue("@skill", skill.Item1);
+                        //master degree
+                        cmd.Parameters.AddWithValue("@md", skill.Item2.uid);
+                        //Executing the insertion into weight
+                        if (OpenConnection())
+                            cmd.ExecuteNonQuery();
+                        else
+                            return 1;
+                    }
+                }
+            }
+            #endregion
+            #region Stats Table
             #endregion
             #region Gifts Table
             #endregion
@@ -601,7 +753,7 @@ namespace DnDService
         {
             complete_class new_class = new complete_class();
 
-            string query = "SELECT id_class, name, description, template, img, health_progression from class where id_class=" + id_class;
+            string query = "SELECT id_class, name, description, template, img, health_progression, magical from class where id_class=" + id_class;
 
             if (OpenConnection())
             {
@@ -619,6 +771,7 @@ namespace DnDService
                         id_template = dataReader.GetUInt32(3);
                         new_class.illustration = (byte[])dataReader["img"];
                         new_class.health_progression = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
+                        new_class.magical = dataReader.GetBoolean(6);
                     }
                 }
                 // Close reader and connection

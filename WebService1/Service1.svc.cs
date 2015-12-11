@@ -118,7 +118,7 @@ namespace DnDService
         {
             return db.GetMulticlass(id_character);
         }
-        List<short_entity> GetDeities()
+        public List<short_entity> GetDeities()
         {
             return db.GetDeities();
         }
