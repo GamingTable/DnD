@@ -5,20 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Selection"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="700">
+             d:DesignHeight="400" d:DesignWidth="700">
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="260"/>
-            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="148"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0"/>
         <Label Content="Race" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
@@ -31,17 +34,16 @@
 
         <Image HorizontalAlignment="Left" Height="128" VerticalAlignment="Top" Width="128" Margin="10,10,0,0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="0" Name="nom"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="1" Name="race"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="2" Name="karma"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="2" Name="vd"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="1" Name="niveau"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="2" Name="alignement"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="2" Grid.Row="0" Name="god"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="1" Name="classe"/>
-        
-        <Button Content="Mettre à jour" Name="Update" Grid.Column="2" HorizontalAlignment="Left" Margin="112,250,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" FontSize="16" Height="40" Click="Update_Click"/>
-        <TextBlock Name="background" Grid.Column="0" HorizontalAlignment="Left" Margin="10,11,0,-149" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="220" Width="680" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="2" Grid.Row="0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2" Grid.Column="1"/>
+        <!--<Button Content="Mettre à jour" Name="Update" Grid.Column="2" HorizontalAlignment="Left" Margin="112,0,0,0" Grid.Row="6" VerticalAlignment="Top" Width="120" FontSize="16" Height="40" Click="Update_Click"/>-->
+        <TextBlock Name="background" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="220" Width="680" Grid.ColumnSpan="3"/>
         <TextBox Name="character_id" Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="120,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden" />
     </Grid>
 </UserControl>
