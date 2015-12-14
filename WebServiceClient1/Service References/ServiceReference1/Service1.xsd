@@ -25,7 +25,7 @@
       <xs:element minOccurs="0" name="sex" type="ser:char" />
       <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="skills" nillable="true" type="q8:multientity" />
       <xs:element minOccurs="0" name="skin" type="xs:unsignedInt" />
-      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="stats" nillable="true" type="q9:ArrayOftemplate" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="stats" nillable="true" type="q9:template" />
       <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="weight" type="xs:unsignedInt" />
     </xs:sequence>
