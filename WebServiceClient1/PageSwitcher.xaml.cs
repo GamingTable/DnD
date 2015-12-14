@@ -13,6 +13,7 @@ namespace DnDServiceClient
     /// </summary>
     public partial class PageSwitcher : Window
     {
+        //LoadingScreen loading_screen = new LoadingScreen();
         public PageSwitcher()
         {
             InitializeComponent();

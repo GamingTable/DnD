@@ -114,6 +114,11 @@ namespace DnDService
             return db.GetCharacteristics(id_template, id_type);
         }
 
+        public List<characteristic> GetCharacterCharacteristics(uint id_character, uint id_type = 0)
+        {
+            return db.GetCharacterCharacteristics(id_character, id_type);
+        }
+
         public multiclass GetMulticlass(uint id_character)
         {
             return db.GetMulticlass(id_character);
