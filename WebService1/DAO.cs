@@ -249,9 +249,9 @@ namespace DnDService
                 //character
                 cmd.Parameters.AddWithValue("@charac", character_id);
                 //weight category
-                cmd.Parameters.AddWithValue("@weight_cat", player.weight_category);
+                cmd.Parameters.AddWithValue("@weight_cat", player.weight.Item2.uid);
                 //weight
-                cmd.Parameters.AddWithValue("@weight", player.weight);
+                cmd.Parameters.AddWithValue("@weight", player.weight.Item1);
                 //Executing the insertion into weight
                 if (OpenConnection())
                     cmd.ExecuteNonQuery();
@@ -267,9 +267,9 @@ namespace DnDService
                 //character
                 cmd.Parameters.AddWithValue("@charac", character_id);
                 //height category
-                cmd.Parameters.AddWithValue("@height_cat", player.height_category);
+                cmd.Parameters.AddWithValue("@height_cat", player.height.Item2.uid);
                 //height
-                cmd.Parameters.AddWithValue("@height", player.height);
+                cmd.Parameters.AddWithValue("@height", player.height.Item1);
                 //Executing the insertion into height
                 if (OpenConnection())
                     cmd.ExecuteNonQuery();
@@ -285,9 +285,9 @@ namespace DnDService
                 //character
                 cmd.Parameters.AddWithValue("@charac", character_id);
                 //age category
-                cmd.Parameters.AddWithValue("@age_cat", player.age_category);
+                cmd.Parameters.AddWithValue("@age_cat", player.age.Item2.uid);
                 //age
-                cmd.Parameters.AddWithValue("@age", player.age);
+                cmd.Parameters.AddWithValue("@age", player.age.Item1);
                 //Executing the insertion into weight
                 if (OpenConnection())
                     cmd.ExecuteNonQuery();
@@ -330,6 +330,8 @@ namespace DnDService
                     else
                         return 1;
                 }
+
+                // Add every spell
             }
             #endregion
             #region Skills table

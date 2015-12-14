@@ -12,6 +12,11 @@ namespace DnDService.DataStructures
         [DataMember]
         public uint uid { get; set; }
         [DataMember]
+        public string name { get; set; }
+        [DataMember]
+        public string description { get; set; }
+
+        [DataMember]
         public List<spell> spells { get; set; }
     }
 }

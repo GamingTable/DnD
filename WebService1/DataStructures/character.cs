@@ -26,7 +26,7 @@ namespace DnDService
         [DataMember]
         public multiclass classes { get; set; }
         [DataMember]
-        public List<template> stats { get; set; }
+        public List<characteristic> stats { get; set; }
         [DataMember]
         public List<short_entity> gifts { get; set; }
         [DataMember]
