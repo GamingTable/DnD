@@ -66,16 +66,28 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\attack.cs" />
+    <Compile Include="DataStructures\category.cs" />
     <Compile Include="DataStructures\character.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="DataStructures\characteristic.cs" />
     <Compile Include="DataStructures\complete_class.cs" />
     <Compile Include="DataStructures\complete_race.cs" />
+    <Compile Include="DataStructures\inventory.cs" />
+    <Compile Include="DataStructures\item.cs" />
+    <Compile Include="DataStructures\item_category.cs" />
+    <Compile Include="DataStructures\money.cs" />
     <Compile Include="DataStructures\multiclass.cs" />
     <Compile Include="DataStructures\multientity.cs" />
+    <Compile Include="DataStructures\multiitem.cs" />
+    <Compile Include="DataStructures\multimoney.cs" />
     <Compile Include="DataStructures\multiskill.cs" />
     <Compile Include="DataStructures\short_entity.cs" />
+    <Compile Include="DataStructures\skill.cs" />
+    <Compile Include="DataStructures\spell.cs" />
+    <Compile Include="DataStructures\spellbook.cs" />
     <Compile Include="DataStructures\template.cs" />
+    <Compile Include="DataStructures\wizardry.cs" />
     <Compile Include="IDAO.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

@@ -49,6 +49,12 @@ namespace DnDService
             return db.CharacterDelete(character_id);
         }
 
+        //Pass the updated character to the DAO and update this character if id exists
+        public bool CharacterUpdate(character player)
+        {
+            return db.CharacterUpdate(player);
+        }
+
         //Return the selected character based on is character_id
         public character GetCharacter(uint character_id)
         {
@@ -111,6 +117,10 @@ namespace DnDService
         public multiclass GetMulticlass(uint id_character)
         {
             return db.GetMulticlass(id_character);
+        }
+        public List<short_entity> GetDeities()
+        {
+            return db.GetDeities();
         }
     }
 }

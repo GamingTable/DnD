@@ -7,11 +7,11 @@ using System.Web;
 namespace DnDService.DataStructures
 {
     [DataContract]
-    public class multiskill
+    public class multimoney
     {
         [DataMember]
-        public uint uid { get; set; }
+        public uint inventory { get; set; }
         [DataMember]
-        public List<Tuple<uint, skill>> md_skill { get; set; }
+        public List<Tuple<uint, money>> pieces_money { get; set; }
     }
 }

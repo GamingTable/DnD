@@ -20,6 +20,9 @@ namespace DnDService
         //Try to delete character. Return true if succeed, false if not;
         bool CharacterDelete(uint character_id);
 
+        //Synchronize the character instance with the DB
+        bool CharacterUpdate(character player);
+
         //Return the selected character based on the character_id
         character GetCharacter(uint character_id);
 
@@ -56,7 +59,10 @@ namespace DnDService
         //Return the list of characteristics corresponding to a template
         List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
 
-        // Return the current classes of a character
+        //Return the current classes of a character
         multiclass GetMulticlass(uint id_character);
+
+        //Return the list of deities
+        List<short_entity> GetDeities();
     }
 }

@@ -88,6 +88,9 @@ namespace DnDService
         bool CharacterDelete(uint character_id);
 
         [OperationContract]
+        bool CharacterUpdate(character player);
+
+        [OperationContract]
         character GetCharacter(uint character_id);
 
         [OperationContract]
@@ -127,5 +130,8 @@ namespace DnDService
 
         [OperationContract]
         multiclass GetMulticlass(uint id_character);
+
+        [OperationContract]
+        List<short_entity> GetDeities();
     }
 }

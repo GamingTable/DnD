@@ -22,5 +22,9 @@ namespace DnDService.DataStructures
         public template template { get; set; }
         [DataMember]
         public List<short_entity> effects { get; set; }
+        [DataMember]
+        public List<spell> spells { get; set; }
+        [DataMember]
+        public bool magical { get; set; }
     }
 }

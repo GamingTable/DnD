@@ -30,19 +30,21 @@ namespace DnDService
         [DataMember]
         public List<short_entity> gifts { get; set; }
         [DataMember]
-        public multientity skills { get; set; }
+        public multiskill skills { get; set; }
 
         [DataMember]
         public List<short_entity> languages { get; set; }
         [DataMember]
         public List<short_entity> aptitudes { get; set; }
         [DataMember]
-        public uint inventory { get; set; }
+        public inventory inventory { get; set; }
         [DataMember]
         public List<short_entity> effects { get; set; }
         [DataMember]
-        public short_entity deity { get; set; }
+        public spellbook spells_in_mind { get; set; }
 
+        [DataMember]
+        public short_entity deity { get; set; }
         [DataMember]
         public char sex { get; set; }
         [DataMember]
@@ -54,24 +56,13 @@ namespace DnDService
         [DataMember]
         public string eyes { get; set; }
         [DataMember]
-        public uint skin { get; set; }
+        public string skin { get; set; }
         [DataMember]
-        public uint height { get; set; }
+        public Tuple<uint, category> height { get; set; }
         [DataMember]
-        public uint weight { get; set; }
+        public Tuple<uint, category> weight { get; set; }
         [DataMember]
-        public uint age { get; set; }
-        [DataMember]
-        public string height_category { get; set; }
-
-
-
-
-
-
-
-
-
+        public Tuple<uint, category> age { get; set; }
 
     }
 }
