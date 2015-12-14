@@ -60,7 +60,7 @@ namespace DnDService
         List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
 
         //Return the list of characteristics corresponding to a character
-        List<characteristic> GetCharacterCharacteristics(uint id_character, uint id_type = 0);
+        List<characteristic> GetCharacterCharacteristics(uint id_account, uint id_type = 0);
 
         //Return the current classes of a character
         multiclass GetMulticlass(uint id_character);

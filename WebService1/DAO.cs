@@ -398,6 +398,7 @@ namespace DnDService
             }
             #endregion
             #region Stats Table
+            
             #endregion
             #region Gifts Table
             #endregion
@@ -557,6 +558,49 @@ namespace DnDService
         public List<short_character> GetCharacters(uint account_id)
         {
             List<short_character> playable_characters = new List<short_character>();
+
+            var query = @"select 
+                        dnd.`character`.id_character,
+                        dnd.`character`.name,
+                        class.name as class,
+                        race.name as race,
+                        sum(multiclasses.level) as global_level,
+                        dnd.`character`.avatar
+                        from dnd.`character`
+                        left join dnd.race
+                        on race.id_race = dnd.`character`.race
+                        left join dnd.multiclasses
+                        on multiclasses.`character` = dnd.`character`.id_character
+                        left join dnd.class
+                        on class.id_class = multiclasses.class
+                        where `character`.account =" + account_id;
+
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+
+                    MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                    try {
+                        while (dataReader.Read())
+                        {
+                            short_character c = new short_character()
+                            {
+                                uid = dataReader.GetUInt32(0),
+                                account = account_id,
+                                name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                class_name = dataReader.IsDBNull(2) ? null : dataReader.GetString(2),
+                                race_name = dataReader.IsDBNull(3) ? null : dataReader.GetString(3),
+                                global_level = dataReader.GetUInt32(4),
+                                avatar = dataReader.IsDBNull(5) ? null : (byte[])dataReader[5]
+                            };
+                            playable_characters.Add(c);
+                        }
+                    }catch(Exception k) { return null; }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
 
             return playable_characters;
         }

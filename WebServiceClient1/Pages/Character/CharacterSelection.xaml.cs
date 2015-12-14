@@ -24,6 +24,8 @@ namespace DnDServicePlayer.Pages
     public partial class CharacterSelection : UserControl, ISwitchable
     {
         private uint user_id;
+        private Service1Client client = new Service1Client();
+
         public CharacterSelection()
         {
             InitializeComponent();
@@ -33,16 +35,21 @@ namespace DnDServicePlayer.Pages
         public void UtilizeState(object state)
         {
             user_id = (uint)state;
+            characters_list.ItemsSource = owned_characters;
         }
         #endregion
 
         #region List Characters
-        /*private List<short_character> ListOwnedCharacters()
+        public List<short_character> owned_characters
         {
-            DnDServiceClient client = new DnDServicePlayer();
-            Service1Client client = new Service1Client();
-            return new List<short_character>(client.GetCharacters(user_id));
-        }*/
+            get
+            {
+                var new_list_char = new List<short_character>();
+                foreach (var c in client.GetCharacters(user_id))
+                    new_list_char.Add(c);
+                return new_list_char;
+            }
+        }
         #endregion
 
         #region Switch Pages

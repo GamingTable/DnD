@@ -94,7 +94,7 @@ namespace DnDService
         character GetCharacter(uint character_id);
 
         [OperationContract]
-        List<short_character> GetCharacters(uint character_id);
+        List<short_character> GetCharacters(uint id_account);
 
 
         ////////////// AUTRES ///////////////////

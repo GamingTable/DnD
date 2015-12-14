@@ -40,12 +40,13 @@
   <xs:element name="ArrayOfshort_character" nillable="true" type="tns:ArrayOfshort_character" />
   <xs:complexType name="short_character">
     <xs:sequence>
+      <xs:element minOccurs="0" name="account" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="avatar" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="class_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="global_level" type="xs:unsignedInt" />
-      <xs:element minOccurs="0" name="id_account" type="xs:unsignedInt" />
-      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="race_name" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="race_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="short_character" nillable="true" type="tns:short_character" />

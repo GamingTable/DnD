@@ -6,16 +6,18 @@ namespace DnDService
     public class short_character
     {
         [DataMember]
-        public uint id_character;
+        public uint uid { get; set; }
         [DataMember]
-        public uint id_account;
+        public uint account { get; set; }
         [DataMember]
-        public string name;
+        public string name { get; set; }
         [DataMember]
-        public string class_name;
+        public string class_name { get; set; }
         [DataMember]
-        public uint race_name;
+        public string race_name { get; set; }
         [DataMember]
-        public uint global_level;
+        public uint global_level { get; set; }
+        [DataMember]
+        public byte[] avatar { get; set; }
     }
 }

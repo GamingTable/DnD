@@ -24,7 +24,6 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <!-- Selected="race_list_box_Selected">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">

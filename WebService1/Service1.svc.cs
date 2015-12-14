@@ -61,19 +61,22 @@ namespace DnDService
             return db.GetCharacter(character_id);
         }
 
-        public List<short_character> GetCharacters(uint account_id)
+        //Return the list of playable characters for this account
+        public List<short_character> GetCharacters(uint id_account)
         {
-            return db.GetCharacters(account_id);
+            return db.GetCharacters(id_account);
         }
+        //Return a brief list of every race
         public List<short_entity> GetRaceShortList()
         {
             return db.GetRaceShortList();
         }
+        //Return a brief list of every class
         public List<short_entity> GetClassShortList()
         {
             return db.GetClassShortList();
         }
-
+        //Return a brief list of every characteristic
         public List<short_entity> GetCharacteristicShortList()
         {
             return db.GetCharacteristicShortList();
@@ -83,46 +86,47 @@ namespace DnDService
         {
             return db.GetTemplate(id_template);
         }
-
+        //Return the list of languages
         public List<short_entity> GetLanguageList()
         {
             return db.GetLanguageList();
         }
-
+        //Return native languages handled by a given race
         public List<short_entity> GetRaceLanguage(uint id_race)
         {
             return db.GetRaceLanguage(id_race);
         }
-
+        //Return the languages spoken by the caracter
         public List<short_entity> GetCharacterLanguage(uint id_character)
         {
             return db.GetCharacterLanguage(id_character);
         }
-
+        //Return the selected class complete information
         public complete_class GetClass(uint id_class)
         {
             return db.GetClass(id_class);
         }
-
+        //Return the selected race complete information
         public complete_race GetRace(uint id_race)
         {
             return db.GetRace(id_race);
         }
-
+        //Return the characteristics corresponding to a template. characteristic type is optionnal
         public List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0)
         {
             return db.GetCharacteristics(id_template, id_type);
         }
-
+        //Return the characteristics corresponding to a character. characteristic type is optionnal
         public List<characteristic> GetCharacterCharacteristics(uint id_character, uint id_type = 0)
         {
             return db.GetCharacterCharacteristics(id_character, id_type);
         }
-
+        //Return the character classes and levels
         public multiclass GetMulticlass(uint id_character)
         {
             return db.GetMulticlass(id_character);
         }
+        //Return the list of gods
         public List<short_entity> GetDeities()
         {
             return db.GetDeities();
