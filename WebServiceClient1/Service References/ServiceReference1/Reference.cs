@@ -86,7 +86,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         private uint skinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.template[] statsField;
+        private DnDServicePlayer.ServiceReference1.template statsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint uidField;
@@ -378,7 +378,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.template[] stats {
+        public DnDServicePlayer.ServiceReference1.template stats {
             get {
                 return this.statsField;
             }

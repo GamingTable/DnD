@@ -1,4 +1,5 @@
-﻿using DnDServicePlayer.ServiceReference1;
+﻿using DnDServicePlayer;
+using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,33 +18,24 @@ using System.Windows.Shapes;
 namespace DnDServicePlayer.Pages.Character.Selection
 {
     /// <summary>
-    /// Logique d'interaction pour BackgroundSheet.xaml
+    /// Background, character particularities
     /// </summary>
     public partial class BackgroundSheet : UserControl, ISelectable
     {
-        private ServiceReference1.Service1Client client;
+        private character hero;
         public BackgroundSheet()
         {
             InitializeComponent();
 
-            /*nom.Text = hero.name;
+            template messtats = hero.stats;
+            nom.Text = hero.name;
             race.Text = hero.race.name;
-            karma.Text = charac.stats.
-            vd.Text =
-            classe.Text = charac.classes;
-            niveau.Text = charac.
-            god.Text = hero.deity.name ;
-            alignement.Text =
-            background.Text = hero.background;*/
-        }
-
-        private void Update_Click(object sender, RoutedEventArgs e)
-        {
-            client = new ServiceReference1.Service1Client();
-            /*if (client.updateBackground(background.Text, character_id.Text))
-                MessageBox.Show("Mis à jour avec succès");
-            else
-                MessageBox.Show("échec de la mise à jour");*/
+            //maclasse.Text = hero.classes.;
+            vd.Text = hero.stats.characteristics[12].value.ToString();
+            karma.Text = hero.stats.characteristics[24].value.ToString();
+            align.Text = hero.stats.characteristics[25].value.ToString();
+            level.Text = hero.stats.characteristics[12].value.ToString();
+            dieu.Text = hero.deity.name;
         }
     }
 }

@@ -80,10 +80,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="multientity" nillable="true" type="tns:multientity" />
-  <xs:complexType name="ArrayOftemplate">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="template" nillable="true" type="tns:template" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOftemplate" nillable="true" type="tns:ArrayOftemplate" />
 </xs:schema>
