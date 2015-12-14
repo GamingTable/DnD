@@ -13,5 +13,18 @@ namespace DnDService.DataStructures
         public uint id_character { get; set; }
         [DataMember]
         public List<Tuple<uint,complete_class>> level_class { get; set; }
+        [DataMember]
+        public uint global_level
+        {
+            get
+            {
+                uint seum = 0;
+                foreach(var lc in level_class)
+                {
+                    seum += lc.Item1;
+                }
+                return seum;
+            }
+        }
     }
 }

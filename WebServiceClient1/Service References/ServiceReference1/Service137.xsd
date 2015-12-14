@@ -1,46 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
-  <xs:complexType name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="category">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="max" type="xs:int" />
+      <xs:element minOccurs="0" name="min" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" />
-  <xs:complexType name="TupleOfunsignedIntcomplete_classY6NY8n6N">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="unsignedInt" Namespace="http://www.w3.org/2001/XMLSchema" />
-          <GenericParameter Name="complete_class" Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
+  <xs:element name="category" nillable="true" type="tns:category" />
+  <xs:complexType name="ArrayOfshort_entity">
     <xs:sequence>
-      <xs:element name="m_Item1" type="xs:unsignedInt" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" name="m_Item2" nillable="true" type="q1:complete_class" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="short_entity" nillable="true" type="tns:short_entity" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
-  <xs:complexType name="ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N">
+  <xs:element name="ArrayOfshort_entity" nillable="true" type="tns:ArrayOfshort_entity" />
+  <xs:complexType name="short_entity">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntshort_entityY6NY8n6N" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" />
-  <xs:complexType name="TupleOfunsignedIntshort_entityY6NY8n6N">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="unsignedInt" Namespace="http://www.w3.org/2001/XMLSchema" />
-          <GenericParameter Name="short_entity" Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
+  <xs:element name="short_entity" nillable="true" type="tns:short_entity" />
+  <xs:complexType name="multiclass">
     <xs:sequence>
-      <xs:element name="m_Item1" type="xs:unsignedInt" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" name="m_Item2" nillable="true" type="q2:short_entity" />
+      <xs:element minOccurs="0" name="global_level" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="level_class" nillable="true" type="q1:ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="TupleOfunsignedIntshort_entityY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntshort_entityY6NY8n6N" />
+  <xs:element name="multiclass" nillable="true" type="tns:multiclass" />
+  <xs:complexType name="complete_class">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="health_progression" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="magical" type="xs:boolean" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="spells" nillable="true" type="tns:ArrayOfspell" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_class" nillable="true" type="tns:complete_class" />
+  <xs:complexType name="ArrayOfspell">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="spell" nillable="true" type="tns:spell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfspell" nillable="true" type="tns:ArrayOfspell" />
+  <xs:complexType name="spell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="casting_time" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="component" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="incantation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="magic_resist" type="xs:boolean" />
+      <xs:element minOccurs="0" name="modifiers" nillable="true" type="tns:ArrayOftemplate" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="range" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="saving_throw" nillable="true" type="tns:characteristic" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="spellLevel_class" nillable="true" type="q2:TupleOfunsignedIntcomplete_classY6NY8n6N" />
+      <xs:element minOccurs="0" name="target" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="wizardry" nillable="true" type="tns:wizardry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="spell" nillable="true" type="tns:spell" />
+  <xs:complexType name="ArrayOftemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="template" nillable="true" type="tns:template" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftemplate" nillable="true" type="tns:ArrayOftemplate" />
+  <xs:complexType name="template">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="characteristics" nillable="true" type="tns:ArrayOfcharacteristic" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="template" nillable="true" type="tns:template" />
+  <xs:complexType name="ArrayOfcharacteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="characteristic" nillable="true" type="tns:characteristic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcharacteristic" nillable="true" type="tns:ArrayOfcharacteristic" />
+  <xs:complexType name="characteristic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="abreviation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="modifier" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="value" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="characteristic" nillable="true" type="tns:characteristic" />
+  <xs:complexType name="wizardry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="branch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="profane_divine" type="xs:boolean" />
+      <xs:element minOccurs="0" name="register" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="school" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="wizardry" nillable="true" type="tns:wizardry" />
+  <xs:complexType name="inventory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="character" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="items" nillable="true" type="tns:multiitem" />
+      <xs:element minOccurs="0" name="purse" nillable="true" type="tns:multimoney" />
+      <xs:element minOccurs="0" name="spellbooks" nillable="true" type="tns:ArrayOfspellbook" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="inventory" nillable="true" type="tns:inventory" />
+  <xs:complexType name="multiitem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inventory_id" type="xs:unsignedInt" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="quantity_item" nillable="true" type="q3:ArrayOfTupleOfunsignedIntitemY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="multiitem" nillable="true" type="tns:multiitem" />
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attack" nillable="true" type="tns:attack" />
+      <xs:element minOccurs="0" name="category" nillable="true" type="tns:item_category" />
+      <xs:element minOccurs="0" name="equipped" type="xs:boolean" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="height" nillable="true" type="q4:TupleOfunsignedIntcategoryY6NY8n6N" />
+      <xs:element minOccurs="0" name="language" nillable="true" type="tns:short_entity" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="spell" nillable="true" type="tns:spell" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="weight" nillable="true" type="q5:TupleOfunsignedIntcategoryY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="item" nillable="true" type="tns:item" />
+  <xs:complexType name="attack">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ammo" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="bonus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="critic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="damage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="range" type="xs:unsignedInt" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="attack" nillable="true" type="tns:attack" />
+  <xs:complexType name="item_category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="parent" nillable="true" type="tns:item_category" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="item_category" nillable="true" type="tns:item_category" />
+  <xs:complexType name="multimoney">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inventory" type="xs:unsignedInt" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="pieces_money" nillable="true" type="q6:ArrayOfTupleOfunsignedIntmoneyY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="multimoney" nillable="true" type="tns:multimoney" />
+  <xs:complexType name="money">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="one_to_gold" type="xs:float" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="money" nillable="true" type="tns:money" />
+  <xs:complexType name="ArrayOfspellbook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="spellbook" nillable="true" type="tns:spellbook" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfspellbook" nillable="true" type="tns:ArrayOfspellbook" />
+  <xs:complexType name="spellbook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="spells" nillable="true" type="tns:ArrayOfspell" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="spellbook" nillable="true" type="tns:spellbook" />
+  <xs:complexType name="complete_race">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="innates_languages" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
+  <xs:complexType name="multiskill">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="md_skill" nillable="true" type="q7:ArrayOfTupleOfunsignedIntskillY6NY8n6N" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="multiskill" nillable="true" type="tns:multiskill" />
+  <xs:complexType name="skill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="classe" nillable="true" type="tns:complete_class" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="innate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="key_ability" nillable="true" type="tns:characteristic" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="teachable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="skill" nillable="true" type="tns:skill" />
 </xs:schema>

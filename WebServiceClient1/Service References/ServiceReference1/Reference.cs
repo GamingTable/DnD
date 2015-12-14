@@ -26,7 +26,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         private uint accountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint ageField;
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> ageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DnDServicePlayer.ServiceReference1.short_entity[] aptitudesField;
@@ -56,13 +56,10 @@ namespace DnDServicePlayer.ServiceReference1 {
         private string hairField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint heightField;
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> heightField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string height_categoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint inventoryField;
+        private DnDServicePlayer.ServiceReference1.inventory inventoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DnDServicePlayer.ServiceReference1.short_entity[] languagesField;
@@ -80,19 +77,22 @@ namespace DnDServicePlayer.ServiceReference1 {
         private char sexField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.multientity skillsField;
+        private DnDServicePlayer.ServiceReference1.multiskill skillsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint skinField;
+        private string skinField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.template statsField;
+        private DnDServicePlayer.ServiceReference1.spellbook spells_in_mindField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.characteristic[] statsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint uidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint weightField;
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> weightField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -118,12 +118,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint age {
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> age {
             get {
                 return this.ageField;
             }
             set {
-                if ((this.ageField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ageField, value) != true)) {
                     this.ageField = value;
                     this.RaisePropertyChanged("age");
                 }
@@ -248,12 +248,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint height {
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> height {
             get {
                 return this.heightField;
             }
             set {
-                if ((this.heightField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.heightField, value) != true)) {
                     this.heightField = value;
                     this.RaisePropertyChanged("height");
                 }
@@ -261,25 +261,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string height_category {
-            get {
-                return this.height_categoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.height_categoryField, value) != true)) {
-                    this.height_categoryField = value;
-                    this.RaisePropertyChanged("height_category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint inventory {
+        public DnDServicePlayer.ServiceReference1.inventory inventory {
             get {
                 return this.inventoryField;
             }
             set {
-                if ((this.inventoryField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.inventoryField, value) != true)) {
                     this.inventoryField = value;
                     this.RaisePropertyChanged("inventory");
                 }
@@ -352,7 +339,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.multientity skills {
+        public DnDServicePlayer.ServiceReference1.multiskill skills {
             get {
                 return this.skillsField;
             }
@@ -365,12 +352,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint skin {
+        public string skin {
             get {
                 return this.skinField;
             }
             set {
-                if ((this.skinField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.skinField, value) != true)) {
                     this.skinField = value;
                     this.RaisePropertyChanged("skin");
                 }
@@ -378,7 +365,20 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.template stats {
+        public DnDServicePlayer.ServiceReference1.spellbook spells_in_mind {
+            get {
+                return this.spells_in_mindField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.spells_in_mindField, value) != true)) {
+                    this.spells_in_mindField = value;
+                    this.RaisePropertyChanged("spells_in_mind");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.characteristic[] stats {
             get {
                 return this.statsField;
             }
@@ -404,14 +404,123 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint weight {
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> weight {
             get {
                 return this.weightField;
             }
             set {
-                if ((this.weightField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.weightField, value) != true)) {
                     this.weightField = value;
                     this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="category", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int maxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int minField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int max {
+            get {
+                return this.maxField;
+            }
+            set {
+                if ((this.maxField.Equals(value) != true)) {
+                    this.maxField = value;
+                    this.RaisePropertyChanged("max");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int min {
+            get {
+                return this.minField;
+            }
+            set {
+                if ((this.minField.Equals(value) != true)) {
+                    this.minField = value;
+                    this.RaisePropertyChanged("min");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
                 }
             }
         }
@@ -436,6 +545,9 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint global_levelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint id_characterField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -448,6 +560,19 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint global_level {
+            get {
+                return this.global_levelField;
+            }
+            set {
+                if ((this.global_levelField.Equals(value) != true)) {
+                    this.global_levelField = value;
+                    this.RaisePropertyChanged("global_level");
+                }
             }
         }
         
@@ -537,6 +662,115 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.nameField, value) != true)) {
                     this.nameField = value;
                     this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="inventory", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class inventory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint characterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.multiitem itemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.multimoney purseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.spellbook[] spellbooksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint character {
+            get {
+                return this.characterField;
+            }
+            set {
+                if ((this.characterField.Equals(value) != true)) {
+                    this.characterField = value;
+                    this.RaisePropertyChanged("character");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.multiitem items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.itemsField, value) != true)) {
+                    this.itemsField = value;
+                    this.RaisePropertyChanged("items");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.multimoney purse {
+            get {
+                return this.purseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.purseField, value) != true)) {
+                    this.purseField = value;
+                    this.RaisePropertyChanged("purse");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.spellbook[] spellbooks {
+            get {
+                return this.spellbooksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.spellbooksField, value) != true)) {
+                    this.spellbooksField = value;
+                    this.RaisePropertyChanged("spellbooks");
                 }
             }
         }
@@ -707,18 +941,18 @@ namespace DnDServicePlayer.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="multientity", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="multiskill", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
     [System.SerializableAttribute()]
-    public partial class multientity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class multiskill : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint uidField;
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.skill>[] md_skillField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.short_entity>[] values_entitiesField;
+        private uint uidField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -727,6 +961,19 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.skill>[] md_skill {
+            get {
+                return this.md_skillField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.md_skillField, value) != true)) {
+                    this.md_skillField = value;
+                    this.RaisePropertyChanged("md_skill");
+                }
             }
         }
         
@@ -743,19 +990,6 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.short_entity>[] values_entities {
-            get {
-                return this.values_entitiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.values_entitiesField, value) != true)) {
-                    this.values_entitiesField = value;
-                    this.RaisePropertyChanged("values_entities");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -768,21 +1002,21 @@ namespace DnDServicePlayer.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="template", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="spellbook", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
     [System.SerializableAttribute()]
-    public partial class template : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class spellbook : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.characteristic[] characteristicsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.spell[] spellsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint uidField;
@@ -794,19 +1028,6 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.characteristic[] characteristics {
-            get {
-                return this.characteristicsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.characteristicsField, value) != true)) {
-                    this.characteristicsField = value;
-                    this.RaisePropertyChanged("characteristics");
-                }
             }
         }
         
@@ -837,142 +1058,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint uid {
+        public DnDServicePlayer.ServiceReference1.spell[] spells {
             get {
-                return this.uidField;
+                return this.spellsField;
             }
             set {
-                if ((this.uidField.Equals(value) != true)) {
-                    this.uidField = value;
-                    this.RaisePropertyChanged("uid");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="complete_class", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
-    [System.SerializableAttribute()]
-    public partial class complete_class : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string health_progressionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] illustrationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.template templateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint uidField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
-            get {
-                return this.effectsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
-                    this.effectsField = value;
-                    this.RaisePropertyChanged("effects");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string health_progression {
-            get {
-                return this.health_progressionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.health_progressionField, value) != true)) {
-                    this.health_progressionField = value;
-                    this.RaisePropertyChanged("health_progression");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] illustration {
-            get {
-                return this.illustrationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.illustrationField, value) != true)) {
-                    this.illustrationField = value;
-                    this.RaisePropertyChanged("illustration");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.template template {
-            get {
-                return this.templateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.templateField, value) != true)) {
-                    this.templateField = value;
-                    this.RaisePropertyChanged("template");
+                if ((object.ReferenceEquals(this.spellsField, value) != true)) {
+                    this.spellsField = value;
+                    this.RaisePropertyChanged("spells");
                 }
             }
         }
@@ -1127,6 +1220,1461 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((this.valueField.Equals(value) != true)) {
                     this.valueField = value;
                     this.RaisePropertyChanged("value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="complete_class", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class complete_class : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string health_progressionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] illustrationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool magicalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.spell[] spellsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.template templateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
+            get {
+                return this.effectsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
+                    this.effectsField = value;
+                    this.RaisePropertyChanged("effects");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string health_progression {
+            get {
+                return this.health_progressionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.health_progressionField, value) != true)) {
+                    this.health_progressionField = value;
+                    this.RaisePropertyChanged("health_progression");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] illustration {
+            get {
+                return this.illustrationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.illustrationField, value) != true)) {
+                    this.illustrationField = value;
+                    this.RaisePropertyChanged("illustration");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool magical {
+            get {
+                return this.magicalField;
+            }
+            set {
+                if ((this.magicalField.Equals(value) != true)) {
+                    this.magicalField = value;
+                    this.RaisePropertyChanged("magical");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.spell[] spells {
+            get {
+                return this.spellsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.spellsField, value) != true)) {
+                    this.spellsField = value;
+                    this.RaisePropertyChanged("spells");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.template template {
+            get {
+                return this.templateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.templateField, value) != true)) {
+                    this.templateField = value;
+                    this.RaisePropertyChanged("template");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="template", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class template : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.characteristic[] characteristicsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.characteristic[] characteristics {
+            get {
+                return this.characteristicsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.characteristicsField, value) != true)) {
+                    this.characteristicsField = value;
+                    this.RaisePropertyChanged("characteristics");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="spell", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class spell : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string casting_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string componentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string durationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string incantationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool magic_resistField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.template[] modifiersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string rangeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.characteristic saving_throwField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.complete_class> spellLevel_classField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint targetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.wizardry wizardryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string casting_time {
+            get {
+                return this.casting_timeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.casting_timeField, value) != true)) {
+                    this.casting_timeField = value;
+                    this.RaisePropertyChanged("casting_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string component {
+            get {
+                return this.componentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.componentField, value) != true)) {
+                    this.componentField = value;
+                    this.RaisePropertyChanged("component");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string duration {
+            get {
+                return this.durationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.durationField, value) != true)) {
+                    this.durationField = value;
+                    this.RaisePropertyChanged("duration");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
+            get {
+                return this.effectsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
+                    this.effectsField = value;
+                    this.RaisePropertyChanged("effects");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string incantation {
+            get {
+                return this.incantationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.incantationField, value) != true)) {
+                    this.incantationField = value;
+                    this.RaisePropertyChanged("incantation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool magic_resist {
+            get {
+                return this.magic_resistField;
+            }
+            set {
+                if ((this.magic_resistField.Equals(value) != true)) {
+                    this.magic_resistField = value;
+                    this.RaisePropertyChanged("magic_resist");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.template[] modifiers {
+            get {
+                return this.modifiersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.modifiersField, value) != true)) {
+                    this.modifiersField = value;
+                    this.RaisePropertyChanged("modifiers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string range {
+            get {
+                return this.rangeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.rangeField, value) != true)) {
+                    this.rangeField = value;
+                    this.RaisePropertyChanged("range");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.characteristic saving_throw {
+            get {
+                return this.saving_throwField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.saving_throwField, value) != true)) {
+                    this.saving_throwField = value;
+                    this.RaisePropertyChanged("saving_throw");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.complete_class> spellLevel_class {
+            get {
+                return this.spellLevel_classField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.spellLevel_classField, value) != true)) {
+                    this.spellLevel_classField = value;
+                    this.RaisePropertyChanged("spellLevel_class");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint target {
+            get {
+                return this.targetField;
+            }
+            set {
+                if ((this.targetField.Equals(value) != true)) {
+                    this.targetField = value;
+                    this.RaisePropertyChanged("target");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.wizardry wizardry {
+            get {
+                return this.wizardryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.wizardryField, value) != true)) {
+                    this.wizardryField = value;
+                    this.RaisePropertyChanged("wizardry");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="wizardry", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class wizardry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string branchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool profane_divineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string registerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string schoolField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string branch {
+            get {
+                return this.branchField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.branchField, value) != true)) {
+                    this.branchField = value;
+                    this.RaisePropertyChanged("branch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool profane_divine {
+            get {
+                return this.profane_divineField;
+            }
+            set {
+                if ((this.profane_divineField.Equals(value) != true)) {
+                    this.profane_divineField = value;
+                    this.RaisePropertyChanged("profane_divine");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string register {
+            get {
+                return this.registerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.registerField, value) != true)) {
+                    this.registerField = value;
+                    this.RaisePropertyChanged("register");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string school {
+            get {
+                return this.schoolField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.schoolField, value) != true)) {
+                    this.schoolField = value;
+                    this.RaisePropertyChanged("school");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="multiitem", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class multiitem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint inventory_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.item>[] quantity_itemField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint inventory_id {
+            get {
+                return this.inventory_idField;
+            }
+            set {
+                if ((this.inventory_idField.Equals(value) != true)) {
+                    this.inventory_idField = value;
+                    this.RaisePropertyChanged("inventory_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.item>[] quantity_item {
+            get {
+                return this.quantity_itemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.quantity_itemField, value) != true)) {
+                    this.quantity_itemField = value;
+                    this.RaisePropertyChanged("quantity_item");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="multimoney", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class multimoney : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint inventoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.money>[] pieces_moneyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint inventory {
+            get {
+                return this.inventoryField;
+            }
+            set {
+                if ((this.inventoryField.Equals(value) != true)) {
+                    this.inventoryField = value;
+                    this.RaisePropertyChanged("inventory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.money>[] pieces_money {
+            get {
+                return this.pieces_moneyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.pieces_moneyField, value) != true)) {
+                    this.pieces_moneyField = value;
+                    this.RaisePropertyChanged("pieces_money");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="item", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.attack attackField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.item_category categoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool equippedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> heightField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity languageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.spell spellField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.template templateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> weightField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.attack attack {
+            get {
+                return this.attackField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.attackField, value) != true)) {
+                    this.attackField = value;
+                    this.RaisePropertyChanged("attack");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.item_category category {
+            get {
+                return this.categoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.categoryField, value) != true)) {
+                    this.categoryField = value;
+                    this.RaisePropertyChanged("category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool equipped {
+            get {
+                return this.equippedField;
+            }
+            set {
+                if ((this.equippedField.Equals(value) != true)) {
+                    this.equippedField = value;
+                    this.RaisePropertyChanged("equipped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> height {
+            get {
+                return this.heightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.heightField, value) != true)) {
+                    this.heightField = value;
+                    this.RaisePropertyChanged("height");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity language {
+            get {
+                return this.languageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.languageField, value) != true)) {
+                    this.languageField = value;
+                    this.RaisePropertyChanged("language");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.spell spell {
+            get {
+                return this.spellField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.spellField, value) != true)) {
+                    this.spellField = value;
+                    this.RaisePropertyChanged("spell");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.template template {
+            get {
+                return this.templateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.templateField, value) != true)) {
+                    this.templateField = value;
+                    this.RaisePropertyChanged("template");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.typeField, value) != true)) {
+                    this.typeField = value;
+                    this.RaisePropertyChanged("type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> weight {
+            get {
+                return this.weightField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.weightField, value) != true)) {
+                    this.weightField = value;
+                    this.RaisePropertyChanged("weight");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="attack", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class attack : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint ammoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string bonusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string criticField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string damageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint rangeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint ammo {
+            get {
+                return this.ammoField;
+            }
+            set {
+                if ((this.ammoField.Equals(value) != true)) {
+                    this.ammoField = value;
+                    this.RaisePropertyChanged("ammo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string bonus {
+            get {
+                return this.bonusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.bonusField, value) != true)) {
+                    this.bonusField = value;
+                    this.RaisePropertyChanged("bonus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string critic {
+            get {
+                return this.criticField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.criticField, value) != true)) {
+                    this.criticField = value;
+                    this.RaisePropertyChanged("critic");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string damage {
+            get {
+                return this.damageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.damageField, value) != true)) {
+                    this.damageField = value;
+                    this.RaisePropertyChanged("damage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint range {
+            get {
+                return this.rangeField;
+            }
+            set {
+                if ((this.rangeField.Equals(value) != true)) {
+                    this.rangeField = value;
+                    this.RaisePropertyChanged("range");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.typeField, value) != true)) {
+                    this.typeField = value;
+                    this.RaisePropertyChanged("type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="item_category", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class item_category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.item_category parentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.item_category parent {
+            get {
+                return this.parentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.parentField, value) != true)) {
+                    this.parentField = value;
+                    this.RaisePropertyChanged("parent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="money", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class money : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float one_to_goldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float one_to_gold {
+            get {
+                return this.one_to_goldField;
+            }
+            set {
+                if ((this.one_to_goldField.Equals(value) != true)) {
+                    this.one_to_goldField = value;
+                    this.RaisePropertyChanged("one_to_gold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="skill", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class skill : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.complete_class classeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool innateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.characteristic key_abilityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool teachableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.complete_class classe {
+            get {
+                return this.classeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.classeField, value) != true)) {
+                    this.classeField = value;
+                    this.RaisePropertyChanged("classe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool innate {
+            get {
+                return this.innateField;
+            }
+            set {
+                if ((this.innateField.Equals(value) != true)) {
+                    this.innateField = value;
+                    this.RaisePropertyChanged("innate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.characteristic key_ability {
+            get {
+                return this.key_abilityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.key_abilityField, value) != true)) {
+                    this.key_abilityField = value;
+                    this.RaisePropertyChanged("key_ability");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool teachable {
+            get {
+                return this.teachableField;
+            }
+            set {
+                if ((this.teachableField.Equals(value) != true)) {
+                    this.teachableField = value;
+                    this.RaisePropertyChanged("teachable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
                 }
             }
         }
@@ -1300,6 +2848,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CharacterDelete", ReplyAction="http://tempuri.org/IService1/CharacterDeleteResponse")]
         System.Threading.Tasks.Task<bool> CharacterDeleteAsync(uint character_id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CharacterUpdate", ReplyAction="http://tempuri.org/IService1/CharacterUpdateResponse")]
+        bool CharacterUpdate(DnDServicePlayer.ServiceReference1.character player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CharacterUpdate", ReplyAction="http://tempuri.org/IService1/CharacterUpdateResponse")]
+        System.Threading.Tasks.Task<bool> CharacterUpdateAsync(DnDServicePlayer.ServiceReference1.character player);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacter", ReplyAction="http://tempuri.org/IService1/GetCharacterResponse")]
         DnDServicePlayer.ServiceReference1.character GetCharacter(uint character_id);
         
@@ -1377,6 +2931,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMulticlass", ReplyAction="http://tempuri.org/IService1/GetMulticlassResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.multiclass> GetMulticlassAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeities", ReplyAction="http://tempuri.org/IService1/GetDeitiesResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetDeities();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeities", ReplyAction="http://tempuri.org/IService1/GetDeitiesResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetDeitiesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1444,6 +3004,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> CharacterDeleteAsync(uint character_id) {
             return base.Channel.CharacterDeleteAsync(character_id);
+        }
+        
+        public bool CharacterUpdate(DnDServicePlayer.ServiceReference1.character player) {
+            return base.Channel.CharacterUpdate(player);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CharacterUpdateAsync(DnDServicePlayer.ServiceReference1.character player) {
+            return base.Channel.CharacterUpdateAsync(player);
         }
         
         public DnDServicePlayer.ServiceReference1.character GetCharacter(uint character_id) {
@@ -1548,6 +3116,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.multiclass> GetMulticlassAsync(uint id_character) {
             return base.Channel.GetMulticlassAsync(id_character);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetDeities() {
+            return base.Channel.GetDeities();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetDeitiesAsync() {
+            return base.Channel.GetDeitiesAsync();
         }
     }
 }

@@ -5,8 +5,8 @@
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DnDService" />
-      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
-      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:8986/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_AccountConnection_InputMessage">
@@ -38,6 +38,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_CharacterDelete_OutputMessage">
     <wsdl:part name="parameters" element="tns:CharacterDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CharacterUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CharacterUpdateResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetCharacter_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacter" />
@@ -117,6 +123,12 @@
   <wsdl:message name="IService1_GetMulticlass_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMulticlassResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetDeities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeities" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDeities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeitiesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountConnection" message="tns:IService1_AccountConnection_InputMessage" />
@@ -137,6 +149,10 @@
     <wsdl:operation name="CharacterDelete">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterDelete" message="tns:IService1_CharacterDelete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterDeleteResponse" message="tns:IService1_CharacterDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CharacterUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterUpdate" message="tns:IService1_CharacterUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterUpdateResponse" message="tns:IService1_CharacterUpdate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCharacter">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacter" message="tns:IService1_GetCharacter_InputMessage" />
@@ -190,6 +206,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMulticlass" message="tns:IService1_GetMulticlass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMulticlassResponse" message="tns:IService1_GetMulticlass_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetDeities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeities" message="tns:IService1_GetDeities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeitiesResponse" message="tns:IService1_GetDeities_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -231,6 +251,15 @@
     </wsdl:operation>
     <wsdl:operation name="CharacterDelete">
       <soap:operation soapAction="http://tempuri.org/IService1/CharacterDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CharacterUpdate">
+      <soap:operation soapAction="http://tempuri.org/IService1/CharacterUpdate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -348,6 +377,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMulticlass">
       <soap:operation soapAction="http://tempuri.org/IService1/GetMulticlass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeities">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDeities" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
