@@ -131,5 +131,10 @@ namespace DnDService
         {
             return db.GetDeities();
         }
+        //Return the god corresponding to this id
+        public short_entity GetDeity(uint deity_id)
+        {
+            return db.GetDeity(deity_id);
+        }
     }
 }

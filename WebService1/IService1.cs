@@ -136,5 +136,8 @@ namespace DnDService
 
         [OperationContract]
         List<short_entity> GetDeities();
+
+        [OperationContract]
+        short_entity GetDeity(uint deity_id);
     }
 }

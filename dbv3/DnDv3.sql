@@ -29,7 +29,7 @@ CREATE TABLE `account` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id_account`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (2,'skit','1234','foo@foo');
+INSERT INTO `account` VALUES (2,'skit','1234','foo@foo'),(3,'Pipi','pipi','pipi.caca@yopmail.com');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `character` (
   CONSTRAINT `fk_character_account1` FOREIGN KEY (`account`) REFERENCES `account` (`id_account`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_god1` FOREIGN KEY (`deity`) REFERENCES `god` (`id_god`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_race1` FOREIGN KEY (`race`) REFERENCES `race` (`id_race`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,6 +243,7 @@ CREATE TABLE `character` (
 
 LOCK TABLES `character` WRITE;
 /*!40000 ALTER TABLE `character` DISABLE KEYS */;
+INSERT INTO `character` VALUES (1,'Thorg',NULL,2,1,'M','Lalali Lalalo','Blue','Blue','Blue',1,NULL);
 /*!40000 ALTER TABLE `character` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -761,7 +762,7 @@ CREATE TABLE `god` (
   `name` varchar(255) NOT NULL,
   `description` varchar(511) DEFAULT NULL,
   PRIMARY KEY (`id_god`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -770,6 +771,7 @@ CREATE TABLE `god` (
 
 LOCK TABLES `god` WRITE;
 /*!40000 ALTER TABLE `god` DISABLE KEYS */;
+INSERT INTO `god` VALUES (1,'','');
 /*!40000 ALTER TABLE `god` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1086,7 +1088,7 @@ CREATE TABLE `multiclasses` (
   KEY `fk_multiclasses_class1_idx` (`class`),
   CONSTRAINT `fk_multiclasses_character1` FOREIGN KEY (`character`) REFERENCES `character` (`id_character`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_multiclasses_class1` FOREIGN KEY (`class`) REFERENCES `class` (`id_class`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1095,6 +1097,7 @@ CREATE TABLE `multiclasses` (
 
 LOCK TABLES `multiclasses` WRITE;
 /*!40000 ALTER TABLE `multiclasses` DISABLE KEYS */;
+INSERT INTO `multiclasses` VALUES (1,1,3,1);
 /*!40000 ALTER TABLE `multiclasses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1342,8 +1345,10 @@ DROP TABLE IF EXISTS `spellbook`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `spellbook` (
   `id_spellbook` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(511) DEFAULT NULL,
   PRIMARY KEY (`id_spellbook`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1352,6 +1357,7 @@ CREATE TABLE `spellbook` (
 
 LOCK TABLES `spellbook` WRITE;
 /*!40000 ALTER TABLE `spellbook` DISABLE KEYS */;
+INSERT INTO `spellbook` VALUES (1,'bard_1','Sorts de barde de niveau 1'),(2,'dru_1','Sorts de druide de niveau 1'),(3,'ens_1','Sorts de ensorceleur de niveau 1'),(4,'mag_1','Sorts de magicien de niveau 1'),(5,'pal_1','Sorts de paladin de niveau 1'),(6,'pre_1','Sorts de prêtre de niveau 1'),(7,'rod_1','Sorts de rôdeur de niveau 1');
 /*!40000 ALTER TABLE `spellbook` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1398,7 +1404,7 @@ CREATE TABLE `stats` (
   KEY `fk_stats_character1_idx` (`character`),
   CONSTRAINT `fk_stats_character1` FOREIGN KEY (`character`) REFERENCES `character` (`id_character`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_stats_template1` FOREIGN KEY (`template`) REFERENCES `template` (`id_template`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1407,6 +1413,7 @@ CREATE TABLE `stats` (
 
 LOCK TABLES `stats` WRITE;
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
+INSERT INTO `stats` VALUES (1,5,1),(2,19,1);
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1638,4 +1645,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-11 12:03:59
+-- Dump completed on 2015-12-15 11:15:19

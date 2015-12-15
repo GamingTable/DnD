@@ -25,6 +25,7 @@ namespace DnDServicePlayer.Pages
     {
         private uint user_id;
         private Service1Client client = new Service1Client();
+        private character current_character;
 
         public CharacterSelection()
         {
@@ -55,12 +56,12 @@ namespace DnDServicePlayer.Pages
         #region Switch Pages
         private void create_button_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CharacterCreation());
+            Switcher.Switch(new CharacterCreation(), user_id);
         }
 
         private void select_button_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CharacterSheet());
+            Switcher.Switch(new CharacterSheet(), current_character);
         }
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
@@ -68,5 +69,13 @@ namespace DnDServicePlayer.Pages
             Switcher.Switch(new Login());
         }
         #endregion
+
+        private void characters_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            short_character selection = (sender as ListBox).SelectedItem as short_character;
+            current_character = client.GetCharacter(selection.uid);
+            select_button.IsEnabled = true;
+            label.Content = current_character.name;
+        }
     }
 }

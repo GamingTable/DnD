@@ -20,7 +20,7 @@ namespace DnDServicePlayer.Pages
     /// <summary>
     /// Frame where every subsheet displays
     /// </summary>
-    public partial class CharacterSheet : UserControl
+    public partial class CharacterSheet : UserControl, ISwitchable
     {
         private List<ISelectable> sheet_pages;
         private int current_page;
@@ -31,6 +31,11 @@ namespace DnDServicePlayer.Pages
         public CharacterSheet()
         {
             InitializeComponent();
+        }
+
+        public void UtilizeState(object state)
+        {
+            hero = (character)state;
 
             current_page = 0;
             sheet_pages = new List<ISelectable> {
@@ -44,11 +49,6 @@ namespace DnDServicePlayer.Pages
                                     new OptionSheet() };
 
             sheet_controllers.Content = sheet_pages[0];
-        }
-
-        public void UtilizeState(object state)
-        {
-            hero = (character)state;
 
         }
 
@@ -103,7 +103,7 @@ namespace DnDServicePlayer.Pages
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CharacterSelection());
+            Switcher.Switch(new CharacterSelection(), hero.account);
         }
         #endregion
 

@@ -135,6 +135,12 @@
   <wsdl:message name="IService1_GetDeities_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDeitiesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetDeity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeity" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDeity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeityResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountConnection" message="tns:IService1_AccountConnection_InputMessage" />
@@ -219,6 +225,10 @@
     <wsdl:operation name="GetDeities">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeities" message="tns:IService1_GetDeities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeitiesResponse" message="tns:IService1_GetDeities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeity" message="tns:IService1_GetDeity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeityResponse" message="tns:IService1_GetDeity_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -405,6 +415,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDeities">
       <soap:operation soapAction="http://tempuri.org/IService1/GetDeities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeity">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDeity" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -67,5 +67,7 @@ namespace DnDService
 
         //Return the list of deities
         List<short_entity> GetDeities();
+        //Return the desired deity
+        short_entity GetDeity(uint deity_id);
     }
 }

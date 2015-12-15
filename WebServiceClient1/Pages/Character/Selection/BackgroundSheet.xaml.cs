@@ -29,11 +29,11 @@ namespace DnDServicePlayer.Pages.Character.Selection
             nom.Text = CharacterSheet.hero.name;
             race.Text = CharacterSheet.hero.race.name;
             //maclasse.Text = hero.classes.;
-            vd.Text = CharacterSheet.hero.stats[12].value.ToString();
-            karma.Text = CharacterSheet.hero.stats[24].value.ToString();
-            align.Text = CharacterSheet.hero.stats[25].value.ToString();
-            level.Text = CharacterSheet.hero.classes.global_level.ToString();
-            dieu.Text = CharacterSheet.hero.deity.name;
+            //vd.Text = CharacterSheet.hero.stats[12].value.ToString();
+            //karma.Text = CharacterSheet.hero.stats[24].value.ToString();
+            //align.Text = CharacterSheet.hero.stats[25].value.ToString();
+            //level.Text = CharacterSheet.hero.classes.global_level.ToString();
+            //dieu.Text = CharacterSheet.hero.deity.name;
         }
     }
 }

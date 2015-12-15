@@ -91,14 +91,14 @@ namespace DnDServicePlayer.Pages.Character
             else
             {
                 add_new_character();
-                Switcher.Switch(new CharacterSelection());
+                Switcher.Switch(new CharacterSelection(), account);
             }
         }
                 
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CharacterSelection());
+            Switcher.Switch(new CharacterSelection(), account);
         }
         #endregion
 

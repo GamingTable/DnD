@@ -2959,6 +2959,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeities", ReplyAction="http://tempuri.org/IService1/GetDeitiesResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetDeitiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeity", ReplyAction="http://tempuri.org/IService1/GetDeityResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity GetDeity(uint deity_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeity", ReplyAction="http://tempuri.org/IService1/GetDeityResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetDeityAsync(uint deity_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3154,6 +3160,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetDeitiesAsync() {
             return base.Channel.GetDeitiesAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity GetDeity(uint deity_id) {
+            return base.Channel.GetDeity(deity_id);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetDeityAsync(uint deity_id) {
+            return base.Channel.GetDeityAsync(deity_id);
         }
     }
 }

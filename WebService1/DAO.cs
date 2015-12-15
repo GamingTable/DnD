@@ -479,86 +479,94 @@ namespace DnDService
 
         public character GetCharacter(uint character_id)
         {
-            /*if (this.OpenConnection() == true)
+            character new_char = new character();
+            uint deity = 0, race = 0;
+            var query = @"select dnd.`character`.account,
+                        dnd.`character`.name,
+                        dnd.`character`.avatar,
+                        dnd.`character`.race,
+                        dnd.`character`.sex,
+                        dnd.`character`.background,
+                        dnd.`character`.hair,
+                        dnd.`character`.eyes,
+                        dnd.`character`.skin,
+                        dnd.`character`.deity,
+                        dnd.`character`.personnality
+                        from dnd.`character`
+                        where dnd.`character`.id_character =" + character_id;
+
+            if (OpenConnection())
             {
-                uint race_id = 0;
-                uint class_id;
-                List<uint> template_id = new List<uint>();
-                string race = "";
-                string classe = "";
-
-                string query0 = "SELECT id_template, id_class, id_race from character WHERE id_character = " + character_id + ";";
-
-                MySqlCommand cmd = new MySqlCommand(query0, connection);
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                if (dataReader.Read())
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    race_id = (uint)dataReader["id_race"];
-                    class_id = (uint)dataReader["id_class"];
-                    template_id.Add((uint)dataReader["id_template"]);
-                    string name = "";
 
-                    string query1 = "SELECT id_template, name from race where id_race = " + race_id + ";";
-                    string query2 = "SELECT id_template, name from class where id_class = " + class_id + ";";
-
-                    MySqlCommand cmd0 = new MySqlCommand(query1, connection);
-                    MySqlCommand cmd1 = new MySqlCommand(query2, connection);
-
-                    MySqlDataReader dataReader0 = cmd.ExecuteReader();
-                    MySqlDataReader dataReader1 = cmd.ExecuteReader();
-
-                    if (dataReader0.Read())
+                    MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                    while (dataReader.Read())
                     {
-                        race = (string)dataReader0["name"];
-                        template_id.Add((uint)dataReader0["id_template"]);
+                        new_char = new character()
+                        {
+                            uid = character_id,
+                            account = dataReader.GetUInt32(0),
+                            name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                            avatar = dataReader.IsDBNull(2) ? null : (byte[])dataReader[2]
+                        };
+                        //Sequential access is required to extract a blob
+                        //Therefore we need to call the datareader in column order
+                        //and we cannot formulate new_char in one request
+                        //due to the single access db allowed by datareader
+                        race = dataReader.GetUInt32(3);
+                        new_char.sex = dataReader.IsDBNull(4) ? '\0' : dataReader.GetChar(4);
+                        new_char.background = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
+                        new_char.hair = dataReader.IsDBNull(6) ? null : dataReader.GetString(6);
+                        new_char.eyes = dataReader.IsDBNull(7) ? null : dataReader.GetString(7);
+                        new_char.skin = dataReader.IsDBNull(8) ? null : dataReader.GetString(8);
+                        deity = dataReader.GetUInt32(9);
+                        new_char.personnality = dataReader.IsDBNull(10) ? null : dataReader.GetString(10);
                     }
-                    if (dataReader1.Read())
-                    {
-                        classe = (string)dataReader1["name"];
-                        template_id.Add((uint)dataReader1["id_template"]);
-                    }
-
-                    string request = "";
-                    int count = 0;
-                    foreach (uint element in template_id)
-                    {
-                        if (count == 0)
-                            request += " id_template = " + element + " ";
-                        else
-                            request += "|| id_template = " + element + " ";
-                        count++;
-                    }
-                    request = "SELECT sum(strength) as strength, sum(constitution) as constitution, sum(dexterity) as dexterity, sum(intelligence) as intelligence, sum(wisdom) as wisdom, sum(charisma) as charisma, sum(initiative) as initiative, sum(armor_class) as armor_class, sum(fortitude) as fortitude, sum(reflexe) as reflexe, sum(will) as will, sum(speed) as speed from template where " + request;
-
-                    cmd = new MySqlCommand(query2, connection);
-
-                    dataReader = cmd.ExecuteReader();
-
-                    if (dataReader.Read())
-                    {
-                        character c = new character();
-                        return c;
-                    }
-                }
-                else
-                {
-                    this.CloseConnection();
+                    dataReader.Close();
                 }
                 this.CloseConnection();
             }
+
+            //Deity et Multiclass ne fonctionnent pas du à des problèmes de dataReader
+            //A réparer
+
+            if(deity>0)
+            {
+                //new_char.deity = GetDeity(deity);
+            }
             else
             {
-            }*/
-            character ch = new character();
-            return ch;
+                new_char.deity = new short_entity();
+            }
+
+            if(race>0)
+            {
+                new_char.race = GetRace(race);
+            }
+            else
+            {
+                new_char.race = new complete_race();
+            }
+            if (new_char.uid > 0)
+            {
+                //new_char.classes = GetMulticlass(character_id);
+                new_char.stats = GetCharacterCharacteristics(character_id);
+            }
+
+
+            return new_char;
         }
 
         public List<short_character> GetCharacters(uint account_id)
         {
             List<short_character> playable_characters = new List<short_character>();
 
+            //class.name ne renvoie pas la classe principale
+            //problème évident: plusieurs maxima pour les levels
+            //problème de règle: les races ont des classes prioritaires
+            //deity ne peut être inséré comme étant null (foreign key problem)
+            //il existe temporairement une entrée vide dans god pour y pallier
             var query = @"select 
                         dnd.`character`.id_character,
                         dnd.`character`.name,
@@ -641,12 +649,11 @@ namespace DnDService
         public List<short_entity> GetRaceLanguage(uint id_race)
         {
             string query = @"select id_language, name, description 
-                                from dnd.language 
+                            from dnd.language 
                             where id_language in 
-                                (select dnd.language_has_race.language 
-                                    from dnd.language_has_race 
-                                where race = " + id_race
-                            + " );";
+                            (select dnd.language_has_race.language 
+                            from dnd.language_has_race 
+                            where race = " + id_race + ");";
             return GetShortEntities(query);
         }
 
@@ -657,7 +664,7 @@ namespace DnDService
                             where id_language in 
                                 (select dnd.language_has_character.language 
                                     from dnd.language_has_character
-                                where character = " + id_character
+                                where language.`character` = " + id_character
                             + " );";
             return GetShortEntities(query);
         }
@@ -668,24 +675,24 @@ namespace DnDService
 
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                if (dataReader.HasRows)
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    while (dataReader.Read())
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
                     {
-                        short_entity e = new short_entity()
+                        while (dataReader.Read())
                         {
-                            uid = dataReader.GetUInt32(0),
-                            name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
-                            description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
-                        };
-                        list_entities.Add(e);
+                            short_entity e = new short_entity()
+                            {
+                                uid = dataReader.GetUInt32(0),
+                                name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
+                            };
+                            list_entities.Add(e);
+                        }
                     }
+                    dataReader.Close();
                 }
-                dataReader.Close();
-
                 this.CloseConnection();
             }
             return list_entities;
@@ -722,8 +729,6 @@ namespace DnDService
                 MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection);
                 MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
 
-
-       
                     while (dataReader_cha.Read() && !dataReader_cha.IsDBNull(0))
                     {
                     try {
@@ -844,10 +849,9 @@ namespace DnDService
                         }
                         catch (Exception k) { }
                     }
-
                     dataReader_cha.Close();
-                    CloseConnection();
                 }
+                CloseConnection();
             }
 
             return new_characteristic;
@@ -858,9 +862,13 @@ namespace DnDService
         #region RACES AND CLASSES
         public complete_class GetClass(uint id_class)
         {
+
             complete_class new_class = new complete_class();
 
-            string query = "SELECT id_class, name, description, template, img, health_progression, magical from class where id_class=" + id_class;
+            if (id_class <= 0)
+                return new_class;
+
+            string query = "SELECT id_class, name, description, template, img, health_progression, magical from dnd.class where id_class=" + id_class;
 
             if (OpenConnection())
             {
@@ -876,7 +884,7 @@ namespace DnDService
                         new_class.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
                         new_class.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
                         id_template = dataReader.GetUInt32(3);
-                        new_class.illustration = (byte[])dataReader["img"];
+                        new_class.illustration = (byte[])dataReader[4];
                         new_class.health_progression = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
                         new_class.magical = dataReader.GetBoolean(6);
                     }
@@ -896,37 +904,43 @@ namespace DnDService
         public multiclass GetMulticlass(uint id_character)
         {
             var multiclass = new multiclass();
+            if (id_character <= 0)
+                return multiclass;
             multiclass.id_character = id_character;
 
-            var query = @"Select 
-                        class, level
-                        from multiclasses
-                        where character = "+id_character;
+            var query = @"Select multiclasses.class,
+                        multiclasses.level
+                        from dnd.multiclasses
+                        where dnd.multiclasses.`character` = " + id_character+";";
 
+            var classes = new List<Tuple<uint, uint>>();
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
-                var classes = new List<Tuple<uint, uint>>();
-                if (dataReader.HasRows)
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    while (dataReader.Read())
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
                     {
-                        classes.Add(new Tuple<uint, uint>(
-                            dataReader.GetUInt16("level"),
-                            dataReader.GetUInt16("class")
-                        ));
+                        while (dataReader.Read())
+                        {
+                            classes.Add(new Tuple<uint, uint>(
+                                dataReader.GetUInt16("level"),
+                                dataReader.GetUInt16("class")
+                            ));
+                        }
                     }
-
-                    foreach (var c in classes)
-                    {
-                        multiclass.level_class.Add(new Tuple<uint, complete_class>(
-                            c.Item1,
-                            GetClass(c.Item2)
-                        ));
-                    }
+                    dataReader.Close();
                 }
                 this.CloseConnection();
+            }
+
+            multiclass.level_class = new List<Tuple<uint, complete_class>>();
+            foreach (var c in classes)
+            {
+                multiclass.level_class.Add(new Tuple<uint, complete_class>(
+                    c.Item1,
+                    GetClass(c.Item2)
+                ));
             }
             return multiclass;
         }
@@ -935,37 +949,73 @@ namespace DnDService
         {
             complete_race new_race = new complete_race();
 
-            string query = "SELECT id_race, name, description, template, img from race where id_race=" + id_race + ";";
+            if (id_race <= 0)
+                return new_race;
 
-            var languages = GetRaceLanguage(id_race);
+            string query = "SELECT id_race, name, description, template, img from race where id_race=" + id_race + ";";
+            uint id_template = 0;
 
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
-                uint id_template = 0;
-
-                if (dataReader.HasRows)
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    while (dataReader.Read())
+                    MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
+                    if (dataReader.HasRows)
                     {
-                        new_race.uid = dataReader.GetUInt16(0);
-                        new_race.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
-                        new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
-                        id_template = dataReader.GetUInt32(3);
-                        new_race.illustration = (byte[])dataReader["img"];
+                        while (dataReader.Read())
+                        {
+                            new_race.uid = dataReader.GetUInt16(0);
+                            new_race.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
+                            new_race.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
+                            id_template = dataReader.GetUInt32(3);
+                            new_race.illustration = (byte[])dataReader["img"];
+                        }
                     }
+                    // Close reader and connection
+                    dataReader.Close();
                 }
-                // Close reader and connection
-                dataReader.Close();
-
-                // Other queries after closing the reader
-                new_race.template = GetTemplate(id_template);
-                new_race.innates_languages = GetRaceLanguage(id_race);
                 this.CloseConnection();
             }
 
+            // Other queries after closing the reader
+            new_race.template = GetTemplate(id_template);
+            new_race.innates_languages = GetRaceLanguage(id_race);
+
             return new_race;
+        }
+        #endregion
+
+        #region SPECIALS
+        #endregion
+
+        #region BACKGROUND AND LIFE
+        public short_entity GetDeity(uint deity_id)
+        {
+            var new_deity = new short_entity();
+            string query = "SELECT name, description from god where id_god="+deity_id+";";
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            short_entity e = new short_entity()
+                            {
+                                uid = deity_id,
+                                name = dataReader.IsDBNull(0) ? null : dataReader.GetString(0),
+                                description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1)
+                            };
+                            return e;
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
+            return new_deity;
         }
         #endregion
     }
