@@ -13,6 +13,9 @@ namespace DnDService.DataStructures
         public uint id_character { get; set; }
         [DataMember]
         public List<Tuple<uint,complete_class>> level_class { get; set; }
+        /*
+        ///Won't work with SOAP
+        ///Necessity to implement it client side
         [DataMember]
         public uint global_level
         {
@@ -25,6 +28,6 @@ namespace DnDService.DataStructures
                 }
                 return seum;
             }
-        }
+        }*/
     }
 }

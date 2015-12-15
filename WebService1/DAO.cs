@@ -528,12 +528,9 @@ namespace DnDService
                 this.CloseConnection();
             }
 
-            //Deity et Multiclass ne fonctionnent pas du à des problèmes de dataReader
-            //A réparer
-
             if(deity>0)
             {
-                //new_char.deity = GetDeity(deity);
+                new_char.deity = GetDeity(deity);
             }
             else
             {
@@ -550,7 +547,7 @@ namespace DnDService
             }
             if (new_char.uid > 0)
             {
-                //new_char.classes = GetMulticlass(character_id);
+                new_char.classes = GetMulticlass(character_id);
                 new_char.stats = GetCharacterCharacteristics(character_id);
             }
 
@@ -604,7 +601,7 @@ namespace DnDService
                             };
                             playable_characters.Add(c);
                         }
-                    }catch(Exception k) { return null; }
+                    }catch(Exception k) { }
                     dataReader.Close();
                 }
                 this.CloseConnection();
@@ -1002,13 +999,12 @@ namespace DnDService
                     {
                         while (dataReader.Read())
                         {
-                            short_entity e = new short_entity()
+                            new_deity = new short_entity()
                             {
                                 uid = deity_id,
                                 name = dataReader.IsDBNull(0) ? null : dataReader.GetString(0),
                                 description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1)
                             };
-                            return e;
                         }
                     }
                     dataReader.Close();
