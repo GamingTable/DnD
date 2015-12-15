@@ -16,3 +16,4 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\DnDService.pd
 C:\Users\youness\Downloads\WebService1\WebService1\WebService1\bin\MySql.Data.dll
 C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\DnDService.dll
 C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\DnDService.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebService1\obj\Debug\DnDService.csprojResolveAssemblyReference.cache

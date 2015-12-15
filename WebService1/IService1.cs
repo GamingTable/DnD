@@ -1,4 +1,5 @@
 ﻿using DnDService.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -139,5 +140,23 @@ namespace DnDService
 
         [OperationContract]
         short_entity GetDeity(uint deity_id);
+
+        [OperationContract]
+        Tuple<uint, category> GetCharacterAge(uint id_character);
+
+        [OperationContract]
+        Tuple<uint, category> GetCharacterWeight(uint id_character);
+
+        [OperationContract]
+        Tuple<uint, category> GetCharacterHeight(uint id_character);
+
+        [OperationContract]
+        category GetAgeCategory(uint id_age_category);
+
+        [OperationContract]
+        category GetWeightCategory(uint id_weight_category);
+
+        [OperationContract]
+        category GetHeightCategory(uint id_height_category);
     }
 }

@@ -136,5 +136,35 @@ namespace DnDService
         {
             return db.GetDeity(deity_id);
         }
+        //Return the age and its category corresponding to this character
+        public Tuple<uint, category> GetCharacterAge(uint id_character)
+        {
+            return db.GetCharacterAge(id_character);
+        }
+        //Return the weight and its category corresponding to this character
+        public Tuple<uint, category> GetCharacterWeight(uint id_character)
+        {
+            return db.GetCharacterWeight(id_character);
+        }
+        //Return the height and its category corresponding to this character
+        public Tuple<uint, category> GetCharacterHeight(uint id_character)
+        {
+            return db.GetCharacterHeight(id_character);
+        }
+        //Return the age category corresponding to this id
+        public category GetAgeCategory(uint id_age_category)
+        {
+            return db.GetAgeCategory(id_age_category);
+        }
+        //Return the weight category corresponding to this id
+        public category GetWeightCategory(uint id_weight_category)
+        {
+            return db.GetWeightCategory(id_weight_category);
+        }
+        //Return the height category corresponding to this id
+        public category GetHeightCategory(uint id_height_category)
+        {
+            return db.GetHeightCategory(id_height_category);
+        }
     }
 }

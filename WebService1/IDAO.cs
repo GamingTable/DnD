@@ -1,4 +1,5 @@
 ﻿using DnDService.DataStructures;
+using System;
 using System.Collections.Generic;
 
 namespace DnDService
@@ -69,5 +70,18 @@ namespace DnDService
         List<short_entity> GetDeities();
         //Return the desired deity
         short_entity GetDeity(uint deity_id);
+
+        //Return the tuple age and category of the character
+        Tuple<uint, category> GetCharacterAge(uint id_character);
+        //Return the tuple weight and category of the character
+        Tuple<uint, category> GetCharacterWeight(uint id_character);
+        //Return the tuple height and category of the character
+        Tuple<uint, category> GetCharacterHeight(uint id_character);
+        //Return the selected category of age
+        category GetAgeCategory(uint id_age_category);
+        //Return the selected category of weight
+        category GetWeightCategory(uint id_weight_category);
+        //Return the selected category of height
+        category GetHeightCategory(uint id_height_category);
     }
 }

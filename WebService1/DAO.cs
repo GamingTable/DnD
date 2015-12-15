@@ -549,6 +549,9 @@ namespace DnDService
             {
                 new_char.classes = GetMulticlass(character_id);
                 new_char.stats = GetCharacterCharacteristics(character_id);
+                new_char.age = GetCharacterAge(character_id);
+                new_char.height = GetCharacterHeight(character_id);
+                new_char.weight = GetCharacterWeight(character_id);
             }
 
 
@@ -693,6 +696,98 @@ namespace DnDService
                 this.CloseConnection();
             }
             return list_entities;
+        }
+        #endregion
+
+        #region CATEGORIZED VALUES
+
+        public Tuple<uint,category> GetCharacterAge(uint id_character)
+        {
+            var query = "select age_category, age from dnd.age_category_has_character where age_category_has_character.`character`="+id_character+";";
+            var temporary = GetCategorizedValue(query);
+            return new Tuple<uint, category>(temporary.Item1, GetAgeCategory(temporary.Item2));
+        }
+        public Tuple<uint, category> GetCharacterWeight(uint id_character)
+        {
+            var query = "select weight_category, weight from dnd.weight_category_has_character where weight_category_has_character.`character`=" + id_character + ";";
+            var temporary = GetCategorizedValue(query);
+            return new Tuple<uint, category>(temporary.Item1, GetWeightCategory(temporary.Item2));
+        }
+        public Tuple<uint, category> GetCharacterHeight(uint id_character)
+        {
+            var query = "select height_category, height from dnd.height_category_has_character where height_category_has_character.`character`=" + id_character + ";";
+            var temporary = GetCategorizedValue(query);
+            return new Tuple<uint, category>(temporary.Item1, GetHeightCategory(temporary.Item2));
+        }
+
+        public category GetAgeCategory(uint id_age_category)
+        {
+            string query = "SELECT id_age_category, name, description, min_age, max_age FROM dnd.age_category;";
+            return GetCategoryEntity(query);
+        }
+        public category GetWeightCategory(uint id_weight_category)
+        {
+            string query = "SELECT id_weight_category, name, description, min_weight, max_weight FROM dnd.weight_category;";
+            return GetCategoryEntity(query);
+        }
+        public category GetHeightCategory(uint id_height_category)
+        {
+            string query = "SELECT id_height_category, name, description, min_height, max_height FROM dnd.height_category;";
+            return GetCategoryEntity(query);
+        }
+
+        private category GetCategoryEntity(string query)
+        {
+            var category_entity = new category();
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            category_entity = new category()
+                            {
+                                uid = dataReader.GetUInt32(0),
+                                name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2),
+                                min = dataReader.GetInt32(3),
+                                max = dataReader.GetInt32(4)
+                            };
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
+            return category_entity;
+        }
+
+        private Tuple<uint,uint> GetCategorizedValue(string query)
+        {
+            Tuple<uint, uint> categorized_value = new Tuple<uint, uint>(0, 0);
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            categorized_value = new Tuple<uint, uint>(
+                                dataReader.GetUInt32(0),
+                                dataReader.GetUInt32(1)
+                            );
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
+            return categorized_value;
         }
         #endregion
 

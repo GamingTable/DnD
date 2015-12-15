@@ -53,6 +53,8 @@ CREATE TABLE `age_category` (
   `id_age_category` tinyint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(511) DEFAULT NULL,
+  `min_age` int(11) DEFAULT NULL,
+  `max_age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_age_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -234,7 +236,7 @@ CREATE TABLE `character` (
   CONSTRAINT `fk_character_account1` FOREIGN KEY (`account`) REFERENCES `account` (`id_account`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_god1` FOREIGN KEY (`deity`) REFERENCES `god` (`id_god`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_race1` FOREIGN KEY (`race`) REFERENCES `race` (`id_race`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +317,7 @@ CREATE TABLE `characteristic_type` (
   `name` varchar(45) NOT NULL,
   `description` varchar(511) DEFAULT NULL,
   PRIMARY KEY (`id_characteristic_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1404,7 +1406,7 @@ CREATE TABLE `stats` (
   KEY `fk_stats_character1_idx` (`character`),
   CONSTRAINT `fk_stats_character1` FOREIGN KEY (`character`) REFERENCES `character` (`id_character`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_stats_template1` FOREIGN KEY (`template`) REFERENCES `template` (`id_template`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1645,4 +1647,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-15 11:15:19
+-- Dump completed on 2015-12-15 17:20:45
