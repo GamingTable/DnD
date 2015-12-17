@@ -181,5 +181,62 @@ namespace DnDService
         {
             return db.GetGifts();
         }
+
+        public short_entity GetEffect(uint id_effect)
+        {
+            return db.GetEffect(id_effect);
+        }
+
+        public List<short_entity> GetEffects()
+        {
+            return db.GetEffects();
+        }
+
+        public List<short_entity> GetCharacterEffects(uint id_character)
+        {
+            return db.GetCharacterEffects(id_character);
+        }
+
+        public List<short_entity> GetGiftConditions(uint id_gift)
+        {
+            return db.GetGiftConditions(id_gift);
+        }
+
+        public List<short_entity> GetGiftEffects(uint id_gift)
+        {
+            return db.GetGiftEffects(id_gift);
+        }
+
+        public List<short_entity> GetSkillEffects(uint id_skill)
+        {
+            return db.GetSkillEffects(id_skill);
+        }
+
+        public List<short_entity> GetSkillConditions(uint id_skill)
+        {
+            return db.GetSkillConditions(id_skill);
+        }
+
+        public List<short_entity> GetClassEffects(uint id_class)
+        {
+            return db.GetClassEffects(id_class);
+        }
+
+        public List<short_entity> GetRaceEffects(uint id_race)
+        {
+            return db.GetRaceEffects(id_race);
+        }
+        public skill GetSkill(uint id_skill)
+        {
+            return db.GetSkill(id_skill);
+        }
+        public List<skill> GetSkills()
+        {
+            return db.GetSkills();
+        }
+        public multiskill GetCharacterSkills(uint id_character)
+        {
+            return db.GetCharacterSkills(id_character);
+        }
     }
 }

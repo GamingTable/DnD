@@ -10,6 +10,10 @@ namespace DnDService
 {
     public class DAO : IDAO
     {
+        /// <summary>
+        /// IMPORTANT DISCLAIMER IN THIS VERSION :
+        /// INVENTORY AND SPELLS ARE NOT HANDLED YET!
+        /// </summary>
         private MySqlConnection connection;
         private string server;
         private string database;
@@ -525,22 +529,11 @@ namespace DnDService
             }
 
             if(deity>0)
-            {
                 new_char.deity = GetDeity(deity);
-            }
-            /*else
-            {
-                new_char.deity = new short_entity();
-            }*/
 
             if(race>0)
-            {
                 new_char.race = GetRace(race);
-            }
-            /*else
-            {
-                new_char.race = new complete_race();
-            }*/
+
             if (new_char.uid > 0)
             {
                 new_char.classes = GetMulticlass(character_id);
@@ -549,6 +542,7 @@ namespace DnDService
                 new_char.height = GetCharacterHeight(character_id);
                 new_char.weight = GetCharacterWeight(character_id);
                 new_char.gifts = GetCharacterGifts(character_id);
+                new_char.effects = GetCharacterEffects(character_id);
             }
 
 
@@ -675,6 +669,33 @@ namespace DnDService
                                 where language.`character` = " + id_character
                             + " );";
             return GetShortEntities(query);
+        }
+
+        private short_entity GetShortEntity(string query)
+        {
+            var new_short_entity = new short_entity();
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            new_short_entity = new short_entity()
+                            {
+                                uid = dataReader.GetUInt32(0),
+                                name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
+                            };
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
+            return new_short_entity;
         }
 
         private List<short_entity> GetShortEntities(string query)
@@ -856,6 +877,120 @@ namespace DnDService
                
         }
 
+        public short_entity GetCharacteristicType(uint id_type)
+        {
+            string query = @"select id_characteristic_type,
+                            name,
+                            description
+                            from dnd.characteristic_type
+                            where id_characteristic_type = "+id_type+";";
+            return GetShortEntity(query);
+        }
+
+        public List<short_entity> GetCharacteristicTypes()
+        {
+            string query = @"select id_characteristic_type,
+                            name,
+                            description
+                            from dnd.characteristic_type";
+            return GetShortEntities(query);
+        }
+
+        public characteristic GetCharacteristic(uint id_characteristic)
+        {
+            characteristic new_characteristic = new characteristic();
+
+            string query_characteristics = @"SELECT 
+                characteristic.name AS name, 
+                characteristic.description AS description, 
+                characteristic.abreviation AS abreviation, 
+                characteristic.characteristic_type AS type, 
+                FROM dnd.characteristic
+                WHERE characteristic.id_characteristic = " + id_characteristic + ";";
+
+            uint characteristic_type_id = 0;
+
+            if (OpenConnection())
+            {
+                //Get the characteristics values and modifiers of this template (summing all existing ones)
+                using (MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection))
+                {
+                    MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
+
+                    while (dataReader_cha.Read() && !dataReader_cha.IsDBNull(0))
+                    {
+                        new_characteristic = new characteristic()
+                        {
+                            uid = dataReader_cha.GetUInt32(0),
+                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
+                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
+                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3)
+                        };
+                        characteristic_type_id = dataReader_cha.GetUInt32(4);
+                    }
+
+                    dataReader_cha.Close();
+                }
+                CloseConnection();
+
+                if (characteristic_type_id > 0)
+                    new_characteristic.type = GetCharacteristicType(characteristic_type_id);
+            }
+
+            return new_characteristic;
+
+        }
+
+        /// Ajouter les getcharacteristics, getcharacteristic, getcharacteristictype et getcharacteristictypes
+        /// à l'IDAO, IService, Service
+        /// Utiliser GetCharacteristic pour compléter GetSkill
+        /// Terminer les requêtes skills pour valider le GetCharacter
+        /// Terminer GetCharacteristics
+
+        /*public characteristic GetCharacteristics()
+        {
+            characteristic new_characteristic = new characteristic();
+
+            string query_characteristics = @"SELECT 
+                characteristic.name AS name, 
+                characteristic.description AS description, 
+                characteristic.abreviation AS abreviation, 
+                characteristic.characteristic_type AS type, 
+                FROM dnd.characteristic;";
+
+            uint characteristic_type_id = 0;
+
+            if (OpenConnection())
+            {
+                //Get the characteristics values and modifiers of this template (summing all existing ones)
+                using (MySqlCommand cmd_cha = new MySqlCommand(query_characteristics, connection))
+                {
+                    MySqlDataReader dataReader_cha = cmd_cha.ExecuteReader();
+
+                    while (dataReader_cha.Read() && !dataReader_cha.IsDBNull(0))
+                    {
+                        new_characteristic = new characteristic()
+                        {
+                            uid = dataReader_cha.GetUInt32(0),
+                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
+                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
+                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3)
+                        };
+                        characteristic_type_id = dataReader_cha.GetUInt32(4);
+                    }
+
+                    dataReader_cha.Close();
+                }
+                CloseConnection();
+
+                if (characteristic_type_id > 0)
+                    new_characteristic.type = GetCharacteristicType(characteristic_type_id);
+            }
+
+            return new_characteristic;
+
+        }*/
+
         public template GetTemplate(uint id_template)
         {
             template new_template = new template();
@@ -994,6 +1129,7 @@ namespace DnDService
 
                 // Other queries after closing the reader
                 new_class.template = GetTemplate(id_template);
+                new_class.effects = GetClassEffects(id_class);
                 this.CloseConnection();
             }
 
@@ -1080,12 +1216,13 @@ namespace DnDService
             // Other queries after closing the reader
             new_race.template = GetTemplate(id_template);
             new_race.innates_languages = GetRaceLanguage(id_race);
+            new_race.effects = GetRaceEffects(id_race);
 
             return new_race;
         }
         #endregion
-        
-        #region SPECIALS
+
+        #region SPECIALS (SKILLS&GIFTS)
         public List<short_entity> GetCharacterGifts(uint id_character)
         {
             string query = @"select id_gift, name, description 
@@ -1128,6 +1265,11 @@ namespace DnDService
 
                 if(class_id>0)
                     new_gift.classe = GetClass(class_id);
+                if(new_gift.uid>0)
+                {
+                    new_gift.conditions = GetGiftConditions(new_gift.uid);
+                    new_gift.effects = GetGiftEffects(new_gift.uid);
+                }
             }
             return new_gift;
         }
@@ -1137,13 +1279,14 @@ namespace DnDService
                             from dnd.gift;";
             return GetShortEntities(query);
         }
-        #endregion
 
-        #region BACKGROUND AND LIFE
-        public short_entity GetDeity(uint deity_id)
+        public skill GetSkill(uint id_skill)
         {
-            var new_deity = new short_entity();
-            string query = "SELECT name, description from god where id_god="+deity_id+";";
+            var new_skill = new skill();
+            uint class_id = 0, ability_id = 0;
+            string query = @"select name, description, teachable, innate, class, key_ability 
+                            from dnd.skill 
+                            where id_skill = " + id_skill + ";";
             if (OpenConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -1153,19 +1296,145 @@ namespace DnDService
                     {
                         while (dataReader.Read())
                         {
-                            new_deity = new short_entity()
+                            new_skill = new skill()
                             {
-                                uid = deity_id,
+                                uid = id_skill,
                                 name = dataReader.IsDBNull(0) ? null : dataReader.GetString(0),
-                                description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1)
+                                description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                teachable = dataReader.GetBoolean(2),
+                                innate = dataReader.GetBoolean(3)
                             };
+                            class_id = dataReader.GetUInt32(4);
+                            ability_id = dataReader.GetUInt32(5);
                         }
                     }
                     dataReader.Close();
                 }
                 this.CloseConnection();
+
+                if (class_id > 0)
+                    new_gift.classe = GetClass(class_id);
+                if (ability_id > 0)
+                    new_skill.key_ability = Getchara
+                if (new_gift.uid > 0)
+                {
+                    new_gift.conditions = GetGiftConditions(new_gift.uid);
+                    new_gift.effects = GetGiftEffects(new_gift.uid);
+                }
             }
-            return new_deity;
+            return new_gift;
+        }
+        public List<skill> GetSkills()
+        {
+
+        }
+        public multiskill GetCharacterSkills(uint id_character)
+        {
+
+        }
+        #endregion
+
+        #region EFFECTS
+        public short_entity GetEffect(uint id_effect)
+        {
+            string query = @"select id_effect, name, description 
+                            from dnd.effect 
+                            where id_effect = " + id_effect + ");";
+            return GetShortEntity(query);
+        }
+        public List<short_entity> GetEffects()
+        {
+            string query = @"select id_effect, name, description 
+                            from dnd.effect;";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetCharacterEffects(uint id_character)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.effect_has_character.effect 
+                                    from dnd.effect_has_character
+                                where effect_has_character.`character` = " + id_character
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetGiftConditions(uint id_gift)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.gift_conditions.effect 
+                                    from dnd.gifts_conditions
+                                where gif_conditions.gift = " + id_gift
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetGiftEffects(uint id_gift)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.effect_has_gift.effect 
+                                    from dnd.effect_has_gift
+                                where effect_has_gift.gift = " + id_gift
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetSkillEffects(uint id_skill)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.effect_has_skill.effect 
+                                    from dnd.effect_has_skill
+                                where effect_has_skill.skill = " + id_skill
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetSkillConditions(uint id_skill)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.skill_conditions.effect 
+                                    from dnd.skill_conditions
+                                where skill_conditions.skill = " + id_skill
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetClassEffects(uint id_class)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.effect_has_class.effect 
+                                    from dnd.effect_has_class
+                                where effect_has_class.`class` = " + id_class
+                            + " );";
+            return GetShortEntities(query);
+        }
+        public List<short_entity> GetRaceEffects(uint id_race)
+        {
+            string query = @"select id_effect, name, description 
+                                from dnd.effect 
+                            where id_effect in 
+                                (select dnd.effect_has_race.effect 
+                                    from dnd.effect_has_race
+                                where effect_has_race.race = " + id_race
+                            + " );";
+            return GetShortEntities(query);
+        }
+        /* Inventory and Spells are not developped in this version
+        public List<short_entity> GetCategoryRequiredEffects();
+        public List<short_entity> GetSpellEffects();*/
+        #endregion
+
+        #region BACKGROUND AND LIFE
+        public short_entity GetDeity(uint deity_id)
+        {
+            string query = "SELECT name, description from god where id_god="+deity_id+";";
+            return GetShortEntity(query);
         }
         #endregion
     }

@@ -165,5 +165,31 @@ namespace DnDService
         gift GetGift(uint id_gift);
         [OperationContract]
         List<short_entity> GetGifts();
+
+        [OperationContract]
+        short_entity GetEffect(uint id_effect);
+        [OperationContract]
+        List<short_entity> GetEffects();
+        [OperationContract]
+        List<short_entity> GetCharacterEffects(uint id_character);
+        [OperationContract]
+        List<short_entity> GetGiftConditions(uint id_gift);
+        [OperationContract]
+        List<short_entity> GetGiftEffects(uint id_gift);
+        [OperationContract]
+        List<short_entity> GetSkillEffects(uint id_skill);
+        [OperationContract]
+        List<short_entity> GetSkillConditions(uint id_skill);
+        [OperationContract]
+        List<short_entity> GetClassEffects(uint id_class);
+        [OperationContract]
+        List<short_entity> GetRaceEffects(uint id_race);
+
+        [OperationContract]
+        skill GetSkill(uint id_skill);
+        [OperationContract]
+        List<skill> GetSkills();
+        [OperationContract]
+        multiskill GetCharacterSkills(uint id_character);
     }
 }

@@ -74,7 +74,6 @@ namespace DnDService
         /// <summary>
         /// CATEGORIES HANDLING (AGE, HEIGHT, WEIGHT)
         /// </summary>
-        /// <param name="id_character"></param>
         /// <returns></returns>
         //Return the tuple age and category of the character
         Tuple<uint, category> GetCharacterAge(uint id_character);
@@ -92,7 +91,6 @@ namespace DnDService
         /// <summary>
         /// GIFTS HANDLING
         /// </summary>
-        /// <param name="id_character"></param>
         /// <returns></returns>
         //Return the list of gifts owned by a character
         List<short_entity> GetCharacterGifts(uint id_character);
@@ -100,5 +98,41 @@ namespace DnDService
         gift GetGift(uint id_gift);
         //Return the list of every existing gift
         List<short_entity> GetGifts();
+
+        /// <summary>
+        /// EFFECTS HANDLING
+        /// Effects are a way of handling non-quantitative event on things
+        /// like conditions or specific capabilities (ie: night sight)
+        /// </summary>
+        /// <returns></returns>
+        //Return the selected effect
+        short_entity GetEffect(uint id_effect);
+        //Return the list of every effect
+        List<short_entity> GetEffects();
+        //Return effects affecting this character
+        List<short_entity> GetCharacterEffects(uint id_character);
+        //Return conditions to apply this gift
+        List<short_entity> GetGiftConditions(uint id_gift);
+        //Return effects of the selected gift
+        List<short_entity> GetGiftEffects(uint id_gift);
+        //Return effects of the selected skill
+        List<short_entity> GetSkillEffects(uint id_skill);
+        //Return conditions to apply to this skill
+        List<short_entity> GetSkillConditions(uint id_skill);
+        //Return effects of the selected class
+        List<short_entity> GetClassEffects(uint id_class);
+        //Return effects of the selected race
+        List<short_entity> GetRaceEffects(uint id_race);
+
+        /// <summary>
+        /// SKILLS HANDLING
+        /// </summary>
+        /// <returns></returns>
+        //Return the selected skill
+        skill GetSkill(uint id_skill);
+        //Return the list of every skill
+        List<skill> GetSkills();
+        //Return skills and corresponding modifier for this character
+        multiskill GetCharacterSkills(uint id_character);
     }
 }

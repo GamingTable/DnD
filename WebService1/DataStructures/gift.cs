@@ -20,6 +20,10 @@ namespace DnDService.DataStructures
         public complete_class classe { get; set; }
         [DataMember]
         public string category { get; set; }
+        [DataMember]
+        public List<short_entity> conditions { get; set; }
+        [DataMember]
+        public List<short_entity> effects { get; set; }
 
     }
 }

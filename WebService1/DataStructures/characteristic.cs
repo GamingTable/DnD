@@ -14,7 +14,7 @@ namespace DnDService.DataStructures
         [DataMember]
         public string abreviation { get; set; }
         [DataMember]
-        public uint type { get; set; }
+        public short_entity type { get; set; }
 
         [DataMember]
         public int value { get; set; }
