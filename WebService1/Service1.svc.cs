@@ -166,5 +166,20 @@ namespace DnDService
         {
             return db.GetHeightCategory(id_height_category);
         }
+        //Return the list of every gift corresponding to a character
+        public List<short_entity> GetCharacterGifts(uint id_character)
+        {
+            return db.GetCharacterGifts(id_character);
+        }
+        //Return the actual gift object
+        public gift GetGift(uint id_gift)
+        {
+            return db.GetGift(id_gift);
+        }
+        //Return the full list of every gift
+        public List<short_entity> GetGifts()
+        {
+            return db.GetGifts();
+        }
     }
 }

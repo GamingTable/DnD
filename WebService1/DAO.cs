@@ -484,14 +484,14 @@ namespace DnDService
             var query = @"select dnd.`character`.account,
                         dnd.`character`.name,
                         dnd.`character`.avatar,
-                        dnd.`character`.race,
                         dnd.`character`.sex,
                         dnd.`character`.background,
                         dnd.`character`.hair,
                         dnd.`character`.eyes,
                         dnd.`character`.skin,
-                        dnd.`character`.deity,
-                        dnd.`character`.personnality
+                        dnd.`character`.personnality,
+                        dnd.`character`.race,
+                        dnd.`character`.deity
                         from dnd.`character`
                         where dnd.`character`.id_character =" + character_id;
 
@@ -508,20 +508,16 @@ namespace DnDService
                             uid = character_id,
                             account = dataReader.GetUInt32(0),
                             name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
-                            avatar = dataReader.IsDBNull(2) ? null : (byte[])dataReader[2]
-                        };
-                        //Sequential access is required to extract a blob
-                        //Therefore we need to call the datareader in column order
-                        //and we cannot formulate new_char in one request
-                        //due to the single access db allowed by datareader
-                        race = dataReader.GetUInt32(3);
-                        new_char.sex = dataReader.IsDBNull(4) ? '\0' : dataReader.GetChar(4);
-                        new_char.background = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
-                        new_char.hair = dataReader.IsDBNull(6) ? null : dataReader.GetString(6);
-                        new_char.eyes = dataReader.IsDBNull(7) ? null : dataReader.GetString(7);
-                        new_char.skin = dataReader.IsDBNull(8) ? null : dataReader.GetString(8);
-                        deity = dataReader.GetUInt32(9);
-                        new_char.personnality = dataReader.IsDBNull(10) ? null : dataReader.GetString(10);
+                            avatar = dataReader.IsDBNull(2) ? null : (byte[])dataReader[2],
+                            sex = dataReader.IsDBNull(3) ? '\0' : dataReader.GetChar(3),
+                            background = dataReader.IsDBNull(4) ? null : dataReader.GetString(4),
+                            hair = dataReader.IsDBNull(5) ? null : dataReader.GetString(5),
+                            eyes = dataReader.IsDBNull(6) ? null : dataReader.GetString(6),
+                            skin = dataReader.IsDBNull(7) ? null : dataReader.GetString(7),
+                            personnality = dataReader.IsDBNull(8) ? null : dataReader.GetString(8)
+                    };
+                        race = dataReader.GetUInt32(9);
+                        deity = dataReader.GetUInt32(10);
                     }
                     dataReader.Close();
                 }
@@ -532,19 +528,19 @@ namespace DnDService
             {
                 new_char.deity = GetDeity(deity);
             }
-            else
+            /*else
             {
                 new_char.deity = new short_entity();
-            }
+            }*/
 
             if(race>0)
             {
                 new_char.race = GetRace(race);
             }
-            else
+            /*else
             {
                 new_char.race = new complete_race();
-            }
+            }*/
             if (new_char.uid > 0)
             {
                 new_char.classes = GetMulticlass(character_id);
@@ -552,6 +548,7 @@ namespace DnDService
                 new_char.age = GetCharacterAge(character_id);
                 new_char.height = GetCharacterHeight(character_id);
                 new_char.weight = GetCharacterWeight(character_id);
+                new_char.gifts = GetCharacterGifts(character_id);
             }
 
 
@@ -570,7 +567,6 @@ namespace DnDService
             var query = @"select 
                         dnd.`character`.id_character,
                         dnd.`character`.name,
-                        class.name as class,
                         race.name as race,
                         sum(multiclasses.level) as global_level,
                         dnd.`character`.avatar
@@ -597,10 +593,9 @@ namespace DnDService
                                 uid = dataReader.GetUInt32(0),
                                 account = account_id,
                                 name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
-                                class_name = dataReader.IsDBNull(2) ? null : dataReader.GetString(2),
-                                race_name = dataReader.IsDBNull(3) ? null : dataReader.GetString(3),
-                                global_level = dataReader.GetUInt32(4),
-                                avatar = dataReader.IsDBNull(5) ? null : (byte[])dataReader[5]
+                                race_name = dataReader.IsDBNull(2) ? null : dataReader.GetString(2),
+                                global_level = dataReader.GetUInt32(3),
+                                avatar = dataReader.IsDBNull(4) ? null : (byte[])dataReader[4]
                             };
                             playable_characters.Add(c);
                         }
@@ -608,6 +603,19 @@ namespace DnDService
                     dataReader.Close();
                 }
                 this.CloseConnection();
+            }
+
+            // Retrieving a string of every classes and corresponding level the character has
+            foreach (var pc in playable_characters)
+            {
+                multiclass mc = GetMulticlass(pc.uid);
+                pc.class_name = null;
+                foreach(var c in mc.level_class)
+                {
+                    if(pc.class_name != null)
+                        pc.class_name += "/";
+                    pc.class_name += c.Item2.name + " " + c.Item1;
+                }
             }
 
             return playable_characters;
@@ -1076,8 +1084,59 @@ namespace DnDService
             return new_race;
         }
         #endregion
-
+        
         #region SPECIALS
+        public List<short_entity> GetCharacterGifts(uint id_character)
+        {
+            string query = @"select id_gift, name, description 
+                            from dnd.gift 
+                            where id_gift in 
+                            (select dnd.gift_has_character.gift 
+                            from dnd.gift_has_character 
+                            where gift_has_character.`character` = " + id_character + ");";
+            return GetShortEntities(query);
+        }
+        public gift GetGift(uint id_gift)
+        {
+            gift new_gift = new gift();
+            uint class_id = 0;
+            string query = @"select name, description, category, class 
+                            from dnd.gift 
+                            where id_gift = " + id_gift + ";";
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            new_gift = new gift()
+                            {
+                                uid = id_gift,
+                                name = dataReader.IsDBNull(0) ? null : dataReader.GetString(0),
+                                description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
+                                category = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
+                            };
+                            class_id = dataReader.GetUInt32(3);
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+
+                if(class_id>0)
+                    new_gift.classe = GetClass(class_id);
+            }
+            return new_gift;
+        }
+        public List<short_entity> GetGifts()
+        {
+            string query = @"select id_gift, name, description 
+                            from dnd.gift;";
+            return GetShortEntities(query);
+        }
         #endregion
 
         #region BACKGROUND AND LIFE

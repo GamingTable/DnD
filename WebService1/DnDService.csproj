@@ -73,6 +73,7 @@
     <Compile Include="DataStructures\characteristic.cs" />
     <Compile Include="DataStructures\complete_class.cs" />
     <Compile Include="DataStructures\complete_race.cs" />
+    <Compile Include="DataStructures\gift.cs" />
     <Compile Include="DataStructures\inventory.cs" />
     <Compile Include="DataStructures\item.cs" />
     <Compile Include="DataStructures\item_category.cs" />

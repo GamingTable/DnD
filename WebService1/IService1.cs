@@ -158,5 +158,12 @@ namespace DnDService
 
         [OperationContract]
         category GetHeightCategory(uint id_height_category);
+
+        [OperationContract]
+        List<short_entity> GetCharacterGifts(uint id_character);
+        [OperationContract]
+        gift GetGift(uint id_gift);
+        [OperationContract]
+        List<short_entity> GetGifts();
     }
 }

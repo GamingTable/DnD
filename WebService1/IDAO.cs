@@ -71,6 +71,11 @@ namespace DnDService
         //Return the desired deity
         short_entity GetDeity(uint deity_id);
 
+        /// <summary>
+        /// CATEGORIES HANDLING (AGE, HEIGHT, WEIGHT)
+        /// </summary>
+        /// <param name="id_character"></param>
+        /// <returns></returns>
         //Return the tuple age and category of the character
         Tuple<uint, category> GetCharacterAge(uint id_character);
         //Return the tuple weight and category of the character
@@ -83,5 +88,17 @@ namespace DnDService
         category GetWeightCategory(uint id_weight_category);
         //Return the selected category of height
         category GetHeightCategory(uint id_height_category);
+
+        /// <summary>
+        /// GIFTS HANDLING
+        /// </summary>
+        /// <param name="id_character"></param>
+        /// <returns></returns>
+        //Return the list of gifts owned by a character
+        List<short_entity> GetCharacterGifts(uint id_character);
+        //Return the selected gift
+        gift GetGift(uint id_gift);
+        //Return the list of every existing gift
+        List<short_entity> GetGifts();
     }
 }
