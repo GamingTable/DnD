@@ -65,14 +65,46 @@ namespace DnDServicePlayer.Pages.Character.Selection
             CharacterSheet.heroUpdate.eyes = e.ToString();
         }
 
-        /*private void weight_TextChanged(object sender, TextChangedEventArgs e)
+        private void weight_TextChanged(object sender, TextChangedEventArgs e)
         {
             uint temp;
-            string tmp = e.ToString();
-            if(UInt32.TryParse(tmp, out temp))
+            if(UInt32.TryParse(e.ToString(), out temp))
                 {
-                    CharacterSheet.heroUpdate.weight.Item1 = temp;//it works
+                    Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.weight.Item2);
+                    CharacterSheet.heroUpdate.weight = mytuple;
                 }
-        }*/
+            else
+            {
+                MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
+            }
+        }
+
+        private void height_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            uint temp;
+            if (UInt32.TryParse(e.ToString(), out temp))
+            {
+                Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.height.Item2);
+                CharacterSheet.heroUpdate.height = mytuple;
+            }
+            else
+            {
+                MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
+            }
+        }
+
+        private void age_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            uint temp;
+            if (UInt32.TryParse(e.ToString(), out temp))
+            {
+                Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.age.Item2);
+                CharacterSheet.heroUpdate.age = mytuple;
+            }
+            else
+            {
+                MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
+            }
+        }
     }
 }
