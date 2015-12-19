@@ -106,7 +106,7 @@
   <xs:element name="GetCharacters">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id_account" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" name="character_id" type="xs:unsignedInt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -250,21 +250,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCharacterCharacteristics">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
-        <xs:element minOccurs="0" name="id_type" type="xs:unsignedInt" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCharacterCharacteristicsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterCharacteristicsResult" nillable="true" type="q15:ArrayOfcharacteristic" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetMulticlass">
     <xs:complexType>
       <xs:sequence>
@@ -275,7 +260,7 @@
   <xs:element name="GetMulticlassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetMulticlassResult" nillable="true" type="q16:multiclass" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetMulticlassResult" nillable="true" type="q15:multiclass" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -287,21 +272,7 @@
   <xs:element name="GetDeitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeitiesResult" nillable="true" type="q17:ArrayOfshort_entity" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDeity">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="deity_id" type="xs:unsignedInt" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDeityResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeityResult" nillable="true" type="q18:short_entity" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeitiesResult" nillable="true" type="q16:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -145,3 +145,4 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\D
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
+C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache

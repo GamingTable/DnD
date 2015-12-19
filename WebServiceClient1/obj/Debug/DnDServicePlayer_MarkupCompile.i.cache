@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\
+C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\
 DnDServicePlayer
 none
 false
 DEBUG;TRACE
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\App.xaml
+C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\App.xaml
 221423553795
 
-36742541305
-151444730552
+36-1378326658
+15265170794
 LoadingScreen.xaml;PageSwitcher.xaml;Pages\Character\CharacterCreation.xaml;Pages\Character\CharacterSelection.xaml;Pages\Character\CharacterSheet.xaml;Pages\Account\Login.xaml;Pages\Account\Register.xaml;Pages\Character\Creation\Background.xaml;Pages\Character\Creation\Classe.xaml;Pages\Character\Creation\Gifts.xaml;Pages\Character\Creation\Race.xaml;Pages\Character\Creation\Skills.xaml;Pages\Character\Creation\Spells.xaml;Pages\Character\Creation\Stats.xaml;Pages\Character\Selection\AdventureSheet.xaml;Pages\Character\Selection\BackgroundSheet.xaml;Pages\Character\Selection\DiscussionSheet.xaml;Pages\Character\Selection\InventorySheet.xaml;Pages\Character\Selection\OptionSheet.xaml;Pages\Character\Selection\SpecialSheet.xaml;Pages\Character\Selection\SpellbookSheet.xaml;Pages\Character\Selection\StatSheet.xaml;
 
 False

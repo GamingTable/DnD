@@ -117,12 +117,6 @@
   <wsdl:message name="IService1_GetCharacteristics_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacteristicsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetCharacterCharacteristics_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCharacterCharacteristics" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetCharacterCharacteristics_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCharacterCharacteristicsResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_GetMulticlass_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMulticlass" />
   </wsdl:message>
@@ -134,12 +128,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetDeities_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDeitiesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetDeity_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDeity" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetDeity_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDeityResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
@@ -214,10 +202,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristics" message="tns:IService1_GetCharacteristics_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicsResponse" message="tns:IService1_GetCharacteristics_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCharacterCharacteristics">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterCharacteristics" message="tns:IService1_GetCharacterCharacteristics_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterCharacteristicsResponse" message="tns:IService1_GetCharacterCharacteristics_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetMulticlass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMulticlass" message="tns:IService1_GetMulticlass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMulticlassResponse" message="tns:IService1_GetMulticlass_OutputMessage" />
@@ -225,10 +209,6 @@
     <wsdl:operation name="GetDeities">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeities" message="tns:IService1_GetDeities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeitiesResponse" message="tns:IService1_GetDeities_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDeity">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeity" message="tns:IService1_GetDeity_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeityResponse" message="tns:IService1_GetDeity_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -395,15 +375,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCharacterCharacteristics">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterCharacteristics" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetMulticlass">
       <soap:operation soapAction="http://tempuri.org/IService1/GetMulticlass" style="document" />
       <wsdl:input>
@@ -415,15 +386,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetDeities">
       <soap:operation soapAction="http://tempuri.org/IService1/GetDeities" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDeity">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetDeity" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

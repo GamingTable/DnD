@@ -29,11 +29,50 @@ namespace DnDServicePlayer.Pages.Character.Selection
             nom.Text = CharacterSheet.hero.name;
             race.Text = CharacterSheet.hero.race.name;
             //maclasse.Text = hero.classes.;
-            //vd.Text = CharacterSheet.hero.stats[12].value.ToString();
-            //karma.Text = CharacterSheet.hero.stats[24].value.ToString();
-            //align.Text = CharacterSheet.hero.stats[25].value.ToString();
-            //level.Text = CharacterSheet.hero.classes.global_level.ToString();
-            //dieu.Text = CharacterSheet.hero.deity.name;
+            vd.Text = CharacterSheet.hero.stats[12].value.ToString();
+            karma.Text = CharacterSheet.hero.stats[24].value.ToString();
+            align.Text = CharacterSheet.hero.stats[25].value.ToString();
+            level.Text = CharacterSheet.hero.classes.global_level.ToString();
+            dieu.Text = CharacterSheet.hero.deity.name;
+
+            background.Text = CharacterSheet.hero.background;
+
+            sex.Text = CharacterSheet.hero.sex.ToString();
+            hairs.Text = CharacterSheet.hero.hair;
+            eyes.Text = CharacterSheet.hero.eyes;
+            weight.Text = CharacterSheet.hero.weight.Item1.ToString();
+            height.Text = CharacterSheet.hero.height.Item1.ToString();
+            age.Text = CharacterSheet.hero.age.Item1.ToString();
         }
+
+        private void background_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            CharacterSheet.heroUpdate.background = background.Text;
+        }
+
+        private void sex_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CharacterSheet.heroUpdate.sex = e.ToString()[0];
+        }
+
+        private void hairs_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CharacterSheet.heroUpdate.hair = e.ToString();
+        }
+
+        private void eyes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CharacterSheet.heroUpdate.eyes = e.ToString();
+        }
+
+        /*private void weight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            uint temp;
+            string tmp = e.ToString();
+            if(UInt32.TryParse(tmp, out temp))
+                {
+                    CharacterSheet.heroUpdate.weight.Item1 = temp;//it works
+                }
+        }*/
     }
 }
