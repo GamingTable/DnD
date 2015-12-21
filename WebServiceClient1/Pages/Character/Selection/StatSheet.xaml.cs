@@ -28,6 +28,34 @@ namespace DnDServicePlayer.Pages.Character.Selection
         public StatSheet()
         {
             InitializeComponent();
+            /*
+            Exception levée: 'System.NullReferenceException' dans DnDServicePlayer.exe
+            Utiliser un itérateur sur la liste des caractéristiques ordonnées par id est sans doute moins agressif
+
+            FOR.Text = CharacterSheet.hero.stats[1].value.ToString();
+            CON.Text = CharacterSheet.hero.stats[2].value.ToString();
+            DEX.Text = CharacterSheet.hero.stats[3].value.ToString();
+            INT.Text = CharacterSheet.hero.stats[4].value.ToString();
+            SAG.Text = CharacterSheet.hero.stats[5].value.ToString();
+            CHA.Text = CharacterSheet.hero.stats[6].value.ToString();
+
+            modFOR.Text = (((int)CharacterSheet.hero.stats[1].value / 2) - 5).ToString();
+            modCON.Text = (((int)CharacterSheet.hero.stats[2].value / 2) - 5).ToString();
+            modDEX.Text = (((int)CharacterSheet.hero.stats[3].value / 2) - 5).ToString();
+            modINT.Text = (((int)CharacterSheet.hero.stats[4].value / 2) - 5).ToString();
+            modSAG.Text = (((int)CharacterSheet.hero.stats[5].value / 2) - 5).ToString();
+            modCON.Text = (((int)CharacterSheet.hero.stats[6].value / 2) - 5).ToString();
+
+            REF.Text = CharacterSheet.hero.stats[10].value.ToString();
+            VOL.Text = CharacterSheet.hero.stats[11].value.ToString();
+            VIG.Text = CharacterSheet.hero.stats[9].value.ToString();
+            CA.Text = CharacterSheet.hero.stats[8].value.ToString();
+            RM.Text = CharacterSheet.hero.stats[13].value.ToString();
+            INI.Text = CharacterSheet.hero.stats[7].value.ToString();
+            BA.Text = CharacterSheet.hero.stats[18].value.ToString();
+            */
+            //BM.Text = CharacterSheet.hero.stats[6].value.ToString();
+                BM.Text = "0";
         }
     }
 }

@@ -40,23 +40,18 @@
         <Label Content="Intelligence" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,0" Grid.Row="5" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Charisme" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="6" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Sagesse" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="7" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" Grid.RowSpan="2"/>
-
-
-
-
-
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="FOR"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="CON"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="DEX"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="INT"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="CHA"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="SAG"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modFOR"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modCON"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modDEX"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modINT"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modCHA"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Height="30" IsEnabled="False" Name="modSAG"/>
 
         <Label Content="Réflexe" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="6"/>
         <Label Content="Vigueur" HorizontalAlignment="Left" Margin="10,14,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.Column="6"/>
@@ -64,15 +59,15 @@
         <Label Content="Classe Armure" Grid.Column="6" HorizontalAlignment="Left" Margin="10,15,0,0" Grid.Row="5" VerticalAlignment="Top"/>
         <Label Content="Résistance magique" Grid.Column="6" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="6" VerticalAlignment="Top"/>
         <Label Content="Initiative" Grid.Column="6" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="7" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Grid.RowSpan="2"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="REF"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="VOL"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="VIG"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="CA"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="6" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="RM"/>
+        <TextBox Grid.Column="8" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="INI"/>
         <Label Content="Bonus à l'attaque" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="9" VerticalAlignment="Top"/>
         <Label Content="Bonus à la magie" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="10" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="9" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="10" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="9" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="BA"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="0,5,0,0" Grid.Row="10" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" IsEnabled="False" Name="BM"/>
     </Grid>
 </UserControl>

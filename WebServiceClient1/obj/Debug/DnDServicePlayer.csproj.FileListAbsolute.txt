@@ -90,9 +90,8 @@ C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe.config
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.pdb
+C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\LoadingScreen.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\CharacterCreation.g.cs
@@ -118,6 +117,9 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\P
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\App.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.lref
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe.config
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.pdb
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\LoadingScreen.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Pages\Character\CharacterCreation.baml
