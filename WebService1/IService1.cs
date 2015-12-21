@@ -127,10 +127,31 @@ namespace DnDService
         complete_race GetRace(uint id_race);
 
         [OperationContract]
-        List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
+        List<characteristic> GetTemplateCharacteristics(uint id_template, uint id_type = 0);
 
         [OperationContract]
         List<characteristic> GetCharacterCharacteristics(uint id_character, uint id_type = 0);
+
+        [OperationContract]
+        short_entity GetCharacteristicType(uint id_type);
+
+        [OperationContract]
+        List<short_entity> GetCharacteristicTypes();
+
+        [OperationContract]
+        characteristic GetCharacteristic(uint id_characteristic);
+
+        [OperationContract]
+        List<characteristic> GetCharacteristics(uint id_type = 0);
+
+        [OperationContract]
+        aptitude GetAptitude(uint id_aptitude);
+
+        [OperationContract]
+        List<short_entity> GetAptitudes(uint id_class = 0);
+
+        [OperationContract]
+        List<aptitude> GetCharacterAptitudes(uint id_character);
 
         [OperationContract]
         multiclass GetMulticlass(uint id_character);
@@ -188,7 +209,7 @@ namespace DnDService
         [OperationContract]
         skill GetSkill(uint id_skill);
         [OperationContract]
-        List<skill> GetSkills();
+        List<short_entity> GetSkills();
         [OperationContract]
         multiskill GetCharacterSkills(uint id_character);
     }

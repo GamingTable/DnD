@@ -112,14 +112,49 @@ namespace DnDService
             return db.GetRace(id_race);
         }
         //Return the characteristics corresponding to a template. characteristic type is optionnal
-        public List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0)
+        public List<characteristic> GetTemplateCharacteristics(uint id_template, uint id_type = 0)
         {
-            return db.GetCharacteristics(id_template, id_type);
+            return db.GetTemplateCharacteristics(id_template, id_type);
         }
         //Return the characteristics corresponding to a character. characteristic type is optionnal
         public List<characteristic> GetCharacterCharacteristics(uint id_character, uint id_type = 0)
         {
             return db.GetCharacterCharacteristics(id_character, id_type);
+        }
+        //Return the type of characteristic corresponding to a certain id
+        public short_entity GetCharacteristicType(uint id_type)
+        {
+            return db.GetCharacteristicType(id_type);
+        }
+        //Return the list of all types of characteristics
+        public List<short_entity> GetCharacteristicTypes()
+        {
+            return db.GetCharacteristicTypes();
+        }
+        //Return the characteristic corresponding to a certain id
+        public characteristic GetCharacteristic(uint id_characteristic)
+        {
+            return db.GetCharacteristic(id_characteristic);
+        }
+        //Return the list of all characteristics, filtered or not by type
+        public List<characteristic> GetCharacteristics(uint id_type = 0)
+        {
+            return db.GetCharacteristics(id_type);
+        }
+        //Return the aptitude corresponding to a certain id
+        public aptitude GetAptitude(uint id_aptitude)
+        {
+            return db.GetAptitude(id_aptitude);
+        }
+        //Return the list of all aptitudes, filtered or not by class
+        public List<short_entity> GetAptitudes(uint id_class = 0)
+        {
+            return db.GetAptitudes(id_class);
+        }
+        //Return the list of all aptitudes corresponding to a certain character
+        public List<aptitude> GetCharacterAptitudes(uint id_character)
+        {
+            return db.GetCharacterAptitudes(id_character);
         }
         //Return the character classes and levels
         public multiclass GetMulticlass(uint id_character)
@@ -230,7 +265,7 @@ namespace DnDService
         {
             return db.GetSkill(id_skill);
         }
-        public List<skill> GetSkills()
+        public List<short_entity> GetSkills()
         {
             return db.GetSkills();
         }

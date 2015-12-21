@@ -58,10 +58,31 @@ namespace DnDService
         complete_race GetRace(uint id_race);
 
         //Return the list of characteristics corresponding to a template
-        List<characteristic> GetCharacteristics(uint id_template, uint id_type = 0);
+        List<characteristic> GetTemplateCharacteristics(uint id_template, uint id_type = 0);
 
         //Return the list of characteristics corresponding to a character
         List<characteristic> GetCharacterCharacteristics(uint id_account, uint id_type = 0);
+
+        //Return the type of characteristic corresponding to a certain id
+        short_entity GetCharacteristicType(uint id_type);
+
+        //Return the list of all types of characteristics
+        List<short_entity> GetCharacteristicTypes();
+
+        //Return the characteristic corresponding to a certain id
+        characteristic GetCharacteristic(uint id_characteristic);
+
+        //Return the list of all characteristics, filtered or not by type
+        List<characteristic> GetCharacteristics(uint id_type = 0);
+
+        //Returnthe aptitude corresponding to a certain id
+        aptitude GetAptitude(uint id_aptitude);
+
+        //Return the list of all aptitudes, filtered or not by class
+        List<short_entity> GetAptitudes(uint id_class = 0);
+
+        //Return the list of all aptitudes corresponding to a certain character
+        List<aptitude> GetCharacterAptitudes(uint id_character);
 
         //Return the current classes of a character
         multiclass GetMulticlass(uint id_character);
@@ -131,7 +152,7 @@ namespace DnDService
         //Return the selected skill
         skill GetSkill(uint id_skill);
         //Return the list of every skill
-        List<skill> GetSkills();
+        List<short_entity> GetSkills();
         //Return skills and corresponding modifier for this character
         multiskill GetCharacterSkills(uint id_character);
     }

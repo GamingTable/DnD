@@ -10,7 +10,7 @@ namespace DnDService.DataStructures
     public class multiskill
     {
         [DataMember]
-        public uint uid { get; set; }
+        public uint id_character { get; set; }
         [DataMember]
         public List<Tuple<uint, skill>> md_skill { get; set; }
     }

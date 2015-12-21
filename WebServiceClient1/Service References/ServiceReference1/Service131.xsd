@@ -16,12 +16,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TupleOfunsignedIntcategoryY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcategoryY6NY8n6N" />
-  <xs:complexType name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" />
   <xs:complexType name="TupleOfunsignedIntcomplete_classY6NY8n6N">
     <xs:annotation>
       <xs:appinfo>
@@ -37,6 +31,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
+  <xs:complexType name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntcomplete_classY6NY8n6N" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" nillable="true" type="tns:ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" />
   <xs:complexType name="ArrayOfTupleOfunsignedIntitemY6NY8n6N">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfunsignedIntitemY6NY8n6N" nillable="true" type="tns:TupleOfunsignedIntitemY6NY8n6N" />

@@ -111,17 +111,59 @@
   <wsdl:message name="IService1_GetRace_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRaceResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetCharacteristics_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCharacteristics" />
+  <wsdl:message name="IService1_GetTemplateCharacteristics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplateCharacteristics" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetCharacteristics_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCharacteristicsResponse" />
+  <wsdl:message name="IService1_GetTemplateCharacteristics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplateCharacteristicsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetCharacterCharacteristics_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacterCharacteristics" />
   </wsdl:message>
   <wsdl:message name="IService1_GetCharacterCharacteristics_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacterCharacteristicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristicType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristicType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristicTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicTypes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristicTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristics" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacteristics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacteristicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAptitude_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAptitude" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAptitude_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAptitudeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAptitudes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAptitudes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAptitudes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAptitudesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterAptitudes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterAptitudes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterAptitudes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterAptitudesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMulticlass_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMulticlass" />
@@ -140,6 +182,132 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetDeity_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDeityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterAge_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterAge" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterAge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterAgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterWeight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterWeight" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterWeight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterWeightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterHeight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterHeight" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterHeight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterHeightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAgeCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgeCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAgeCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgeCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetWeightCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeightCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetWeightCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeightCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetHeightCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHeightCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetHeightCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHeightCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterGifts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterGifts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterGifts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterGiftsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGift_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGift" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGift_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGifts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGifts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGifts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEffect_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEffect" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEffect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEffectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGiftConditions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftConditions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGiftConditions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftConditionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGiftEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetGiftEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGiftEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkillEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkillEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkillConditions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillConditions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkillConditions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillConditionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRaceEffects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRaceEffects" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRaceEffects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRaceEffectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkill_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkill" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkills_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkills" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSkills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSkillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterSkills_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterSkills" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCharacterSkills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCharacterSkillsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="AccountConnection">
@@ -210,13 +378,41 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRace" message="tns:IService1_GetRace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRaceResponse" message="tns:IService1_GetRace_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCharacteristics">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristics" message="tns:IService1_GetCharacteristics_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicsResponse" message="tns:IService1_GetCharacteristics_OutputMessage" />
+    <wsdl:operation name="GetTemplateCharacteristics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTemplateCharacteristics" message="tns:IService1_GetTemplateCharacteristics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTemplateCharacteristicsResponse" message="tns:IService1_GetTemplateCharacteristics_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCharacterCharacteristics">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterCharacteristics" message="tns:IService1_GetCharacterCharacteristics_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterCharacteristicsResponse" message="tns:IService1_GetCharacterCharacteristics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristicType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristicType" message="tns:IService1_GetCharacteristicType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicTypeResponse" message="tns:IService1_GetCharacteristicType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristicTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristicTypes" message="tns:IService1_GetCharacteristicTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicTypesResponse" message="tns:IService1_GetCharacteristicTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristic" message="tns:IService1_GetCharacteristic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicResponse" message="tns:IService1_GetCharacteristic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristics" message="tns:IService1_GetCharacteristics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacteristicsResponse" message="tns:IService1_GetCharacteristics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAptitude">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAptitude" message="tns:IService1_GetAptitude_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAptitudeResponse" message="tns:IService1_GetAptitude_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAptitudes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAptitudes" message="tns:IService1_GetAptitudes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAptitudesResponse" message="tns:IService1_GetAptitudes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterAptitudes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterAptitudes" message="tns:IService1_GetCharacterAptitudes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterAptitudesResponse" message="tns:IService1_GetCharacterAptitudes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMulticlass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMulticlass" message="tns:IService1_GetMulticlass_InputMessage" />
@@ -229,6 +425,90 @@
     <wsdl:operation name="GetDeity">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeity" message="tns:IService1_GetDeity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDeityResponse" message="tns:IService1_GetDeity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterAge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterAge" message="tns:IService1_GetCharacterAge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterAgeResponse" message="tns:IService1_GetCharacterAge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterWeight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterWeight" message="tns:IService1_GetCharacterWeight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterWeightResponse" message="tns:IService1_GetCharacterWeight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterHeight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterHeight" message="tns:IService1_GetCharacterHeight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterHeightResponse" message="tns:IService1_GetCharacterHeight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgeCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAgeCategory" message="tns:IService1_GetAgeCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAgeCategoryResponse" message="tns:IService1_GetAgeCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWeightCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetWeightCategory" message="tns:IService1_GetWeightCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetWeightCategoryResponse" message="tns:IService1_GetWeightCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHeightCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetHeightCategory" message="tns:IService1_GetHeightCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetHeightCategoryResponse" message="tns:IService1_GetHeightCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterGifts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterGifts" message="tns:IService1_GetCharacterGifts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterGiftsResponse" message="tns:IService1_GetCharacterGifts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGift">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGift" message="tns:IService1_GetGift_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftResponse" message="tns:IService1_GetGift_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGifts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGifts" message="tns:IService1_GetGifts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftsResponse" message="tns:IService1_GetGifts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEffect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEffect" message="tns:IService1_GetEffect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEffectResponse" message="tns:IService1_GetEffect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEffects" message="tns:IService1_GetEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEffectsResponse" message="tns:IService1_GetEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterEffects" message="tns:IService1_GetCharacterEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterEffectsResponse" message="tns:IService1_GetCharacterEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGiftConditions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGiftConditions" message="tns:IService1_GetGiftConditions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftConditionsResponse" message="tns:IService1_GetGiftConditions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGiftEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGiftEffects" message="tns:IService1_GetGiftEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftEffectsResponse" message="tns:IService1_GetGiftEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSkillEffects" message="tns:IService1_GetSkillEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSkillEffectsResponse" message="tns:IService1_GetSkillEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillConditions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSkillConditions" message="tns:IService1_GetSkillConditions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSkillConditionsResponse" message="tns:IService1_GetSkillConditions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetClassEffects" message="tns:IService1_GetClassEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetClassEffectsResponse" message="tns:IService1_GetClassEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRaceEffects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRaceEffects" message="tns:IService1_GetRaceEffects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRaceEffectsResponse" message="tns:IService1_GetRaceEffects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkill">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSkill" message="tns:IService1_GetSkill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSkillResponse" message="tns:IService1_GetSkill_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSkills" message="tns:IService1_GetSkills_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSkillsResponse" message="tns:IService1_GetSkills_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterSkills">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterSkills" message="tns:IService1_GetCharacterSkills_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterSkillsResponse" message="tns:IService1_GetCharacterSkills_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -386,8 +666,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCharacteristics">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristics" style="document" />
+    <wsdl:operation name="GetTemplateCharacteristics">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTemplateCharacteristics" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -397,6 +677,69 @@
     </wsdl:operation>
     <wsdl:operation name="GetCharacterCharacteristics">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterCharacteristics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristicType">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristicType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristicTypes">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristicTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristic">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacteristics">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacteristics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAptitude">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAptitude" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAptitudes">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAptitudes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterAptitudes">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterAptitudes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -424,6 +767,195 @@
     </wsdl:operation>
     <wsdl:operation name="GetDeity">
       <soap:operation soapAction="http://tempuri.org/IService1/GetDeity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterAge">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterAge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterWeight">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterWeight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterHeight">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterHeight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgeCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAgeCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeightCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetWeightCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHeightCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetHeightCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterGifts">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterGifts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGift">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetGift" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGifts">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetGifts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEffect">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEffect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiftConditions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetGiftConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGiftEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetGiftEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSkillEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillConditions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSkillConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetClassEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRaceEffects">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRaceEffects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkill">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSkill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkills">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSkills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCharacterSkills">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterSkills" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -29,7 +29,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> ageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.short_entity[] aptitudesField;
+        private DnDServicePlayer.ServiceReference1.aptitude[] aptitudesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] avatarField;
@@ -131,7 +131,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.short_entity[] aptitudes {
+        public DnDServicePlayer.ServiceReference1.aptitude[] aptitudes {
             get {
                 return this.aptitudesField;
             }
@@ -545,9 +545,6 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint global_levelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint id_characterField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -560,19 +557,6 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint global_level {
-            get {
-                return this.global_levelField;
-            }
-            set {
-                if ((this.global_levelField.Equals(value) != true)) {
-                    this.global_levelField = value;
-                    this.RaisePropertyChanged("global_level");
-                }
             }
         }
         
@@ -949,10 +933,10 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.skill>[] md_skillField;
+        private uint id_characterField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint uidField;
+        private System.Tuple<uint, DnDServicePlayer.ServiceReference1.skill>[] md_skillField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -965,6 +949,19 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint id_character {
+            get {
+                return this.id_characterField;
+            }
+            set {
+                if ((this.id_characterField.Equals(value) != true)) {
+                    this.id_characterField = value;
+                    this.RaisePropertyChanged("id_character");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Tuple<uint, DnDServicePlayer.ServiceReference1.skill>[] md_skill {
             get {
                 return this.md_skillField;
@@ -973,19 +970,6 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.md_skillField, value) != true)) {
                     this.md_skillField = value;
                     this.RaisePropertyChanged("md_skill");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint uid {
-            get {
-                return this.uidField;
-            }
-            set {
-                if ((this.uidField.Equals(value) != true)) {
-                    this.uidField = value;
-                    this.RaisePropertyChanged("uid");
                 }
             }
         }
@@ -1095,6 +1079,99 @@ namespace DnDServicePlayer.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="aptitude", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class aptitude : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.complete_class classeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.complete_class classe {
+            get {
+                return this.classeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.classeField, value) != true)) {
+                    this.classeField = value;
+                    this.RaisePropertyChanged("classe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="characteristic", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
     [System.SerializableAttribute()]
     public partial class characteristic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1115,7 +1192,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         private string nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private uint typeField;
+        private DnDServicePlayer.ServiceReference1.short_entity typeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint uidField;
@@ -1186,12 +1263,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public uint type {
+        public DnDServicePlayer.ServiceReference1.short_entity type {
             get {
                 return this.typeField;
             }
             set {
-                if ((this.typeField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.typeField, value) != true)) {
                     this.typeField = value;
                     this.RaisePropertyChanged("type");
                 }
@@ -2561,13 +2638,22 @@ namespace DnDServicePlayer.ServiceReference1 {
         private DnDServicePlayer.ServiceReference1.complete_class classeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] conditionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool innateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DnDServicePlayer.ServiceReference1.characteristic key_abilityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.template modifiersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
@@ -2602,6 +2688,19 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] conditions {
+            get {
+                return this.conditionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.conditionsField, value) != true)) {
+                    this.conditionsField = value;
+                    this.RaisePropertyChanged("conditions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string description {
             get {
                 return this.descriptionField;
@@ -2610,6 +2709,19 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
                     this.descriptionField = value;
                     this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
+            get {
+                return this.effectsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
+                    this.effectsField = value;
+                    this.RaisePropertyChanged("effects");
                 }
             }
         }
@@ -2636,6 +2748,19 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.key_abilityField, value) != true)) {
                     this.key_abilityField = value;
                     this.RaisePropertyChanged("key_ability");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.template modifiers {
+            get {
+                return this.modifiersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.modifiersField, value) != true)) {
+                    this.modifiersField = value;
+                    this.RaisePropertyChanged("modifiers");
                 }
             }
         }
@@ -2830,6 +2955,147 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="gift", Namespace="http://schemas.datacontract.org/2004/07/DnDService.DataStructures")]
+    [System.SerializableAttribute()]
+    public partial class gift : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string categoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.complete_class classeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] conditionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private uint uidField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string category {
+            get {
+                return this.categoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.categoryField, value) != true)) {
+                    this.categoryField = value;
+                    this.RaisePropertyChanged("category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.complete_class classe {
+            get {
+                return this.classeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.classeField, value) != true)) {
+                    this.classeField = value;
+                    this.RaisePropertyChanged("classe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] conditions {
+            get {
+                return this.conditionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.conditionsField, value) != true)) {
+                    this.conditionsField = value;
+                    this.RaisePropertyChanged("conditions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
+            get {
+                return this.effectsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
+                    this.effectsField = value;
+                    this.RaisePropertyChanged("effects");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public uint uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -2936,17 +3202,59 @@ namespace DnDServicePlayer.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRace", ReplyAction="http://tempuri.org/IService1/GetRaceResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.complete_race> GetRaceAsync(uint id_race);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacteristicsResponse")]
-        DnDServicePlayer.ServiceReference1.characteristic[] GetCharacteristics(uint id_template, uint id_type);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTemplateCharacteristics", ReplyAction="http://tempuri.org/IService1/GetTemplateCharacteristicsResponse")]
+        DnDServicePlayer.ServiceReference1.characteristic[] GetTemplateCharacteristics(uint id_template, uint id_type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacteristicsResponse")]
-        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacteristicsAsync(uint id_template, uint id_type);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTemplateCharacteristics", ReplyAction="http://tempuri.org/IService1/GetTemplateCharacteristicsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetTemplateCharacteristicsAsync(uint id_template, uint id_type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacterCharacteristicsResponse")]
         DnDServicePlayer.ServiceReference1.characteristic[] GetCharacterCharacteristics(uint id_character, uint id_type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacterCharacteristicsResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacterCharacteristicsAsync(uint id_character, uint id_type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicType", ReplyAction="http://tempuri.org/IService1/GetCharacteristicTypeResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity GetCharacteristicType(uint id_type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicType", ReplyAction="http://tempuri.org/IService1/GetCharacteristicTypeResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetCharacteristicTypeAsync(uint id_type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicTypes", ReplyAction="http://tempuri.org/IService1/GetCharacteristicTypesResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetCharacteristicTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristicTypes", ReplyAction="http://tempuri.org/IService1/GetCharacteristicTypesResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacteristicTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristic", ReplyAction="http://tempuri.org/IService1/GetCharacteristicResponse")]
+        DnDServicePlayer.ServiceReference1.characteristic GetCharacteristic(uint id_characteristic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristic", ReplyAction="http://tempuri.org/IService1/GetCharacteristicResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic> GetCharacteristicAsync(uint id_characteristic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacteristicsResponse")]
+        DnDServicePlayer.ServiceReference1.characteristic[] GetCharacteristics(uint id_type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacteristics", ReplyAction="http://tempuri.org/IService1/GetCharacteristicsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacteristicsAsync(uint id_type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAptitude", ReplyAction="http://tempuri.org/IService1/GetAptitudeResponse")]
+        DnDServicePlayer.ServiceReference1.aptitude GetAptitude(uint id_aptitude);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAptitude", ReplyAction="http://tempuri.org/IService1/GetAptitudeResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.aptitude> GetAptitudeAsync(uint id_aptitude);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAptitudes", ReplyAction="http://tempuri.org/IService1/GetAptitudesResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetAptitudes(uint id_class);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAptitudes", ReplyAction="http://tempuri.org/IService1/GetAptitudesResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetAptitudesAsync(uint id_class);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterAptitudes", ReplyAction="http://tempuri.org/IService1/GetCharacterAptitudesResponse")]
+        DnDServicePlayer.ServiceReference1.aptitude[] GetCharacterAptitudes(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterAptitudes", ReplyAction="http://tempuri.org/IService1/GetCharacterAptitudesResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.aptitude[]> GetCharacterAptitudesAsync(uint id_character);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMulticlass", ReplyAction="http://tempuri.org/IService1/GetMulticlassResponse")]
         DnDServicePlayer.ServiceReference1.multiclass GetMulticlass(uint id_character);
@@ -2965,6 +3273,132 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDeity", ReplyAction="http://tempuri.org/IService1/GetDeityResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetDeityAsync(uint deity_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterAge", ReplyAction="http://tempuri.org/IService1/GetCharacterAgeResponse")]
+        System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterAge(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterAge", ReplyAction="http://tempuri.org/IService1/GetCharacterAgeResponse")]
+        System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterAgeAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterWeight", ReplyAction="http://tempuri.org/IService1/GetCharacterWeightResponse")]
+        System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterWeight(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterWeight", ReplyAction="http://tempuri.org/IService1/GetCharacterWeightResponse")]
+        System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterWeightAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterHeight", ReplyAction="http://tempuri.org/IService1/GetCharacterHeightResponse")]
+        System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterHeight(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterHeight", ReplyAction="http://tempuri.org/IService1/GetCharacterHeightResponse")]
+        System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterHeightAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAgeCategory", ReplyAction="http://tempuri.org/IService1/GetAgeCategoryResponse")]
+        DnDServicePlayer.ServiceReference1.category GetAgeCategory(uint id_age_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAgeCategory", ReplyAction="http://tempuri.org/IService1/GetAgeCategoryResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetAgeCategoryAsync(uint id_age_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetWeightCategory", ReplyAction="http://tempuri.org/IService1/GetWeightCategoryResponse")]
+        DnDServicePlayer.ServiceReference1.category GetWeightCategory(uint id_weight_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetWeightCategory", ReplyAction="http://tempuri.org/IService1/GetWeightCategoryResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetWeightCategoryAsync(uint id_weight_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetHeightCategory", ReplyAction="http://tempuri.org/IService1/GetHeightCategoryResponse")]
+        DnDServicePlayer.ServiceReference1.category GetHeightCategory(uint id_height_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetHeightCategory", ReplyAction="http://tempuri.org/IService1/GetHeightCategoryResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetHeightCategoryAsync(uint id_height_category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterGifts", ReplyAction="http://tempuri.org/IService1/GetCharacterGiftsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterGifts(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterGifts", ReplyAction="http://tempuri.org/IService1/GetCharacterGiftsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterGiftsAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGift", ReplyAction="http://tempuri.org/IService1/GetGiftResponse")]
+        DnDServicePlayer.ServiceReference1.gift GetGift(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGift", ReplyAction="http://tempuri.org/IService1/GetGiftResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.gift> GetGiftAsync(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGifts", ReplyAction="http://tempuri.org/IService1/GetGiftsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetGifts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGifts", ReplyAction="http://tempuri.org/IService1/GetGiftsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEffect", ReplyAction="http://tempuri.org/IService1/GetEffectResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity GetEffect(uint id_effect);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEffect", ReplyAction="http://tempuri.org/IService1/GetEffectResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetEffectAsync(uint id_effect);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEffects", ReplyAction="http://tempuri.org/IService1/GetEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetEffects();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEffects", ReplyAction="http://tempuri.org/IService1/GetEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetEffectsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterEffects", ReplyAction="http://tempuri.org/IService1/GetCharacterEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterEffects(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterEffects", ReplyAction="http://tempuri.org/IService1/GetCharacterEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterEffectsAsync(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftConditions", ReplyAction="http://tempuri.org/IService1/GetGiftConditionsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetGiftConditions(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftConditions", ReplyAction="http://tempuri.org/IService1/GetGiftConditionsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftConditionsAsync(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftEffects", ReplyAction="http://tempuri.org/IService1/GetGiftEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetGiftEffects(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftEffects", ReplyAction="http://tempuri.org/IService1/GetGiftEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftEffectsAsync(uint id_gift);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkillEffects", ReplyAction="http://tempuri.org/IService1/GetSkillEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetSkillEffects(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkillEffects", ReplyAction="http://tempuri.org/IService1/GetSkillEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillEffectsAsync(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkillConditions", ReplyAction="http://tempuri.org/IService1/GetSkillConditionsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetSkillConditions(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkillConditions", ReplyAction="http://tempuri.org/IService1/GetSkillConditionsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillConditionsAsync(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClassEffects", ReplyAction="http://tempuri.org/IService1/GetClassEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetClassEffects(uint id_class);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetClassEffects", ReplyAction="http://tempuri.org/IService1/GetClassEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetClassEffectsAsync(uint id_class);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRaceEffects", ReplyAction="http://tempuri.org/IService1/GetRaceEffectsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetRaceEffects(uint id_race);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRaceEffects", ReplyAction="http://tempuri.org/IService1/GetRaceEffectsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetRaceEffectsAsync(uint id_race);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkill", ReplyAction="http://tempuri.org/IService1/GetSkillResponse")]
+        DnDServicePlayer.ServiceReference1.skill GetSkill(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkill", ReplyAction="http://tempuri.org/IService1/GetSkillResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.skill> GetSkillAsync(uint id_skill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkills", ReplyAction="http://tempuri.org/IService1/GetSkillsResponse")]
+        DnDServicePlayer.ServiceReference1.short_entity[] GetSkills();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkills", ReplyAction="http://tempuri.org/IService1/GetSkillsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterSkills", ReplyAction="http://tempuri.org/IService1/GetCharacterSkillsResponse")]
+        DnDServicePlayer.ServiceReference1.multiskill GetCharacterSkills(uint id_character);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterSkills", ReplyAction="http://tempuri.org/IService1/GetCharacterSkillsResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.multiskill> GetCharacterSkillsAsync(uint id_character);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3130,12 +3564,12 @@ namespace DnDServicePlayer.ServiceReference1 {
             return base.Channel.GetRaceAsync(id_race);
         }
         
-        public DnDServicePlayer.ServiceReference1.characteristic[] GetCharacteristics(uint id_template, uint id_type) {
-            return base.Channel.GetCharacteristics(id_template, id_type);
+        public DnDServicePlayer.ServiceReference1.characteristic[] GetTemplateCharacteristics(uint id_template, uint id_type) {
+            return base.Channel.GetTemplateCharacteristics(id_template, id_type);
         }
         
-        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacteristicsAsync(uint id_template, uint id_type) {
-            return base.Channel.GetCharacteristicsAsync(id_template, id_type);
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetTemplateCharacteristicsAsync(uint id_template, uint id_type) {
+            return base.Channel.GetTemplateCharacteristicsAsync(id_template, id_type);
         }
         
         public DnDServicePlayer.ServiceReference1.characteristic[] GetCharacterCharacteristics(uint id_character, uint id_type) {
@@ -3144,6 +3578,62 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacterCharacteristicsAsync(uint id_character, uint id_type) {
             return base.Channel.GetCharacterCharacteristicsAsync(id_character, id_type);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity GetCharacteristicType(uint id_type) {
+            return base.Channel.GetCharacteristicType(id_type);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetCharacteristicTypeAsync(uint id_type) {
+            return base.Channel.GetCharacteristicTypeAsync(id_type);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetCharacteristicTypes() {
+            return base.Channel.GetCharacteristicTypes();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacteristicTypesAsync() {
+            return base.Channel.GetCharacteristicTypesAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.characteristic GetCharacteristic(uint id_characteristic) {
+            return base.Channel.GetCharacteristic(id_characteristic);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic> GetCharacteristicAsync(uint id_characteristic) {
+            return base.Channel.GetCharacteristicAsync(id_characteristic);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.characteristic[] GetCharacteristics(uint id_type) {
+            return base.Channel.GetCharacteristics(id_type);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.characteristic[]> GetCharacteristicsAsync(uint id_type) {
+            return base.Channel.GetCharacteristicsAsync(id_type);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.aptitude GetAptitude(uint id_aptitude) {
+            return base.Channel.GetAptitude(id_aptitude);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.aptitude> GetAptitudeAsync(uint id_aptitude) {
+            return base.Channel.GetAptitudeAsync(id_aptitude);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetAptitudes(uint id_class) {
+            return base.Channel.GetAptitudes(id_class);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetAptitudesAsync(uint id_class) {
+            return base.Channel.GetAptitudesAsync(id_class);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.aptitude[] GetCharacterAptitudes(uint id_character) {
+            return base.Channel.GetCharacterAptitudes(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.aptitude[]> GetCharacterAptitudesAsync(uint id_character) {
+            return base.Channel.GetCharacterAptitudesAsync(id_character);
         }
         
         public DnDServicePlayer.ServiceReference1.multiclass GetMulticlass(uint id_character) {
@@ -3168,6 +3658,174 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetDeityAsync(uint deity_id) {
             return base.Channel.GetDeityAsync(deity_id);
+        }
+        
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterAge(uint id_character) {
+            return base.Channel.GetCharacterAge(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterAgeAsync(uint id_character) {
+            return base.Channel.GetCharacterAgeAsync(id_character);
+        }
+        
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterWeight(uint id_character) {
+            return base.Channel.GetCharacterWeight(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterWeightAsync(uint id_character) {
+            return base.Channel.GetCharacterWeightAsync(id_character);
+        }
+        
+        public System.Tuple<uint, DnDServicePlayer.ServiceReference1.category> GetCharacterHeight(uint id_character) {
+            return base.Channel.GetCharacterHeight(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<System.Tuple<uint, DnDServicePlayer.ServiceReference1.category>> GetCharacterHeightAsync(uint id_character) {
+            return base.Channel.GetCharacterHeightAsync(id_character);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.category GetAgeCategory(uint id_age_category) {
+            return base.Channel.GetAgeCategory(id_age_category);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetAgeCategoryAsync(uint id_age_category) {
+            return base.Channel.GetAgeCategoryAsync(id_age_category);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.category GetWeightCategory(uint id_weight_category) {
+            return base.Channel.GetWeightCategory(id_weight_category);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetWeightCategoryAsync(uint id_weight_category) {
+            return base.Channel.GetWeightCategoryAsync(id_weight_category);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.category GetHeightCategory(uint id_height_category) {
+            return base.Channel.GetHeightCategory(id_height_category);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.category> GetHeightCategoryAsync(uint id_height_category) {
+            return base.Channel.GetHeightCategoryAsync(id_height_category);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterGifts(uint id_character) {
+            return base.Channel.GetCharacterGifts(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterGiftsAsync(uint id_character) {
+            return base.Channel.GetCharacterGiftsAsync(id_character);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.gift GetGift(uint id_gift) {
+            return base.Channel.GetGift(id_gift);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.gift> GetGiftAsync(uint id_gift) {
+            return base.Channel.GetGiftAsync(id_gift);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetGifts() {
+            return base.Channel.GetGifts();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftsAsync() {
+            return base.Channel.GetGiftsAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity GetEffect(uint id_effect) {
+            return base.Channel.GetEffect(id_effect);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity> GetEffectAsync(uint id_effect) {
+            return base.Channel.GetEffectAsync(id_effect);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetEffects() {
+            return base.Channel.GetEffects();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetEffectsAsync() {
+            return base.Channel.GetEffectsAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetCharacterEffects(uint id_character) {
+            return base.Channel.GetCharacterEffects(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterEffectsAsync(uint id_character) {
+            return base.Channel.GetCharacterEffectsAsync(id_character);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetGiftConditions(uint id_gift) {
+            return base.Channel.GetGiftConditions(id_gift);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftConditionsAsync(uint id_gift) {
+            return base.Channel.GetGiftConditionsAsync(id_gift);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetGiftEffects(uint id_gift) {
+            return base.Channel.GetGiftEffects(id_gift);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftEffectsAsync(uint id_gift) {
+            return base.Channel.GetGiftEffectsAsync(id_gift);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetSkillEffects(uint id_skill) {
+            return base.Channel.GetSkillEffects(id_skill);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillEffectsAsync(uint id_skill) {
+            return base.Channel.GetSkillEffectsAsync(id_skill);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetSkillConditions(uint id_skill) {
+            return base.Channel.GetSkillConditions(id_skill);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillConditionsAsync(uint id_skill) {
+            return base.Channel.GetSkillConditionsAsync(id_skill);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetClassEffects(uint id_class) {
+            return base.Channel.GetClassEffects(id_class);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetClassEffectsAsync(uint id_class) {
+            return base.Channel.GetClassEffectsAsync(id_class);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetRaceEffects(uint id_race) {
+            return base.Channel.GetRaceEffects(id_race);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetRaceEffectsAsync(uint id_race) {
+            return base.Channel.GetRaceEffectsAsync(id_race);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.skill GetSkill(uint id_skill) {
+            return base.Channel.GetSkill(id_skill);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.skill> GetSkillAsync(uint id_skill) {
+            return base.Channel.GetSkillAsync(id_skill);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.short_entity[] GetSkills() {
+            return base.Channel.GetSkills();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetSkillsAsync() {
+            return base.Channel.GetSkillsAsync();
+        }
+        
+        public DnDServicePlayer.ServiceReference1.multiskill GetCharacterSkills(uint id_character) {
+            return base.Channel.GetCharacterSkills(id_character);
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.multiskill> GetCharacterSkillsAsync(uint id_character) {
+            return base.Channel.GetCharacterSkillsAsync(id_character);
         }
     }
 }

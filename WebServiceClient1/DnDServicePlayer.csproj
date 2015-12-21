@@ -249,6 +249,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.aptitude.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.character1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -261,13 +267,22 @@
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.complete_race.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.gift.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.multiclass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.multiskill.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_character1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.short_entity1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.skill.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\DnDServicePlayer.ServiceReference1.template1.datasource">

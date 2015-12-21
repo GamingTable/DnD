@@ -7,7 +7,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="account" type="xs:unsignedInt" />
       <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="age" nillable="true" type="q1:TupleOfunsignedIntcategoryY6NY8n6N" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="aptitudes" nillable="true" type="q2:ArrayOfshort_entity" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="aptitudes" nillable="true" type="q2:ArrayOfaptitude" />
       <xs:element minOccurs="0" name="avatar" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="background" nillable="true" type="xs:string" />
       <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q3:multiclass" />

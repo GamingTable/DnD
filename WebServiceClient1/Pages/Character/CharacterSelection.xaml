@@ -36,7 +36,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Button x:Name="cancel_button" Content="Annuler" Grid.Column="4" Grid.Row="3" FontSize="16" IsCancel="True" Click="cancel_button_Click"/>
-        <Label x:Name="label" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Height="67" Margin="56,236,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154" Grid.ColumnSpan="2"/>
 
     </Grid>
 </UserControl>

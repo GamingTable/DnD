@@ -76,7 +76,6 @@ namespace DnDServicePlayer.Pages
             short_character selection = (sender as ListBox).SelectedItem as short_character;
             current_character = client.GetCharacter(selection.uid);
             select_button.IsEnabled = true;
-            label.Content = current_character.name;
         }
     }
 }

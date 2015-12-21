@@ -35,7 +35,7 @@ namespace DnDService
         [DataMember]
         public List<short_entity> languages { get; set; }
         [DataMember]
-        public List<short_entity> aptitudes { get; set; }
+        public List<aptitude> aptitudes { get; set; }
         [DataMember]
         public inventory inventory { get; set; }
         [DataMember]
