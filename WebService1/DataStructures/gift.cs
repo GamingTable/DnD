@@ -17,13 +17,13 @@ namespace DnDService.DataStructures
         public string description { get; set; }
 
         [DataMember]
-        public complete_class classe { get; set; }
-        [DataMember]
         public string category { get; set; }
         [DataMember]
-        public List<short_entity> conditions { get; set; }
+        public string conditions { get; set; }
         [DataMember]
-        public List<short_entity> effects { get; set; }
+        public string advantages { get; set; }
+        [DataMember]
+        public string specials { get; set; }
 
     }
 }

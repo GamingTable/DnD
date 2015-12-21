@@ -194,10 +194,6 @@ namespace DnDService
         [OperationContract]
         List<short_entity> GetCharacterEffects(uint id_character);
         [OperationContract]
-        List<short_entity> GetGiftConditions(uint id_gift);
-        [OperationContract]
-        List<short_entity> GetGiftEffects(uint id_gift);
-        [OperationContract]
         List<short_entity> GetSkillEffects(uint id_skill);
         [OperationContract]
         List<short_entity> GetSkillConditions(uint id_skill);

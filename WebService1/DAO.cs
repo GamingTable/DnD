@@ -1242,8 +1242,8 @@ namespace DnDService
         public skill GetSkill(uint id_skill)
         {
             var new_skill = new skill();
-            uint class_id = 0, ability_id = 0, template_id = 0;
-            string query = @"select name, description, teachable, innate, class, key_ability, template 
+            uint ability_id = 0, template_id = 0;
+            string query = @"select name, description, teachable, innate, key_ability, template 
                             from dnd.skill 
                             where id_skill = " + id_skill + ";";
             if (OpenConnection())
@@ -1264,25 +1264,25 @@ namespace DnDService
                                 teachable = dataReader.GetBoolean(2),
                                 innate = dataReader.GetBoolean(3)
                             };
-                            class_id = dataReader.GetUInt32(4);
-                            ability_id = dataReader.GetUInt32(5);
-                            template_id = dataReader.GetUInt32(6);
+                            ability_id = dataReader.GetUInt32(4);
+                            template_id = dataReader.GetUInt32(5);
                         }
                     }
                     dataReader.Close();
                 }
                 this.CloseConnection();
 
-                if (class_id > 0)
-                    new_skill.classe = GetClass(class_id);
                 if (ability_id > 0)
                     new_skill.key_ability = GetCharacteristic(ability_id);
                 if (template_id > 0)
                     new_skill.modifiers = GetTemplate(template_id);
                 if (new_skill.uid > 0)
                 {
-                    new_skill.conditions = GetGiftConditions(new_skill.uid);
-                    new_skill.effects = GetGiftEffects(new_skill.uid);
+                    string query_classes = "select id_class, name, description from dnd.class where id_class in (select class from dnd.class_has_skill where skill=" + id_skill + ");";
+
+                    new_skill.classes = GetShortEntities(query_classes);
+                    new_skill.conditions = GetSkillConditions(new_skill.uid);
+                    new_skill.effects = GetSkillEffects(new_skill.uid);
                 }
             }
             return new_skill;
@@ -1422,8 +1422,7 @@ namespace DnDService
         public gift GetGift(uint id_gift)
         {
             gift new_gift = new gift();
-            uint class_id = 0;
-            string query = @"select name, description, category, class 
+            string query = @"select name, description, category, condition, avantage, special
                             from dnd.gift 
                             where id_gift = " + id_gift + ";";
             if (OpenConnection())
@@ -1440,28 +1439,22 @@ namespace DnDService
                                 uid = id_gift,
                                 name = dataReader.IsDBNull(0) ? null : dataReader.GetString(0),
                                 description = dataReader.IsDBNull(1) ? null : dataReader.GetString(1),
-                                category = dataReader.IsDBNull(2) ? null : dataReader.GetString(2)
+                                category = dataReader.IsDBNull(2) ? null : dataReader.GetString(2),
+                                conditions = dataReader.IsDBNull(3) ? null : dataReader.GetString(3),
+                                advantages = dataReader.IsDBNull(4) ? null : dataReader.GetString(4),
+                                specials = dataReader.IsDBNull(5) ? null : dataReader.GetString(5)
                             };
-                            class_id = dataReader.GetUInt32(3);
                         }
                     }
                     dataReader.Close();
                 }
                 this.CloseConnection();
-
-                if (class_id > 0)
-                    new_gift.classe = GetClass(class_id);
-                if (new_gift.uid > 0)
-                {
-                    new_gift.conditions = GetGiftConditions(new_gift.uid);
-                    new_gift.effects = GetGiftEffects(new_gift.uid);
-                }
             }
             return new_gift;
         }
         public List<short_entity> GetGifts()
         {
-            string query = @"select id_gift, name, description 
+            string query = @"select id_gift, name, avantage 
                             from dnd.gift;";
             return GetShortEntities(query);
         }
@@ -1490,28 +1483,6 @@ namespace DnDService
                                 (select dnd.effect_has_character.effect 
                                     from dnd.effect_has_character
                                 where effect_has_character.`character` = " + id_character
-                            + " );";
-            return GetShortEntities(query);
-        }
-        public List<short_entity> GetGiftConditions(uint id_gift)
-        {
-            string query = @"select id_effect, name, description 
-                                from dnd.effect 
-                            where id_effect in 
-                                (select dnd.gift_conditions.effect 
-                                    from dnd.gifts_conditions
-                                where gif_conditions.gift = " + id_gift
-                            + " );";
-            return GetShortEntities(query);
-        }
-        public List<short_entity> GetGiftEffects(uint id_gift)
-        {
-            string query = @"select id_effect, name, description 
-                                from dnd.effect 
-                            where id_effect in 
-                                (select dnd.effect_has_gift.effect 
-                                    from dnd.effect_has_gift
-                                where effect_has_gift.gift = " + id_gift
                             + " );";
             return GetShortEntities(query);
         }

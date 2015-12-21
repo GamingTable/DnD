@@ -132,10 +132,6 @@ namespace DnDService
         List<short_entity> GetEffects();
         //Return effects affecting this character
         List<short_entity> GetCharacterEffects(uint id_character);
-        //Return conditions to apply this gift
-        List<short_entity> GetGiftConditions(uint id_gift);
-        //Return effects of the selected gift
-        List<short_entity> GetGiftEffects(uint id_gift);
         //Return effects of the selected skill
         List<short_entity> GetSkillEffects(uint id_skill);
         //Return conditions to apply to this skill

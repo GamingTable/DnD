@@ -24,7 +24,7 @@ namespace DnDService.DataStructures
         [DataMember]
         public characteristic key_ability { get; set; }
         [DataMember]
-        public complete_class classe { get; set; }
+        public List<short_entity> classes { get; set; }
 
         [DataMember]
         public template modifiers { get; set; }

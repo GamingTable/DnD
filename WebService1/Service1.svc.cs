@@ -231,17 +231,6 @@ namespace DnDService
         {
             return db.GetCharacterEffects(id_character);
         }
-
-        public List<short_entity> GetGiftConditions(uint id_gift)
-        {
-            return db.GetGiftConditions(id_gift);
-        }
-
-        public List<short_entity> GetGiftEffects(uint id_gift)
-        {
-            return db.GetGiftEffects(id_gift);
-        }
-
         public List<short_entity> GetSkillEffects(uint id_skill)
         {
             return db.GetSkillEffects(id_skill);

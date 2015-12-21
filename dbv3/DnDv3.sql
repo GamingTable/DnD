@@ -362,6 +362,34 @@ INSERT INTO `class` VALUES (1,'Barbare','1d12',8,'Combattant féroce qui s\'en r
 UNLOCK TABLES;
 
 --
+-- Table structure for table `class_has_skill`
+--
+
+DROP TABLE IF EXISTS `class_has_skill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `class_has_skill` (
+  `class` int(10) unsigned NOT NULL,
+  `skill` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`class`,`skill`),
+  KEY `fk_class_has_skill_skill1_idx` (`skill`),
+  KEY `fk_class_has_skill_class1_idx` (`class`),
+  CONSTRAINT `fk_class_has_skill_class1` FOREIGN KEY (`class`) REFERENCES `class` (`id_class`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_class_has_skill_skill1` FOREIGN KEY (`skill`) REFERENCES `skill` (`id_skill`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `class_has_skill`
+--
+
+LOCK TABLES `class_has_skill` WRITE;
+/*!40000 ALTER TABLE `class_has_skill` DISABLE KEYS */;
+INSERT INTO `class_has_skill` VALUES (2,1),(7,1),(11,1),(2,2),(3,2),(4,2),(6,2),(9,2),(1,3),(2,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(9,3),(10,3),(11,3),(2,4),(4,4),(11,4),(2,5),(3,5),(4,5),(6,5),(7,5),(8,5),(9,5),(10,5),(2,6),(3,6),(4,6),(6,6),(7,6),(8,6),(9,6),(10,6),(11,7),(11,8),(2,9),(6,9),(11,9),(2,10),(11,10),(2,11),(7,11),(10,11),(11,11),(11,12),(3,13),(7,13),(10,13),(11,13),(2,14),(3,14),(7,14),(8,14),(9,14),(11,14),(2,15),(7,15),(10,15),(11,15),(1,16),(3,16),(5,16),(8,16),(10,16),(2,17),(7,17),(11,17),(1,18),(3,18),(5,18),(8,18),(10,18),(1,19),(2,19),(5,19),(7,19),(10,19),(11,19),(2,20),(11,20),(2,21),(11,21),(2,22),(7,22),(11,22),(10,23),(11,23),(1,24),(5,24),(11,24),(2,25),(10,26),(11,26),(1,27),(2,27),(3,27),(5,27),(7,27),(10,27),(11,27),(1,28),(2,28),(3,28),(7,28),(10,28),(11,28),(3,29),(8,29),(9,29),(10,29),(2,30),(3,30),(4,30),(6,30),(7,30),(8,30),(9,30),(10,30),(11,30),(2,31),(7,31),(8,31),(11,31),(2,32),(11,32),(1,33),(2,33),(5,33),(7,33),(10,33),(11,33),(1,34),(2,34),(5,34),(7,34),(10,34),(11,34),(1,35),(3,35),(10,35),(2,36),(11,36);
+/*!40000 ALTER TABLE `class_has_skill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `class_has_spell`
 --
 
@@ -465,33 +493,6 @@ CREATE TABLE `effect_has_class` (
 LOCK TABLES `effect_has_class` WRITE;
 /*!40000 ALTER TABLE `effect_has_class` DISABLE KEYS */;
 /*!40000 ALTER TABLE `effect_has_class` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `effect_has_gift`
---
-
-DROP TABLE IF EXISTS `effect_has_gift`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `effect_has_gift` (
-  `effect` int(10) unsigned NOT NULL,
-  `gift` tinyint(6) unsigned NOT NULL,
-  PRIMARY KEY (`effect`,`gift`),
-  KEY `fk_effect_has_gift_gift1_idx` (`gift`),
-  KEY `fk_effect_has_gift_effect1_idx` (`effect`),
-  CONSTRAINT `fk_effect_has_gift_effect1` FOREIGN KEY (`effect`) REFERENCES `effect` (`id_effect`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_effect_has_gift_gift1` FOREIGN KEY (`gift`) REFERENCES `gift` (`id_gift`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `effect_has_gift`
---
-
-LOCK TABLES `effect_has_gift` WRITE;
-/*!40000 ALTER TABLE `effect_has_gift` DISABLE KEYS */;
-/*!40000 ALTER TABLE `effect_has_gift` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -680,13 +681,13 @@ DROP TABLE IF EXISTS `gift`;
 CREATE TABLE `gift` (
   `id_gift` tinyint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `description` varchar(511) DEFAULT NULL,
+  `description` varchar(1100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `class` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_gift`,`class`),
-  KEY `fk_gift_class1_idx` (`class`),
-  CONSTRAINT `fk_gift_class1` FOREIGN KEY (`class`) REFERENCES `class` (`id_class`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `condition` varchar(1100) DEFAULT NULL,
+  `avantage` varchar(2000) DEFAULT NULL,
+  `special` varchar(1100) DEFAULT NULL,
+  PRIMARY KEY (`id_gift`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -695,34 +696,8 @@ CREATE TABLE `gift` (
 
 LOCK TABLES `gift` WRITE;
 /*!40000 ALTER TABLE `gift` DISABLE KEYS */;
+INSERT INTO `gift` VALUES (1,'Affinité magique',NULL,'Général',NULL,'Le personnage obtient un bonus de +2 sur tous ses tests d’Art de la magie et d’Utilisation des objets magiques.',NULL),(2,'Amélioration des créatures convoquées',NULL,'Général','École renforcée (invocation).','Toutes les créatures que le personnage convoque grâce à un sort de convocation quelconque obtiennent un bonus d’altération de +4 en Force et en Constitution pendant la durée du sort qui les a convoquées.',NULL),(3,' 	Arme de prédilection ','Le personnage choisit une arme. Il peut aussi choisir les attaques à mains nues, la lutte ou les rayons.','Général','Maniement de l’arme choisie, bonus de base à l’attaque de +1.','Le personnage bénéficie d’un bonus de +1 à tous ses jets d’attaque lorsqu’il utilise son arme de prédilection.','Ce don peut être choisi plusieurs fois, mais ses effets ne se cumulent pas. Il s’applique à chaque fois à une nouvelle arme.'),(30,' 	Arme de prédilection supérieure ','Le personnage choisit une arme pour laquelle il possède le don Arme de prédilection. Il peut aussi choisir les attaques à mains nues ou la lutte.','Général','Maniement de l’arme choisie, Arme de prédilection pour l’arme choisie, guerrier de niveau 8.','Le personnage bénéficie d’un bonus de +1 à tous ses jets d’attaque lorsqu’il utilise l’arme choisie. Ce bonus se cumule avec tous les autres bonus aux jets d’attaque, y compris celui du don Arme de prédilection.','Ce don peut être choisi plusieurs fois, mais ses effets ne se cumulent pas. Il s’applique à chaque fois à une nouvelle arme.'),(31,' 	Arme en main ','Sans ce don, dégainer une arme nécessite une action de mouvement, ou, pour les personnages dont le bonus de base à l’attaque est au moins égal à +1, une action libre combinée à un déplacement. Sans ce don, dégainer une arme dissimulée nécessite une action simple.','Général','Bonus de base à l’attaque de +1.','Le personnage peut dégainer une arme par une action libre. Il peut aussi dégainer une arme dissimulée (voir la compétence Escamotage) par une action de mouvement.','Un guerrier peut choisir Arme en main en tant que don supplémentaire.'),(32,'Athlétisme ',NULL,'Général',NULL,'Le personnage obtient un bonus de +2 sur tous ses tests d’Escalade et de Natation.',NULL),(33,' 	Attaque au galop ',NULL,'Général','Degré de maîtrise de 1 en Équitation, Combat monté.','Lorsqu’un personnage lance une charge à cheval (ou toute autre monture), il peut se déplacer et attaquer comme lors d’une charge normale, puis se déplacer de nouveau en poursuivant son mouvement (en ligne droite). Son mouvement total au cours du round ne peut pas dépasser le double de sa vitesse de déplacement monté. Le mouvement du personnage et de sa monture ne provoque alors pas d’attaque d’opportunité de la part de l’adversaire qu’ils chargent.','Un guerrier peut choisir Attaque au galop en tant que don supplémentaire.'),(34,'Attaque éclair ',NULL,'Général','Dex 13, Esquive, Souplesse du serpent, bonus de base à l’attaque de +4.','Lorsque le personnage entreprend une action d’attaque à l’aide d’une arme de corps à corps, il peut se déplacer avant et après avoir frappé, à condition que son mouvement total reste dans les limites de sa vitesse de déplacement. L’ensemble de ce déplacement ne provoque pas d’attaque d’opportunité de la part de la cible de son attaque, mais d’autres créatures peuvent éventuellement porter des attaques d’opportunité selon les cas. Il est impossible d’utiliser ce don en armure lourde.','Un guerrier peut choisir Attaque éclair en tant que don supplémentaire.'),(35,' 	Attaque en finesse ',NULL,'Général','Bonus de base à l’attaque de +1.','Lorsqu’il utilise une arme légère, une rapière, un fouet ou une chaîne cloutée (et que cette arme est destinée à une créature de sa catégorie de taille), le personnage peut choisir d’appliquer son bonus de Dextérité à ses jets d’attaque plutôt que celui de Force. Si le personnage utilise un bouclier, le malus d’armure aux tests imposé par ce dernier s’applique aux jets d’attaque.',NULL),(36,'Attaque en puissance ',NULL,'Général','For 13.','Pendant son tour de jeu et avant d’effectuer ses jets d’attaque, le personnage peut choisir un nombre, qu’il applique en tant que malus à tous ses jets d’attaque au corps à corps et en tant que bonus à tous ses jets de dégâts au corps à corps. La valeur choisie ne peut dépasser son bonus de base à l’attaque. Les modificateurs aux jets d’attaque et aux dégâts s’appliquent jusqu’au prochain tour de jeu du personnage.','Si le personnage attaque à l’aide d’une arme à deux mains ou d’une arme à une main tenue à deux mains, il ajoute le double du nombre choisi à ses jets de dégâts. Les armes légères (à l’exception des attaques à mains nues ou des armes naturelles) ne peuvent bénéficier du bonus aux dégâts d’une attaque en puissance, mais le malus sur les jets d’attaque s’applique tout de même.'),(37,'Attaque en rotation',NULL,'Général','Int 13, Dex 13, Attaque éclair, Esquive, Expertise du combat, Souplesse du serpent, bonus de base à l’attaque de +4.','Lors d’une action d’attaque à outrance, le personnage peut sacrifier ses attaques normales pour porter à la place une attaque de corps à corps avec son bonus de base maximal à l’attaque contre chacun de ses adversaires dans sa zone de contrôle.','Un guerrier peut choisir Attaque en rotation en tant que don supplémentaire.'),(38,'Attaques réflexes ','Un personnage ne possédant pas ce don n’a droit qu’à une attaques d’opportunité par round et ne peut pas la placer s’il est pris au dépourvu.','Général',NULL,'Chaque round, le personnage a droit un nombre d’attaques d’opportunité supplémentaires égal à son bonus de Dextérité. Il ne peut pas porter plus d’une attaques d’opportunité par opportunité.','Ce don ne permet pas à un roublard d’utiliser son pouvoir spécial d’opportunisme plus d’une fois par round.'),(39,'Autonome ',NULL,'Général',NULL,'Le personnage obtient un bonus de +2 sur tous ses tests de Premiers secours et de Survie.',NULL),(40,'Charge dévastatrice ',NULL,'Général',' Degré de maîtrise de 1 en Équitation, Combat monté, Attaque au galop.','Quand le personnage conduit une charge à cheval (ou toute autre monture), les dégâts qu’il cause sont doublés s’il utilise une arme de corps à corps (ou triplés s’il s’agit d’une lance d’arçon).','Un guerrier peut choisir Charge dévastatrice en tant que don supplémentaire.'),(41,'Combat à deux armes ','Voir Combat à deux armes et la Table : malus liés au combat à deux armes.','Général','Dex 15.','Le personnage subit des malus moins importants lorsqu’il combat avec deux armes. Le malus sur la main principale est réduit de 2 points et le malus sur la main secondaire est réduit de 6 points.','Un guerrier peut choisir Combat à deux armes en tant que don supplémentaire.'),(42,'Combat en aveugle ','Les aventuriers n’ayant pas ce don subissent les handicaps habituels contre les adversaires invisibles et en cas de mauvaise visibilité ou d’obscurité.','Général','','Lors d’un combat au corps à corps, chaque fois que le personnage rate son adversaire en raison du camouflage de ce dernier, il peut jeter une nouvelle fois 1d100 afin de voir s’il touche (voir Camouflage).',' Ce don n’est d’aucune utilité contre un personnage affecté par le sort clignotement.'),(43,'Combat monté ',NULL,'Général','Degré de maîtrise de 1 en Équitation.','Lorsque sa monture est frappée au combat (dans la limite d’une fois par round), le personnage peut tenter d’annuler le coup en réussissant un test d’Équitation. C’est une réaction, pas une action. Le coup est annulé à condition que le test de compétence du personnage soit supérieur au jet d’attaque de l’adversaire. (Le test d’Équitation devient en quelque sorte la CA de la monture).','Un guerrier peut choisir Combat monté en tant que don supplémentaire.'),(44,'Coup étourdissant ',NULL,'Général','Dex 13, Sag 13, Science du combat à mains nues, bonus de base à l’attaque de +8.','Le joueur doit annoncer que son personnage donne un coup étourdissant avant d’effectuer son jet d’attaque (en cas d’échec, l’utilisation du don est donc perdue). Si son attaque à mains nues porte, son adversaire subit les dégâts normaux et doit réussir un jet de Vigueur (DD 10 + modificateur de Sagesse du personnage + 1/2 niveau du personnage) pour éviter d’être étourdi pendant 1 round (soit jusqu’au début du prochain tour de jeu du personnage). Un individu étourdi est incapable d’agir, perd son bonus de Dextérité à la CA et subit un malus de –2 à la classe d’armure. Chaque jour, le personnage peut tenter un nombre de coups étourdissants égal à un quart de son niveau global, dans la limite d’un par round. Les créatures artificielles, les morts- vivants, les plantes et les vases, ainsi que les créatures intangibles et les créatures immunisées contre les coups critiques ne peuvent être étourdies.','Un moine peut choisir Coup étourdissant en tant que don supplémentaire au niveau 1, même s’il n’en remplit pas les conditions. Un moine qui possède ce don peut tenter un coup étourdissant un nombre de fois par jour égal à son niveau de moine, plus un quart des niveaux qu’il possède dans d’autres classes que moine.'),(62,'Course ',' On court habituellement à quatre fois sa vitesse de déplacement (si l’on ne porte ni une armure lourde, ni une charge lourde) ou trois fois sa vitesse de déplacement (si l’on porte une armure lourde ou une charge lourde), et l’on perd son bonus de Dextérité à la CA pendant une course.','Général','Lorsqu’il court, l’aventurier couvre une distance égale à cinq fois sa vitesse de déplacement normale (s’il ne porte aucune armure ou une armure légère et qu’il transporte un poids léger ou moins) ou quatre fois sa vitesse de déplacement (s’il porte une armure intermédiaire ou lourde ou s’il transporte un poids intermédiaire ou lourd). Lorsqu’il exécute un saut avec élan (voir la compétence Saut), il bénéficie d’un bonus de +4 sur son test de Saut. Enfin, le personnage conserve son bonus de Dextérité à la CA lorsqu’il court.',NULL,NULL),(63,' Défense à deux armes ',NULL,'Général',NULL,' Lorsqu’il tient une arme double ou deux armes (sans compter les armes naturelles ou les attaques à mains nues), le personnage bénéficie d’un bonus de bouclier de +1 à la classe d’armure.','Un guerrier peut choisir Défense à deux armes en tant que don supplémentaire.'),(64,' Discret ',NULL,'Général',NULL,'Le personnage obtient un bonus de +2 sur tous ses tests de Déplacement silencieux et de Discrétion.',NULL),(65,' Dispense de composants matériels ',NULL,'Général',NULL,' Le personnage peut lancer les sorts nécessitant une composante matérielle coûtant 1 po ou moins sans utiliser cette composante. (L’incantation provoque tout de même des attaques d’opportunité.) Le personnage doit fournir normalement les composantes matérielles dont le prix est supérieur à 1 po.',NULL),(66,' Doigts de fée ',NULL,'Général',NULL,'Le personnage obtient un bonus de +2 sur tous ses tests d’Escamotage et de Maîtrise des cordes.',NULL),(67,' Dur à cuire ','Un personnage ne possédant pas ce don suit les règles habituelles et devient mourant et inconscient lorsque son total de points de vie est compris entre –1 et –9.','Général','Endurance.','Lorsque le total de points de vie du personnage est compris entre –1 et –9, il se stabilise automatiquement. Le joueur n’a pas à lancer 1d100 chaque round pour savoir si son personnage perd 1 point de vie.Lorsque le total de points de vie du personnage est négatif, il peut choisir de se considérer comme hors de combat plutôt que mourant. Le joueur doit prendre cette décision dès que son personnage atteint un total de points de vie négatif (même si cela arrive en dehors de son tour de jeu). Si le personnage ne choisit pas cette option, il tombe aussitôt inconscient.Lorsqu’il utilise ce don, le personnage peut effectuer soit un déplacement simple, soit une action simple lors de son tour de jeu (mais pas les deux). Il est incapable d’accomplir une action complexe. Effectuer une action de mouvement n’aggrave pas ses blessures, mais s’il entreprend une action simple (ou toute autre action fatigante, y compris certaines actions libres comme lancer un sort à incantation rapide), le personnage subit 1 point de dégâts aussitôt après avoir accompli son action. Le personnage meurt immédiatement si son total de points de vie atteint –10.',NULL),(68,' Ecole renforcée ',NULL,'Général',NULL,'Le DD des jets de sauvegarde contre tous les sorts de l’école choisie lancés par le personnage augmente de +1.','Ce don peut être choisi plusieurs fois, mais ses effets ne se cumulent pas. Il s’applique à chaque fois à une nouvelle école de magie.'),(69,' Ecole supérieure',NULL,'Général','École renforcée pour l’école choisie.','Le degré de difficulté (DD) des jets de sauvegarde contre les sorts de l’école choisie lancés par le personnage augmente de +1. Ce bonus se cumule avec celui d’École renforcée.','Ce don peut être choisi plusieurs fois, mais ses effets ne se cumulent pas. Il s’applique à chaque fois à une nouvelle école de magie.'),(70,'Efficacité des sorts accrue ',NULL,'Général',NULL,' Le personnage bénéficie d’un bonus de +2 à son test de niveau de lanceur de sorts (1d20 + niveau de lanceur de sorts) lorsqu’il s’agit de vaincre la résistance à la magie d’une cible.',NULL),(71,' 	Efficacité des sorts supérieure ',NULL,'Général','Efficacité des sorts accrue.','Le personnage obtient un bonus de +2 sur les tests de niveau de lanceur de sorts (1d20 + niveau de lanceur de sorts) effectués pour vaincre la résistance à la magie d’une créature. Ce bonus se cumule avec celui d’Efficacité des sorts accrue.',NULL);
 /*!40000 ALTER TABLE `gift` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `gift_conditions`
---
-
-DROP TABLE IF EXISTS `gift_conditions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gift_conditions` (
-  `gift` tinyint(6) unsigned NOT NULL,
-  `effect` int(32) unsigned NOT NULL,
-  PRIMARY KEY (`gift`,`effect`),
-  KEY `fk_gift_has_effect_effect1_idx` (`effect`),
-  KEY `fk_gift_has_effect_gift1_idx` (`gift`),
-  CONSTRAINT `fk_gift_has_effect_effect1` FOREIGN KEY (`effect`) REFERENCES `effect` (`id_effect`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_gift_has_effect_gift1` FOREIGN KEY (`gift`) REFERENCES `gift` (`id_gift`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gift_conditions`
---
-
-LOCK TABLES `gift_conditions` WRITE;
-/*!40000 ALTER TABLE `gift_conditions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gift_conditions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1143,16 +1118,13 @@ CREATE TABLE `skill` (
   `id_skill` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(511) DEFAULT NULL,
-  `class` int(10) unsigned NOT NULL DEFAULT '0',
   `teachable` tinyint(1) DEFAULT NULL,
   `innate` tinyint(1) DEFAULT NULL,
   `key_ability` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_skill`,`class`,`key_ability`),
-  KEY `fk_skill_class1_idx` (`class`),
+  PRIMARY KEY (`id_skill`,`key_ability`),
   KEY `fk_skill_characteristic1_idx` (`key_ability`),
-  CONSTRAINT `fk_skill_characteristic1` FOREIGN KEY (`key_ability`) REFERENCES `characteristic` (`id_characteristic`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_skill_class1` FOREIGN KEY (`class`) REFERENCES `class` (`id_class`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_skill_characteristic1` FOREIGN KEY (`key_ability`) REFERENCES `characteristic` (`id_characteristic`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1161,6 +1133,7 @@ CREATE TABLE `skill` (
 
 LOCK TABLES `skill` WRITE;
 /*!40000 ALTER TABLE `skill` DISABLE KEYS */;
+INSERT INTO `skill` VALUES (1,'Acrobaties',NULL,NULL,0,3),(2,'Art de la magie',NULL,NULL,0,4),(3,'Artisanat',NULL,NULL,1,4),(4,'Bluff',NULL,NULL,1,6),(5,'Concentration',NULL,NULL,1,2),(6,'Connaissance',NULL,NULL,0,4),(7,'Contrefaçon',NULL,NULL,1,4),(8,'Crochetage',NULL,NULL,0,3),(9,'Décryptage',NULL,NULL,0,4),(10,'Déguisement',NULL,NULL,1,6),(11,'Déplacement silencieux',NULL,NULL,1,3),(12,'Désamorçage',NULL,NULL,0,4),(13,'Détection',NULL,NULL,1,5),(14,'Diplomatie',NULL,NULL,1,6),(15,'Discrétion',NULL,NULL,1,3),(16,'Dressage',NULL,NULL,0,6),(17,'Equilibre',NULL,NULL,1,3),(18,'Equitation',NULL,NULL,1,3),(19,'Escalade',NULL,NULL,1,1),(20,'Escamotage',NULL,NULL,0,3),(21,'Estimation',NULL,NULL,1,4),(22,'Evasion',NULL,NULL,1,3),(23,'Fouille',NULL,NULL,1,4),(24,'Intimidation',NULL,NULL,1,6),(25,'Langue',NULL,NULL,1,26),(26,'Maîtrise des cordes',NULL,NULL,1,3),(27,'Natation',NULL,NULL,1,1),(28,'Perception auditive',NULL,NULL,1,5),(29,'Premiers secours',NULL,NULL,1,5),(30,'Profession',NULL,NULL,0,5),(31,'Psychologie',NULL,NULL,1,5),(32,'Renseignements',NULL,NULL,1,6),(33,'Représentation',NULL,NULL,0,6),(34,'Saut',NULL,NULL,1,1),(35,'Survie',NULL,NULL,1,5),(36,'Utilisation d\'objets magiques',NULL,NULL,0,6);
 /*!40000 ALTER TABLE `skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1647,4 +1620,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-15 17:20:45
+-- Dump completed on 2015-12-21 15:36:36
