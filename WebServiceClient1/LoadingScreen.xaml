@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer"
-             mc:Ignorable="d" 
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
-        <Image x:Name="image" Source="Img/loading.gif" Stretch="UniformToFill" Cursor="Wait"/>
+        <Image gif:ImageBehavior.AnimatedSource="Img/loading.gif" x:Name="image" gif:ImageBehavior.RepeatBehavior="3x" Stretch="UniformToFill" Cursor="Wait"/>
     </Grid>
 </UserControl>

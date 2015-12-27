@@ -7,10 +7,122 @@
         xmlns:DnDServicePlayer="clr-namespace:DnDServicePlayer" x:Class="DnDServiceClient.PageSwitcher"
         xmlns:Sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="DnD" Width="800" Height="750" WindowStartupLocation="CenterScreen" WindowState="Minimized" ResizeMode="CanMinimize" BorderBrush="Black" Icon="Img/logo_ico.gif">
+        Title="DnD" Width="800" Height="750" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" BorderBrush="Black" Icon="Img/logo_ico.gif" WindowStyle="None">
     <Window.Resources>
+        <!-- Global variables for the window management -->
         <Sys:String x:Key="infobarText">Prêt</Sys:String>
+        <Sys:String x:Key="welcomeMessage">null</Sys:String>
         <Visibility x:Key="isLoading">Hidden</Visibility>
+        <Visibility x:Key="isConnected">Hidden</Visibility>
+        
+        <!-- Focused window button and normal styles -->
+        <Style x:Key="windowButton" TargetType="Button">
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Width" Value="35" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border TextBlock.Foreground="White"
+                                TextBlock.TextAlignment="Center"
+                                CornerRadius="5"
+                                Margin="5"
+                                BorderThickness="2"
+                                BorderBrush="White"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                            <Grid >
+                                <ContentPresenter HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- If mouse is over a window button, it lights -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border TextBlock.Foreground="Black"
+                                TextBlock.TextAlignment="Center"
+                                CornerRadius="5"
+                                Margin="5"
+                                BorderThickness="2"
+                                BorderBrush="Black"
+                                Background="White"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                                    <Grid >
+                                        <ContentPresenter HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                                        </ContentPresenter>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Focused usercontrol button and normal styles -->
+        <Style x:Key="usercontrolButton" TargetType="Button">
+            <Setter Property="Height" Value="39" />
+            <Setter Property="Width" Value="125" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border TextBlock.Foreground="Black"
+                                TextBlock.TextAlignment="Center"
+                                TextBlock.FontSize="19"
+                                CornerRadius="5"
+                                Margin="5"
+                                BorderThickness="2"
+                                BorderBrush="Black"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                            <Grid >
+                                <ContentPresenter HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- If mouse is over a usercontrol button, it lights -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border TextBlock.Foreground="White"
+                                TextBlock.TextAlignment="Center"
+                                TextBlock.FontSize="19"
+                                CornerRadius="5"
+                                Margin="5"
+                                BorderThickness="2"
+                                BorderBrush="Black"
+                                Background="Black"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                                    <Grid >
+                                        <ContentPresenter HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                                        </ContentPresenter>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -18,12 +130,18 @@
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel Background="Black" Orientation="Horizontal" Grid.Row="0">
-            <Image x:Name="logo_display" Source="Img/logo.jpg" Stretch="Uniform"/>
-            <TextBlock x:Name="welcome_display" Text="Bienvenue machin !" Foreground="White" VerticalAlignment="Center"/>
-        </StackPanel>
+        <DockPanel Background="Black" Grid.Row="0" MouseDown="DraggableWindow_MouseDown">
+            <Image x:Name="logo_display" Source="Img/logo.jpg" Stretch="Uniform" DockPanel.Dock="Left"/>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="reduce_button" Click="reduce_button_Click" Content="_" Style="{StaticResource windowButton}" />
+                    <Button x:Name="close_button" Click="close_button_Click" Content="X" Style="{StaticResource windowButton}" />
+                </StackPanel>
+                <TextBlock x:Name="welcome_display" Visibility="{DynamicResource isConnected}" Text="{DynamicResource welcomeMessage}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,20,15,0" FontSize="16"/>
+            </StackPanel>
+        </DockPanel>
         <UserControl x:Name="Container" Grid.Row="1" />
-        <TextBlock x:Name="infobar" TextTrimming="CharacterEllipsis" Text="{DynamicResource infobarText}"  Padding="10 0 10 0" Background="Black" Grid.Row="2" Foreground="White" />
-        <UserControl x:Name="loader" Grid.Row="1" Visibility="{DynamicResource isLoading}"/>
+        <TextBlock x:Name="infobar" MouseDown="DraggableWindow_MouseDown" TextTrimming="CharacterEllipsis" Text="{DynamicResource infobarText}"  Padding="10,6,10,0" Background="Black" Grid.Row="2" Foreground="White" />
+        <UserControl x:Name="loader" Grid.Row="1" Visibility="{DynamicResource isLoading}" Content="{Binding}"/>
     </Grid>
 </Window>

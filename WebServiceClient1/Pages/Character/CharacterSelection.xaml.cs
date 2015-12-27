@@ -68,6 +68,8 @@ namespace DnDServicePlayer.Pages
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Login());
+            Utils.infobar = "Déconnecté";
+            Utils.connected = false;
         }
         #endregion
 

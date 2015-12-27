@@ -46,6 +46,7 @@ namespace DnDServicePlayer.Pages.Character
                                     new Background()};
             
             creation_controllers.Content = creation_steps[0];
+            update_display();
         }
 
         public void UtilizeState(object state)
@@ -71,6 +72,7 @@ namespace DnDServicePlayer.Pages.Character
             }
             // Display the current page of the creation steps
             creation_controllers.Content = creation_steps[current_step];
+            update_display();
         }
 
         private void next_button_Click(object sender, RoutedEventArgs e)
@@ -87,11 +89,13 @@ namespace DnDServicePlayer.Pages.Character
                     next_button.Content = "Valider";
                 }
                 creation_controllers.Content = creation_steps[current_step];
+                update_display();
             }
             else
             {
                 add_new_character();
                 Switcher.Switch(new CharacterSelection(), account);
+                Utils.infobar = "Nouveau personnage créé !";
             }
         }
                 
@@ -99,12 +103,14 @@ namespace DnDServicePlayer.Pages.Character
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new CharacterSelection(), account);
+            Utils.infobar = "Création annulée";
         }
         #endregion
 
         #region Making Character
         public void update_display()
         {
+            Utils.infobar = "Création de personnage ( étape "+(current_step+1)+" sur " + creation_steps.Count+" )";
             /*<property_observable> properties = new List<property_observable>();
 
             //  Race
@@ -143,7 +149,12 @@ namespace DnDServicePlayer.Pages.Character
             var selected_multiclass = new multiclass();
             //selected_multiclass.level_class = new List<Tuple<uint, complete_class>>(new Tuple<uint, complete_class>(1, selected_class))
 
-            character new_character = new character();
+            character new_character = new character()
+            {
+                account = this.account,
+                race = selected_race,
+                classes = selected_multiclass
+            };
             /*{
                 name            = ,
                 avatar          = ,

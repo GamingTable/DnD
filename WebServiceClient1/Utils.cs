@@ -37,11 +37,11 @@ namespace DnDServicePlayer
         {
             get
             {
-                return (String)Application.Current.Windows[0].Resources["infobarText"];
+                return (String)Application.Current.MainWindow.Resources["infobarText"];
             }
             set
             {
-                Application.Current.Windows[0].Resources["infobarText"] = value;
+                Application.Current.MainWindow.Resources["infobarText"] = value;
             }
         }
 
@@ -50,7 +50,7 @@ namespace DnDServicePlayer
         {
             get
             {
-                if ((Visibility)Application.Current.Windows[0].Resources["isLoading"] == Visibility.Hidden)
+                if ((Visibility)Application.Current.MainWindow.Resources["isLoading"] == Visibility.Hidden)
                     return false;
                 else
                     return true;
@@ -58,9 +58,28 @@ namespace DnDServicePlayer
             set
             {
                 if (value == true)
-                    Application.Current.Windows[0].Resources["isLoading"] = Visibility.Visible;
+                    Application.Current.MainWindow.Resources["isLoading"] = Visibility.Visible;
                 else
-                    Application.Current.Windows[0].Resources["isLoading"] = Visibility.Hidden;
+                    Application.Current.MainWindow.Resources["isLoading"] = Visibility.Hidden;
+            }
+        }
+
+        //Allows to display the user info
+        public static bool connected
+        {
+            get
+            {
+                if ((Visibility)Application.Current.MainWindow.Resources["isConnected"] == Visibility.Hidden)
+                    return false;
+                else
+                    return true;
+            }
+            set
+            {
+                if (value == true)
+                    Application.Current.MainWindow.Resources["isConnected"] = Visibility.Visible;
+                else
+                    Application.Current.MainWindow.Resources["isConnected"] = Visibility.Hidden;
             }
         }
     }

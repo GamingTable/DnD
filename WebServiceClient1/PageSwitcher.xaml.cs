@@ -20,7 +20,9 @@ namespace DnDServiceClient
             Switcher.pageSwitcher = this;
             Switcher.Switch(new Login());
             // Display a loading screen when visible
-            loader = new LoadingScreen();
+            //loader.Content = new LoadingScreen();
+
+            Application.Current.MainWindow.BringIntoView();
         }
 
         public void Navigate(UserControl nextPage)
@@ -38,6 +40,22 @@ namespace DnDServiceClient
             else
                 throw new ArgumentException("NextPage is not ISwitchable! "
                   + nextPage.Name.ToString());
+        }
+
+        private void reduce_button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void close_button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void DraggableWindow_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+                this.DragMove();
         }
     }
 }

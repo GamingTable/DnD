@@ -147,3 +147,5 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\D
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.Properties.Resources.resources
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WpfAnimatedGif.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WpfAnimatedGif.xml

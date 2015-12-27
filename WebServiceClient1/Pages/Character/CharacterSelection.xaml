@@ -35,7 +35,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="cancel_button" Content="Annuler" Grid.Column="4" Grid.Row="3" FontSize="16" IsCancel="True" Click="cancel_button_Click"/>
+        <Button x:Name="cancel_button" Content="Déconnexion" Grid.Column="4" Grid.Row="3" FontSize="16" IsCancel="True" Click="cancel_button_Click"/>
 
     </Grid>
 </UserControl>

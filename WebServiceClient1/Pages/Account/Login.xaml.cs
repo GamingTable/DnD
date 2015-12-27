@@ -48,6 +48,9 @@ namespace DnDServicePlayer.Pages
 
                 Utils.infobar = "Connecté";
                 Switcher.Switch(new CharacterSelection(), user_id);
+                //Show user info
+                Utils.connected = true;
+                Application.Current.Windows[0].Resources["welcomeMessage"] = "Bienvenue "+log+" !";
             }
             else
             {
