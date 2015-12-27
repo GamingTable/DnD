@@ -28,10 +28,11 @@ namespace DnDServicePlayer.Pages.Character.Selection
         public StatSheet()
         {
             InitializeComponent();
-            /*
-            Exception levée: 'System.NullReferenceException' dans DnDServicePlayer.exe
-            Utiliser un itérateur sur la liste des caractéristiques ordonnées par id est sans doute moins agressif
 
+            reload();
+        }
+        private void reload()
+        {
             FOR.Text = CharacterSheet.hero.stats[1].value.ToString();
             CON.Text = CharacterSheet.hero.stats[2].value.ToString();
             DEX.Text = CharacterSheet.hero.stats[3].value.ToString();
@@ -53,9 +54,7 @@ namespace DnDServicePlayer.Pages.Character.Selection
             RM.Text = CharacterSheet.hero.stats[13].value.ToString();
             INI.Text = CharacterSheet.hero.stats[7].value.ToString();
             BA.Text = CharacterSheet.hero.stats[18].value.ToString();
-            */
-            //BM.Text = CharacterSheet.hero.stats[6].value.ToString();
-                BM.Text = "0";
+            BM.Text = "0";
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800" Width="710" Height="404">
+             d:DesignHeight="600" d:DesignWidth="700" Width="700" Height="404">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>

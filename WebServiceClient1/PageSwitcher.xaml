@@ -1,12 +1,29 @@
-﻿<Window x:Class="DnDServiceClient.PageSwitcher"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnDServiceClient"
+        xmlns:DnDServicePlayer="clr-namespace:DnDServicePlayer" x:Class="DnDServiceClient.PageSwitcher"
+        xmlns:Sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="DnD" Width="800" Height="595" WindowStartupLocation="CenterScreen" WindowState="Minimized">
+        Title="DnD" Width="800" Height="750" WindowStartupLocation="CenterScreen" WindowState="Minimized" ResizeMode="CanMinimize" BorderBrush="Black" Icon="Img/logo_ico.gif">
+    <Window.Resources>
+        <Sys:String x:Key="infobarText">Prêt</Sys:String>
+        <Visibility x:Key="isLoading">Hidden</Visibility>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="Black" Orientation="Horizontal" Grid.Row="0">
+            <Image x:Name="logo_display" Source="Img/logo.jpg" Stretch="Uniform"/>
+            <TextBlock x:Name="welcome_display" Text="Bienvenue machin !" Foreground="White" VerticalAlignment="Center"/>
+        </StackPanel>
+        <UserControl x:Name="Container" Grid.Row="1" />
+        <TextBlock x:Name="infobar" TextTrimming="CharacterEllipsis" Text="{DynamicResource infobarText}"  Padding="10 0 10 0" Background="Black" Grid.Row="2" Foreground="White" />
+        <UserControl x:Name="loader" Grid.Row="1" Visibility="{DynamicResource isLoading}"/>
     </Grid>
 </Window>

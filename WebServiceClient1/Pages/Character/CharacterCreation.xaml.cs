@@ -42,7 +42,7 @@ namespace DnDServicePlayer.Pages.Character
                                     new Stats(),
                                     new Gifts(),
                                     new Skills(),
-                                    new Spells(),
+                                    //new Spells(),
                                     new Background()};
             
             creation_controllers.Content = creation_steps[0];

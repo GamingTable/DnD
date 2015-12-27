@@ -19,16 +19,18 @@ namespace DnDServiceClient
             InitializeComponent();
             Switcher.pageSwitcher = this;
             Switcher.Switch(new Login());
+            // Display a loading screen when visible
+            loader = new LoadingScreen();
         }
 
         public void Navigate(UserControl nextPage)
         {
-            this.Content = nextPage;
+            Container.Content = nextPage;
         }
 
         public void Navigate(UserControl nextPage, object state)
         {
-            this.Content = nextPage;
+            Container.Content = nextPage;
             ISwitchable s = nextPage as ISwitchable;
 
             if (s != null)

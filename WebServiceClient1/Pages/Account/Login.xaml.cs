@@ -22,6 +22,7 @@ namespace DnDServicePlayer.Pages
         {
             throw new NotImplementedException();
         }
+
         #endregion
 
         #region Switch Pages
@@ -32,20 +33,28 @@ namespace DnDServicePlayer.Pages
 
         private void connection_button_Click(object sender, RoutedEventArgs e)
         {
+            //Start long load procedure
+            Utils.infobar = "Connexion...";
+            Utils.loadscreen = true;
+            
+            //Retrieve the field values
             string log = text_username.Text;
             string pwd = text_password.Password;
 
+            //Test the connexion
             uint user_id = client.AccountConnection(log, pwd);
             if (user_id != 0)
             {
-                hid_label.Content = "connecté";
+
+                Utils.infobar = "Connecté";
                 Switcher.Switch(new CharacterSelection(), user_id);
             }
             else
             {
-                hid_label.Content = "Echec de la connexion";
+                Utils.infobar = "Echec de la connexion";
             }
-            hid_label.Visibility = Visibility.Visible;
+
+            Utils.loadscreen = false;
         }
         #endregion
     }

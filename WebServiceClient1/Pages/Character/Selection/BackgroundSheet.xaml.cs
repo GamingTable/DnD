@@ -26,23 +26,81 @@ namespace DnDServicePlayer.Pages.Character.Selection
         {
             InitializeComponent();
 
+            reload();
+        }
+        private void reload()
+        {
             nom.Text = CharacterSheet.hero.name;
             race.Text = CharacterSheet.hero.race.name;
             //maclasse.Text = hero.classes.;
             vd.Text = CharacterSheet.hero.stats[12].value.ToString();
             karma.Text = CharacterSheet.hero.stats[24].value.ToString();
             align.Text = CharacterSheet.hero.stats[25].value.ToString();
-            //level.Text = CharacterSheet.hero.classes.global_level.ToString(); //N'existe plus pour rappel
-            dieu.Text = CharacterSheet.hero.deity.name;
-
-            background.Text = CharacterSheet.hero.background;
-
-            sex.Text = CharacterSheet.hero.sex.ToString();
-            hairs.Text = CharacterSheet.hero.hair;
-            eyes.Text = CharacterSheet.hero.eyes;
-            weight.Text = CharacterSheet.hero.weight.Item1.ToString();
-            height.Text = CharacterSheet.hero.height.Item1.ToString();
-            age.Text = CharacterSheet.hero.age.Item1.ToString();
+            //level.Text = GetGlobalLevel(CharacterSheet.hero.classes);
+            try
+            {
+                dieu.Text = CharacterSheet.hero.deity.name;
+            }
+            catch
+            {
+                dieu.Text = "No God Set";
+            }
+            try
+            {
+                background.Text = CharacterSheet.hero.background;
+            }
+            catch
+            {
+                background.Text = "No background Set";
+            }
+            try
+            {
+                sex.Text = CharacterSheet.hero.sex.ToString();
+            }
+            catch
+            {
+                sex.Text = "Set M or F";
+            }
+            try
+            {
+                hairs.Text = CharacterSheet.hero.hair;
+            }
+            catch
+            {
+                hairs.Text = "No hair color Set";
+            }
+            try
+            {
+                eyes.Text = CharacterSheet.hero.eyes;
+            }
+            catch
+            {
+                eyes.Text = "No eyes color set";
+            }
+            try
+            {
+                weight.Text = CharacterSheet.hero.weight.Item1.ToString();
+            }
+            catch
+            {
+                weight.Text = "No Weight Set";
+            }
+            try
+            {
+                height.Text = CharacterSheet.hero.height.Item1.ToString();
+            }
+            catch
+            {
+                height.Text = "No height set";
+            }
+            try
+            {
+                age.Text = CharacterSheet.hero.age.Item1.ToString();
+            }
+            catch
+            {
+                age.Text = "No Age Set";
+            }
         }
 
         private void background_TextInput(object sender, TextCompositionEventArgs e)
@@ -52,20 +110,20 @@ namespace DnDServicePlayer.Pages.Character.Selection
 
         private void sex_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Exception non gérée
-            //Note qu'un character ne peut pas valoir null mais \0
-            //CharacterSheet.heroUpdate.sex = e.ToString()[0];
+            if (e.ToString()[0] != 'F' && e.ToString()[0] != 'f' && e.ToString()[0] != 'M' && e.ToString()[0] != 'm')
+                CharacterSheet.heroUpdate.sex = e.ToString().ToUpper()[0];
+            else
+                MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer 'F' ou 'f' si votre personnage est une femme, 'M' ou 'm' si c'est un homme", "Erreur");
         }
 
         private void hairs_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Exception null non gérée
-            //CharacterSheet.heroUpdate.hair = e.ToString();
+            CharacterSheet.heroUpdate.hair = e.ToString();
         }
 
         private void eyes_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //CharacterSheet.heroUpdate.eyes = e.ToString();
+            CharacterSheet.heroUpdate.eyes = e.ToString();
         }
 
         private void weight_TextChanged(object sender, TextChangedEventArgs e)

@@ -29,6 +29,5 @@
         <Label x:Name="label1" Content="Mot de Passe" Grid.Column="1" Grid.Row="4" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="text_username" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" FontSize="26.667" Text="skit"/>
         <PasswordBox x:Name="text_password" Grid.Column="1" Grid.Row="5" Password="1234" FontSize="26.667"/>
-        <Label x:Name="hid_label" Content="Aucun essai de connexion" Grid.Column="1" Margin="56,87,57,10" Grid.Row="6" FontSize="16" FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Hidden"/>
     </Grid>
 </UserControl>

@@ -8,28 +8,7 @@ namespace DnDService
 {
     public class Utils
     {
-        // Method to encrypt the password
-        public String HashPass(String password)
-        {
-            // Define a sha(256) hash
-            SHA256 sha = new SHA256CryptoServiceProvider();
-
-            // Compute the hash with the password
-            sha.ComputeHash(ASCIIEncoding.ASCII.GetBytes(password));
-
-            // Get hash result into a 8-bit array to convert it into a hexadecimal string
-            byte[] result = sha.Hash;
-
-            StringBuilder strBuilder = new StringBuilder();
-            for (int i = 0; i < result.Length; i++)
-            {
-                //change it into 2 hexadecimal digits for each byte
-                strBuilder.Append(result[i].ToString("x2"));
-            }
-
-            return strBuilder.ToString();
-        }
-
+        
         // Method to send email through the protocol SMTP
         public void SendMail(String ToAddress, string ToName, string password)
         {
