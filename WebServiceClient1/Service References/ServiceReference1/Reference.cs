@@ -2635,7 +2635,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.complete_class classeField;
+        private DnDServicePlayer.ServiceReference1.short_entity[] classesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DnDServicePlayer.ServiceReference1.short_entity[] conditionsField;
@@ -2675,14 +2675,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.complete_class classe {
+        public DnDServicePlayer.ServiceReference1.short_entity[] classes {
             get {
-                return this.classeField;
+                return this.classesField;
             }
             set {
-                if ((object.ReferenceEquals(this.classeField, value) != true)) {
-                    this.classeField = value;
-                    this.RaisePropertyChanged("classe");
+                if ((object.ReferenceEquals(this.classesField, value) != true)) {
+                    this.classesField = value;
+                    this.RaisePropertyChanged("classes");
                 }
             }
         }
@@ -2965,22 +2965,22 @@ namespace DnDServicePlayer.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string advantagesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string categoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.complete_class classeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.short_entity[] conditionsField;
+        private string conditionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DnDServicePlayer.ServiceReference1.short_entity[] effectsField;
+        private string nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
+        private string specialsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private uint uidField;
@@ -2992,6 +2992,19 @@ namespace DnDServicePlayer.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string advantages {
+            get {
+                return this.advantagesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.advantagesField, value) != true)) {
+                    this.advantagesField = value;
+                    this.RaisePropertyChanged("advantages");
+                }
             }
         }
         
@@ -3009,20 +3022,7 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.complete_class classe {
-            get {
-                return this.classeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.classeField, value) != true)) {
-                    this.classeField = value;
-                    this.RaisePropertyChanged("classe");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.short_entity[] conditions {
+        public string conditions {
             get {
                 return this.conditionsField;
             }
@@ -3048,19 +3048,6 @@ namespace DnDServicePlayer.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DnDServicePlayer.ServiceReference1.short_entity[] effects {
-            get {
-                return this.effectsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.effectsField, value) != true)) {
-                    this.effectsField = value;
-                    this.RaisePropertyChanged("effects");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string name {
             get {
                 return this.nameField;
@@ -3069,6 +3056,19 @@ namespace DnDServicePlayer.ServiceReference1 {
                 if ((object.ReferenceEquals(this.nameField, value) != true)) {
                     this.nameField = value;
                     this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string specials {
+            get {
+                return this.specialsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.specialsField, value) != true)) {
+                    this.specialsField = value;
+                    this.RaisePropertyChanged("specials");
                 }
             }
         }
@@ -3171,6 +3171,12 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTemplate", ReplyAction="http://tempuri.org/IService1/GetTemplateResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetTemplateAsync(uint id_template);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDefaultTemplate", ReplyAction="http://tempuri.org/IService1/GetDefaultTemplateResponse")]
+        DnDServicePlayer.ServiceReference1.template GetDefaultTemplate();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDefaultTemplate", ReplyAction="http://tempuri.org/IService1/GetDefaultTemplateResponse")]
+        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetDefaultTemplateAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLanguageList", ReplyAction="http://tempuri.org/IService1/GetLanguageListResponse")]
         DnDServicePlayer.ServiceReference1.short_entity[] GetLanguageList();
@@ -3346,18 +3352,6 @@ namespace DnDServicePlayer.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCharacterEffects", ReplyAction="http://tempuri.org/IService1/GetCharacterEffectsResponse")]
         System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterEffectsAsync(uint id_character);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftConditions", ReplyAction="http://tempuri.org/IService1/GetGiftConditionsResponse")]
-        DnDServicePlayer.ServiceReference1.short_entity[] GetGiftConditions(uint id_gift);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftConditions", ReplyAction="http://tempuri.org/IService1/GetGiftConditionsResponse")]
-        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftConditionsAsync(uint id_gift);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftEffects", ReplyAction="http://tempuri.org/IService1/GetGiftEffectsResponse")]
-        DnDServicePlayer.ServiceReference1.short_entity[] GetGiftEffects(uint id_gift);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetGiftEffects", ReplyAction="http://tempuri.org/IService1/GetGiftEffectsResponse")]
-        System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftEffectsAsync(uint id_gift);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSkillEffects", ReplyAction="http://tempuri.org/IService1/GetSkillEffectsResponse")]
         DnDServicePlayer.ServiceReference1.short_entity[] GetSkillEffects(uint id_skill);
         
@@ -3522,6 +3516,14 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetTemplateAsync(uint id_template) {
             return base.Channel.GetTemplateAsync(id_template);
+        }
+        
+        public DnDServicePlayer.ServiceReference1.template GetDefaultTemplate() {
+            return base.Channel.GetDefaultTemplate();
+        }
+        
+        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.template> GetDefaultTemplateAsync() {
+            return base.Channel.GetDefaultTemplateAsync();
         }
         
         public DnDServicePlayer.ServiceReference1.short_entity[] GetLanguageList() {
@@ -3754,22 +3756,6 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetCharacterEffectsAsync(uint id_character) {
             return base.Channel.GetCharacterEffectsAsync(id_character);
-        }
-        
-        public DnDServicePlayer.ServiceReference1.short_entity[] GetGiftConditions(uint id_gift) {
-            return base.Channel.GetGiftConditions(id_gift);
-        }
-        
-        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftConditionsAsync(uint id_gift) {
-            return base.Channel.GetGiftConditionsAsync(id_gift);
-        }
-        
-        public DnDServicePlayer.ServiceReference1.short_entity[] GetGiftEffects(uint id_gift) {
-            return base.Channel.GetGiftEffects(id_gift);
-        }
-        
-        public System.Threading.Tasks.Task<DnDServicePlayer.ServiceReference1.short_entity[]> GetGiftEffectsAsync(uint id_gift) {
-            return base.Channel.GetGiftEffectsAsync(id_gift);
         }
         
         public DnDServicePlayer.ServiceReference1.short_entity[] GetSkillEffects(uint id_skill) {

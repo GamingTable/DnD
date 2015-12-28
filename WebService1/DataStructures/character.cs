@@ -22,9 +22,9 @@ namespace DnDService
         public uint account { get; set; }
 
         [DataMember]
-        public complete_race race { get; set; }
+        public short_entity race { get; set; }
         [DataMember]
-        public multiclass classes { get; set; }
+        public multientity classes { get; set; }
         [DataMember]
         public List<characteristic> stats { get; set; }
         [DataMember]

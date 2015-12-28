@@ -301,7 +301,7 @@ namespace DnDService
             #endregion
             #region Multiclass Table
             // MULTICLASS
-            if (player.classes.level_class.Count == 0)
+            if (player.classes.values_entities.Count == 0)
                 return 5;
             string query_multiclass = @"insert into 
                             multiclasses(character,class,level) 
@@ -311,7 +311,7 @@ namespace DnDService
                 //character
                 cmd.Parameters.AddWithValue("@character", character_id);
                 //class
-                cmd.Parameters.AddWithValue("@class", player.classes.level_class[0].Item1);
+                cmd.Parameters.AddWithValue("@class", player.classes.values_entities[0].Item1);
                 //class level
                 cmd.Parameters.AddWithValue("@level", 1);
                 //Executing the insertion into weight
@@ -323,7 +323,7 @@ namespace DnDService
             #endregion
             #region Spells Table
             uint spellbook_id;
-            if(player.classes.level_class[0].Item2.magical == true)
+            if(GetClass(player.classes.values_entities[0].Item2.uid).magical == true)
             {
                 // Create a spellbook for this character
                 var query_spellbook = "insert into spellbook;SELECT SCOPE_IDENTITY();";
@@ -402,7 +402,9 @@ namespace DnDService
             }
             #endregion
             #region Stats Table
-            
+            /// ajouter le template race, 
+            /// le template correspondant à la classe de niveau 1 (modifiable en level up) 
+            /// et un template propre à créer basé sur la modification du default_template
             #endregion
             #region Gifts Table
             #endregion
@@ -532,12 +534,12 @@ namespace DnDService
                 new_char.deity = GetDeity(deity);
 
             if(race>0)
-                new_char.race = GetRace(race);
+                new_char.race = GetShortRace(race);
 
             if (new_char.uid > 0)
             {
                 new_char.languages = GetCharacterLanguage(character_id);
-                new_char.classes = GetMulticlass(character_id);
+                new_char.classes = GetShortMulticlass(character_id);
                 new_char.stats = GetCharacterCharacteristics(character_id);
                 new_char.age = GetCharacterAge(character_id);
                 new_char.height = GetCharacterHeight(character_id);
@@ -627,10 +629,22 @@ namespace DnDService
             return GetShortEntities(query);
         }
 
+        public short_entity GetShortRace(uint id_race)
+        {
+            var query = "select id_race, name, description from dnd.race where id_race=" + id_race;
+            return GetShortEntity(query);
+        }
+
         public List<short_entity> GetClassShortList()
         {
             string query = "SELECT id_class, name, description FROM class;";
             return GetShortEntities(query);
+        }
+
+        public short_entity GetShortClass(uint id_class)
+        {
+            var query = "select id_class, name, description from dnd.`class` where id_class=" + id_class;
+            return GetShortEntity(query);
         }
 
         public List<short_entity> GetCharacteristicShortList()
@@ -886,6 +900,30 @@ namespace DnDService
                
         }
 
+        public template GetDefaultTemplate()
+        {
+            return GetTemplate(19);
+        }
+
+        public template GetClassTemplate(uint id_class, uint level)
+        {
+            if (id_class == 0 || level == 0)
+                return new template();
+
+            uint id_template_at_level = 0;
+            var query = "select id_template from dnd.template_has_class where `class`=" + id_class + " and level=" + level;
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    id_template_at_level = (uint)cmd.ExecuteScalar();
+                }
+                this.CloseConnection();
+            }
+
+            return GetTemplate(id_template_at_level);
+        }
+
         public short_entity GetCharacteristicType(uint id_type)
         {
             string query = @"select id_characteristic_type,
@@ -1118,14 +1156,12 @@ namespace DnDService
             if (id_class <= 0)
                 return new_class;
 
-            string query = "SELECT id_class, name, description, template, img, health_progression, magical from dnd.class where id_class=" + id_class;
+            string query = "SELECT id_class, name, description, img, health_progression, magical from dnd.class where id_class=" + id_class;
 
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess);
-                uint id_template = 0;
-
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
@@ -1133,7 +1169,6 @@ namespace DnDService
                         new_class.uid = dataReader.GetUInt16(0);
                         new_class.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
                         new_class.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
-                        id_template = dataReader.GetUInt32(3);
                         new_class.illustration = (byte[])dataReader[4];
                         new_class.health_progression = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
                         new_class.magical = dataReader.GetBoolean(6);
@@ -1143,13 +1178,56 @@ namespace DnDService
                 dataReader.Close();
 
                 // Other queries after closing the reader
-                new_class.template = GetTemplate(id_template);
                 new_class.effects = GetClassEffects(id_class);
                 this.CloseConnection();
             }
 
             return new_class;
 
+        }
+
+        public multientity GetShortMulticlass(uint id_character)
+        {
+            var multiclass = new multientity();
+            if (id_character <= 0)
+                return multiclass;
+            multiclass.uid = id_character;
+
+            var query = @"Select multiclasses.class,
+                        multiclasses.level
+                        from dnd.multiclasses
+                        where dnd.multiclasses.`character` = " + id_character + ";";
+
+            var classes = new List<Tuple<uint, uint>>();
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            classes.Add(new Tuple<uint, uint>(
+                                dataReader.GetUInt16("level"),
+                                dataReader.GetUInt16("class")
+                            ));
+                        }
+                    }
+                    dataReader.Close();
+                }
+                this.CloseConnection();
+            }
+
+            multiclass.values_entities = new List<Tuple<uint, short_entity>>();
+            foreach (var c in classes)
+            {
+                multiclass.values_entities.Add(new Tuple<uint, short_entity>(
+                    c.Item1,
+                    GetShortClass(c.Item2)
+                ));
+            }
+            return multiclass;
         }
 
         public multiclass GetMulticlass(uint id_character)
@@ -1185,12 +1263,14 @@ namespace DnDService
                 this.CloseConnection();
             }
 
-            multiclass.level_class = new List<Tuple<uint, complete_class>>();
+            multiclass.level_class = new List<Tuple<uint, complete_class, template>>();
             foreach (var c in classes)
             {
-                multiclass.level_class.Add(new Tuple<uint, complete_class>(
+                // A multiclass is defined by a list of a level, a class and the corresponding template
+                multiclass.level_class.Add(new Tuple<uint, complete_class, template>(
                     c.Item1,
-                    GetClass(c.Item2)
+                    GetClass(c.Item2),
+                    GetClassTemplate(c.Item2, c.Item1)
                 ));
             }
             return multiclass;

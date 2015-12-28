@@ -86,6 +86,11 @@ namespace DnDService
         {
             return db.GetTemplate(id_template);
         }
+        //Return the default lvl1 template
+        public template GetDefaultTemplate()
+        {
+            return db.GetDefaultTemplate();
+        }
         //Return the list of languages
         public List<short_entity> GetLanguageList()
         {
@@ -110,6 +115,16 @@ namespace DnDService
         public complete_race GetRace(uint id_race)
         {
             return db.GetRace(id_race);
+        }
+        //Return the selected class in a short_entity
+        public short_entity GetShortClass(uint id_class)
+        {
+            return db.GetShortClass(id_class);
+        }
+        //Return the selected race in a short_entity
+        public short_entity GetShortRace(uint id_race)
+        {
+            return db.GetShortRace(id_race);
         }
         //Return the characteristics corresponding to a template. characteristic type is optionnal
         public List<characteristic> GetTemplateCharacteristics(uint id_template, uint id_type = 0)
@@ -160,6 +175,16 @@ namespace DnDService
         public multiclass GetMulticlass(uint id_character)
         {
             return db.GetMulticlass(id_character);
+        }
+        //A multiclass with short_entities instead of complete_classes
+        public multientity GetShortMulticlass(uint id_character)
+        {
+            return db.GetShortMulticlass(id_character);
+        }
+        //Return the template corresponding to a level of class
+        public template GetClassTemplate(uint id_class, uint level)
+        {
+            return db.GetClassTemplate(id_class, level);
         }
         //Return the list of gods
         public List<short_entity> GetDeities()

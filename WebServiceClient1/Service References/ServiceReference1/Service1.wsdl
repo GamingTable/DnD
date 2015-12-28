@@ -81,6 +81,12 @@
   <wsdl:message name="IService1_GetTemplate_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTemplateResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultTemplateResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetLanguageList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLanguageList" />
   </wsdl:message>
@@ -255,18 +261,6 @@
   <wsdl:message name="IService1_GetCharacterEffects_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacterEffectsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetGiftConditions_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetGiftConditions" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetGiftConditions_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetGiftConditionsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetGiftEffects_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetGiftEffects" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetGiftEffects_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetGiftEffectsResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_GetSkillEffects_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSkillEffects" />
   </wsdl:message>
@@ -357,6 +351,10 @@
     <wsdl:operation name="GetTemplate">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTemplate" message="tns:IService1_GetTemplate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTemplateResponse" message="tns:IService1_GetTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDefaultTemplate" message="tns:IService1_GetDefaultTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDefaultTemplateResponse" message="tns:IService1_GetDefaultTemplate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLanguageList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLanguageList" message="tns:IService1_GetLanguageList_InputMessage" />
@@ -473,14 +471,6 @@
     <wsdl:operation name="GetCharacterEffects">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacterEffects" message="tns:IService1_GetCharacterEffects_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCharacterEffectsResponse" message="tns:IService1_GetCharacterEffects_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetGiftConditions">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGiftConditions" message="tns:IService1_GetGiftConditions_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftConditionsResponse" message="tns:IService1_GetGiftConditions_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetGiftEffects">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetGiftEffects" message="tns:IService1_GetGiftEffects_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetGiftEffectsResponse" message="tns:IService1_GetGiftEffects_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSkillEffects">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSkillEffects" message="tns:IService1_GetSkillEffects_InputMessage" />
@@ -614,6 +604,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTemplate">
       <soap:operation soapAction="http://tempuri.org/IService1/GetTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultTemplate">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDefaultTemplate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -875,24 +874,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetCharacterEffects">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCharacterEffects" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetGiftConditions">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetGiftConditions" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetGiftEffects">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetGiftEffects" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

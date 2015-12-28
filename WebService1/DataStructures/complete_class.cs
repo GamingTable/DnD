@@ -19,8 +19,6 @@ namespace DnDService.DataStructures
         [DataMember]
         public string health_progression { get; set; }
         [DataMember]
-        public template template { get; set; }
-        [DataMember]
         public List<short_entity> effects { get; set; }
         [DataMember]
         public List<spell> spells { get; set; }

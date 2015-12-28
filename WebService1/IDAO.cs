@@ -36,11 +36,20 @@ namespace DnDService
         //Return a list with all class name and description
         List<short_entity> GetClassShortList();
 
+        //Return the selected class in a short_entity
+        short_entity GetShortClass(uint id_class);
+
+        //Return the selected race in a short_entity
+        short_entity GetShortRace(uint id_race);
+
         //Return a list with all the abilities in characteristics
         List<short_entity> GetCharacteristicShortList();
 
         //Return the template corresponding to a certain id
         template GetTemplate(uint id_template);
+
+        //Return the default lvl1 template
+        template GetDefaultTemplate();
 
         //Return the list of all languages
         List<short_entity> GetLanguageList();
@@ -87,8 +96,15 @@ namespace DnDService
         //Return the current classes of a character
         multiclass GetMulticlass(uint id_character);
 
+        //Return the current classes of a character in short_entities
+        multientity GetShortMulticlass(uint id_character);
+
+        //Return the template of the selected class at a given level
+        template GetClassTemplate(uint id_class, uint level);
+
         //Return the list of deities
         List<short_entity> GetDeities();
+
         //Return the desired deity
         short_entity GetDeity(uint deity_id);
 

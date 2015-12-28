@@ -1,0 +1,7 @@
+To install the software for development purposes, here are the steps:
+
+1) git clone the last commit in a selected folder
+2) add a MySQL database named DnD helped by the script in the dbv3 folder
+3) open the DnD.sln in Visual Studio
+4) verify the webserver parameters in the DAO, especially the login, password and port
+5) update the mysqldata reference path if it doesn't correspond to yours

@@ -39,8 +39,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
             charac_list_box.ItemsSource = default_template.characteristics;
             // Define the current_stats
             current_stats = default_template;
-            current_stats.uid = 0;
-            current_stats.name = null;
             current_stats.description = "AUTO GENERATED";
         }
 
@@ -60,14 +58,30 @@ namespace DnDServicePlayer.Pages.Character.Creation
         #endregion
 
         #region Default retrieving
+        // Get the lvl 1 templates from race, class and default
         private template default_template
         {
-            get
+            get; set;/*get
             {
-                // 19 is the id of the default template
-                // in the current DB
-                return client.GetTemplate(19);
-            }
+                var template_list = new List<template>() {
+                    Race.current_race.template,
+                    Classe.current_class.template,
+                    client.GetDefaultTemplate() };
+                var output_template = new template()
+                {
+                    uid = 0,
+                    name = "summed_template",
+                    description = "AUTO GENERATED" };
+                
+                foreach(var c in client.GetCharacteristicShortList())
+                {
+                    foreach(var t in template_list)
+                    {
+                        t.characteristics.Where<characteristic>()
+                    }
+                }
+                return de;
+            }*/
         }
         private template race_template
         {

@@ -237,7 +237,7 @@
   <xs:element name="multiskill" nillable="true" type="tns:multiskill" />
   <xs:complexType name="skill">
     <xs:sequence>
-      <xs:element minOccurs="0" name="classe" nillable="true" type="tns:complete_class" />
+      <xs:element minOccurs="0" name="classes" nillable="true" type="tns:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="conditions" nillable="true" type="tns:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
@@ -252,12 +252,12 @@
   <xs:element name="skill" nillable="true" type="tns:skill" />
   <xs:complexType name="gift">
     <xs:sequence>
+      <xs:element minOccurs="0" name="advantages" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="category" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="classe" nillable="true" type="tns:complete_class" />
-      <xs:element minOccurs="0" name="conditions" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="conditions" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="specials" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
