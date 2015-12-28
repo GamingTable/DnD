@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="DnDServicePlayer.AboutUs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DnDServicePlayer"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600" Background="#662C2C2C">
+    <Grid Width="600" Height="400">
+        <Grid.Background>
+            <ImageBrush ImageSource="/DnDServicePlayer;component/Img/aboutBackground.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="39"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Background="#99FFFFFF">
+            <TextBlock TextAlignment="Justify"
+                        FontWeight="DemiBold"
+                        FontSize="15"
+                       Padding="20,0"
+                       TextWrapping="WrapWithOverflow"
+                       xml:space="preserve">
+                <Span FontWeight="ExtraBlack" FontSize="25" BaselineAlignment="Center">
+                    A propos de 
+                    DnD v1.0
+                </Span>
+                <Span>
+                    Félicitations, vous avez trouvé le bouton secret qui mène à la présentation !
+                
+                    <Bold>DnD</Bold> est un logiciel réalisé en C# à l'aide de WPF par <Italic>El Mouhafidi Youness</Italic> et <Italic>Colle Augustin</Italic>. 
+                    En quelques mots, voici les étapes de développement cruciales du projet :
+
+                        + Modéliser les données de Dungeons and Dragons v3.5
+                        + Implémenter le tout dans une DB et un WebService
+                        + Réaliser un client joueur capable de gérer un personnage
+                        + Réaliser un client maître capable de gérer une aventure
+                        + Enrichir l'expérience utilisateur (design, multimedia, interactivité,...)
+                        + ??????
+                        + Profit
+                </Span>
+            </TextBlock>
+        </ScrollViewer>
+        <Button x:Name="quit" Content="Quitter" Grid.Column="1" Height="39" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="125" Style="{StaticResource windowButton}" Click="quit_Click"/>
+
+    </Grid>
+</UserControl>

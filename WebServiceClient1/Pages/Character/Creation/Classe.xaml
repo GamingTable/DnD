@@ -23,7 +23,7 @@
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="class_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False" SelectionChanged="class_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox x:Name="class_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding class_list}" IsSynchronizedWithCurrentItem="False" SelectionChanged="class_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">

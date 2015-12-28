@@ -23,8 +23,8 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="connection_button" Content="Connexion" Grid.Column="1" HorizontalAlignment="Left" Height="40" Grid.Row="7" VerticalAlignment="Top" Width="125" FontSize="16" Click="connection_button_Click"/>
-        <Button x:Name="register_button" Content="Inscription" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="175,0,0,0" Grid.Row="7" VerticalAlignment="Top" Width="125" FontSize="16" Click="register_button_Click"/>
+        <Button x:Name="connection_button" Content="Connexion" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" Click="connection_button_Click" Style="{StaticResource usercontrolButton}"/>
+        <Button x:Name="register_button" Content="Inscription" Grid.Column="1" Margin="175,0,0,0" Grid.Row="7" Click="register_button_Click"  Style="{StaticResource usercontrolButton}" Width="Auto"/>
         <Label x:Name="label" Content="Nom d'Utilisateur" Grid.Column="1" Grid.Row="1" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="label1" Content="Mot de Passe" Grid.Column="1" Grid.Row="4" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="text_username" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" FontSize="26.667" Text="skit"/>

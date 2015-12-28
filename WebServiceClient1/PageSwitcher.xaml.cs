@@ -1,6 +1,7 @@
 ﻿using DnDServicePlayer;
 using DnDServicePlayer.Pages;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,15 +14,12 @@ namespace DnDServiceClient
     /// </summary>
     public partial class PageSwitcher : Window
     {
-        //LoadingScreen loading_screen = new LoadingScreen();
         public PageSwitcher()
         {
             InitializeComponent();
             Switcher.pageSwitcher = this;
             Switcher.Switch(new Login());
-            // Display a loading screen when visible
-            //loader.Content = new LoadingScreen();
-
+            
             Application.Current.MainWindow.BringIntoView();
         }
 
@@ -56,6 +54,14 @@ namespace DnDServiceClient
         {
             if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void about_button_Click(object sender, RoutedEventArgs e)
+        {
+            if ((Visibility)FindResource("isAbout") == Visibility.Hidden)
+                Resources["isAbout"] = Visibility.Visible;
+            else
+                Resources["isAbout"] = Visibility.Hidden;
         }
     }
 }

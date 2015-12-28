@@ -21,7 +21,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// </summary>
     public partial class Classe : UserControl, ICreationSwitcher
     {
-        private short_entity[] class_list;
+        public short_entity[] class_list { get; set; }
         private Service1Client client;
         public static complete_class current_class { get; set; }
         //private CharacterCreation parent;
@@ -35,7 +35,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             class_list = client.GetClassShortList();
 
             // Define them as ItemsSource for the list
-            class_list_box.ItemsSource = class_list;
+            class_list_box.DataContext = this;
 
             // Retrieve the current_class if selected
             if (current_class != null)

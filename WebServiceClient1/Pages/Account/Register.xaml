@@ -36,8 +36,8 @@
             <ColumnDefinition Width="122*"/>
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="create_button" Content="Créer" Grid.Column="4" HorizontalAlignment="Left" Height="40" Grid.Row="13" VerticalAlignment="Top" Width="125" Click="create_button_Click" FontSize="16" IsEnabled="False"/>
-        <Button x:Name="cancel_button" Content="Annuler" Grid.Column="6" HorizontalAlignment="Left" Height="40" Grid.Row="13" VerticalAlignment="Top" Width="125" IsCancel="True" Click="cancel_button_Click" FontSize="16"/>
+        <Button x:Name="create_button" Content="Créer" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="13" VerticalAlignment="Top" Click="create_button_Click" IsEnabled="False" Style="{StaticResource usercontrolButton}"/>
+        <Button x:Name="cancel_button" Content="Annuler" Grid.Column="6" HorizontalAlignment="Left" Grid.Row="13" VerticalAlignment="Top" IsCancel="True" Click="cancel_button_Click" Style="{StaticResource usercontrolButton}"/>
         <TextBox x:Name="text_username" Grid.ColumnSpan="5" Grid.Column="3" HorizontalAlignment="Left" Height="42" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="450" FontSize="26.667" TextChanged="activate_create_button" />
         <Label x:Name="label" Grid.ColumnSpan="4" Content="Nom d'Utilisateur" Grid.Column="3" HorizontalAlignment="Left" Height="31" Grid.Row="1" VerticalAlignment="Top" Width="300" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="label1" Grid.ColumnSpan="4" Content="Mot de Passe" Grid.Column="3" HorizontalAlignment="Left" Height="31" Grid.Row="4" VerticalAlignment="Top" Width="300" FontWeight="Bold" FontSize="16"/>

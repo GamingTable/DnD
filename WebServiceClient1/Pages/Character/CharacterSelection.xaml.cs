@@ -37,7 +37,7 @@ namespace DnDServicePlayer.Pages
         public void UtilizeState(object state)
         {
             user_id = (uint)state;
-            characters_list.ItemsSource = owned_characters;
+            characters_list.DataContext = this;
         }
         #endregion
 

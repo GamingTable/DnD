@@ -14,7 +14,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
     /// </summary>
     public partial class Race : UserControl, ICreationSwitcher
     {
-        private short_entity[] race_list;
+        public short_entity[] race_list { get; set; }
         private Service1Client client;
         public static complete_race current_race { get; set; }
 
@@ -27,7 +27,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             race_list = client.GetRaceShortList();
 
             // Define them as ItemsSource for the list
-            race_list_box.ItemsSource = race_list;
+            race_list_box.DataContext = this;
 
             // Retrieve the current_race if selected
             if(current_race != null)
@@ -52,7 +52,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
         public string race_description
         {
             get { return current_race.description; }
-            set { }
         }
         #endregion
         #region Events
