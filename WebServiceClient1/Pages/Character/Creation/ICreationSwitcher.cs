@@ -1,6 +1,7 @@
 ﻿using DnDServicePlayer.ServiceReference1;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
     interface ICreationSwitcher
     {
         string step_name { get; }
-        /*property_observable step_properties
-        {
-            get; set;
-        }
-        character step_character
-        {
-            get; set;
-        }*/
+        bool condition_to_next { get; }
     }
 }

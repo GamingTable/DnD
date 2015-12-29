@@ -88,40 +88,38 @@ namespace DnDServicePlayer
         }
 
         // Return the summed up full characteristics of an array of templates
-        public static characteristic[] SumTemplates(List<template> to_sum_templates)
+        public static characteristic[] SumTemplates(List<template> to_sum_templates, characteristic[] charac_list)
         {
+            if (to_sum_templates == null)
+                return null;
+
             var client = new ServiceReference1.Service1Client();
-            var charac_list = client.GetCharacteristicShortList();
-            var outCharac = new characteristic[charac_list.Count()];
-            var i = 0;
              
             // For every existing characteristic
             foreach (var c in charac_list)
             {
                 // Initialize this characteristic
-                var newchar = client.GetCharacteristic(c.uid);
-                newchar.value = 0;
-                newchar.modifier = 0;
+                c.value = 0;
+                c.modifier = 0;
 
                 // Sums up the value and the modifier of every template in the list if it contains this characteristic
                 // It's quicker with LINQ
                 foreach (var t in to_sum_templates)
                 {
-                    var subcharac = t.characteristics.Where(tc => tc.uid == c.uid);
-                    if(subcharac.Count() > 0)
-                    {
-                        newchar.value += subcharac.Select(tc => tc.value).First();
-                        newchar.modifier += subcharac.Select(tc => tc.modifier).First();
-                    }
-                    
-                    //newchar.modifier += t.characteristics.Select(tc => (tc.uid == c.uid) ? tc.modifier : 0).First();
-                }
+                    characteristic subcharac;
+                    try {
+                       subcharac  = t.characteristics.Where(tc => tc.uid == c.uid).SingleOrDefault();
+                    }catch(Exception e) { subcharac = null; }
 
-                outCharac[i] = newchar;
-                ++i;
+                    if(subcharac != null)
+                    {
+                        c.value += subcharac.value;
+                        c.modifier += subcharac.modifier;
+                    }                    
+                }
             }
             
-            return outCharac;
+            return charac_list;
         }
     }
 

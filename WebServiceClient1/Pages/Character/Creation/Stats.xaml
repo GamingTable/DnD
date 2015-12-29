@@ -5,24 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="404" d:DesignWidth="700" Width="700" Height="404"
+             d:DesignHeight="404" d:DesignWidth="700"
              Loaded="UserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="45"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="64"/>
-            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
             <RowDefinition Height="39"/>
             <RowDefinition/>
-            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        
-        <ItemsControl x:Name="charac_stack" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding default_template.characteristics}">
+
+        <ItemsControl x:Name="charac_stack" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding current_characteristics}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" />
@@ -30,11 +26,21 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding name}" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding name}" />
+                        <TextBlock Text="{Binding value}" />
+                        <TextBlock Text="{Binding modifier}" />
+                        <Button Content="+" Click="increase_value_button_Click" Tag="{Binding uid}"/>
+                        <Button Content="-" Click="decrease_value_button_Click" Tag="{Binding uid}" IsEnabled="False"/>
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-            
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" x:Name="charac_counter_display">
+            <TextBlock Text="{Binding name}" TextWrapping="Wrap"/>
+            <Label Content="{Binding value}" />
+        </StackPanel>
 
     </Grid>
 </UserControl>

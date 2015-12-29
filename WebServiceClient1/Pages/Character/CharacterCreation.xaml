@@ -7,7 +7,11 @@
              xmlns:DnDClient="clr-namespace:DnDServiceClient"
              xmlns:Creation="clr-namespace:DnDServicePlayer.Pages.Character.Creation" x:Class="DnDServicePlayer.Pages.Character.CharacterCreation"
              mc:Ignorable="d" 
+             xmlns:Sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="300" d:DesignWidth="300" Width="800" Height="600">
+    <UserControl.Resources>
+        <Sys:Boolean x:Key="isStepDone">true</Sys:Boolean>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>
@@ -30,7 +34,7 @@
         <TextBlock Grid.Row="1" Grid.Column="1" x:Name="creation_title" Grid.ColumnSpan="6" FontWeight="Bold" Canvas.ZIndex ="999" FontSize="32" />
         <ScrollViewer Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="6" x:Name="creation_controllers" />
         <Button x:Name="previous_button" Content="Précédent" Grid.Column="2" Grid.Row="4" Click="previous_button_Click" Style="{StaticResource usercontrolButton}" IsEnabled="False" Margin="0,0,0,74" Grid.RowSpan="2"/>
-        <Button x:Name="next_button" Content="Suivant" Grid.Column="4" Grid.Row="4" Click="next_button_Click" Style="{StaticResource usercontrolButton}" IsDefault="True" Margin="0,0,0,74" Grid.RowSpan="2"/>
+        <Button x:Name="next_button" Content="Suivant" Grid.Column="4" Grid.Row="4" IsEnabled="{DynamicResource isStepDone}" Click="next_button_Click" Style="{StaticResource usercontrolButton}" IsDefault="True" Margin="0,0,0,74" Grid.RowSpan="2"/>
         <Button x:Name="cancel_button" Content="Annuler" Grid.Column="6" Grid.Row="4" Click="cancel_button_Click" Style="{StaticResource usercontrolButton}" IsCancel="True" Margin="0,0,0,74" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

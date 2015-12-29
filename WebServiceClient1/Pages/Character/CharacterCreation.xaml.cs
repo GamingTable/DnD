@@ -112,6 +112,7 @@ namespace DnDServicePlayer.Pages.Character
         {
             Utils.infobar = "Création de personnage ( étape "+(current_step+1)+" sur " + creation_steps.Count+" )";
             creation_title.Text = creation_steps[current_step].step_name;
+            next_button.DataContext = creation_steps[current_step];
         }
         #endregion
 

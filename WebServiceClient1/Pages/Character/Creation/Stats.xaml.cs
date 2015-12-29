@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -23,42 +24,92 @@ namespace DnDServicePlayer.Pages.Character.Creation
     public partial class Stats : UserControl, ICreationSwitcher
     {
         private Service1Client client;
-        private short_entity[] charac_list;
         public static template current_stats { get; set; }
+        private characteristic[] charac_dictionnary;
 
         public Stats()
         {
             InitializeComponent();
-
             client = new Service1Client();
-            charac_list = client.GetCharacteristicShortList();
 
-            //default_template.characteristics.Where
+            // Used to avoid a recurrent call to client from utils
+            // increase and decrease are still a bit slow
+            charac_dictionnary = client.GetCharacteristics(0);
 
             // Define them as ItemsSource for the list
             charac_stack.DataContext = this;
-            // Define the current_stats
-            //current_stats = default_template;
-            //current_stats.description = "AUTO GENERATED";
+
+            // Define current_stats
+            // It will help transfer default template points to characteristics
+            // The final user template will include sums up current_stats and default template
+            // Therefore, the race and the class-level templates are to be added after
+            current_stats = new template();
+            current_stats.characteristics = client.GetCharacteristics(0);
         }
+
+        public string step_name
+        {
+            get { return "Répartissez vos points de Caractéristiques"; }
+        }
+
 
         #region Button Handler
         private void increase_value_button_Click(object sender, RoutedEventArgs e)
         {
-            //default_template.characteristics[i].value
+            var s = (Button)sender;
+            s.IsEnabled = increaseValue((uint)s.Tag);
+            updateDisplay();
         }
+
         private void decrease_value_button_Click(object sender, RoutedEventArgs e)
         {
-
+            var s = (Button)sender;
+            s.IsEnabled = decreaseValue((uint)s.Tag);
+            updateDisplay();
         }
-        private int get_assigned_points(uint id_characteristic)
+
+        private void updateDisplay()
         {
-            return 0;
+            this.charac_stack.ItemsSource = current_characteristics;
+            this.charac_counter_display.DataContext = current_characteristic_points;
+        }
+
+        private bool increaseValue(uint id_characteristic)
+        {
+            // cs are the temporary characteristics value increase
+            // cp is the number of points available
+            var cs = current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
+            var cp = current_characteristic_points.value;
+
+            if (cp-(cs+1) >= 0)
+            {
+                // increment the characteristic and reduces the points
+                ++current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
+                current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value -= cs+1;
+            }
+
+            //Test if it can keep increasing
+            return (cp-(cs+2) >= 0);
+        }
+
+        private bool decreaseValue(uint id_characteristic)
+        {
+            // cs are the temporary characteristics value increase
+            var cs = current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
+
+            if (cs > 0)
+            {
+                // decrement the characteristic and restore the points
+                current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
+                --current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
+            }
+
+            return (cs - 1 >= 0);
         }
         #endregion
 
         #region Default retrieving
-        // Get the lvl 1 templates from race, class and default
+        // Get the lvl 1 templates from race, class and default then sum it
         private template default_template
         {
             get
@@ -68,7 +119,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
                     var template_list = new List<template>() {
                     Race.current_race.template,
                     client.GetClassTemplate(Classe.current_class.uid,1),
-                    client.GetDefaultTemplate() };
+                    client.GetDefaultTemplate(),
+                    current_stats};
 
                     var output_template = new template()
                     {
@@ -76,7 +128,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
                         name = "summed_template",
                         description = "AUTO GENERATED"
                     };
-                    output_template.characteristics = Utils.SumTemplates(template_list);
+                    output_template.characteristics = Utils.SumTemplates(template_list, charac_dictionnary);
 
                     return output_template;
                 }
@@ -85,11 +137,39 @@ namespace DnDServicePlayer.Pages.Character.Creation
             }
         }
 
-        public string step_name
+        // Return only the abilities from characteristics
+        public List<characteristic> current_characteristics
         {
             get
             {
-                return "Répartissez vos points de Caractéristiques";
+                if (default_template.characteristics == null)
+                    return new List<characteristic>();
+                var filtered = default_template.characteristics.Where(cc => cc.type.uid == 1);
+                if (filtered.Count() > 0)
+                    return filtered.ToList();
+                else
+                    return new List<characteristic>();
+            }
+        }
+
+        // Return the characteristic corresponding to ability points for learning
+        private characteristic current_characteristic_points
+        {
+            get
+            {
+                var filtered = default_template.characteristics.Where(cc => cc.uid == 22);
+                if (filtered.Count() > 0)
+                    return filtered.First();
+                else
+                    return client.GetCharacteristic(22);
+            }
+        }
+
+        public bool condition_to_next
+        {
+            get
+            {
+                return (current_characteristic_points.value == 0);
             }
         }
 
@@ -102,7 +182,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.charac_stack.ItemsSource = default_template.characteristics;
+            this.charac_stack.ItemsSource = current_characteristics;
+            this.charac_counter_display.DataContext = current_characteristic_points;
         }
     }
 }

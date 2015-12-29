@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.ComponentModel;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -58,6 +59,17 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             get { return "Choisissez Votre Race"; }
         }
+
+        public bool condition_to_next
+        {
+            get
+            {
+                if (current_race != null)
+                    return (current_race.uid > 0);
+                else
+                    return false;
+            }
+        }
         #endregion
         #region Events
         private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,9 +85,18 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             image.Source = race_illustration;
             image.Stretch = Stretch.Uniform;
-
             description_display.Text = race_description;
+
+            if (condition_to_next)
+                Resources["isStepDone"] = true;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(condition_to_next)
+                Resources["isStepDone"] = false;
         }
         #endregion
+
     }
 }

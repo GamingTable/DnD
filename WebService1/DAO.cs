@@ -1027,10 +1027,11 @@ namespace DnDService
             List<characteristic> new_characteristics = new List<characteristic>();
 
             string query_characteristics = @"SELECT 
+                characteristic.id_characteristic as id_characteristic,
                 characteristic.name AS name, 
                 characteristic.description AS description, 
                 characteristic.abreviation AS abreviation, 
-                characteristic.characteristic_type AS type, 
+                characteristic.characteristic_type AS type
                 FROM dnd.characteristic";
             if (id_type > 0)
                 query_characteristics += " where characteristic_type = " + id_type;
@@ -1049,7 +1050,7 @@ namespace DnDService
                     {
                         var nc = new characteristic()
                         {
-                            uid = dataReader_cha.GetUInt32(0),
+                            uid = dataReader_cha.GetUInt16(0),
                             name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
                             description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
                             abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3)

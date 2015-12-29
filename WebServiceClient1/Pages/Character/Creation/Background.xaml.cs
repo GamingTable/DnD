@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DnDServicePlayer.ServiceReference1;
+using System.ComponentModel;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -27,6 +28,14 @@ namespace DnDServicePlayer.Pages.Character.Creation
             InitializeComponent();
         }
 
+        public bool condition_to_next
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public string step_name
         {
             get
@@ -34,5 +43,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
                 return "Qui incarnerez-Vous ?";
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

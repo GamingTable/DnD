@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -23,6 +24,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
     {
         public short_entity[] class_list { get; set; }
         private Service1Client client;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public static complete_class current_class { get; set; }
         //private CharacterCreation parent;
 
@@ -68,6 +72,17 @@ namespace DnDServicePlayer.Pages.Character.Creation
             get
             {
                 return "Choisissez Votre Classe";
+            }
+        }
+
+        public bool condition_to_next
+        {
+            get
+            {
+                if (current_class != null)
+                    return (current_class.uid > 0);
+                else
+                    return false;
             }
         }
         #endregion
