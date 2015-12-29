@@ -62,6 +62,14 @@ namespace DnDServicePlayer.Pages.Character.Creation
             get { return current_class.description; }
             set { }
         }
+
+        public string step_name
+        {
+            get
+            {
+                return "Choisissez Votre Classe";
+            }
+        }
         #endregion
         #region Events
         private void class_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)

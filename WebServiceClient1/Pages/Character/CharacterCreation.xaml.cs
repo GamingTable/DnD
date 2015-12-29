@@ -111,31 +111,7 @@ namespace DnDServicePlayer.Pages.Character
         public void update_display()
         {
             Utils.infobar = "Création de personnage ( étape "+(current_step+1)+" sur " + creation_steps.Count+" )";
-            /*<property_observable> properties = new List<property_observable>();
-
-            //  Race
-            var race_properties = new property_observable();
-
-            var race_switcher = (Race)creation_steps[0];
-            var selected_race = race_switcher.current_race; 
-            if(selected_race.uid > 0)
-            {
-                // Define the name
-                race_properties.name = selected_race.name;
-
-                // Define the characteristics boni of the race
-                var charac_list = new List<Tuple<string, string>>();
-                foreach(var charac in selected_race.template.characteristics)
-                {
-                    charac_list.Add(new Tuple<string, string>(
-                        (charac.value>0)? "+" + charac.value.ToString(): charac.value.ToString(),
-                        charac.abreviation));
-                }
-                race_properties.members.Add(new property_member() {
-                    key = "Bonus de Caractéristiques",
-
-                    });
-            }*/
+            creation_title.Text = creation_steps[current_step].step_name;
         }
         #endregion
 

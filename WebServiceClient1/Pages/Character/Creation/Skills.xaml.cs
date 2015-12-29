@@ -26,5 +26,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             InitializeComponent();
         }
+
+        public string step_name
+        {
+            get
+            {
+                return "Choisissez vos Compétences";
+            }
+        }
     }
 }

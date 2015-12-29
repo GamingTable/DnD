@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="700">
+             d:DesignHeight="404" d:DesignWidth="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -15,15 +15,14 @@
             <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="150" />
             <RowDefinition Height="35"/>
-            <RowDefinition Height="164"/>
+            <RowDefinition Height="64"/>
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="2" ItemsSource="{Binding race_list}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding race_list}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">
@@ -32,8 +31,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label x:Name="label" Grid.ColumnSpan="4" Content="Choisissez Votre Race" Canvas.ZIndex ="999" Margin="0,-8,0,0" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Column="0"/>
-        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="3"  Stretch="Fill" Source="{Binding race_illustration}" Grid.Row="2"/>
-        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="4" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
+        <Image x:Name="image" Grid.Column="3" Grid.RowSpan="3"  Stretch="Fill" Source="{Binding race_illustration}" Grid.Row="1"/>
+        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="3" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

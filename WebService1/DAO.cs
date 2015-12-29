@@ -106,13 +106,13 @@ namespace DnDService
             if (OpenConnection())
             {
                 //Create Command
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                using (MySqlCommand cmd = new MySqlCommand(query, connection)) try
                 {
                     //Pass the parameters and Execute the command
                     cmd.Parameters.AddWithValue("@user", user);
                     cmd.Parameters.AddWithValue("@pass", pass);
                     id = (uint)cmd.ExecuteScalar();
-                }
+                }catch(Exception e) { }
                 //close Connection
                 this.CloseConnection();
             }
@@ -945,7 +945,7 @@ namespace DnDService
                 return new template();
 
             uint id_template_at_level = 0;
-            var query = "select id_template from dnd.template_has_class where `class`=" + id_class + " and level=" + level;
+            var query = "select template from dnd.template_has_class where `class`=" + id_class + " and level=" + level;
             if (OpenConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
@@ -985,7 +985,7 @@ namespace DnDService
                 characteristic.name AS name, 
                 characteristic.description AS description, 
                 characteristic.abreviation AS abreviation, 
-                characteristic.characteristic_type AS type, 
+                characteristic.characteristic_type AS type 
                 FROM dnd.characteristic
                 WHERE characteristic.id_characteristic = " + id_characteristic + ";";
 
@@ -1002,12 +1002,12 @@ namespace DnDService
                     {
                         new_characteristic = new characteristic()
                         {
-                            uid = dataReader_cha.GetUInt32(0),
-                            name = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
-                            description = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2),
-                            abreviation = dataReader_cha.IsDBNull(3) ? null : dataReader_cha.GetString(3)
+                            uid = id_characteristic,
+                            name = dataReader_cha.IsDBNull(0) ? null : dataReader_cha.GetString(0),
+                            description = dataReader_cha.IsDBNull(1) ? null : dataReader_cha.GetString(1),
+                            abreviation = dataReader_cha.IsDBNull(2) ? null : dataReader_cha.GetString(2)
                         };
-                        characteristic_type_id = dataReader_cha.GetUInt32(4);
+                        characteristic_type_id = dataReader_cha.GetUInt32(3);
                     }
 
                     dataReader_cha.Close();

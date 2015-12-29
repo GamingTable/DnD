@@ -91,18 +91,37 @@ namespace DnDServicePlayer
         public static characteristic[] SumTemplates(List<template> to_sum_templates)
         {
             var client = new ServiceReference1.Service1Client();
-            characteristic[] outCharac;
-             /*
-            foreach (var c in client.GetCharacteristicShortList())
+            var charac_list = client.GetCharacteristicShortList();
+            var outCharac = new characteristic[charac_list.Count()];
+            var i = 0;
+             
+            // For every existing characteristic
+            foreach (var c in charac_list)
             {
-                foreach (var t in template_list)
+                // Initialize this characteristic
+                var newchar = client.GetCharacteristic(c.uid);
+                newchar.value = 0;
+                newchar.modifier = 0;
+
+                // Sums up the value and the modifier of every template in the list if it contains this characteristic
+                // It's quicker with LINQ
+                foreach (var t in to_sum_templates)
                 {
-                    t.characteristics.Where<characteristic>();
-                    t.
+                    var subcharac = t.characteristics.Where(tc => tc.uid == c.uid);
+                    if(subcharac.Count() > 0)
+                    {
+                        newchar.value += subcharac.Select(tc => tc.value).First();
+                        newchar.modifier += subcharac.Select(tc => tc.modifier).First();
                     }
+                    
+                    //newchar.modifier += t.characteristics.Select(tc => (tc.uid == c.uid) ? tc.modifier : 0).First();
+                }
+
+                outCharac[i] = newchar;
+                ++i;
             }
-            */
-            return outCharac = new characteristic[1];
+            
+            return outCharac;
         }
     }
 

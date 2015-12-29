@@ -53,6 +53,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             get { return current_race.description; }
         }
+
+        public string step_name
+        {
+            get { return "Choisissez Votre Race"; }
+        }
         #endregion
         #region Events
         private void race_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)

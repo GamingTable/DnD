@@ -10,6 +10,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
 {
     interface ICreationSwitcher
     {
+        string step_name { get; }
         /*property_observable step_properties
         {
             get; set;

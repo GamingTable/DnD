@@ -36,7 +36,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //default_template.characteristics.Where
 
             // Define them as ItemsSource for the list
-            charac_list_box.DataContext = this;
+            charac_stack.DataContext = this;
             // Define the current_stats
             //current_stats = default_template;
             //current_stats.description = "AUTO GENERATED";
@@ -63,26 +63,46 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             get
             {
-                var template_list = new List<template>() {
+                if (Race.current_race != null && Classe.current_class != null )
+                {
+                    var template_list = new List<template>() {
                     Race.current_race.template,
                     client.GetClassTemplate(Classe.current_class.uid,1),
                     client.GetDefaultTemplate() };
 
-                var output_template = new template()
-                {
-                    uid = 0,
-                    name = "summed_template",
-                    description = "AUTO GENERATED" };
-                output_template.characteristics = Utils.SumTemplates(template_list);
-                
-                return output_template;
+                    var output_template = new template()
+                    {
+                        uid = 0,
+                        name = "summed_template",
+                        description = "AUTO GENERATED"
+                    };
+                    output_template.characteristics = Utils.SumTemplates(template_list);
+
+                    return output_template;
+                }
+                else
+                    return new template();
             }
         }
+
+        public string step_name
+        {
+            get
+            {
+                return "Répartissez vos points de Caractéristiques";
+            }
+        }
+
         public static int get_modifier(int value)
         {
             return (int)(Math.Floor((decimal)value / 2) - 5);
         }
 
         #endregion
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.charac_stack.ItemsSource = default_template.characteristics;
+        }
     }
 }
