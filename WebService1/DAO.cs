@@ -96,28 +96,23 @@ namespace DnDService
         #region ACCOUNT
         public uint AccountConnection(string user, string pass)
         {
-            string query = "SELECT id_account FROM account WHERE username = '" + user + "' AND password = '" + pass + "';";
+            if (user == null || pass == null)
+                return 0;
 
+            string query = "SELECT id_account FROM account WHERE username = @user AND password = @pass";
             uint id = 0;
 
             //Open connection
             if (OpenConnection())
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                //Read the data and store them in the list
-                while (dataReader.Read())
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
-                    id = (uint)dataReader["id_account"];
+                    //Pass the parameters and Execute the command
+                    cmd.Parameters.AddWithValue("@user", user);
+                    cmd.Parameters.AddWithValue("@pass", pass);
+                    id = (uint)cmd.ExecuteScalar();
                 }
-
-                //close Data Reader
-                dataReader.Close();
-
                 //close Connection
                 this.CloseConnection();
             }
@@ -125,28 +120,69 @@ namespace DnDService
             return id;
         }
 
+        private bool AccountExists(string user)
+        {
+            var query = "select id_account from account where username = @user";
+            uint test_id = 0;
+            if(OpenConnection())
+            {
+                using (var cmd = new MySqlCommand(query, connection)) try
+                {
+                    cmd.Parameters.AddWithValue("@user", user);
+                    test_id = (uint)cmd.ExecuteScalar();
+                }catch(Exception e) { test_id = 0; }
+                CloseConnection();
+            }
+            return (test_id > 0);
+        }
+
         public uint AccountCreate(string user, string pass, string mail)
         {
-            string query = "INSERT INTO account (username, password, email) VALUES('" + user + "', '" + pass + "', '" + mail + "');";
+            // Test account feasability
+            if (user == null || pass == null || mail == null)
+                return 0; // If a field is empty, return an error
+            if (AccountExists(user))
+                return 0; // If the account exists, return an error
 
+            string query = "INSERT INTO account (username, password, email) VALUES(@user, @pass, @email);";
             uint id = 0;
 
             //Open connection
             if (OpenConnection())
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                cmd.ExecuteNonQuery();
-
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    // Pass parameters and execute sql
+                    cmd.Parameters.AddWithValue("@user", user);
+                    cmd.Parameters.AddWithValue("@pass", pass);
+                    cmd.Parameters.AddWithValue("@email", mail);
+                    cmd.ExecuteNonQuery();
+                    id = (uint)cmd.LastInsertedId;
+                }
                 //close Connection
                 this.CloseConnection();
-
-                //take id
-                id = AccountConnection(user, pass);
             }
             //return id to be displayed
             return id;
+        }
+
+        public string GetAccountName(uint account_id)
+        {
+            if (account_id == 0)
+                return "";
+
+            string account_name = null;
+            var query = "select username from account where id_account=" + account_id;
+            if(OpenConnection())
+            {
+                using(var cmd = new MySqlCommand(query, connection))
+                    try
+                    {
+                        account_name = (string)cmd.ExecuteScalar();
+                    }catch(Exception e) { account_name = "Error: name could not be reached"; }
+            }
+            return account_name;
         }
 
         public bool AccountDelete(int account_id)
@@ -558,8 +594,6 @@ namespace DnDService
         {
             List<short_character> playable_characters = new List<short_character>();
 
-            //class.name ne renvoie pas la classe principale
-            //problème évident: plusieurs maxima pour les levels
             //problème de règle: les races ont des classes prioritaires
             //deity ne peut être inséré comme étant null (foreign key problem)
             //il existe temporairement une entrée vide dans god pour y pallier
@@ -607,11 +641,11 @@ namespace DnDService
             // Retrieving a string of every classes and corresponding level the character has
             foreach (var pc in playable_characters)
             {
-                multiclass mc = GetMulticlass(pc.uid);
-                pc.class_name = null;
-                foreach(var c in mc.level_class)
+                multientity mc = this.GetShortMulticlass(pc.uid);
+                pc.class_name = "";
+                foreach(var c in mc.values_entities)
                 {
-                    if(pc.class_name != null)
+                    if(pc.class_name != "")
                         pc.class_name += "/";
                     pc.class_name += c.Item2.name + " " + c.Item1;
                 }
@@ -1169,9 +1203,9 @@ namespace DnDService
                         new_class.uid = dataReader.GetUInt16(0);
                         new_class.name = dataReader.IsDBNull(1) ? null : dataReader.GetString(1);
                         new_class.description = dataReader.IsDBNull(2) ? null : dataReader.GetString(2);
-                        new_class.illustration = (byte[])dataReader[4];
-                        new_class.health_progression = dataReader.IsDBNull(5) ? null : dataReader.GetString(5);
-                        new_class.magical = dataReader.GetBoolean(6);
+                        new_class.illustration = (byte[])dataReader[3];
+                        new_class.health_progression = dataReader.IsDBNull(4) ? null : dataReader.GetString(4);
+                        new_class.magical = dataReader.GetBoolean(5);
                     }
                 }
                 // Close reader and connection

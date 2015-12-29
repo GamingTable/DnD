@@ -26,6 +26,7 @@ namespace DnDServicePlayer.Pages
         public Register()
         {
             InitializeComponent();
+            Utils.infobar = "Création d'un nouveau compte";
         }
 
         #region ISwitchable Members
@@ -109,12 +110,16 @@ namespace DnDServicePlayer.Pages
         #region Switch Pages
         private void create_button_Click(object sender, RoutedEventArgs e)
         {
+            // SEND REGISTRATION
+            // TEST IF ACCOUNT EXISTS
+            // CREATE NEW ACCOUNT
+            // SEND BACK TO LOGIN
             string log = text_username.Text;
-            string pwd = text_password.Password;
+            string pwd = Utils.HashPass(text_password.Password);
             string ema = text_email.Text;
             Service1Client client = new Service1Client();
             uint user_id = client.AccountCreate(log, pwd, ema);
-            if ( user_id!= 0)
+            if ( user_id > 0)
             {
                 hid_label.Content = "Votre compte a été créé";
                 Switcher.Switch(new CharacterSelection(),user_id);
@@ -123,15 +128,13 @@ namespace DnDServicePlayer.Pages
             {
                 hid_label.Content = "Ce compte existe déjà";
             }
-            // SEND REGISTRATION
-            // TEST IF ACCOUNT EXISTS
-            // CREATE NEW ACCOUNT
-            // SEND BACK TO LOGIN
+            hid_label.Visibility = Visibility.Visible;
         }
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Login());
+            Utils.infobar = "Création de compte interrompue";
         }
         #endregion
 

@@ -18,6 +18,9 @@ namespace DnDService
         [OperationContract]
         bool AccountDelete(int account_id);
 
+        [OperationContract]
+        string GetAccountName(uint account_id);
+
         /*[OperationContract]
         bool ForgottenPassword(string emailOrUsername);*/
 

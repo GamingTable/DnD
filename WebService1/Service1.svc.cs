@@ -37,6 +37,12 @@ namespace DnDService
             return db.AccountDelete(account_id);
         }
 
+        //Return the selected username
+        public string GetAccountName(uint account_id)
+        {
+            return db.GetAccountName(account_id);
+        }
+
         //Create a new character and return character_id;
         public int CharacterCreate(character player)
         {

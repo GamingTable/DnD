@@ -36,10 +36,10 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //default_template.characteristics.Where
 
             // Define them as ItemsSource for the list
-            charac_list_box.ItemsSource = default_template.characteristics;
+            charac_list_box.DataContext = this;
             // Define the current_stats
-            current_stats = default_template;
-            current_stats.description = "AUTO GENERATED";
+            //current_stats = default_template;
+            //current_stats.description = "AUTO GENERATED";
         }
 
         #region Button Handler
@@ -61,52 +61,28 @@ namespace DnDServicePlayer.Pages.Character.Creation
         // Get the lvl 1 templates from race, class and default
         private template default_template
         {
-            get; set;/*get
+            get
             {
                 var template_list = new List<template>() {
                     Race.current_race.template,
-                    Classe.current_class.template,
+                    client.GetClassTemplate(Classe.current_class.uid,1),
                     client.GetDefaultTemplate() };
+
                 var output_template = new template()
                 {
                     uid = 0,
                     name = "summed_template",
                     description = "AUTO GENERATED" };
+                output_template.characteristics = Utils.SumTemplates(template_list);
                 
-                foreach(var c in client.GetCharacteristicShortList())
-                {
-                    foreach(var t in template_list)
-                    {
-                        t.characteristics.Where<characteristic>()
-                    }
-                }
-                return de;
-            }*/
-        }
-        private template race_template
-        {
-            get
-            {
-                return Race.current_race.template;
-            }
-        }
-        private template class_template
-        {
-            get
-            {
-                return Classe.current_class.template;
+                return output_template;
             }
         }
         public static int get_modifier(int value)
         {
             return (int)(Math.Floor((decimal)value / 2) - 5);
         }
-        /*private int str
-        {
-            get{
-                return current_stats.characteristics.
-            }
-        }*/
+
         #endregion
     }
 }

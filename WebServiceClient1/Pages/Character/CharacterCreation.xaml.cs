@@ -152,8 +152,8 @@ namespace DnDServicePlayer.Pages.Character
             character new_character = new character()
             {
                 account = this.account,
-                race = selected_race,
-                classes = selected_multiclass
+                /*race = selected_race,
+                classes = selected_multiclass*/
             };
             /*{
                 name            = ,

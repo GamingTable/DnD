@@ -91,6 +91,9 @@ C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
 C:\Users\Augustin\Documents\Visual Studio 2013\Projects\DnD\DnD\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe.config
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.pdb
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\App.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Wigets\AboutUs.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Wigets\LoadingScreen.g.cs
@@ -119,11 +122,6 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\A
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer_MarkupCompile.lref
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe.config
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.exe
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\DnDServicePlayer.pdb
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WpfAnimatedGif.dll
-C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\WpfAnimatedGif.xml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Wigets\AboutUs.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\Wigets\LoadingScreen.baml
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\PageSwitcher.baml
@@ -154,3 +152,4 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\D
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csproj.GenerateResource.Cache
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.exe
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.pdb
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache

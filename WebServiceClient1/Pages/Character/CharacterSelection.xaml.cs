@@ -38,6 +38,10 @@ namespace DnDServicePlayer.Pages
         {
             user_id = (uint)state;
             characters_list.DataContext = this;
+
+            // Initializes account data
+            Utils.connected = true;
+            Application.Current.MainWindow.Resources["welcomeMessage"] = "Bienvenue " + client.GetAccountName(user_id) + " !";
         }
         #endregion
 

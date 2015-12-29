@@ -10,7 +10,7 @@
       <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="aptitudes" nillable="true" type="q2:ArrayOfaptitude" />
       <xs:element minOccurs="0" name="avatar" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="background" nillable="true" type="xs:string" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q3:multiclass" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="classes" nillable="true" type="q3:multientity" />
       <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="deity" nillable="true" type="q4:short_entity" />
       <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="effects" nillable="true" type="q5:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="eyes" nillable="true" type="xs:string" />
@@ -21,7 +21,7 @@
       <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="languages" nillable="true" type="q9:ArrayOfshort_entity" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="personnality" nillable="true" type="xs:string" />
-      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="race" nillable="true" type="q10:complete_race" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="race" nillable="true" type="q10:short_entity" />
       <xs:element minOccurs="0" name="sex" type="ser:char" />
       <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="skills" nillable="true" type="q11:multiskill" />
       <xs:element minOccurs="0" name="skin" nillable="true" type="xs:string" />

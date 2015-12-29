@@ -27,6 +27,12 @@
   <wsdl:message name="IService1_AccountDelete_OutputMessage">
     <wsdl:part name="parameters" element="tns:AccountDeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAccountName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAccountName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CharacterCreate_InputMessage">
     <wsdl:part name="parameters" element="tns:CharacterCreate" />
   </wsdl:message>
@@ -68,6 +74,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetClassShortList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetClassShortListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortClass_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortClass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortClass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortRace_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortRace" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortRace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortRaceResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetCharacteristicShortList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCharacteristicShortList" />
@@ -176,6 +194,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_GetMulticlass_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMulticlassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortMulticlass_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortMulticlass" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetShortMulticlass_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShortMulticlassResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetClassTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassTemplateResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetDeities_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDeities" />
@@ -316,6 +346,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AccountDelete" message="tns:IService1_AccountDelete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AccountDeleteResponse" message="tns:IService1_AccountDelete_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAccountName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAccountName" message="tns:IService1_GetAccountName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAccountNameResponse" message="tns:IService1_GetAccountName_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CharacterCreate">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterCreate" message="tns:IService1_CharacterCreate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterCreateResponse" message="tns:IService1_CharacterCreate_OutputMessage" />
@@ -343,6 +377,14 @@
     <wsdl:operation name="GetClassShortList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetClassShortList" message="tns:IService1_GetClassShortList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetClassShortListResponse" message="tns:IService1_GetClassShortList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShortClass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetShortClass" message="tns:IService1_GetShortClass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetShortClassResponse" message="tns:IService1_GetShortClass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShortRace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetShortRace" message="tns:IService1_GetShortRace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetShortRaceResponse" message="tns:IService1_GetShortRace_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCharacteristicShortList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCharacteristicShortList" message="tns:IService1_GetCharacteristicShortList_InputMessage" />
@@ -415,6 +457,14 @@
     <wsdl:operation name="GetMulticlass">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMulticlass" message="tns:IService1_GetMulticlass_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMulticlassResponse" message="tns:IService1_GetMulticlass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShortMulticlass">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetShortMulticlass" message="tns:IService1_GetShortMulticlass_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetShortMulticlassResponse" message="tns:IService1_GetShortMulticlass_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetClassTemplate" message="tns:IService1_GetClassTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetClassTemplateResponse" message="tns:IService1_GetClassTemplate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDeities">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDeities" message="tns:IService1_GetDeities_InputMessage" />
@@ -530,6 +580,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAccountName">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAccountName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CharacterCreate">
       <soap:operation soapAction="http://tempuri.org/IService1/CharacterCreate" style="document" />
       <wsdl:input>
@@ -586,6 +645,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetClassShortList">
       <soap:operation soapAction="http://tempuri.org/IService1/GetClassShortList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShortClass">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetShortClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShortRace">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetShortRace" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -748,6 +825,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetMulticlass">
       <soap:operation soapAction="http://tempuri.org/IService1/GetMulticlass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShortMulticlass">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetShortMulticlass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassTemplate">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetClassTemplate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

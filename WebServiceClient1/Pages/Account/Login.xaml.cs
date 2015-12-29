@@ -15,6 +15,7 @@ namespace DnDServicePlayer.Pages
         {
             InitializeComponent();
             client = new ServiceReference1.Service1Client();
+            Utils.infobar = "Prêt";
         }
 
         #region ISwitchable Members
@@ -39,7 +40,7 @@ namespace DnDServicePlayer.Pages
             
             //Retrieve the field values
             string log = text_username.Text;
-            string pwd = text_password.Password;
+            string pwd = Utils.HashPass(text_password.Password);
 
             //Test the connexion
             uint user_id = client.AccountConnection(log, pwd);
@@ -48,9 +49,6 @@ namespace DnDServicePlayer.Pages
 
                 Utils.infobar = "Connecté";
                 Switcher.Switch(new CharacterSelection(), user_id);
-                //Show user info
-                Utils.connected = true;
-                Application.Current.Windows[0].Resources["welcomeMessage"] = "Bienvenue "+log+" !";
             }
             else
             {

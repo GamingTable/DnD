@@ -48,6 +48,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAccountName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account_id" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CharacterCreate">
     <xs:complexType>
       <xs:sequence>
@@ -142,6 +156,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetShortClass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_class" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShortClassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetShortClassResult" nillable="true" type="q7:short_entity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShortRace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_race" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShortRaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetShortRaceResult" nillable="true" type="q8:short_entity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetCharacteristicShortList">
     <xs:complexType>
       <xs:sequence />
@@ -150,7 +192,7 @@
   <xs:element name="GetCharacteristicShortListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicShortListResult" nillable="true" type="q7:ArrayOfshort_entity" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicShortListResult" nillable="true" type="q9:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -164,7 +206,7 @@
   <xs:element name="GetTemplateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetTemplateResult" nillable="true" type="q8:template" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetTemplateResult" nillable="true" type="q10:template" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,7 +218,7 @@
   <xs:element name="GetDefaultTemplateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDefaultTemplateResult" nillable="true" type="q9:template" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDefaultTemplateResult" nillable="true" type="q11:template" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -188,7 +230,7 @@
   <xs:element name="GetLanguageListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetLanguageListResult" nillable="true" type="q10:ArrayOfshort_entity" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetLanguageListResult" nillable="true" type="q12:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -202,7 +244,7 @@
   <xs:element name="GetRaceLanguageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceLanguageResult" nillable="true" type="q11:ArrayOfshort_entity" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceLanguageResult" nillable="true" type="q13:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,7 +258,7 @@
   <xs:element name="GetCharacterLanguageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterLanguageResult" nillable="true" type="q12:ArrayOfshort_entity" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterLanguageResult" nillable="true" type="q14:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -230,7 +272,7 @@
   <xs:element name="GetClassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassResult" nillable="true" type="q13:complete_class" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassResult" nillable="true" type="q15:complete_class" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -244,7 +286,7 @@
   <xs:element name="GetRaceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceResult" nillable="true" type="q14:complete_race" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceResult" nillable="true" type="q16:complete_race" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -259,7 +301,7 @@
   <xs:element name="GetTemplateCharacteristicsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetTemplateCharacteristicsResult" nillable="true" type="q15:ArrayOfcharacteristic" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetTemplateCharacteristicsResult" nillable="true" type="q17:ArrayOfcharacteristic" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -274,7 +316,7 @@
   <xs:element name="GetCharacterCharacteristicsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterCharacteristicsResult" nillable="true" type="q16:ArrayOfcharacteristic" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterCharacteristicsResult" nillable="true" type="q18:ArrayOfcharacteristic" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -288,7 +330,7 @@
   <xs:element name="GetCharacteristicTypeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicTypeResult" nillable="true" type="q17:short_entity" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicTypeResult" nillable="true" type="q19:short_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -300,7 +342,7 @@
   <xs:element name="GetCharacteristicTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicTypesResult" nillable="true" type="q18:ArrayOfshort_entity" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicTypesResult" nillable="true" type="q20:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -314,7 +356,7 @@
   <xs:element name="GetCharacteristicResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicResult" nillable="true" type="q19:characteristic" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicResult" nillable="true" type="q21:characteristic" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -328,7 +370,7 @@
   <xs:element name="GetCharacteristicsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicsResult" nillable="true" type="q20:ArrayOfcharacteristic" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacteristicsResult" nillable="true" type="q22:ArrayOfcharacteristic" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -342,7 +384,7 @@
   <xs:element name="GetAptitudeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAptitudeResult" nillable="true" type="q21:aptitude" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAptitudeResult" nillable="true" type="q23:aptitude" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -356,7 +398,7 @@
   <xs:element name="GetAptitudesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAptitudesResult" nillable="true" type="q22:ArrayOfshort_entity" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAptitudesResult" nillable="true" type="q24:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -370,7 +412,7 @@
   <xs:element name="GetCharacterAptitudesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterAptitudesResult" nillable="true" type="q23:ArrayOfaptitude" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterAptitudesResult" nillable="true" type="q25:ArrayOfaptitude" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -384,7 +426,36 @@
   <xs:element name="GetMulticlassResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetMulticlassResult" nillable="true" type="q24:multiclass" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetMulticlassResult" nillable="true" type="q26:multiclass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShortMulticlass">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShortMulticlassResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetShortMulticlassResult" nillable="true" type="q27:multientity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_class" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" name="level" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassTemplateResult" nillable="true" type="q28:template" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -396,7 +467,7 @@
   <xs:element name="GetDeitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeitiesResult" nillable="true" type="q25:ArrayOfshort_entity" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeitiesResult" nillable="true" type="q29:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -410,7 +481,7 @@
   <xs:element name="GetDeityResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeityResult" nillable="true" type="q26:short_entity" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetDeityResult" nillable="true" type="q30:short_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -424,7 +495,7 @@
   <xs:element name="GetCharacterAgeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterAgeResult" nillable="true" type="q27:TupleOfunsignedIntcategoryY6NY8n6N" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterAgeResult" nillable="true" type="q31:TupleOfunsignedIntcategoryY6NY8n6N" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -438,7 +509,7 @@
   <xs:element name="GetCharacterWeightResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterWeightResult" nillable="true" type="q28:TupleOfunsignedIntcategoryY6NY8n6N" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterWeightResult" nillable="true" type="q32:TupleOfunsignedIntcategoryY6NY8n6N" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -452,7 +523,7 @@
   <xs:element name="GetCharacterHeightResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterHeightResult" nillable="true" type="q29:TupleOfunsignedIntcategoryY6NY8n6N" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetCharacterHeightResult" nillable="true" type="q33:TupleOfunsignedIntcategoryY6NY8n6N" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -466,7 +537,7 @@
   <xs:element name="GetAgeCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAgeCategoryResult" nillable="true" type="q30:category" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetAgeCategoryResult" nillable="true" type="q34:category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -480,7 +551,7 @@
   <xs:element name="GetWeightCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetWeightCategoryResult" nillable="true" type="q31:category" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetWeightCategoryResult" nillable="true" type="q35:category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -494,7 +565,7 @@
   <xs:element name="GetHeightCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetHeightCategoryResult" nillable="true" type="q32:category" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetHeightCategoryResult" nillable="true" type="q36:category" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -508,7 +579,7 @@
   <xs:element name="GetCharacterGiftsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterGiftsResult" nillable="true" type="q33:ArrayOfshort_entity" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterGiftsResult" nillable="true" type="q37:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -522,7 +593,7 @@
   <xs:element name="GetGiftResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetGiftResult" nillable="true" type="q34:gift" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetGiftResult" nillable="true" type="q38:gift" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -534,7 +605,7 @@
   <xs:element name="GetGiftsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetGiftsResult" nillable="true" type="q35:ArrayOfshort_entity" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetGiftsResult" nillable="true" type="q39:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -548,7 +619,7 @@
   <xs:element name="GetEffectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetEffectResult" nillable="true" type="q36:short_entity" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetEffectResult" nillable="true" type="q40:short_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -560,7 +631,7 @@
   <xs:element name="GetEffectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetEffectsResult" nillable="true" type="q37:ArrayOfshort_entity" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetEffectsResult" nillable="true" type="q41:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -574,7 +645,7 @@
   <xs:element name="GetCharacterEffectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterEffectsResult" nillable="true" type="q38:ArrayOfshort_entity" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterEffectsResult" nillable="true" type="q42:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -588,7 +659,7 @@
   <xs:element name="GetSkillEffectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillEffectsResult" nillable="true" type="q39:ArrayOfshort_entity" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillEffectsResult" nillable="true" type="q43:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -602,7 +673,7 @@
   <xs:element name="GetSkillConditionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillConditionsResult" nillable="true" type="q40:ArrayOfshort_entity" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillConditionsResult" nillable="true" type="q44:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -616,7 +687,7 @@
   <xs:element name="GetClassEffectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassEffectsResult" nillable="true" type="q41:ArrayOfshort_entity" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetClassEffectsResult" nillable="true" type="q45:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -630,7 +701,7 @@
   <xs:element name="GetRaceEffectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceEffectsResult" nillable="true" type="q42:ArrayOfshort_entity" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetRaceEffectsResult" nillable="true" type="q46:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -644,7 +715,7 @@
   <xs:element name="GetSkillResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillResult" nillable="true" type="q43:skill" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillResult" nillable="true" type="q47:skill" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -656,7 +727,7 @@
   <xs:element name="GetSkillsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillsResult" nillable="true" type="q44:ArrayOfshort_entity" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetSkillsResult" nillable="true" type="q48:ArrayOfshort_entity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -670,7 +741,7 @@
   <xs:element name="GetCharacterSkillsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterSkillsResult" nillable="true" type="q45:multiskill" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/DnDService.DataStructures" minOccurs="0" name="GetCharacterSkillsResult" nillable="true" type="q49:multiskill" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

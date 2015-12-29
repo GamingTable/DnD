@@ -35,7 +35,6 @@
       <xs:element minOccurs="0" name="magical" type="xs:boolean" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="spells" nillable="true" type="tns:ArrayOfspell" />
-      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
       <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
     </xs:sequence>
   </xs:complexType>
@@ -123,13 +122,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="wizardry" nillable="true" type="tns:wizardry" />
-  <xs:complexType name="multiclass">
+  <xs:complexType name="multientity">
     <xs:sequence>
-      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="level_class" nillable="true" type="q2:ArrayOfTupleOfunsignedIntcomplete_classY6NY8n6N" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="values_entities" nillable="true" type="q2:ArrayOfTupleOfunsignedIntshort_entityY6NY8n6N" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="multiclass" nillable="true" type="tns:multiclass" />
+  <xs:element name="multientity" nillable="true" type="tns:multientity" />
   <xs:complexType name="inventory">
     <xs:sequence>
       <xs:element minOccurs="0" name="character" type="xs:unsignedInt" />
@@ -216,18 +215,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="spellbook" nillable="true" type="tns:spellbook" />
-  <xs:complexType name="complete_race">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
-      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="innates_languages" nillable="true" type="tns:ArrayOfshort_entity" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
-      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
   <xs:complexType name="multiskill">
     <xs:sequence>
       <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
@@ -250,6 +237,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="skill" nillable="true" type="tns:skill" />
+  <xs:complexType name="complete_race">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="effects" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="illustration" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="innates_languages" nillable="true" type="tns:ArrayOfshort_entity" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="template" nillable="true" type="tns:template" />
+      <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="complete_race" nillable="true" type="tns:complete_race" />
+  <xs:complexType name="multiclass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id_character" type="xs:unsignedInt" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="level_class" nillable="true" type="q8:ArrayOfTupleOfunsignedIntcomplete_classtemplatenGGvAg4y" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="multiclass" nillable="true" type="tns:multiclass" />
   <xs:complexType name="gift">
     <xs:sequence>
       <xs:element minOccurs="0" name="advantages" nillable="true" type="xs:string" />

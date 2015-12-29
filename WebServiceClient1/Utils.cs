@@ -7,9 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using DnDServicePlayer.ServiceReference1;
 
 namespace DnDServicePlayer
 {
+    // Utils to separate reusable methods
     class Utils
     {
         // Method to encrypt the password
@@ -66,7 +68,7 @@ namespace DnDServicePlayer
             }
         }
 
-        //Allows to display the user info
+        // Allows to display the user info
         public static bool connected
         {
             get
@@ -83,6 +85,24 @@ namespace DnDServicePlayer
                 else
                     Application.Current.MainWindow.Resources["isConnected"] = Visibility.Hidden;
             }
+        }
+
+        // Return the summed up full characteristics of an array of templates
+        public static characteristic[] SumTemplates(List<template> to_sum_templates)
+        {
+            var client = new ServiceReference1.Service1Client();
+            characteristic[] outCharac;
+             /*
+            foreach (var c in client.GetCharacteristicShortList())
+            {
+                foreach (var t in template_list)
+                {
+                    t.characteristics.Where<characteristic>();
+                    t.
+                    }
+            }
+            */
+            return outCharac = new characteristic[1];
         }
     }
 
