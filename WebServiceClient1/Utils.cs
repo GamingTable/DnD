@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using DnDServicePlayer.ServiceReference1;
+using System.Windows.Controls;
 
 namespace DnDServicePlayer
 {
@@ -120,6 +121,12 @@ namespace DnDServicePlayer
             }
             
             return charac_list;
+        }
+
+        // Return the modifier corresponding to a given value of characteristic
+        public static int fromValueToModif(uint value)
+        {
+            return (int)Math.Floor(value / 2.0) - 5;
         }
     }
 

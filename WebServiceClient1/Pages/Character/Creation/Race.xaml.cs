@@ -77,6 +77,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_race = client.GetRace(selection.uid);
 
+            var cc = (CharacterCreation)VisualTreeHelper.GetParent.GetParent(VisualTreeHelper.GetParent(this.Parent));
+            cc.next_button.IsEnabled = true;
             // Refresh the image source
             update_display();
         }

@@ -36,7 +36,8 @@ namespace DnDServicePlayer.Pages.Character
             InitializeComponent();
 
             current_step = 0;
-            creation_steps = new List<ICreationSwitcher> {
+            // Instantiate every usercontrol required for the creation
+            creation_steps = new List<UserControl:ICreationSwitcher> {
                                     new Race(),
                                     new Classe(),
                                     new Stats(),
@@ -44,7 +45,9 @@ namespace DnDServicePlayer.Pages.Character
                                     new Skills(),
                                     //new Spells(),
                                     new Background()};
-            
+
+            // 
+            creation_steps.ForEach(k => DataContext = this);
             creation_controllers.Content = creation_steps[0];
             update_display();
         }
@@ -98,7 +101,20 @@ namespace DnDServicePlayer.Pages.Character
                 Utils.infobar = "Nouveau personnage créé !";
             }
         }
-                
+
+        public static bool isStepDone
+        {
+            get
+            {
+                var c = (CharacterCreation)Application.Current.TryFindResource("character_creation_interface");
+                return c.next_button.IsEnabled; }
+            set
+            {
+                var c = (CharacterCreation)Application.Current.TryFindResource("character_creation_interface");
+                c.next_button.IsEnabled = value;
+            }
+        }
+
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {

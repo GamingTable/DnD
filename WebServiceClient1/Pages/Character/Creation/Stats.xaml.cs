@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using Xceed.Wpf.Toolkit;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
@@ -24,20 +25,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
     public partial class Stats : UserControl, ICreationSwitcher
     {
         private Service1Client client;
+        private template _mTemplate;
         public static template current_stats { get; set; }
-        private characteristic[] charac_dictionnary;
 
         public Stats()
         {
             InitializeComponent();
             client = new Service1Client();
-
-            // Used to avoid a recurrent call to client from utils
-            // increase and decrease are still a bit slow
-            charac_dictionnary = client.GetCharacteristics(0);
-
-            // Define them as ItemsSource for the list
-            charac_stack.DataContext = this;
 
             // Define current_stats
             // It will help transfer default template points to characteristics
@@ -112,15 +106,15 @@ namespace DnDServicePlayer.Pages.Character.Creation
         // Get the lvl 1 templates from race, class and default then sum it
         private template default_template
         {
-            get
+            get { return _mTemplate; }
+            set
             {
                 if (Race.current_race != null && Classe.current_class != null )
                 {
                     var template_list = new List<template>() {
                     Race.current_race.template,
                     client.GetClassTemplate(Classe.current_class.uid,1),
-                    client.GetDefaultTemplate(),
-                    current_stats};
+                    client.GetDefaultTemplate()};
 
                     var output_template = new template()
                     {
@@ -128,12 +122,12 @@ namespace DnDServicePlayer.Pages.Character.Creation
                         name = "summed_template",
                         description = "AUTO GENERATED"
                     };
-                    output_template.characteristics = Utils.SumTemplates(template_list, charac_dictionnary);
+                    output_template.characteristics = Utils.SumTemplates(template_list, client.GetCharacteristics(0));
 
-                    return output_template;
+                    _mTemplate = output_template;
                 }
                 else
-                    return new template();
+                    _mTemplate = new template();
             }
         }
 
@@ -182,8 +176,21 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.charac_stack.ItemsSource = current_characteristics;
+            //Force the setting of default_template
+            default_template = null;
+
+            //this.charac_stack.ItemsSource = current_characteristics;
+            this.charac_stack.DataContext = this;
             this.charac_counter_display.DataContext = current_characteristic_points;
+        }
+
+        private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            var s = (IntegerUpDown)sender;
+            increaseValue((uint)s.Tag);
+            //Update skill points label --> initial skill points label is on load
+            //Update current_stats --> default template is initialized on load
+            //Update every max --> initial min and current values are determined on load
         }
     }
 }

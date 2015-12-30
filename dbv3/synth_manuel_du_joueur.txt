@@ -1,0 +1,637 @@
+///////////////////////////
+CREATION DE PERSONNAGE
+///////////////////////////
+
+=> 6 jets de 4d6
+=> choix de la race et de la classe
+=> répartition des jets dans les caractéristiques
+=> application des modificateurs raciaux et détermination des modificateurs totaux
+=> détermination des jets de sauvegarde, CA, initiative, PV, etc
+=> modificateurs d'attaque et de compétences
+=> choix des dons
+=> choix des sorts et compétences
+=> tirage des pièces d'or et de l'équipement
+=> définition du background, de l'alignement, des traits, du nom,... faisable et modifiable en jeu
+
+Maître du Donjon
+	Le MD/MJ convie une compagnie d'aventuriers dans le cadre de sa campagne
+Valeurs de Caractéristiques
+	Les joueurs déterminent six valeurs de caractéristiques. Pour chacune, ils jettent 4d6, ignorent le chiffre le plus faible et additionnent les trois autres. Les résultats sont notés et mis de côté.
+Classe et Race
+	Vous devez choisir ces deux données en même temps car certaines races sont plus adaptées à certaines classes.
+Caractéristiques
+	Maintenant que vous connaissez la classe et la race de votre personnage, répartissez les six totaux obtenus précédemment entre les six caractéristiques de votre personnage. Notez le modificateur accompagnant chaque caractéristique
+Particularités de Race et de Classe
+	La race et la classe de votre personnage lui confèrent certaines particularités. Certaines sont automatiques mais d'autres vous obligeront à faire des choix.
+Compétences
+	Selon sa classe et son modificateur d'intelligence, votre personnage dispose d'un certain nombre de points de compétence qu'il peut utiliser pour acheter des compétences. Elles sont mesurées en degré de maîtrise
+Dons
+	Chaque personnage au niveau 1 commence avec un don. Des dons supplémentaires s'obtiennent avec certaines races.
+Corps et Âmes
+	Permet de peaufiner l'histoire du personnage
+Equipement
+	
+Données de combat
+	Points de Vie
+	Classe d'Armure
+	Initiative
+	Bonus à l'attaque
+	Jets de sauvegarde
+		Réflexe
+		Vigueur
+		Volonté
+Derniers Détails
+	Il ne vous reste plus qu'à trouver un nom à votre héros, à déterminer le sexe, à choisir son alignement, son âge, son apparence, etc. Rien ne vous oblige à le définir entièrement tout de suite. Vous pouvez le peaufiner en cours de jeu.
+
+///////////////////////////
+		CHAPITRES
+///////////////////////////
+	
+	
+Caractéristiques =>	Force(For)
+						Description => La force représente la puissance physique et musculaire de votre personnage.
+						Cette caractéristique est particulièrement important pour les barbares, guerriers, moindres, paladins et rôdeurs car elle les aide à s'imposer au combat. La force limite aussi la quantité d'équipement qu'un personne peut transporter.
+					Dextérité(Dex)
+						Description => La dextérité mesure l'agilité, les réflexes et l'équilibre du personnage.
+						C'est la caractéristique primordiale des roublards, mais elle est également importante pour tous ceux qui ne portent qu'une armure légère ou intermédiaire (les barbares et les rôdeurs) voire pas d'armure du tout (ensorceleurs, magiciens et moines), ainsi que pour les archers.
+					Constitution(Con)
+						Description => La constitution représente la santé et l'endurance de votre personnage.
+						Le bonus de constitution d'un personnage augmente son total de points de vie, ce qui rend cette cararactéristique très importante pour toutes les classes.
+					Intelligence(Int)
+						Description => L'intelligence symbolise les facilités d'apprentissage et de raisonnement de votre aventurier. Elle est vitale pour les magiciens, car elle détermine le nombre de sorts qu'ils peuvent jeter et la puissance de ces derniers. Elle est également importante pour tout personnage souhaitant maîtriser un grand nombre de compétences
+					Sagesse(Sag)
+						Description => La sagesse regroupe la volonté, le bon sens, le degré de perception et l'intuition du personnage.
+						Alors que l'intelligence représente la faculté à analyser les informations, la sagesse définit la manière dont le personnage perçoit le monde qui l'entoure. Cette caractéristique est cruciale pour les druides et les prêtres ainsi que les paladins et les rôdeurs.
+					Charisme(Cha)
+						Description => Le charisme mesure la force de persuasion du personnage, son magnétisme, sa capacité à diriger les autres et sa beauté. Cette caractéristique représente une force de caractère réemme, elle est vitale pour les paladins, les ensorceleurs et les bardes. C'est également utile pour les prêtres car il affecte leur aptitude à repousser les morts-vivants.
+					
+					Détermination 		=> Jet de 4d6 pour chaque caractéristique
+										Somme des trois plus hautes valeurs pour chaque jet
+										Le joueur attribue chaque jet à une caractéristique
+					Préambule 			=> Race et classe doivent être déterminés pour que le joueur
+										choisisse ses caractéristiques selon les modificateurs de race
+										et la classe qu'il souhaite jouer
+					Modificateur 		=> floor(valeur_caractéristique/2)-5
+					Evolution 			=> Ajout d'un point à la caractéristique du choix du joueur
+										lorsque le nouveau niveau du joueur est un multiple de 4
+					Variation			=>	La valeur peut changer lorsqu'un sort, un équipement,
+										un poison, un monstre ou tout autre événement s'applique
+										Le vieillissement ou certains effets peuvent engendrer une
+										variation permanente de la caractéristique
+					Limites				=>	L'intelligence ne peut jamais passer en dessous de 3 après application du malus racial
+					Sorts				=>	Si le modificateur est positif et que le niveau de sort est atteint, un nouveau sort peut être appris
+										Le détail se trouve dans le tableau de modificateurs de caractéristiques
+					Description			=>	Tout jet de dés qu'il vous sera demandé d'effectuer sera modifié par les caractéristiques 
+										de votre personnage. Un aventurier doté de facultés d'observation particulièrement développées pourra remarquer des gobelours approcher discrètement alors qu'un barbare à l'intelligence limitée ne détectera que rarement les passages secrets menants aux trésors cachés.
+										
+Races 			=>	Humain
+					Halfelin
+					Gnome
+					Demi-orque
+					Nain
+					Demi-elfe
+					Elfe
+					
+					Variation de caractéristique		=>	Humain		=> 	aucun
+														=>	Demi-elfe	=>	aucun
+														=>	Demi-orque	=>	+2 For
+																			-2 Int
+																			-2 Cha
+														=>	Elfe		=>	+2 Dex
+																			-2 Con
+														=>	Gnome		=>	+2 Con
+																		=>	-2 For
+														=>	Halfelin	=>	+2 Dex
+																			-2 For
+														=>	Nain		=>	+2 Con
+																			-2 Cha
+																		
+					Langages							=> 	Toutes les races parlent au moins le commun
+														Les personnages non-humains parlent également leur langue natale
+					Modificateurs						=>	La race peut influer sur =>	les paliers des dons
+																					 =>	les points de compétences
+																					 =>	les langues	parlées
+																					 =>	la vitesse de déplacement
+																					 =>	les caractéristiques physiques
+																					 =>	la classe de prédilection
+																					 =>	l'alignement
+																					 =>	la religion
+																					 =>	la personnalité
+																					 =>	les relations avec les autres races
+																					 =>	les modificateurs raciaux de CA, de compétences et autres
+Classes			=>	Barbare(Barb)
+						Description	=>	Combattant féroce qui s'en remet à sa rage et à son instinct pour triomper
+					Barde(Bard)
+						Description	=>	Troubadour, conteur, artiste aux milles talents dont la musique est magique, au sens propre du terme
+					Druide(Dru)
+						Description	=>	Etroitement lié au monde naturel dont il absorbe l'énergie pour jeter ses sorts et utiliser ses étranges pouvoirs magiques
+					Ensorceleur(Ens)
+						Description	=>	Lanceur de sorts doté de talents magiques innés
+					Guerrier(Gue)
+						Description	=>	Combattant inégalé dans le maniement des armes
+					Magicien(Mag)
+						Description	=>	Lanceur de sorts formé à utiliser la magie profane
+					Moine(Moi)
+						Description	=>	Spécialiste des arts martiaux possédant des pouvoirs uniques
+					Paladin(Pal)
+						Description	=>	Champion de la justice et ennemi infatigable des forces du mal protégé par des puissants pouvoirs divins
+					Prêtre(Prê)
+						Description	=>	Maître incontesté de la magie divine, sachant également se battre l'arme à la main
+					Rôdeur(Rôd)
+						Description	=>	Combattant des forêts et des grands espaces
+					Roublard(Rou)
+						Description	=>	Mi-éclaireur mi-espion, il triomphe par la ruse plutôt que par la force brute
+				
+				=>	Langages			=>	Druide	=>	sylvestre
+										=>	Magicien=>	draconien
+										=>	Prêtre	=>	abyssal
+														céleste
+														infernal
+				=> 	Niveau de classe	=>	Possède le niveau de progression dans la classe du joueur
+										=>	Est associé à un tableau de modificateurs des jets de sauvegarde et du bonus de base à l'attaque
+										=>	Un point de classe est gagné par niveau
+				=>	Niveau global		=>	Un personnage pouvant être multiclassé, le niveau global est la somme de ses niveaux de classe
+										=>	Est associété le tableau liant PX, compétences de classe, hors classe, points de dons et points de caractéristiques
+				=>	Caractéristiques	=> 	Chaque classe possède des caractéristiques primordiales qui marquent la mécanique du personnage
+				=>	Alignement			=>	Des restrictions existent: un barde ne peut pas être loyal
+				=>	Dé de Vie			=>	La classe détermine le dé vie lancé à chaque niveau pour faire progresser les PV (et un modificateur de
+										constitution)
+										=>	d4	=>	Ensorceleur
+													Magicien
+											d6	=>	Barde
+													Roublard
+											d8	=>	Druide
+													Moine
+													Prêtre
+													Rôdeur
+											d10	=>	Guerrier
+													Paladin
+											d12	=>	Barbare
+										=>	Le premmier Dé de Vie est toujours une valeur maximale
+				=>	Modificateurs		=>	Bonus de base à l'attaque
+										=>	Jets de réflexe
+										=>	Spéciaux
+										=>	Nombre de sorts par jour
+				=>	Compétences de classe
+				=>	Particularités de classe	=>	Armes et armures
+													Sorts
+													Aptitudes
+				=>	Anciens membres				=>	Evenement se déclenchant si le personnage abandonne sa classe
+				=>	Expérience et Niveau	=>	PX	=>	Description		=>	Mesure la connaissance acquise par le personnage
+														Modification	=>	Distribution par le MD à la fin du scénario selon les accomplissements
+																		des aventuriers
+														Progression		=>	Une fois le seuil indiqué par le tableau de niveau global franchi, le personnage gagne un point de classe qui le fera monter de niveau globale et pourra être
+														attribué à une classe
+														Limite			=>	On ne peut gagner qu'un niveau à la fois. Si le personnage reçoit assez 
+																		d'expérience pour passer deux niveaux, le total est réduit à 1 PX en-dessous du niveau suivant
+											=>	Entraînement	=>	Tout personnage est censé s'entraîner et accroître ses compétences entre deux
+																aventures pour ne pas perdre la main. Si un aventurier se retrouve incapable de s'entraîner, son expérience peut être réduite par le MD
+											=>	Niveau épique	=>	Le niveau est limité au niveau 20 naturellement
+																=>	Il est possible de débloquer des niveaux épiques (détail dans le guide du maître)
+											
+											=>	Progression		=>	Choix de classe
+																		Automatique pour les monoclassés, sélectif pour les multiclassés
+																=>	Bonus de base à l'attaque
+																		Application de l'amélioration du bonus de classe
+																		Si le bonus est supérieur à +6, le personnage peut attaquer plusieurs fois par round comme indiqué dans la table bonus de base à l'attaque et aux sauvegardes
+																=>	Bonus de base aux sauvegardes
+																		Idem
+																		On ajoute des modificateurs selon le niveau de chaque classe pour un personnage multiclassé
+																=>	Valeurs de Caractéristiques
+																		Gagne un point de carac lorsque le niveau global est un multiple de 4
+																		Si le modificateur de constitution du personnage augmente, ajoute un nombre de PV équivalent au niveau précédent
+																=>	Points de Vie
+																		Jette un dé déterminé par le tableau DV de la race et ajoute le modificateur de constitution au résultat puis cette somme aux PV max
+																		Le gain de PV ne peut être inférieur à 1
+																=>	Points de Compétences
+																		Le nombre de points gagné par niveau global est indiqué dans le tableau de classe
+																		Compétence de Classe 	=> 	Progression	=>	+1/point
+																								=>	Limite		=> 	niveau global +3
+																		Compétence hors Classe	=>	Progression	=>	+0.5/point
+																								=>	Limite		=>	(niveau global+3)/2
+																		La classe correspond à celle du niveau monté
+																		Le modificateur d'intelligence donne le nombre de points de compétences
+																=>	Dons
+																		Lorsque le niveau global est un multiple de trois, le personnage acquière un nouveau don au choix
+																		Un don possède des conditions d'apprentissage
+																=>	Sorts
+																		Chaque classe de lanceurs de sorts a sa propre table incluant sa progression dans l'apprentissage des sorts et le nombre de sorts disponibles par jour hors bonus
+																		Un personnage multiclassé peut utiliser n'importe quel sort de ses classes mais reste limité par son niveau de classe
+																=>	Aptitudes de classes
+																		Chaque classe possède une table de progression des aptitudes qui se développent selon le niveau de classe
+																		Pour un personnage multiclassé, toutes ses aptitudes et ses handicaps s'appliquent
+																		
+Compétences		=>	Caractéristique associée
+						Carac du modificateur
+					Formation nécessaire
+						Indique si son apprentissage est nécessaire auprès d'autrui
+					Malus d'armure aux tests
+						Savoir si le malus d'armure s'applique aux tests de compétence
+					Test de compétence
+						Ce qu'un test permet d'accomplir
+					Nouvelles tentatives
+						Conditions pour retenter
+					Spécial
+						Cas spéciaux
+					Synergie
+						Boni offerts ou reçus par synergie
+					Restrictions
+						Condition (classe, don,...) pour l'apprendre
+					Test inné
+						Indique si cette compétence peut être utilisée avec un DM 0
+
+				=>	Progression		=>	Un personnage obtient 2, 4, 6 ou 8 points de compétences à chaque niveau selon sa classe
+									Le modificateur d'intelligence s'applique à la valeur donnée
+									Les humains gagnent un point supplémentaire
+									Au niveau global 1, cette valeur est multipliée par 4
+				=>	Utilisation		=>	test de compétence = 1d20 +mod de compétence
+									mod de compétence = degré de maîtrise+mod de carac+mod divers
+									Victoire	=> Le Degré de Difficulté est atteint
+												=> Le résultat est supérieur à celui de l'adversaire
+				=>	Degré de Maîtrise	=> Dépend du nombre de points investis
+				=>	Il existe une table de référence des compétences de classe et hors classe
+				=>	Degré de Difficulté	=>	Le DD est déterminé par le MD pour réaliser une action compliquée ou une épreuve. Il existe des tables
+										de référence
+				=>	Test opposé			=>	Deux personnages peuvent s'affronter sur des tests de compétences opposés (déguisement/détection)
+										La plus grande valeur gagne
+										En cas de partage, le plus grand modificateur de compétence gagne
+				=>	Faire 20			=>	Lorsqu'un personnage a le temps et ne subit aucun malus en recommançant plusieurs fois une compétence,
+										on peut lui attribuer directement un 20 mais il consomme beaucoup de temps sur l'action
+				=>	Innées				=> Certaines compétences sont innées et peuvent s'utiliser avec un DM de 0 (table de compétences)
+				=>	Conditions			=> En cas de conditions favorables/défavorables le DD ou le mod de comp peuvent être revus
+				=>	Durées				=> La plupart des compétences sont des actions rapides ou complexes mais certaines peuvent durer plusieurs
+										rounds ou être instantanées et ne pas compter comme une action temporellement
+				=>	Faire 10			=> Similaire à faire 20, préférable pour des tâches simples et consomme moins de temps (cas décontracté)
+				=>	Collaborer			=> Dans certains cas, un joueur peut en aider un autre à lancer une compétence ce qui se traduit par un bonus
+										Une table de synergie entre les compétences montre lorsque d'un DM de 5 procure un bonus de +2
+				=>	Synergie			=> Avoir un DM de 5 dans une compétence entraîne un bonus de +2 dans les compétences liées
+
+Dons		=>	Type
+					Général, Métamagie, Création d'objet
+				Condition
+					Valeur de carac minimale, dons préalables, bonus de base à l'attaque minimal, DM minimal dans des compétences, niveau de classe.
+				Avantage
+					Effet non cumulatif (mais peut se choisir plusieurs fois), avantage conféré par le don
+				Normal
+					Restrictions rencontrées par un personnage n'ayant pas le don
+				Spécial
+					Informations complémentaires sur le don
+
+			=>	Obtention			=> Tous les niveaux multiples de 3 sauf les humains qui ont un don supplémentaire
+			=>	Conditions			=> N'importe quelle valeur peut être une condition même l'obtention d'un don précédent
+									Un don est désactivé si le personnage ne satisfait plus aux conditions
+			=> 	Création d'objet	=> Seuls les lanceurs de sorts peuvent créer des objets magiques
+									Le type doit être précis
+									Le coût de création (PX, or, temps) dépend du prix de base et de la magie nécessaire
+									Le créateur perd 1/25 du prix de l'objet en PO sous forme d'XP par épuisement (borné par le niveau inférieur)
+									Le temps de création est d'un jour pour 1000 PO de son prix de base et ne peut être inférieur à 1 jour
+									Un tableau contient les multiplicateurs de coûts pour certains objets (baguettes, potions, parchemins, bagues,...)
+			=>	Métamagie			=> Permet de changer la façon d'incanter un sort (instantanément, augmentation de puissance au dernier moment,
+									alteration des effets ou des cibles,...
+
+Corps&Âmes	=>	Alignement			=> 9 alignements combinaisons des ensembles
+									{bon, neutre, mauvais}
+									{loyal neutre chaotique}
+			=>	Dieux				=> possèdent un alignement et doivent correspondre à l'alignement du personnage
+									s'il s'agit d'un dieu de classe
+									=> n'ont pas nécessairement un alignement précis
+									s'il s'agit d'un dieu de race
+									Liste descriptive dans le manuel de certaines divinités (nom, sigle, description)
+			=>	Etat Civil			=> Nom
+									=> Sexe
+									=> Âge
+										Tables pour le calcul aléatoire de l'âge, les limites d'âge et les effets du vieillissement
+									=> Taille & poids
+										Table de détermination aléatoire du poids, de la taille et de leurs modificateurs
+			=>	Apparence			=> Physique
+										Balafres, couleur de peau, d'yeux et de cheveux raciales
+			=>	Personnalité		=> Décrit la façon de jouer le personnage, souvent influencé par la classe, la race et le passé
+			=>	Passé				=> Etablir la vie du personnage avant d'être aventurier et ses exploits passés (background)
+
+Equipement	=>	Initial		=>	Chaque classe s'accompagne d'un exemple d'équipement => Cet équipement pourrait être considéré comme standard
+			=>	Argent		=>	Pièces de Cuivre(PC)
+								Pièces d'Argent(PA)
+								Pièces d'Or(PO)
+								Pièces de Platine(PP)
+							Conversion		=>	Il existe une table de conversion entre les monnaies
+							Initial			=>	Il existe une table donnant l'argent de départ par classe en jet de dés
+			=>	Boutique	=>	Permet la revante (à moitié prix si ce n'est pas un objet de consommation courrant)
+							=>	Gère la conversion des 
+							=>	Permettent la vente de certaines catégories d'objets
+			=>	Armes		=>	Catégories	=>	Armes courantes, de guerre ou exotiques
+												Armes de corps à corps et armes à distance
+												Catégories spéciales
+													Armes à allonge
+													Armes doubles
+													Armes de jet
+													Armes à projectiles
+													Munitions
+												Armes légères à une main ou deux mains
+													Légère
+													A une main
+													A deux mains
+												Taille de l'arme
+													TP
+													P
+													M
+													G
+													TG
+												Armes improvisées
+							=>	Attributs	=>	Prix
+											=>	Dégâts
+											=>	Critique
+													Zone de critique (18-20/20/...)
+													Multiplicateur (atq x N)
+											=>	Facteur de portée
+											=>	Poids
+											=>	Types
+													contondant
+													perforant
+													tranchant
+													=> choix multiple (dague pouvant perforer ou trancher)
+											=>	Spécial
+													Attributs spéciaux décrits avec l'arme
+			=>	Armure		=>	Catégories
+									Armure Légère
+									Armure Intermédiaire
+									Armure Lourde
+									Bouclier
+									Supplément
+										Améliore les catégories précédentes
+									=> Même si le supplément vient s'ajouter à une armure, chaque catégorie est unique pour une armure
+							=>	Attributs
+									Prix
+									Bonus d'armure/de bouclier
+									Bonus de Dex maximal
+									Malus d'armure aux tests
+									Risque d'échec des sorts profanes (%)
+									Vitesse de déplacement (mètre natural contre mètre en armure)
+									Poids
+							=>	Actions
+									Enfiler
+									Enfiler à la hâte
+									Ôter
+									=>	Voir tableau du temps nécessaire selon la catégorie d'armure
+			=>	Marchandise	=>	Attributs
+									Description
+									Prix
+									Poids
+									Nombre
+							=>	Catégories
+									Matériel d'Aventurier
+									Substances et Objets Spéciaux
+									Matériel de Classe et de Compétences
+									Habillement
+									Nourriture, Boisson, Hébergement
+									Montures et Harnachement
+									Moyens de Transport
+									Lancement de Sorts et Services
+
+Combat		=>	Déroulement	=>	Tous les combats commencent avec les joueurs pris au dépourvu jusqu'à une action du combattant.
+							=>	Le MD détermine qui est conscient de la présence de l'adversaire. Si tous n'en sont pas conscients, le combat débute par un round surprise où tous ne pourront pas combattre et seule une action simple peut être effectuée selon l'initiative
+							=>	Les combattants qui n'ont pas encore d'initiative la joue et le premier round commence
+							=>	L'ordre est fonction du test d'initiative
+							=>	Répétition jusqu'à la mort d'un des groupes ou l'interruption du combat
+			=>	Valeurs		=> 	Jet d'Attaque
+							=>	Bonus d'Attaque
+							=>	Dégâts
+							=>	Classe d'Armure(CA)
+							=>	Points de Vie(PV)
+							=>	Vitesse de Déplacement
+							=>	Jets de sauvegarde
+			=>	Initiative	=>	Définit l'ordre du combat
+							=>	Tiens compte de l'effet de surprise sur les rounds
+			=>	Attaques d'opportunités
+			=>	Actions		=>	Action Simple
+								Action de Mouvement
+								Action Complexe
+								Action Libre
+								Activité Instantanée
+								Activité Restreinte
+								=>	La liste des actions rentrant dans ces catégories se trouve dans le chapitre ad hoc
+			=>	Mort		=>	A 0 PV l'individu est hors de combat
+							Son état est stable
+							Il peut effectuer une action simple ou un déplacement mais perd 1PV
+							=>	De -1 à -9 PV l'individu est mourrant
+							Il perd 1PV par round
+							Le personnage est inconscient
+							=>	A -10 PV un individu est mort
+							Il meurt également si sa Con passe à 0
+							=> 	Récupération	=>	Pour redevenir stable, le joueur doit lancer 1d100 pour un DD 90 à chaque round après son 
+												inconscience
+												=>	Certains effets ou soins peuvent le stabiliser
+
+Vie RP		=>	Poids Transportable
+			=>	Déplacement
+			=>	Exploration
+			=>	Solidité, Résistance et Degré de Difficulté
+			=>	Trésor
+			=>	Autres Récompenses
+					Notorité
+					Proches
+					Terres
+					Titres de Noblesse et Honorofiques
+			
+			Principalement du RP et de la Stratégie
+			
+Magie		=>	Catégories		=>	Magie Profane
+									Magie Divine
+									=>	8 Ecoles
+			=>	Choix			=>	Peut être n'importe lequel ou un sort préparé en matinée selon ceux préparés
+								=>	Il faut parler pour incanter, avoir les mains libres pour la gestuelle, manipuler des objets pour focaliser, etc
+								=>	Une étape de préparation de durée variable selon le sort est nécessaire à chaque jet
+			=>	Concentration	=>	Lors d'une interruption, l'incantateur doit réaliser un test de Concentration pour conserver son sort
+										Blessure
+										Lutte et Immobilisation
+										Mouvements Violents
+										Mouvements Très Violents
+										Intempéries
+										Incantation sur la Défensive
+										Enchevêtrement
+			=>	Contresorts		=>	N'importe quel sort peut être utilisé comme contre sort en utilisant l'énergie magique
+								=>	Choix d'une cible et attente de sa préparation de sort
+									Test d'Art de la Magie contre un DD15+niveau du sort adverse
+										=>	Considéré comme une action libre
+									Si le sort est identifié, on teste si l'invocateur contrant le sort le possède également
+									S'il le possède, il le lance également et les deux s'annulent
+										=>	Certains sorts similaires ou opposés peuvent également être utilisés pour contrer
+										=>	Certains sorts (dissipation de la magie) sont des contresorts et ne demandent pas d'identification
+			=>	Niveau			=>	Le niveau de lanceur de sorts augmente la puissance d'un sort
+									Il affecte également ses effets et sa portée
+									Ce niveau correspond au niveau de classe du jeteur de sorts
+									En multiclassé, ne s'applique que le niveau de classe du sort
+			=>	Echecs			=>	Un sort peut toujours être lancé mais il échoue si les conditions requises ne le sont pas
+			=>	Effets			=>	Une fois les objets, personnages ou zones identifiés et les jets de sauvegardes effectués, on applique les effets
+			=>	Effets Spéciaux	=>	La plupart de ces effets dépendent de l'école de magie du sort mais certaines sont indépendantes
+										=>	Attaques
+										=>	Types de Bonus
+										=>	Ramener les Morts à la Vie
+			=>	Combinaison		=>	Généralement, les sorts sont indépendants les uns des autres mais trois règles peuvent s'appliquer
+										=>	Cumul
+												Généralement, un même sort ne se cumule pas mais reset sa durée
+												Les boni et mali des sorts différents se cumulent dans la plupart des cas
+										=>	Sorts à effet opposé
+												Les sorts s'annulant mutuellement sont spécifiés dans la description du sort
+												Les autres s'appliquent dans l'ordre d'action
+										=>	Effets Instantanés
+												Les effets s'ajoutent lors que deux sorts à effet instantané prennent simultanément une même cible
+			=>	Magie Profane	=>	Préparation	=>	Le nombre de sorts préparables est donné par le niveau de classe du lanceur
+													Un sort peut-être préparé plusieurs fois
+													Les sorts sont choisis dans la liste du grimoire du joueur
+													Un repos (sans sommeil nécessaire) d'au moins 8h est nécessaire pour réactualiser tous ses sorts
+													Un sort jeté durant le repos le fatigue
+													Il faut de la concentration et du calme pour récupérer ses sorts optimalement
+													Les sorts de la veille peuvent être encore utilisés s'il n'y a pas eu de préparation
+													Un sort peut être abandonné de sa mémoire
+													En mourrant, un personnage oublie ses sorts en mémoire
+								=>	Ecrits		=>	Emprunt de grimoire		=>	Test d'Ecrits de magie profane (DD15+niveau du sort)
+												=>	Ajout dans un grimoire	=>	Acquis en montant de niveau
+																				Copiés depuis un parchemin ou un autre grimoire
+																				Recherches Indépendantes
+												=>	Copie des nouveaux sorts=>	Temps nécessaire
+																				Espace requis (nombre de pages)
+																				Coût du matériel (nécessaire à écriture)
+												=>	Copie de grimoire		=>	Peut vider sa mémoire dans un nouveau grimoire (100PO/page)
+																				Peut copier à partir d'un grimoire emprunté
+												=>	Vente de grimoire
+			=>	Magie Divine	=>	Préparation	=>	La sagesse doit être d'au moins 10+niveau du sort
+													La sagesse peut apporter des sorts supplémentaires (comme l'intelligence pour les sorts profanes)
+													La procédure est similaire aux sorts profanes mais ils n'ont pas besoin de repos: ils prient
+													Durée également d'une heure
+													Il ne peut pas remplacer des sorts ou recharger des sorts en cours de journée
+								=>	Ecrits		=>	Comme les sorts profanent, ils peuvent être écrits mais seuls ceux habilités à
+												la magie divine peuvent le lancer
+								=>	Nouveaux	=>	En montant de niveau
+													Recherche Indépendante
+			=>	Pouvoirs Spéciaux	=>	Pouvoirs Magiques
+										Pouvoirs Surnaturels
+										Pouvoirs Extraordinaires
+										Pouvoirs Naturels
+												
+Sorts		=>	Ecoles
+					=>	Abjuration
+						Divination
+							Scrutation
+						Enchantement
+							Charme
+							Coercition
+						Evocation
+						Illusion
+							Chimère
+							Fantasme
+							Hallucination
+							Mirage
+							Ombre
+							Illusions et jet de sauvegarde
+						Invocation
+							Appel
+							Convocation
+							Création
+							Guérison
+							Téléportation
+						Nécromancie
+						Transmutation
+				Complémenté d'une branche
+				Certains sorts sont universels (rattachés à aucune école)
+				Registres	=>	acide
+								air
+								Bien
+								Chaos
+								eau
+								électricité
+								feu
+								force
+								froid
+								langage
+								Loi
+								lumière
+								Mal
+								mental
+								mort
+								obscurité
+								son
+								terre
+								terreur
+							Complémente la description d'un sort et aide à définir les interactions et la nature du sort
+			=>	Niveau	=>	Correspond au niveau de classe et indiquant si le sort peut être utilisé
+							Classes Lanceurs	=>	Bard
+													Dru
+													Ens
+													Mag
+													Pal
+													Prê
+													Rôd
+							Domaines de Prêtre	=>	Air
+													Bien
+													Chance
+													Chaos
+													Connaissance
+													Destruction
+													Duperie
+													Eau
+													Faune
+													Feu
+													Flore
+													Force
+													Guérison
+													Guerre
+													Loi
+													Magie
+													Mal
+													Mort
+													Protection
+													Soleil
+													Terre
+													Voyage
+			=>	Composantes			=>	Indique ce que le sort nécessite pour être incanter
+										=>	Verbale(V)
+											Gestuelle(G)
+											Matérielle(M)
+											Focaliseur(F)
+											Focaliseur Divin(FD)
+											Coût en PX(PX)
+			=>	Temps d'Incantation	=>	La plupart nécessitent une action simple, rarement une action libre
+										Si le sort prend au moins un round d'invocation, l'invocateur doit conserver sa concentration
+			=>	Portée				=>	Chaque sort possède une portée maximale variable.
+									=>	Catégories	=>	Personnelle
+														Contact
+														Courte
+														Moyenne
+														Longue
+														Illimitée
+														Portée exprimée en mètres
+			=>	Cible				=>	Cible(s)
+											Cible Unique
+											Cible Multiple
+									=>	Effet
+											Cible non-localisée, comme une invocation
+												Etendue si se dissipe depuis un point d'origine
+												Rayon si l'effet se comporte comme une arme à distance mais est résolu au contact
+									=>	Zone
+											Rayonnement, émanations et étendues
+											Cône, cylindre, ligne, sphère
+											Créatures
+											Objets
+											Autre
+											Façonnable(F)
+												Créer sa propre forme sur au moins 3m
+			=>	Durée				=>	Durée Déterminée
+										Instantanée
+										Permanente
+										Concentration
+										Sujet, Effet et Zone d'Effet
+										Retenir un Sort de Contact
+										Utilisation ou Epuisement
+			=>	Jets de Sauvegarde	=>	Les sorts possèdent une ligne "jet de sauvegarde" pour savoir quel jet appliquer afin de contrer le sort
+										Les mots clés suivants identifient l'action si le jet est contré
+											=>	Annule
+												Partiel
+												1/2 dégâts
+												Aucun	=>	Pas de jet de sauvegarde
+												Dévoile	=>	Se rend compte de l'illusion
+										Chaque jet de sauvegarde a un DD dépendant du sort et du niveau du lanceur
+										Si le jet est réussi, la créature sent l'effet du sort échoué
+										Le résultat du jet de sauvegarde peut être un échec volontaire
+										Les objets résistent aux attaques magiques mais si la cible fait un fumble, elle peut se le voir détruire
+			=>	Résistance à la Magie(RM)	=>	Elle contre l'effet du sort si elle est supérieure à un test 1d20+niveau de classe du lanceur+modif
+												Certains sorts (spécifiés) y sont insensibles

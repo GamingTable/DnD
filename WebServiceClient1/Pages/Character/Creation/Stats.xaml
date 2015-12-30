@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="404" d:DesignWidth="700"
              Loaded="UserControl_Loaded">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,10 +30,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding name}" />
-                        <TextBlock Text="{Binding value}" />
+                        <xctk:IntegerUpDown  Minimum="{Binding value}" Maximum="99" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
                         <TextBlock Text="{Binding modifier}" />
-                        <Button Content="+" Click="increase_value_button_Click" Tag="{Binding uid}"/>
-                        <Button Content="-" Click="decrease_value_button_Click" Tag="{Binding uid}" IsEnabled="False"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
