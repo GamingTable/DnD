@@ -20,17 +20,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ItemsControl x:Name="charac_stack" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding current_characteristics}">
+        <ItemsControl x:Name="charac_itemscontrol" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding current_characteristics}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" />
+                    <StackPanel Orientation="Vertical" x:Name="charac_stack"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding name}" />
-                        <xctk:IntegerUpDown  Minimum="{Binding value}" Maximum="99" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
+                        <xctk:IntegerUpDown Loaded="IntegerUpDown_Loaded" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
                         <TextBlock Text="{Binding modifier}" />
                     </StackPanel>
                 </DataTemplate>

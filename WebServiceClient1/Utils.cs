@@ -89,13 +89,14 @@ namespace DnDServicePlayer
         }
 
         // Return the summed up full characteristics of an array of templates
-        public static characteristic[] SumTemplates(List<template> to_sum_templates, characteristic[] charac_list)
+        public static characteristic[] SumTemplates(List<template> to_sum_templates)
         {
             if (to_sum_templates == null)
                 return null;
 
             var client = new ServiceReference1.Service1Client();
-             
+            var charac_list = client.GetCharacteristics(0);
+
             // For every existing characteristic
             foreach (var c in charac_list)
             {

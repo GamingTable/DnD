@@ -64,7 +64,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         private void updateDisplay()
         {
-            this.charac_stack.ItemsSource = current_characteristics;
+            //this.charac_itemscontrol.ItemsSource = current_characteristics;
             this.charac_counter_display.DataContext = current_characteristic_points;
         }
 
@@ -122,7 +122,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
                         name = "summed_template",
                         description = "AUTO GENERATED"
                     };
-                    output_template.characteristics = Utils.SumTemplates(template_list, client.GetCharacteristics(0));
+                    output_template.characteristics = Utils.SumTemplates(template_list);
 
                     _mTemplate = output_template;
                 }
@@ -153,7 +153,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
             {
                 var filtered = default_template.characteristics.Where(cc => cc.uid == 22);
                 if (filtered.Count() > 0)
-                    return filtered.First();
+                {
+                    var rt = client.GetCharacteristic(22);
+                    var ff = filtered.First();
+                    var cs = current_stats.characteristics.Where(c => c.uid == ff.uid).Single();
+                    rt.value += ff.value + cs.value;
+                    return rt;
+                }
                 else
                     return client.GetCharacteristic(22);
             }
@@ -178,9 +184,13 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             //Force the setting of default_template
             default_template = null;
+            //Reset every modifier for every characteristic
+            Utils.SumTemplates(new List<template>() { default_template, current_stats }).ToList().ForEach(
+                k => current_stats.characteristics.Where(l => l.uid == k.uid).Single().modifier 
+                = get_modifier(k.value));
 
             //this.charac_stack.ItemsSource = current_characteristics;
-            this.charac_stack.DataContext = this;
+            this.charac_itemscontrol.DataContext = this;
             this.charac_counter_display.DataContext = current_characteristic_points;
 
             //Update condition onload
@@ -189,12 +199,50 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            // Variables declaration
+                // cs are the temporary characteristics value increase
+                // cp is the number of points available
+                // s is the updown counter
+                // diff is the difference of value (positive or negative)
+                // uid is the characteristic id
             var s = (IntegerUpDown)sender;
-            increaseValue((uint)s.Tag);
-            //Update skill points label --> initial skill points label is on load
-            if()
-            //Update current_stats --> default template is initialized on load
-            //Update every max --> initial min and current values are determined on load
+            var diff = (int)e.NewValue - (int)e.OldValue;
+            var uid = (uint)s.Tag;
+            var cs = current_stats.characteristics.Where(c => c.uid == uid ).Single().value;
+            var cp = current_characteristic_points.value;
+
+            // Treatment implementation
+            //Check if abnormal values or max is reached
+            if (cp < cs + diff)
+            {
+                s.Maximum = current_characteristics.Where(j=>j.uid == uid).Single().value;
+            }
+            else
+            {
+                //Update charac points label --> initial charac points label is on load
+                //If the characteristic increments, the charac points decrement
+                if (diff > 0)
+                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value -= cs + 1;
+                //Otherwise, it increments
+                else if (diff < 0)
+                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
+                //Update current_stats --> default template is initialized on load
+                if (diff != 0)
+                    current_stats.characteristics.Where(c => c.uid == uid).Single().value += diff;
+            }
+
+            //Validate if charac points = 0
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
+
+            updateDisplay();
+
+        }
+
+        private void IntegerUpDown_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Initialize minimum value
+            var s = (IntegerUpDown)sender;
+            s.Minimum = default_template.characteristics.Where(k => k.uid == (uint)s.Tag).Single().value;
         }
     }
 }

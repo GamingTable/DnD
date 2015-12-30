@@ -168,3 +168,4 @@ C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\r
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\youness\Downloads\WebService1\WebService1\WebServiceClient1\obj\Debug\DnDServicePlayer.csprojResolveAssemblyReference.cache
