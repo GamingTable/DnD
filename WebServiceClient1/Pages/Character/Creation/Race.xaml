@@ -26,8 +26,6 @@
         <ListBox x:Name="race_list_box" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding race_list}" IsSynchronizedWithCurrentItem="False" SelectionChanged="race_list_box_SelectionChanged" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<StackPanel Height="auto" Width="auto"  Orientation="Vertical">
-                    </StackPanel>-->
                     <Label x:Name="name_display" Height="30" Margin="2,0,0,0" Width="auto" Content="{Binding name}" FontWeight="Bold" FontSize="16" />
                 </DataTemplate>
             </ListBox.ItemTemplate>

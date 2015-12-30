@@ -182,6 +182,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //this.charac_stack.ItemsSource = current_characteristics;
             this.charac_stack.DataContext = this;
             this.charac_counter_display.DataContext = current_characteristic_points;
+
+            //Update condition onload
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
         }
 
         private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -189,6 +192,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
             var s = (IntegerUpDown)sender;
             increaseValue((uint)s.Tag);
             //Update skill points label --> initial skill points label is on load
+            if()
             //Update current_stats --> default template is initialized on load
             //Update every max --> initial min and current values are determined on load
         }

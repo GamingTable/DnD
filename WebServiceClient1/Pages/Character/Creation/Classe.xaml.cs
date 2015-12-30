@@ -34,7 +34,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             InitializeComponent();
 
-            // Get the races list
+            // Get the classes list
             client = new Service1Client();
             class_list = client.GetClassShortList();
 
@@ -64,7 +64,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
         public string class_description
         {
             get { return current_class.description; }
-            set { }
         }
 
         public string step_name
@@ -91,6 +90,8 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_class = client.GetClass(selection.uid);
+            // A class is selected, condition is now true
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
 
             // Refresh the image source
             update_display();
@@ -104,5 +105,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
             description_display.Text = class_description;
         }
         #endregion
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Update condition onload
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
+        }
     }
 }

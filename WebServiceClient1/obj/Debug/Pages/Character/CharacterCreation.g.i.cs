@@ -51,7 +51,7 @@ namespace DnDServicePlayer.Pages.Character {
         #line hidden
         
         
-        #line 34 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+        #line 31 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock creation_title;
         
@@ -59,7 +59,7 @@ namespace DnDServicePlayer.Pages.Character {
         #line hidden
         
         
-        #line 35 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+        #line 32 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ScrollViewer creation_controllers;
         
@@ -67,7 +67,7 @@ namespace DnDServicePlayer.Pages.Character {
         #line hidden
         
         
-        #line 36 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+        #line 33 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button previous_button;
         
@@ -75,7 +75,7 @@ namespace DnDServicePlayer.Pages.Character {
         #line hidden
         
         
-        #line 37 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+        #line 34 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button next_button;
         
@@ -83,7 +83,7 @@ namespace DnDServicePlayer.Pages.Character {
         #line hidden
         
         
-        #line 38 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+        #line 35 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button cancel_button;
         
@@ -113,13 +113,6 @@ namespace DnDServicePlayer.Pages.Character {
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal System.Delegate _CreateDelegate(System.Type delegateType, string handler) {
-            return System.Delegate.CreateDelegate(delegateType, this, handler);
-        }
-        
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
@@ -139,7 +132,7 @@ namespace DnDServicePlayer.Pages.Character {
             case 4:
             this.previous_button = ((System.Windows.Controls.Button)(target));
             
-            #line 36 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+            #line 33 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
             this.previous_button.Click += new System.Windows.RoutedEventHandler(this.previous_button_Click);
             
             #line default
@@ -148,7 +141,7 @@ namespace DnDServicePlayer.Pages.Character {
             case 5:
             this.next_button = ((System.Windows.Controls.Button)(target));
             
-            #line 37 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+            #line 34 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
             this.next_button.Click += new System.Windows.RoutedEventHandler(this.next_button_Click);
             
             #line default
@@ -157,7 +150,7 @@ namespace DnDServicePlayer.Pages.Character {
             case 6:
             this.cancel_button = ((System.Windows.Controls.Button)(target));
             
-            #line 38 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
+            #line 35 "..\..\..\..\Pages\Character\CharacterCreation.xaml"
             this.cancel_button.Click += new System.Windows.RoutedEventHandler(this.cancel_button_Click);
             
             #line default

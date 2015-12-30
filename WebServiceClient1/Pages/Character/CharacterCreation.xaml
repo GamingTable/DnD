@@ -9,9 +9,6 @@
              mc:Ignorable="d" 
              xmlns:Sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="300" d:DesignWidth="300" Width="800" Height="600">
-    <UserControl.Resources>
-        <Creation:Background  Resources="condition_to_next" x:Key="bg" />
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>

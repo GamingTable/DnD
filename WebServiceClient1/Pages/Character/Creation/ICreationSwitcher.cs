@@ -13,5 +13,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
     {
         string step_name { get; }
         bool condition_to_next { get; }
+        Object DataContext { get; set; }
     }
 }

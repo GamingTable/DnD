@@ -30,11 +30,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
             // Define them as ItemsSource for the list
             race_list_box.DataContext = this;
 
-            // Retrieve the current_race if selected
-            if(current_race != null)
-            {
-                update_display();
-            }
         }
 
         #region Display
@@ -52,7 +47,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
         }
         public string race_description
         {
-            get { return current_race.description; }
+            get { return (current_race != null)?current_race.description:null; }
         }
 
         public string step_name
@@ -76,9 +71,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
         {
             short_entity selection = (sender as ListBox).SelectedItem as short_entity;
             current_race = client.GetRace(selection.uid);
+            // A class is selected, condition is now true
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
 
-            var cc = (CharacterCreation)VisualTreeHelper.GetParent.GetParent(VisualTreeHelper.GetParent(this.Parent));
-            cc.next_button.IsEnabled = true;
             // Refresh the image source
             update_display();
         }
@@ -88,15 +83,12 @@ namespace DnDServicePlayer.Pages.Character.Creation
             image.Source = race_illustration;
             image.Stretch = Stretch.Uniform;
             description_display.Text = race_description;
-
-            if (condition_to_next)
-                Resources["isStepDone"] = true;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if(condition_to_next)
-                Resources["isStepDone"] = false;
+            //Update condition onload
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
         }
         #endregion
 
