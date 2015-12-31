@@ -32,7 +32,7 @@ namespace DnDService
         }
 
         //Try to delete each character of an account and then delete account. Return true if succeed, false if not;
-        public bool AccountDelete(int account_id)
+        public bool AccountDelete(uint account_id)
         {
             return db.AccountDelete(account_id);
         }
@@ -41,6 +41,18 @@ namespace DnDService
         public string GetAccountName(uint account_id)
         {
             return db.GetAccountName(account_id);
+        }
+
+        //Return the selected user email
+        public string GetAccountEmail(uint account_id)
+        {
+            return db.GetAccountEmail(account_id);
+        }
+
+        //Update the current account
+        public uint UpdateAccount(uint uid, string name = null, string pass = null, string email = null)
+        {
+            return db.UpdateAccount(uid, name, pass, email);
         }
 
         //Create a new character and return character_id;

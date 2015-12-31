@@ -213,11 +213,21 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
             // Treatment implementation
             //Check if abnormal values or max is reached
-            if (cp < cs + diff)
+            if (diff > 0)
             {
-                s.Maximum = current_characteristics.Where(j=>j.uid == uid).Single().value;
+                if(cp < cs + 1)
+                {
+                    diff = 0;
+                    s.Maximum = current_characteristics.Where(j => j.uid == uid).Single().value;
+                }
+                    
             }
-            else
+           /* else if (diff <0 )
+            {
+                if(cs>0)
+                    s.Maximum = 
+            }*/
+            if (diff !=0)
             {
                 //Update charac points label --> initial charac points label is on load
                 //If the characteristic increments, the charac points decrement
@@ -228,7 +238,11 @@ namespace DnDServicePlayer.Pages.Character.Creation
                     current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
                 //Update current_stats --> default template is initialized on load
                 if (diff != 0)
+                {
                     current_stats.characteristics.Where(c => c.uid == uid).Single().value += diff;
+                    //Update modifier
+                    current_stats.characteristics.Where(c => c.uid == uid).Single().modifier = get_modifier((int)s.Value);
+                }
             }
 
             //Validate if charac points = 0

@@ -58,5 +58,10 @@ namespace DnDServicePlayer.Pages
             Utils.loadscreen = false;
         }
         #endregion
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Utils.connected = false;
+        }
     }
 }

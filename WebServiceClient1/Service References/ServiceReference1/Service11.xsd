@@ -37,7 +37,7 @@
   <xs:element name="AccountDelete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="account_id" type="xs:int" />
+        <xs:element minOccurs="0" name="account_id" type="xs:unsignedInt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -59,6 +59,37 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetAccountNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account_id" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountEmailResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uid" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateAccountResult" type="xs:unsignedInt" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

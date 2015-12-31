@@ -16,10 +16,16 @@ namespace DnDService
         uint AccountCreate(string user, string pass, string mail);
 
         [OperationContract]
-        bool AccountDelete(int account_id);
+        bool AccountDelete(uint account_id);
 
         [OperationContract]
         string GetAccountName(uint account_id);
+
+        [OperationContract]
+        string GetAccountEmail(uint account_id);
+
+        [OperationContract]
+        uint UpdateAccount(uint uid, string name = null, string pass = null, string email = null);
 
         /*[OperationContract]
         bool ForgottenPassword(string emailOrUsername);*/

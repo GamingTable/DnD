@@ -24,6 +24,8 @@
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" x:Name="charac_stack"/>
+                    <!-- Remplacement du stackpanel par un grid généré dynamiquement par l'itemscontrol
+                    http://blog.scottlogic.com/2010/11/15/using-a-grid-as-the-panel-for-an-itemscontrol.html -->
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>

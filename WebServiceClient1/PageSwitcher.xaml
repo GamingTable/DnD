@@ -32,7 +32,10 @@
                     <Button x:Name="reduce_button" Click="reduce_button_Click" Content="_" Style="{StaticResource windowButton}" />
                     <Button x:Name="close_button" Click="close_button_Click" Content="X" Style="{StaticResource windowButton}" />
                 </StackPanel>
-                <TextBlock x:Name="welcome_display" Visibility="{DynamicResource isConnected}" Text="{DynamicResource welcomeMessage}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,20,15,0" FontSize="16"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="30" Margin="0,30" Visibility="{DynamicResource isConnected}">
+                    <TextBlock x:Name="welcome_display" VerticalAlignment="Center" Text="{DynamicResource welcomeMessage}" Foreground="White" HorizontalAlignment="Right" Margin="20,0" FontSize="16"/>
+                    <Button x:Name="button_manager" VerticalAlignment="Center" Content="⚙" Style="{StaticResource windowButton}"  Click="button_manager_Click" />
+                </StackPanel>
             </StackPanel>
         </DockPanel>
         <!-- This binding is between the enable bool from container and the inverse of the container visibility linked by a converter in Utils.cs -->

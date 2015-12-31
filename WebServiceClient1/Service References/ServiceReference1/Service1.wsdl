@@ -33,6 +33,18 @@
   <wsdl:message name="IService1_GetAccountName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAccountNameResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAccountEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAccountEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_CharacterCreate_InputMessage">
     <wsdl:part name="parameters" element="tns:CharacterCreate" />
   </wsdl:message>
@@ -350,6 +362,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAccountName" message="tns:IService1_GetAccountName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAccountNameResponse" message="tns:IService1_GetAccountName_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAccountEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAccountEmail" message="tns:IService1_GetAccountEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAccountEmailResponse" message="tns:IService1_GetAccountEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAccount" message="tns:IService1_UpdateAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAccountResponse" message="tns:IService1_UpdateAccount_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CharacterCreate">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CharacterCreate" message="tns:IService1_CharacterCreate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CharacterCreateResponse" message="tns:IService1_CharacterCreate_OutputMessage" />
@@ -582,6 +602,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAccountName">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAccountName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAccountEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAccount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

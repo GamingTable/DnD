@@ -93,7 +93,7 @@ namespace DnDServicePlayer.Pages
             }
         }
 
-        private bool isEmailValid(string email)
+        public static bool isEmailValid(string email)
         {
             try
             {

@@ -3158,16 +3158,28 @@ namespace DnDServicePlayer.ServiceReference1 {
         System.Threading.Tasks.Task<uint> AccountCreateAsync(string user, string pass, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AccountDelete", ReplyAction="http://tempuri.org/IService1/AccountDeleteResponse")]
-        bool AccountDelete(int account_id);
+        bool AccountDelete(uint account_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AccountDelete", ReplyAction="http://tempuri.org/IService1/AccountDeleteResponse")]
-        System.Threading.Tasks.Task<bool> AccountDeleteAsync(int account_id);
+        System.Threading.Tasks.Task<bool> AccountDeleteAsync(uint account_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAccountName", ReplyAction="http://tempuri.org/IService1/GetAccountNameResponse")]
         string GetAccountName(uint account_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAccountName", ReplyAction="http://tempuri.org/IService1/GetAccountNameResponse")]
         System.Threading.Tasks.Task<string> GetAccountNameAsync(uint account_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAccountEmail", ReplyAction="http://tempuri.org/IService1/GetAccountEmailResponse")]
+        string GetAccountEmail(uint account_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAccountEmail", ReplyAction="http://tempuri.org/IService1/GetAccountEmailResponse")]
+        System.Threading.Tasks.Task<string> GetAccountEmailAsync(uint account_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAccount", ReplyAction="http://tempuri.org/IService1/UpdateAccountResponse")]
+        uint UpdateAccount(uint uid, string name, string pass, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAccount", ReplyAction="http://tempuri.org/IService1/UpdateAccountResponse")]
+        System.Threading.Tasks.Task<uint> UpdateAccountAsync(uint uid, string name, string pass, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CharacterCreate", ReplyAction="http://tempuri.org/IService1/CharacterCreateResponse")]
         int CharacterCreate(DnDServicePlayer.ServiceReference1.character player);
@@ -3513,11 +3525,11 @@ namespace DnDServicePlayer.ServiceReference1 {
             return base.Channel.AccountCreateAsync(user, pass, mail);
         }
         
-        public bool AccountDelete(int account_id) {
+        public bool AccountDelete(uint account_id) {
             return base.Channel.AccountDelete(account_id);
         }
         
-        public System.Threading.Tasks.Task<bool> AccountDeleteAsync(int account_id) {
+        public System.Threading.Tasks.Task<bool> AccountDeleteAsync(uint account_id) {
             return base.Channel.AccountDeleteAsync(account_id);
         }
         
@@ -3527,6 +3539,22 @@ namespace DnDServicePlayer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> GetAccountNameAsync(uint account_id) {
             return base.Channel.GetAccountNameAsync(account_id);
+        }
+        
+        public string GetAccountEmail(uint account_id) {
+            return base.Channel.GetAccountEmail(account_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetAccountEmailAsync(uint account_id) {
+            return base.Channel.GetAccountEmailAsync(account_id);
+        }
+        
+        public uint UpdateAccount(uint uid, string name, string pass, string email) {
+            return base.Channel.UpdateAccount(uid, name, pass, email);
+        }
+        
+        public System.Threading.Tasks.Task<uint> UpdateAccountAsync(uint uid, string name, string pass, string email) {
+            return base.Channel.UpdateAccountAsync(uid, name, pass, email);
         }
         
         public int CharacterCreate(DnDServicePlayer.ServiceReference1.character player) {

@@ -14,6 +14,7 @@ namespace DnDServiceClient
     /// </summary>
     public partial class PageSwitcher : Window
     {
+        public static uint current_user {get; set;}
         public PageSwitcher()
         {
             InitializeComponent();
@@ -62,6 +63,11 @@ namespace DnDServiceClient
                 Resources["isAbout"] = Visibility.Visible;
             else
                 Resources["isAbout"] = Visibility.Hidden;
+        }
+
+        private void button_manager_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new AccountManager(), current_user);
         }
     }
 }

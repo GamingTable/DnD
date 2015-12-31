@@ -13,10 +13,16 @@ namespace DnDService
         uint AccountCreate(string user, string pass, string mail);
 
         //Try to delete each character of an account and then delete account. Return true if succeed, false if not;
-        bool AccountDelete(int account_id);
+        bool AccountDelete(uint account_id);
 
         //Get the username corresponding to a given id
         string GetAccountName(uint account_id);
+
+        //Get the email corresponding to an account id
+        string GetAccountEmail(uint account_id);
+
+        //Update the selected account, only uid and at least one field is required
+        uint UpdateAccount(uint uid, string name = null, string pass = null, string email = null);
 
         //Create a new character and return character_id;
         int CharacterCreate(character player);

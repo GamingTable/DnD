@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="281.749" d:DesignWidth="320.533" Width="800" Height="600">
     <Grid>
         <Grid.RowDefinitions>

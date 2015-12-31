@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DnDServicePlayer.Pages;
 using System.ServiceModel;
+using DnDServiceClient;
 
 namespace DnDServicePlayer.Pages
 {
@@ -42,6 +43,7 @@ namespace DnDServicePlayer.Pages
             // Initializes account data
             Utils.connected = true;
             Application.Current.MainWindow.Resources["welcomeMessage"] = "Bienvenue " + client.GetAccountName(user_id) + " !";
+            PageSwitcher.current_user = user_id;
         }
         #endregion
 

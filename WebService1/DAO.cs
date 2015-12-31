@@ -185,28 +185,99 @@ namespace DnDService
             return account_name;
         }
 
-        public bool AccountDelete(int account_id)
+        public string GetAccountEmail(uint account_id)
         {
+            if (account_id == 0)
+                return "";
+
+            string account_email = null;
+            var query = "select email from account where id_account=" + account_id;
+            if (OpenConnection())
+            {
+                using (var cmd = new MySqlCommand(query, connection))
+                    try
+                    {
+                        account_email = (string)cmd.ExecuteScalar();
+                    }
+                    catch (Exception e) { account_email = "Error: name could not be reached"; }
+            }
+            return account_email;
+        }
+
+        public uint UpdateAccount(uint uid, string a_name = null, string a_pass = null, string a_email = null)
+        {
+            // 0: everything went smooth
+            // 1: new username already exists
+            // 2: couldn't reach mysql
+            // 3: no specified id or parameters
+            if (uid == 0 ||
+                (string.IsNullOrWhiteSpace(a_name) && string.IsNullOrWhiteSpace(a_pass) && string.IsNullOrWhiteSpace(a_email)))
+                return 3;
+
+            var toUpdate = new List<string>();
+            if (a_name != GetAccountName(uid))
+                if (AccountExists(a_name))
+                    return 1;
+
+            var count_comas = false;
+            var query = "update dnd.account set ";
+            if (!string.IsNullOrWhiteSpace(a_name))
+            {
+                query += "username = @user ";
+                count_comas = true;
+            }
+            if (!string.IsNullOrWhiteSpace(a_pass))
+            {
+                if (count_comas)
+                    query += ", ";
+                query += "password = @pass";
+                count_comas = true;
+            }
+            if (!string.IsNullOrWhiteSpace(a_email))
+            {
+                if (count_comas)
+                    query += ", ";
+                query += "email = @email";
+            }
+            query += " where id_account ="+uid;
+
+            //Open connection
+            if (OpenConnection())
+            {
+                //Create Command
+                using (MySqlCommand cmd = new MySqlCommand(query, connection)) try
+                {
+                    // Pass parameters and execute sql
+                    cmd.Parameters.AddWithValue("@user", a_name);
+                    cmd.Parameters.AddWithValue("@pass", a_pass);
+                    cmd.Parameters.AddWithValue("@email", a_email);
+                    cmd.ExecuteNonQuery();
+                } catch(Exception e) { return 2; }
+                //close Connection
+                this.CloseConnection();
+            }
+
+            return 0;
+        }
+
+        public bool AccountDelete(uint account_id)
+        {
+            if (account_id == 0)
+                return false;
+            //ON DELETE CASCADE for relative fk
             string query = "DELETE FROM account WHERE id_account = '" + account_id + "';";
 
             //Open connection
             if (this.OpenConnection() == true)
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                cmd.ExecuteNonQuery();
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    try { cmd.ExecuteNonQuery(); } catch { return false; }
 
                 //close Connection
                 this.CloseConnection();
-
-                //return id to be displayed
-                return true;
             }
-            else
-            {
-                return false;
-            }
+            return true;
         }
         #endregion
 
