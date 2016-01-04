@@ -29,7 +29,7 @@ CREATE TABLE `account` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id_account`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (2,'skit','1234','foo@foo'),(3,'Pipi','pipi','pipi.caca@yopmail.com');
+INSERT INTO `account` VALUES (2,'skit','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','foo@foo'),(3,'Pipi','pipi','pipi.caca@yopmail.com'),(4,'foo','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','foo@go'),(5,'test','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','te@st'),(8,'foo2','2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae','fo@fo');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1646,4 +1646,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-28 23:46:28
+-- Dump completed on 2016-01-04 11:08:29
