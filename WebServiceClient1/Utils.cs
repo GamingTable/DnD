@@ -125,7 +125,7 @@ namespace DnDServicePlayer
         }
 
         // Return the modifier corresponding to a given value of characteristic
-        public static int fromValueToModif(uint value)
+        public static int fromValueToModif(int value)
         {
             return (int)Math.Floor(value / 2.0) - 5;
         }
@@ -148,6 +148,20 @@ namespace DnDServicePlayer
                 return Visibility.Hidden;
             else
                 return Visibility.Visible;
+        }
+    }
+
+    //Converter for obtaining the modifier from a value
+    public class ValueToModifier : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return Utils.fromValueToModif((int)value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

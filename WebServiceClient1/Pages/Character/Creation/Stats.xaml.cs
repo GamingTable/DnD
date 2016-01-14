@@ -47,19 +47,60 @@ namespace DnDServicePlayer.Pages.Character.Creation
         }
 
 
-        #region Button Handler
-        private void increase_value_button_Click(object sender, RoutedEventArgs e)
+        #region Values Handler
+        private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            var s = (Button)sender;
-            s.IsEnabled = increaseValue((uint)s.Tag);
-            updateDisplay();
-        }
+            // Variables declaration
+                // cs are the temporary characteristics value increase
+                // cp is the number of points available
+                // s is the updown counter
+                // diff is the difference of value (positive or negative)
+                // uid is the characteristic id
+            var s = (IntegerUpDown)sender;
+            var diff = (int)e.NewValue - (int)e.OldValue;
+            var uid = (uint)s.Tag;
+            var cs = current_stats.characteristics.Where(c => c.uid == uid ).Single().value;
+            var cp = current_characteristic_points.value;
 
-        private void decrease_value_button_Click(object sender, RoutedEventArgs e)
-        {
-            var s = (Button)sender;
-            s.IsEnabled = decreaseValue((uint)s.Tag);
+            // Treatment implementation
+            //Check if abnormal values or max is reached
+            if (diff > 0)
+            {
+                if(cp < cs + 1)
+                {
+                    diff = 0;
+                    s.Maximum = current_characteristics.Where(j => j.uid == uid).Single().value;
+                }
+                    
+            }
+           /* else if (diff <0 )
+            {
+                if(cs>0)
+                    s.Maximum = 
+            }*/
+            if (diff !=0)
+            {
+                //Update charac points label --> initial charac points label is on load
+                //If the characteristic increments, the charac points decrement
+                if (diff > 0)
+                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value -= cs + 1;
+                //Otherwise, it increments
+                else if (diff < 0)
+                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
+                //Update current_stats --> default template is initialized on load
+                if (diff != 0)
+                {
+                    current_stats.characteristics.Where(c => c.uid == uid).Single().value += diff;
+                    //Update modifier
+                    current_stats.characteristics.Where(c => c.uid == uid).Single().modifier = get_modifier((int)s.Value);
+                }
+            }
+
+            //Validate if charac points = 0
+            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
+
             updateDisplay();
+
         }
 
         private void updateDisplay()
@@ -67,42 +108,9 @@ namespace DnDServicePlayer.Pages.Character.Creation
             //this.charac_itemscontrol.ItemsSource = current_characteristics;
             this.charac_counter_display.DataContext = current_characteristic_points;
         }
-
-        private bool increaseValue(uint id_characteristic)
-        {
-            // cs are the temporary characteristics value increase
-            // cp is the number of points available
-            var cs = current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
-            var cp = current_characteristic_points.value;
-
-            if (cp-(cs+1) >= 0)
-            {
-                // increment the characteristic and reduces the points
-                ++current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
-                current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value -= cs+1;
-            }
-
-            //Test if it can keep increasing
-            return (cp-(cs+2) >= 0);
-        }
-
-        private bool decreaseValue(uint id_characteristic)
-        {
-            // cs are the temporary characteristics value increase
-            var cs = current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
-
-            if (cs > 0)
-            {
-                // decrement the characteristic and restore the points
-                current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
-                --current_stats.characteristics.Where(c => c.uid == id_characteristic).Single().value;
-            }
-
-            return (cs - 1 >= 0);
-        }
         #endregion
 
-        #region Default retrieving
+        #region Default Retrieving
         // Get the lvl 1 templates from race, class and default then sum it
         private template default_template
         {
@@ -180,6 +188,7 @@ namespace DnDServicePlayer.Pages.Character.Creation
 
         #endregion
 
+        #region On Load Events
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //Force the setting of default_template
@@ -197,60 +206,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
             ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
         }
 
-        private void IntegerUpDown_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            // Variables declaration
-                // cs are the temporary characteristics value increase
-                // cp is the number of points available
-                // s is the updown counter
-                // diff is the difference of value (positive or negative)
-                // uid is the characteristic id
-            var s = (IntegerUpDown)sender;
-            var diff = (int)e.NewValue - (int)e.OldValue;
-            var uid = (uint)s.Tag;
-            var cs = current_stats.characteristics.Where(c => c.uid == uid ).Single().value;
-            var cp = current_characteristic_points.value;
-
-            // Treatment implementation
-            //Check if abnormal values or max is reached
-            if (diff > 0)
-            {
-                if(cp < cs + 1)
-                {
-                    diff = 0;
-                    s.Maximum = current_characteristics.Where(j => j.uid == uid).Single().value;
-                }
-                    
-            }
-           /* else if (diff <0 )
-            {
-                if(cs>0)
-                    s.Maximum = 
-            }*/
-            if (diff !=0)
-            {
-                //Update charac points label --> initial charac points label is on load
-                //If the characteristic increments, the charac points decrement
-                if (diff > 0)
-                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value -= cs + 1;
-                //Otherwise, it increments
-                else if (diff < 0)
-                    current_stats.characteristics.Where(c => c.uid == current_characteristic_points.uid).Single().value += cs;
-                //Update current_stats --> default template is initialized on load
-                if (diff != 0)
-                {
-                    current_stats.characteristics.Where(c => c.uid == uid).Single().value += diff;
-                    //Update modifier
-                    current_stats.characteristics.Where(c => c.uid == uid).Single().modifier = get_modifier((int)s.Value);
-                }
-            }
-
-            //Validate if charac points = 0
-            ((CharacterCreation)DataContext).next_button.IsEnabled = condition_to_next;
-
-            updateDisplay();
-
-        }
 
         private void IntegerUpDown_Loaded(object sender, RoutedEventArgs e)
         {
@@ -258,5 +213,6 @@ namespace DnDServicePlayer.Pages.Character.Creation
             var s = (IntegerUpDown)sender;
             s.Minimum = default_template.characteristics.Where(k => k.uid == (uint)s.Tag).Single().value;
         }
+        #endregion
     }
 }

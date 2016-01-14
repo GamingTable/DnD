@@ -1,13 +1,18 @@
-﻿<UserControl x:Class="DnDServicePlayer.Pages.Character.Creation.Stats"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DnDServicePlayer.Pages.Character.Creation"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:DnDServicePlayer="clr-namespace:DnDServicePlayer" x:Class="DnDServicePlayer.Pages.Character.Creation.Stats"
              mc:Ignorable="d" 
              d:DesignHeight="404" d:DesignWidth="700"
              Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <DnDServicePlayer:ValueToModifier x:Key="ValueToModifier"/>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,8 +37,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding name}" />
-                        <xctk:IntegerUpDown Loaded="IntegerUpDown_Loaded" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
-                        <TextBlock Text="{Binding modifier}" />
+                        <xctk:IntegerUpDown  Loaded="IntegerUpDown_Loaded" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
+                        <TextBlock Text="{Binding value, Converter={StaticResource ValueToModifier}}" />
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

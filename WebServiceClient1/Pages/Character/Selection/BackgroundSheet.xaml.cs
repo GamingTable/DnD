@@ -25,18 +25,17 @@ namespace DnDServicePlayer.Pages.Character.Selection
         public BackgroundSheet()
         {
             InitializeComponent();
-
-            reload();
         }
         private void reload()
         {
             nom.Text = CharacterSheet.hero.name;
             race.Text = CharacterSheet.hero.race.name;
-            //maclasse.Text = hero.classes.;
+            /*//Pas encore géré sur le personnage de test :/
             vd.Text = CharacterSheet.hero.stats[12].value.ToString();
             karma.Text = CharacterSheet.hero.stats[24].value.ToString();
             align.Text = CharacterSheet.hero.stats[25].value.ToString();
-            //level.Text = GetGlobalLevel(CharacterSheet.hero.classes);
+            //level.Text = GetGlobalLevel(CharacterSheet.hero.classes);*/
+
             try
             {
                 dieu.Text = CharacterSheet.hero.deity.name;
@@ -108,27 +107,31 @@ namespace DnDServicePlayer.Pages.Character.Selection
             CharacterSheet.heroUpdate.background = background.Text;
         }
 
+        //// TextChangedEventArgs ne s'utilise pas du tout comme ça, c'est un objet et pas un string
+        //// Le TextChangedEvent est appelé à l'initialisation, or text property n'est pas encore set,
+        //// on ne peut donc pas l'appeler directement sinon NullRefException
+        //// une alternative est d'attribuer la méthode à la propriété après initialisation des composants
         private void sex_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {/*
             if (e.ToString()[0] != 'F' && e.ToString()[0] != 'f' && e.ToString()[0] != 'M' && e.ToString()[0] != 'm')
                 CharacterSheet.heroUpdate.sex = e.ToString().ToUpper()[0];
             else
                 MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer 'F' ou 'f' si votre personnage est une femme, 'M' ou 'm' si c'est un homme", "Erreur");
-        }
+        */}
 
         private void hairs_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CharacterSheet.heroUpdate.hair = e.ToString();
+            //CharacterSheet.heroUpdate.hair = ((TextBox)sender).Text;
         }
 
         private void eyes_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CharacterSheet.heroUpdate.eyes = e.ToString();
+            //CharacterSheet.heroUpdate.eyes = e.ToString();
         }
 
         private void weight_TextChanged(object sender, TextChangedEventArgs e)
         {
-            uint temp;
+           /* uint temp;
             if(UInt32.TryParse(e.ToString(), out temp))
                 {
                     Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.weight.Item2);
@@ -137,12 +140,12 @@ namespace DnDServicePlayer.Pages.Character.Selection
             else
             {
                 MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
-            }
+            }*/
         }
 
         private void height_TextChanged(object sender, TextChangedEventArgs e)
         {
-            uint temp;
+            /*uint temp;
             if (UInt32.TryParse(e.ToString(), out temp))
             {
                 Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.height.Item2);
@@ -151,12 +154,12 @@ namespace DnDServicePlayer.Pages.Character.Selection
             else
             {
                 MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
-            }
+            }*/
         }
 
         private void age_TextChanged(object sender, TextChangedEventArgs e)
         {
-            uint temp;
+            /*uint temp;
             if (UInt32.TryParse(e.ToString(), out temp))
             {
                 Tuple<uint, category> mytuple = new Tuple<uint, category>(temp, CharacterSheet.hero.age.Item2);
@@ -165,7 +168,12 @@ namespace DnDServicePlayer.Pages.Character.Selection
             else
             {
                 MessageBox.Show("La valeur que vous avez rentré ne convient pas.\r\nMerci de rentrer un entier non signé", "Erreur de type");
-            }
+            }*/
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            reload();
         }
     }
 }

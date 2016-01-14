@@ -11,15 +11,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="38"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="150" />
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="64"/>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -31,6 +30,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Image x:Name="image" Grid.Column="3" Grid.RowSpan="3"  Stretch="Fill" Source="{Binding race_illustration}" Grid.Row="1"/>
-        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="3" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="3" Height="auto" Width="auto" Text="{Binding race_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

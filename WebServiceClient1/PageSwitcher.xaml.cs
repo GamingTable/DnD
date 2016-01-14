@@ -37,8 +37,7 @@ namespace DnDServiceClient
             if (s != null)
                 s.UtilizeState(state);
             else
-                throw new ArgumentException("NextPage is not ISwitchable! "
-                  + nextPage.Name.ToString());
+                throw new ArgumentException("NextPage is not ISwitchable! ");
         }
 
         private void reduce_button_Click(object sender, RoutedEventArgs e)

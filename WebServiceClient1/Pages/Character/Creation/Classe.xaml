@@ -9,13 +9,13 @@
              d:DesignHeight="404" d:DesignWidth="700">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="230"/>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="200" />
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <ListBox x:Name="class_list_box" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding class_list}" IsSynchronizedWithCurrentItem="False" SelectionChanged="class_list_box_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -25,7 +25,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Image x:Name="image" Grid.Column="2" Stretch="Fill" Source="{Binding class_illustration}" Grid.Row="0" Grid.RowSpan="3"/>
+        <Image x:Name="image" Grid.Column="2" Stretch="Fill" Source="{Binding class_illustration}" Grid.Row="0" Grid.RowSpan="2"/>
         <TextBlock x:Name="description_display" Grid.Column="0" Grid.Row="2" Height="auto" Width="auto" Text="{Binding class_description}" FontStyle="Italic" FontSize="12" TextWrapping="WrapWithOverflow"/>
     </Grid>
 </UserControl>

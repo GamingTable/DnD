@@ -42,6 +42,7 @@ namespace DnDServicePlayer
         private void cancel_button_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new CharacterSelection(), user_id);
+            Utils.infobar = "";
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

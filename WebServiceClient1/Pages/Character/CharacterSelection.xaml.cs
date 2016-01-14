@@ -68,7 +68,7 @@ namespace DnDServicePlayer.Pages
 
         private void select_button_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CharacterSheet(), current_character);
+            Switcher.Switch(new CharacterSheet(), current_character.uid);
         }
 
         private void cancel_button_Click(object sender, RoutedEventArgs e)
