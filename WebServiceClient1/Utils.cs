@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Data;
 using DnDServicePlayer.ServiceReference1;
 using System.Windows.Controls;
+using Xceed.Wpf.Toolkit;
+using System.ComponentModel;
 
 namespace DnDServicePlayer
 {
@@ -160,6 +162,48 @@ namespace DnDServicePlayer
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    //Converter for allowing an integerupdown UI to increase or not in a cumulative cost situation
+    public class MaximumForGivenCost: IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Contains(null))
+                return 0;
+            var values_list = values.ToList();
+            var type = (string)parameter;          // Define if it's a static cost (false) or a cumulative cost (true)
+            var step = (int)values_list[0];        // Step for iteration
+            var value = (int)values[1];            // Current value
+            var minimum = (int)values[2];          // Minimum value
+            var points = (int)values[3];           // Points available
+
+            var difference = value - minimum;
+            var next = value + step;
+            var it = difference / step;
+
+            if (type == "CUMULATIVE")    // Cumulative cost case
+            {
+                if (next - minimum > points) // Maximum condition
+                    return value;
+                else
+                    return next;
+            }
+            else if (type == "CONSTANT")        // Constant cost case
+            {
+                if (step > points)
+                    return value;
+                else
+                    return next;
+            }
+            else
+                return minimum;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

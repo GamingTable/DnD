@@ -8,17 +8,20 @@
              xmlns:DnDServicePlayer="clr-namespace:DnDServicePlayer" x:Class="DnDServicePlayer.Pages.Character.Creation.Stats"
              mc:Ignorable="d" 
              d:DesignHeight="404" d:DesignWidth="700"
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded"
+             x:Name="stats_control">
 
     <UserControl.Resources>
+        <DnDServicePlayer:MaximumForGivenCost x:Key="MaximumForGivenCost"/>
         <DnDServicePlayer:ValueToModifier x:Key="ValueToModifier"/>
     </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="39"/>
@@ -29,24 +32,42 @@
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" x:Name="charac_stack"/>
-                    <!-- Remplacement du stackpanel par un grid généré dynamiquement par l'itemscontrol
-                    http://blog.scottlogic.com/2010/11/15/using-a-grid-as-the-panel-for-an-itemscontrol.html -->
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding name}" />
-                        <xctk:IntegerUpDown  Loaded="IntegerUpDown_Loaded" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged" />
-                        <TextBlock Text="{Binding value, Converter={StaticResource ValueToModifier}}" />
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding name}" FontSize="16" />
+                        <xctk:IntegerUpDown   Grid.Column="1" Loaded="IntegerUpDown_Loaded" Tag="{Binding uid}" Value="{Binding value}" ValueChanged="IntegerUpDown_ValueChanged">
+                            <xctk:IntegerUpDown.Maximum>
+                                <MultiBinding Converter="{StaticResource MaximumForGivenCost}" ConverterParameter="CUMULATIVE">
+                                    <Binding Path="Increment" RelativeSource="{RelativeSource Self}"/>
+                                    <Binding Path="Value" RelativeSource="{RelativeSource Self}"/>
+                                    <Binding Path="Minimum" RelativeSource="{RelativeSource Self}"/>
+                                    <Binding Path="Content" ElementName="current_points"/>
+                                </MultiBinding>
+                            </xctk:IntegerUpDown.Maximum>
+                        </xctk:IntegerUpDown> <!--Maximum="{Binding Content, ConverterParameter={Binding RelativeSource={RelativeSource Self}}, Converter={StaticResource MaximumForCumulativeCost}, ElementName=current_points} />-->
+                        <TextBlock Grid.Column="2" Text="{Binding value, Converter={StaticResource ValueToModifier}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding description}" TextWrapping="WrapWithOverflow" Grid.Row="1" FontStyle="Italic" Margin="15,5,0,15" />
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" x:Name="charac_counter_display">
-            <TextBlock Text="{Binding name}" TextWrapping="Wrap"/>
-            <Label Content="{Binding value}" />
+            <TextBlock Text="{Binding name}" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="current_points" Content="{Binding value}" HorizontalContentAlignment="Center" FontSize="21.333" />
         </StackPanel>
 
     </Grid>

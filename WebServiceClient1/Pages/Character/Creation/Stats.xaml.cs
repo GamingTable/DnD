@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using Xceed.Wpf.Toolkit;
+using System.Globalization;
 
 namespace DnDServicePlayer.Pages.Character.Creation
 {
